@@ -2,6 +2,7 @@ package com.zna.server.web.controller;
 
 
 import com.zna.server.common.constants.SysConstants;
+import com.zna.server.common.constants.ZnaConstants;
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.bo.MenuBO;
 import com.zna.server.entity.bo.RoleBO;
@@ -19,10 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * 管理员
@@ -54,30 +52,19 @@ public class AdminController extends BaseCotroller {
             super.safeJsonPrint(response, result);
             return ;
         }
-        //验证权限
 
-//        int count = adminService.queryHotelCount(hotelId, adminBO.getRoleId());
-//        if(count<1){
-//            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000209")) ;
-//            super.safeJsonPrint(response, result);
-//            return;
-//        }
         adminBO.setPassword("");
-
-
 
         String uuid = UUID.randomUUID().toString();
         //登陆客户信息放入Redis缓存
         super.putLoginAdmin(uuid,adminBO);
         //uuid 存入cookie
         super.setCookie(response, SysConstants.CURRENT_LOGIN_CLIENT_ID, uuid, 60*60*24);
-
+        //该用户的所有菜单
         List<MenuBO> roleMenuSuccess = adminService.getRoleMenuSuccess(adminBO.getRoleId());
-        //List<HotelBO> hotelBOS=adminService.getRoleHotelSuccess(adminBO.getRoleId());
         Map<String,Object>  resultMap=new HashMap<String, Object>();
         resultMap.put("menu",roleMenuSuccess);
         resultMap.put("admin",adminBO);
-        //resultMap.put("hotel",hotelBOS);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(resultMap)) ;
         super.safeJsonPrint(response, result);
         return;
@@ -91,12 +78,12 @@ public class AdminController extends BaseCotroller {
     @RequestMapping("/adminRegister")
     public void adminRegister(HttpServletRequest request, HttpServletResponse response, AdminBO admin){
         AdminBO loginAdmin = super.getLoginAdmin(request);
-        //验证用户
-        if(loginAdmin==null){
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002" , "用户未登录")) ;
-            super.safeJsonPrint(response, result);
-            return ;
-        }
+//        //验证用户
+//        if(loginAdmin==null){
+//            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002" , "用户未登录")) ;
+//            super.safeJsonPrint(response, result);
+//            return ;
+//        }
         //验证参数
         if(admin == null || StringUtils.isEmpty(admin.getPassword() )
                 || StringUtils.isEmpty(admin.getMobile()) || StringUtils.isEmpty(admin.getName()) || admin.getRoleId()==null){
@@ -118,6 +105,9 @@ public class AdminController extends BaseCotroller {
             super.safeJsonPrint(response , result);
             return ;
         }
+        admin.setStatus(ZnaConstants.NORMAL);// 状态 normal:正常  logout：注销
+        admin.setCreateTime(new Date());
+        admin.setPassword(MD5Util.digest(admin.getPassword()));
         //注册管理员
         adminService.adminRegister(admin);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("")) ;
@@ -288,7 +278,7 @@ public class AdminController extends BaseCotroller {
      */
     @RequestMapping("/addRoleGrantAuthority")
     public void addRoleGrantAuthority(HttpServletRequest request,HttpServletResponse response,
-                 String roleName,String menuIds,String hotelIds){
+                 String roleName,String menuIds){
         AdminBO loginAdmin = super.getLoginAdmin(request);
         //验证用户
         if(loginAdmin==null){
@@ -297,7 +287,7 @@ public class AdminController extends BaseCotroller {
             return ;
         }
         //参数验证
-        if(StringUtils.isEmpty(roleName) || StringUtils.isEmpty(menuIds)||StringUtils.isEmpty(hotelIds)){
+        if(StringUtils.isEmpty(roleName) || StringUtils.isEmpty(menuIds)){
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001")) ;
             super.safeJsonPrint(response , result);
             return ;
@@ -316,9 +306,9 @@ public class AdminController extends BaseCotroller {
         System.err.println(roleBO.getId());
         //添加权限
         Integer[] menuIdArr= JsonUtils.getIntegerArray4Json(menuIds);
-        Integer[] hotelIdArr= JsonUtils.getIntegerArray4Json(hotelIds);
+        //Integer[] hotelIdArr= JsonUtils.getIntegerArray4Json(hotelIds);
         adminService.addRoleMenu(roleBO.getId(),menuIdArr);
-        adminService.addRoleHotel(roleBO.getId(),hotelIdArr);
+        //adminService.addRoleHotel(roleBO.getId(),hotelIdArr);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功")) ;
         super.safeJsonPrint(response , result);
 
@@ -355,7 +345,7 @@ public class AdminController extends BaseCotroller {
      * @param menuIds  权限id
      */
     @RequestMapping("/grantAuthority")
-    public void grantAuthority(HttpServletRequest request,HttpServletResponse response,Integer roleId,String menuIds,String hotelIds,String roleName){
+    public void grantAuthority(HttpServletRequest request,HttpServletResponse response,Integer roleId,String menuIds,String roleName){
         AdminBO loginAdmin = super.getLoginAdmin(request);
         //验证用户
         if(loginAdmin==null){
@@ -364,7 +354,7 @@ public class AdminController extends BaseCotroller {
             return ;
         }
         //验证参数
-        if(StringUtils.isEmpty(String.valueOf(roleId)) || StringUtils.isEmpty(String.valueOf(menuIds))|| StringUtils.isEmpty(roleName)){
+        if(StringUtils.isEmpty(String.valueOf(roleId))|| StringUtils.isEmpty(roleName)){
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001" , "参数异常")) ;
             super.safeJsonPrint(response , result);
             return ;
@@ -385,7 +375,6 @@ public class AdminController extends BaseCotroller {
 
         //修改角色的权限
         adminService.updRoleToMenu(roleBO,menuIds);
-        adminService.updRoleToHotel(roleBO,hotelIds);
 
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功")) ;
         super.safeJsonPrint(response, result);
