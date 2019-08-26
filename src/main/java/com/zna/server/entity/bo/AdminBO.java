@@ -22,24 +22,8 @@ public class AdminBO extends BaseModel {
     private Integer updateUserId;//修改人
     private String roleName; //角色
     private Set<String> url;//所拥有的接口
-    private Set<Integer> hotels;//酒店id
-    private Integer hotelId;//酒店id
 
-    public Set<Integer> getHotels() {
-        return hotels;
-    }
 
-    public void setHotels(Set<Integer> hotels) {
-        this.hotels = hotels;
-    }
-
-    public Integer getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
-    }
 
     public Integer getCreateUserId() {
         return createUserId;
@@ -152,7 +136,6 @@ public class AdminBO extends BaseModel {
                 ", updateUserId=" + updateUserId +
                 ", roleName='" + roleName + '\'' +
                 ", url=" + url +
-                ", hotelId=" + hotelId +
                 '}';
     }
 }
