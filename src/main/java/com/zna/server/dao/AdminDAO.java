@@ -13,7 +13,7 @@ public interface AdminDAO {
     /**
      * 通过手机号查找管理员信息
      * @param mobile
-     * @return UserDO
+     * @return AdminBO
      */
     AdminBO queryAdminInfoByMobile(String mobile);
 
