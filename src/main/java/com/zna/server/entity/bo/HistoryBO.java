@@ -7,7 +7,7 @@ import java.util.Date;
 public class HistoryBO extends BaseModel {
     private Integer id; //发展历史表
     private String pictureUrl; //图片url
-    private Date time; //时间
+    private String time; //时间
     private String context; //内容
     private String contextEnglish; //内容（英文）
     private Integer sort; //序号
@@ -32,11 +32,11 @@ public class HistoryBO extends BaseModel {
         this.pictureUrl = pictureUrl;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

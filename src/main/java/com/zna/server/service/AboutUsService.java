@@ -20,16 +20,16 @@ public class AboutUsService {
      * 有数据就修改，没有数据就添加
      * @param pictureUrl
      * @param context
-     * @param contextEndlish
+     * @param contextEnglish
      * @param service
      * @param updateUserId
      */
-    public void updateAboutUs(String pictureUrl,String context,String contextEndlish,
+    public void updateAboutUs(String pictureUrl,String context,String contextEnglish,
                               String service,Integer createUserId,Integer updateUserId){
         AboutUsBO aboutUsBO = new AboutUsBO();
         aboutUsBO.setPictureUrl(pictureUrl);
         aboutUsBO.setContext(context);
-        aboutUsBO.setContextEndlish(contextEndlish);
+        aboutUsBO.setContextEnglish(contextEnglish);
         aboutUsBO.setService(service);
         //查询表中数据
         int t = aboutUsDAO.getCount();

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.HistoryDAO">
+
+    <!--添加发展历史-->
+    <insert id="addHistory" parameterType="com.zna.server.entity.bo.HistoryBO">
+        INSERT INTO `zna_history` (`picture_url`, `time`, `context`, `context_english`,
+                                `sort`, `create_user_id`, `create_time`)
+                      VALUES (#{pictureUrl},#{time},#{context},#{contextEnglish},
+                              #{sort},#{createUserId},NOW())
+    </insert>
+    <!--删除发展历史-->
+    <delete id="delHistory" parameterType="int">
+        DELETE FROM `zna_history` WHERE id=#{id}
+    </delete>
+    <!--修改发展历史-->
+    <update id="updateHistory" parameterType="com.zna.server.entity.bo.HistoryBO">
+        UPDATE `zna_server`.`zna_history` SET
+        <if test="pictureUrl != null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+        <if test="time != null and time!=''">`time`=#{time}, </if>
+        <if test="context != null and context!=''">`context`=#{context}, </if>
+        <if test="contextEnglish != null and contextEnglish!=''">`context_english`=#{contextEnglish}, </if>
+        <if test="sort != null ">`sort`= #{sort}, </if>
+        `update_user_id`=#{updateUserId},
+        `update_time`=NOW()
+        WHERE `id`=#{id}
+    </update>
+    <!--查询发展历史-->
+    <select id="getHistory" resultType="com.zna.server.entity.bo.HistoryBO">
+        SELECT * FROM  `zna_history`
+    </select>
+
+</mapper>

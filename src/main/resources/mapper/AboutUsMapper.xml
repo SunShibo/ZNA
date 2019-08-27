@@ -6,9 +6,9 @@
 <mapper namespace="com.zna.server.dao.AboutUsDAO">
     <!--新增关于我们-->
     <insert id="addAboutUs" parameterType="com.zna.server.entity.bo.AboutUsBO">
-        INSERT INTO `zna_about_us` (`picture_url`,`context`,`context_endlish`,
+        INSERT INTO `zna_about_us` (`picture_url`,`context`,`context_english`,
 	                                `service`,`create_user_id`,`create_time`)
-	                                VALUES(#{pictureUrl},#{context},#{contextEndlish},
+	                                VALUES(#{pictureUrl},#{context},#{contextenglish},
 	                                #{service},#{createUserId},NOW())
     </insert>
 
@@ -17,7 +17,7 @@
         UPDATE `zna_about_us`
           SET <if test="pictureUrl!=null and pictureUrl!=''">`picture_url` = #{pictureUrl},</if>
         <if test="context!=null and context!=''">`context`=#{context},</if>
-        <if test="contextEndlish!=null and contextEndlish!=''">`context_endlish` = #{contextEndlish},</if>
+        <if test="contextenglish!=null and contextenglish!=''">`context_english` = #{contextenglish},</if>
         <if test="service!=null and service!=''">`service` = #{service},</if>
                `update_user_id` = #{updateUserId},
                `update_time` = NOW()

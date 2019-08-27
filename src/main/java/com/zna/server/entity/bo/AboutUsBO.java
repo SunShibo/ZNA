@@ -8,7 +8,7 @@ public class AboutUsBO extends BaseModel {
     private Integer id; //关于我们
     private String pictureUrl; //图片url
     private String context; //内容
-    private String contextEndlish; //内容(英文)
+    private String contextEnglish; //内容(英文)
     private String service; //服务
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
@@ -39,12 +39,12 @@ public class AboutUsBO extends BaseModel {
         this.context = context;
     }
 
-    public String getContextEndlish() {
-        return contextEndlish;
+    public String getContextEnglish() {
+        return contextEnglish;
     }
 
-    public void setContextEndlish(String contextEndlish) {
-        this.contextEndlish = contextEndlish;
+    public void setContextEnglish(String contextEnglish) {
+        this.contextEnglish = contextEnglish;
     }
 
     public String getService() {
@@ -93,7 +93,7 @@ public class AboutUsBO extends BaseModel {
                 "id=" + id +
                 ", pictureUrl='" + pictureUrl + '\'' +
                 ", context='" + context + '\'' +
-                ", contextEndlish='" + contextEndlish + '\'' +
+                ", contextenglish='" + contextEnglish + '\'' +
                 ", service='" + service + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
