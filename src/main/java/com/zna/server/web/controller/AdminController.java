@@ -105,9 +105,7 @@ public class AdminController extends BaseCotroller {
             super.safeJsonPrint(response , result);
             return ;
         }
-        admin.setStatus(ZnaConstants.NORMAL);// 状态 normal:正常  logout：注销
-        admin.setCreateTime(new Date());
-        admin.setPassword(MD5Util.digest(admin.getPassword()));
+
         //注册管理员
         adminService.adminRegister(admin);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("")) ;
@@ -331,8 +329,7 @@ public class AdminController extends BaseCotroller {
             return ;
         }
         List<RoleBO> ros = adminService.getRoleByRoleName(roleName);
-        String json = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(ros));
-        String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(json)) ;
+        String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(ros)) ;
         super.safeJsonPrint(response, result);
     }
 
