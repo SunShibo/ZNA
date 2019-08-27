@@ -62,7 +62,7 @@ public class CooperativeClientController extends BaseCotroller{
             e.getStackTrace();
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
             super.safeJsonPrint(response, result);
-            log.error("addMemberException",e);
+            log.error("addCooperativeClientException",e);
         }
     }
 
@@ -104,7 +104,7 @@ public class CooperativeClientController extends BaseCotroller{
             e.getStackTrace();
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
             super.safeJsonPrint(response, result);
-            log.error("addMemberException",e);
+            log.error("delCooperativeClientException",e);
         }
 
     }
@@ -146,7 +146,7 @@ public class CooperativeClientController extends BaseCotroller{
             e.getStackTrace();
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
             super.safeJsonPrint(response, result);
-            log.error("addMemberException",e);
+            log.error("updateCooperativeClientException",e);
         }
 
     }
@@ -181,7 +181,7 @@ public class CooperativeClientController extends BaseCotroller{
             e.getStackTrace();
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
             super.safeJsonPrint(response, result);
-            log.error("addMemberException",e);
+            log.error("getCooperativeClientException",e);
         }
 
     }
