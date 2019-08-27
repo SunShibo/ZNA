@@ -303,9 +303,7 @@ public class AdminController extends BaseCotroller {
         System.err.println(roleBO.getId());
         //添加权限
         Integer[] menuIdArr= JsonUtils.getIntegerArray4Json(menuIds);
-        //Integer[] hotelIdArr= JsonUtils.getIntegerArray4Json(hotelIds);
         adminService.addRoleMenu(roleBO.getId(),menuIdArr);
-        //adminService.addRoleHotel(roleBO.getId(),hotelIdArr);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功")) ;
         super.safeJsonPrint(response , result);
 
