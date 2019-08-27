@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.AboutUsDAO">
+    <!--新增关于我们-->
+    <insert id="addAboutUs" parameterType="com.zna.server.entity.bo.AboutUsBO">
+        INSERT INTO `zna_about_us` (`picture_url`,`context`,`context_endlish`,
+	                                `service`,`create_user_id`,`create_time`)
+	                                VALUES(#{pictureUrl},#{context},#{contextEndlish},
+	                                #{service},#{createUserId},NOW())
+    </insert>
+
+    <!--修改关于我们-->
+    <update id="updateAboutUs" parameterType="com.zna.server.entity.bo.AboutUsBO">
+        UPDATE `zna_about_us`
+          SET <if test="pictureUrl!=null and pictureUrl!=''">`picture_url` = #{pictureUrl},</if>
+        <if test="context!=null and context!=''">`context`=#{context},</if>
+        <if test="contextEndlish!=null and contextEndlish!=''">`context_endlish` = #{contextEndlish},</if>
+        <if test="service!=null and service!=''">`service` = #{service},</if>
+               `update_user_id` = #{updateUserId},
+               `update_time` = NOW()
+    </update>
+    <!--查询条数-->
+    <select id="getCount" resultType="int">
+        SELECT COUNT(id) FROM `zna_about_us`
+    </select>
+    <!--查询-->
+    <select id="getAboutUs" resultType="com.zna.server.entity.bo.AboutUsBO">
+        SELECT * FROM `zna_about_us`
+    </select>
+
+</mapper>

@@ -2,7 +2,6 @@ package com.zna.server.web.controller;
 
 
 import com.zna.server.common.constants.SysConstants;
-import com.zna.server.common.constants.ZnaConstants;
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.bo.MenuBO;
 import com.zna.server.entity.bo.RoleBO;
