@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.IndexDAO">
+
+    <!--新增首页内容-->
+    <insert id="addIndex" parameterType="com.zna.server.entity.bo.IndexBO">
+        INSERT INTO `zna_index` ( `title`, `title_english`, `context`, `context_english`,
+                                  `picture_url`, `sort`, `skip_id`, `skip_url`,
+                                  `create_user_id`, `create_time` )
+                    VALUES (#{title},#{titleEnglish},#{context},#{contextEnglish},
+                            #{pictureUrl},#{sort},#{skipId},#{skipUrl},
+                            #{createUserId},NOW())
+    </insert>
+    <!--删除首页内容-->
+    <delete id="delIndex" parameterType="int">
+        DELETE FROM `zna_index` WHERE id=#{id}
+    </delete>
+    <!--修改首页内容-->
+    <update id="updateIndex" parameterType="com.zna.server.entity.bo.IndexBO">
+        UPDATE `zna_index` SET
+        <if test="title!=null and title!=''">`title`=#{title}, </if>
+        <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish}, </if>
+        <if test="context!=null and context!=''">`context`=#{context}, </if>
+        <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish}, </if>
+        <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl}, </if>
+        <if test="sort!=null ">`sort`=#{sort},  </if>
+        <if test="skipId!=null "> `skip_id`=#{skipId}, </if>
+        <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},  </if>
+        <if test="updateUserId!=null ">`update_user_id`=#{updateUserId},  </if>
+            `update_time`=NOW()
+        WHERE `id`=#{id}
+    </update>
+    <!--获取首页内容-->
+    <select id="selectIndex" resultType="com.zna.server.entity.bo.IndexBO">
+        SELECT * FROM `zna_index`
+    </select>
+</mapper>
