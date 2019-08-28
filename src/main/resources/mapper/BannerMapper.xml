@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.BannerDAO">
+
+    <!--查询banner-->
+    <select id="selectBanner" resultType="com.zna.server.entity.bo.BannerBO" parameterType="java.lang.String">
+        SELECT * FROM `zna_banner`
+        <where>
+            <if test="state!=null and state!=''"> `state`=#{state}</if>
+        </where>
+        order by sort desc
+    </select>
+    <!--新增banner-->
+    <insert id="addBanner" parameterType="com.zna.server.entity.bo.BannerBO">
+        INSERT INTO `zna_banner` ( `picture_url`, `skip_url`, `skip_type`, `skip_id`,
+                                  `sort`, `state`, `create_user_id`, `create_time`)
+                            VALUES (#{pictureUrl}, #{skipUrl},#{skipType},#{skipId},
+                                    #{sort},#{state},#{createUserId},NOW())
+    </insert>
+    <!--修改banner-->
+    <update id="updateBanner" parameterType="com.zna.server.entity.bo.BannerBO">
+        UPDATE `zna_banner` SET
+        `picture_url`=#{pictureUrl}, `skip_url`=#{skipUrl}, `skip_type`=#{skipType}, `skip_id`=#{skipId},
+        `sort`=#{sort}, `state`=#{state}, `update_user_id`=#{updateUserId}, `update_time`=NOW()
+        WHERE id=#{id}
+    </update>
+    <!--上下架-->
+    <update id="showOrNotBanner">
+        UPDATE `zna_banner` SET `state`=#{state},`update_user_id`=#{updateUserId}, `update_time`=NOW()
+        WHERE id = #{id}
+    </update>
+    <!--物理删除banner-->
+    <delete id="removeBanner">
+        delete from `zna_banner` where id=#{id}
+    </delete>
+
+</mapper>

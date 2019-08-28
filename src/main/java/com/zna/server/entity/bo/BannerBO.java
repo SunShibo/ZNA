@@ -10,9 +10,8 @@ public class BannerBO extends BaseModel {
     private String skipUrl; //跳转url
     private String skipType; //跳转类型
     private Integer skipId; //跳转id
-    private String type; //类型
     private Integer sort; //序号
-    private String state; //状态
+    private String state; //状态 展示show 不展示 notshow
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -56,14 +55,6 @@ public class BannerBO extends BaseModel {
 
     public void setSkipId(Integer skipId) {
         this.skipId = skipId;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Integer getSort() {
@@ -122,7 +113,6 @@ public class BannerBO extends BaseModel {
                 ", skipUrl='" + skipUrl + '\'' +
                 ", skipType='" + skipType + '\'' +
                 ", skipId=" + skipId +
-                ", type='" + type + '\'' +
                 ", sort=" + sort +
                 ", state='" + state + '\'' +
                 ", createUserId=" + createUserId +
