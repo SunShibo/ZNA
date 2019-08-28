@@ -2,7 +2,6 @@ package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.bo.ContactWayBO;
-import com.zna.server.entity.bo.CooperativeClientBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.service.ContactWayService;
 import com.zna.server.util.JsonUtils;
