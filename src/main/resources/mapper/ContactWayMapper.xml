@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.ContactWayDAO">
+
+    <!--新增联系方式-->
+    <insert id="addContactWay" parameterType="com.zna.server.entity.bo.ContactWayBO">
+        INSERT INTO `zna_contact_way` ( `mobile`, `fax_NO`, `email`, `picture_one`,
+                                  `picture_two`, `picture_three`, `create_user_id`, `create_time`)
+                                VALUES (#{mobile},#{faxNO},#{email},#{pictureOne},
+                                  #{pictureTwo},#{pictureThree},#{createUserId},NOW())
+    </insert>
+    <!--修改联系方式-->
+    <update id="updateContactWay" parameterType="com.zna.server.entity.bo.ContactWayBO">
+        UPDATE `zna_contact_way` SET
+         <if test="mobile !=null and mobile !=''">`mobile`=#{mobile},</if>
+         <if test="faxNO !=null and faxNO !=''">`fax_NO`=#{faxNO},</if>
+        <if test="email !=null and email !=''">`email`=#{email},</if>
+        <if test="pictureOne !=null and pictureOne !=''">`picture_one`=#{pictureOne},</if>
+        <if test="pictureTwo !=null and pictureTwo !=''">`picture_two`=#{pictureTwo}, </if>
+         <if test="pictureThree !=null and pictureThree !=''"> `picture_three`=#{pictureThree},</if>
+              `update_user_id`=#{updateUserId}, `update_time`=NOW()
+    </update>
+    <!--查询条数-->
+    <select id="getCount" resultType="int">
+        SELECT COUNT(id) FROM `zna_contact_way`
+    </select>
+    <!--查询-->
+    <select id="getContactWay" resultType="com.zna.server.entity.bo.ContactWayBO">
+        SELECT * FROM `zna_contact_way`
+    </select>
+
+</mapper>
