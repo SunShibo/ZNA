@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 办公室 -->
+<mapper namespace="com.zna.server.dao.TeamDAO">
+
+    <select id="getTeamBO" resultType="com.zna.server.entity.bo.TeamBO">
+        SELECT * FROM `zna_team` order by sort desc LIMIT #{pageOffset},#{pageSize}
+    </select>
+
+    <insert id="addTeamBO" parameterType="com.zna.server.entity.bo.TeamBO">
+       INSERT  INTO zna_team
+       <set>
+           <if test="name!=null and name!=''">
+               `name`=#{name},
+           </if>
+           <if test="nameEnglish!=null and nameEnglish!=''">
+               `name_english`=#{nameEnglish},
+           </if>
+           <if test="headPortrait!=null and headPortrait!=''">
+               `head_portrait`=#{headPortrait},
+           </if>
+           <if test="position!=null and position!=''">
+               `position`=#{position},
+           </if>
+           <if test="positionEnglish!=null and positionEnglish!=''">
+               `position_english`=#{positionEnglish},
+           </if>
+           <if test="intro!=null and intro!=''">
+               `intro`=#{intro},
+           </if>
+           <if test="introEnglish!=null and introEnglish!=''">
+               `intro_english`=#{introEnglish},
+           </if>
+           <if test="aptitude!=null and aptitude!=''">
+               `aptitude`=#{aptitude},
+           </if>
+           <if test="aptitudeEnglish!=null and aptitudeEnglish!=''">
+               `aptitude_english`=#{aptitudeEnglish},
+           </if>
+           <if test="educational!=null and educational!=''">
+               `educational`=#{educational},
+           </if>
+           <if test="educationalEnglish!=null and educationalEnglish!=''">
+               `educational_english`=#{educationalEnglish},
+           </if>
+           <if test="sort!=null and sort!=''">
+               `sort`=#{sort},
+           </if>
+           create_user_id=#{createUserId},
+           create_time=now()
+       </set>
+    </insert>
+
+    <update id="updTeamBO" parameterType="com.zna.server.entity.bo.TeamBO">
+        update  zna_team
+        <set>
+            <if test="name!=null and name!=''">
+                `name`=#{name},
+            </if>
+            <if test="nameEnglish!=null and nameEnglish!=''">
+                `name_english`=#{nameEnglish},
+            </if>
+            <if test="headPortrait!=null and headPortrait!=''">
+                `head_portrait`=#{headPortrait},
+            </if>
+            <if test="position!=null and position!=''">
+                `position`=#{position},
+            </if>
+            <if test="positionEnglish!=null and positionEnglish!=''">
+                `position_english`=#{positionEnglish},
+            </if>
+            <if test="intro!=null and intro!=''">
+                `intro`=#{intro},
+            </if>
+            <if test="introEnglish!=null and introEnglish!=''">
+                `intro_english`=#{introEnglish},
+            </if>
+            <if test="aptitude!=null and aptitude!=''">
+                `aptitude`=#{aptitude},
+            </if>
+            <if test="aptitudeEnglish!=null and aptitudeEnglish!=''">
+                `aptitude_english`=#{aptitudeEnglish},
+            </if>
+            <if test="educational!=null and educational!=''">
+                `educational`=#{educational},
+            </if>
+            <if test="educationalEnglish!=null and educationalEnglish!=''">
+                `educational_english`=#{educationalEnglish},
+            </if>
+            <if test="sort!=null and sort!=''">
+                `sort`=#{sort},
+            </if>
+            update_user_id=#{updateUserId},
+            update_time=now()
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delTeamBO" parameterType="java.lang.Integer">
+        delete FROM `zna_team` where id=#{id}
+    </delete>
+
+</mapper>

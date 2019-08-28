@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 办公室 -->
+<mapper namespace="com.zna.server.dao.PersonnelRecruitmentDAO">
+
+    <select id="getPersonnelRecruitment" resultType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
+        SELECT * FROM `zna_personnel_recruitment`
+    </select>
+
+    <insert id="addPersonnelRecruitment" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
+       INSERT  INTO zna_personnel_recruitment
+       <set>
+           <if test="context!=null and context!=''">
+               `context`=#{context},
+           </if>
+           <if test="contextEnglish!=null and contextEnglish!=''">
+               `context_english`=#{contextEnglish},
+           </if>
+           <if test="announcements!=null and announcements!=''">
+               `announcements`=#{announcements},
+           </if>
+           <if test="announcementsEnglish!=null and announcementsEnglish!=''">
+               `announcements_english`=#{announcementsEnglish},
+           </if>
+           <if test="pictureUrl!=null and pictureUrl!=''">
+               `picture_url`=#{pictureUrl},
+           </if>
+           create_user_id=#{createUserId},
+           create_time=now()
+       </set>
+    </insert>
+
+    <update id="updPersonnelRecruitment" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
+        update  zna_personnel_recruitment
+        <set>
+            <if test="context!=null and context!=''">
+                `context`=#{context},
+            </if>
+            <if test="contextEnglish!=null and contextEnglish!=''">
+                `context_english`=#{contextEnglish},
+            </if>
+            <if test="announcements!=null and announcements!=''">
+                `announcements`=#{announcements},
+            </if>
+            <if test="announcementsEnglish!=null and announcementsEnglish!=''">
+                `announcements_english`=#{announcementsEnglish},
+            </if>
+            <if test="pictureUrl!=null and pictureUrl!=''">
+                `picture_url`=#{pictureUrl},
+            </if>
+            update_user_id=#{updateUserId},
+            update_time=now()
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delPersonnelRecruitment" parameterType="java.lang.Integer">
+        delete FROM `zna_personnel_recruitment` where id=#{id}
+    </delete>
+
+</mapper>

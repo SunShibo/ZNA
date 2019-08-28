@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 办公室 -->
+<mapper namespace="com.zna.server.dao.RecruitingJobDAO">
+
+    <select id="getRecruitingJob" resultType="com.zna.server.entity.bo.RecruitingJobBO">
+        SELECT * FROM `zna_recruiting_job`
+    </select>
+
+    <insert id="addRecruitingJob" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
+       INSERT  INTO zna_recruiting_job
+       <set>
+           <if test="jobTitle!=null and jobTitle!=''">
+               `job_title`=#{jobTitle},
+           </if>
+           <if test="jobTitleEnglish!=null and jobTitleEnglish!=''">
+               `job_title_english`=#{jobTitleEnglish},
+           </if>
+           <if test="positionStatement!=null and positionStatement!=''">
+               `position_statement`=#{positionStatement},
+           </if>
+           <if test="positionStatementEnglish!=null and positionStatementEnglish!=''">
+               `position_statement_english`=#{positionStatementEnglish},
+           </if>
+           <if test="qualification!=null and qualification!=''">
+               `qualification`=#{qualification},
+           </if>
+           <if test="qualificationEnglish!=null and qualificationEnglish!=''">
+               `qualification_english`=#{qualificationEnglish},
+           </if>
+           create_user_id=#{createUserId},
+           create_time=now()
+       </set>
+    </insert>
+
+    <update id="updRecruitingJob" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
+        update  zna_recruiting_job
+        <set>
+            <if test="jobTitle!=null and jobTitle!=''">
+                `job_title`=#{jobTitle},
+            </if>
+            <if test="jobTitleEnglish!=null and jobTitleEnglish!=''">
+                `job_title_english`=#{jobTitleEnglish},
+            </if>
+            <if test="positionStatement!=null and positionStatement!=''">
+                `position_statement`=#{positionStatement},
+            </if>
+            <if test="positionStatementEnglish!=null and positionStatementEnglish!=''">
+                `position_statement_english`=#{positionStatementEnglish},
+            </if>
+            <if test="qualification!=null and qualification!=''">
+                `qualification`=#{qualification},
+            </if>
+            <if test="qualificationEnglish!=null and qualificationEnglish!=''">
+                `qualification_english`=#{qualificationEnglish},
+            </if>
+            update_user_id=#{updateUserId},
+            update_time=now()
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delRecruitingJob" parameterType="java.lang.Integer">
+        delete FROM `zna_recruiting_job` where id=#{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 办公室 -->
+<mapper namespace="com.zna.server.dao.OfficeContactDAO">
+
+    <select id="getOfficeContactBO" resultType="com.zna.server.entity.bo.OfficeContactBO">
+        SELECT * FROM `zna_office_contact`
+    </select>
+
+    <insert id="addOfficeContactBO" parameterType="com.zna.server.entity.bo.OfficeContactBO">
+       INSERT  INTO zna_office_contact
+       <set>
+           <if test="name!=null and name!=''">
+               `name`=#{name},
+           </if>
+           <if test="nameEnglish!=null and nameEnglish!=''">
+               `name_english`=#{nameEnglish},
+           </if>
+           <if test="address!=null and address!=''">
+               `address`=#{address},
+           </if>
+           <if test="addressEnglish!=null and addressEnglish!=''">
+               `address_english`=#{addressEnglish},
+           </if>
+           <if test="mobile!=null and mobile!=''">
+               `mobile`=#{mobile},
+           </if>
+           <if test="faxNO!=null and faxNO!=''">
+               `fax_NO`=#{faxNO},
+           </if>
+           <if test="email!=null and email!=''">
+               `email`=#{email},
+           </if>
+           create_user_id=#{createUserId},
+           create_time=now()
+       </set>
+    </insert>
+
+    <update id="updOfficeContactBO" parameterType="com.zna.server.entity.bo.OfficeContactBO">
+        update  zna_office_contact
+        <set>
+            <if test="name!=null and name!=''">
+                `name`=#{name},
+            </if>
+            <if test="nameEnglish!=null and nameEnglish!=''">
+                `name_english`=#{nameEnglish},
+            </if>
+            <if test="address!=null and address!=''">
+                `address`=#{address},
+            </if>
+            <if test="addressEnglish!=null and addressEnglish!=''">
+                `address_english`=#{addressEnglish},
+            </if>
+            <if test="mobile!=null and mobile!=''">
+                `mobile`=#{mobile},
+            </if>
+            <if test="faxNO!=null and faxNO!=''">
+                `fax_NO`=#{faxNO},
+            </if>
+            <if test="email!=null and email!=''">
+                `email`=#{email},
+            </if>
+            update_user_id=#{updateUserId},
+            update_time=now()
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="delOfficeContactBO" parameterType="java.lang.Integer">
+        delete FROM `zna_office_contact` where id=#{id}
+    </delete>
+
+</mapper>
