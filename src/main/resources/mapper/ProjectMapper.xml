@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.ProjectDAO">
+
+    <!--新增项目-->
+    <insert id="addProject" parameterType="com.zna.server.entity.bo.ProjectBO">
+        INSERT INTO `zna_project` ( `project_type_name`, `project_type_name_english`, `title`, `title_english`, `sort`, `picture_url`, `site`, `site_english`, `context`, `context_english`, `create_user_id`, `create_time`)
+        VALUES (#{projectTypeName},#{projectTypeNameEnglish},#{title},#{titleEnglish},
+        #{sort},#{pictureUrl},#{site},#{siteEnglish},#{context},#{contextEnglish},
+        #{createUserId},NOW())
+    </insert>
+    <!--删除项目-->
+    <delete id="delProject" parameterType="int">
+        DELETE FROM `zna_project`WHERE id=#{id}
+    </delete>
+    <!--修改项目-->
+    <update id="updateProject" parameterType="com.zna.server.entity.bo.ProjectBO">
+        UPDATE `zna_project` SET
+        <if test="projectTypeName!=null and projectTypeName!=''">`project_type_name`=#{projectTypeName},</if>
+       <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''"> `project_type_name_english`=#{projectTypeNameEnglish},</if>
+        <if test="title!=null and title!=''">`title`=#{title},</if>
+      <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish},</if>
+        <if test="sort!=null and sort!=''">`sort`=#{sort},</if>
+        <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+        <if test="site!=null and site!=''">`site`=#{site},</if>
+        <if test="siteEnglish!=null and siteEnglish!=''">`site_english`=#{siteEnglish},</if>
+         <if test="context!=null and context!=''">`context`=#{context},</if>
+         <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish},</if>
+          `update_user_id` = #{updateUserId},
+          `update_time` = NOW()
+            WHERE `id`=#{id}
+    </update>
+    <!---->
+    <select id="getProject" resultType="com.zna.server.entity.bo.ProjectBO">
+        SELECT * FROM `zna_project`
+        <where>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+        </where>
+        order by sort desc LIMIT #{pageOffset},#{pageSize}
+    </select>
+</mapper>
