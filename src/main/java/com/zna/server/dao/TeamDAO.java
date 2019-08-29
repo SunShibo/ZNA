@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface TeamDAO {
     List<TeamBO> getTeamBO(@Param("pageOffset")Integer pageOffset,@Param("pageSize")Integer pageSize);
+    TeamBO getTeamBOById(Integer id);
     Integer addTeamBO(TeamBO teamBO);
     Integer delTeamBO(Integer id);
     Integer updTeamBO(TeamBO teamBO);

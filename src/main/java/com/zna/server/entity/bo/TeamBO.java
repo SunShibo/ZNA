@@ -23,6 +23,62 @@ public class TeamBO extends BaseModel {
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
 
+    private Integer beforeUserId;//前一个核心团队id
+    private String beforeUserName;//前一个核心团队名称
+    private String beforeUserNameEnglish;//前一个核心团队名称
+    private Integer afterUserId;//后一个核心团队id
+    private String afterUserName;//后一个核心团队名称
+    private String afterUserNameEnglish;//后一个核心团队名称
+
+    public void setBeforeUserName(String beforeUserName) {
+        this.beforeUserName = beforeUserName;
+    }
+
+    public String getBeforeUserNameEnglish() {
+        return beforeUserNameEnglish;
+    }
+
+    public void setBeforeUserNameEnglish(String beforeUserNameEnglish) {
+        this.beforeUserNameEnglish = beforeUserNameEnglish;
+    }
+
+    public void setAfterUserName(String afterUserName) {
+        this.afterUserName = afterUserName;
+    }
+
+    public String getAfterUserNameEnglish() {
+        return afterUserNameEnglish;
+    }
+
+    public void setAfterUserNameEnglish(String afterUserNameEnglish) {
+        this.afterUserNameEnglish = afterUserNameEnglish;
+    }
+
+    public Integer getBeforeUserId() {
+        return beforeUserId;
+    }
+
+    public void setBeforeUserId(Integer beforeUserId) {
+        this.beforeUserId = beforeUserId;
+    }
+
+
+    public Integer getAfterUserId() {
+        return afterUserId;
+    }
+
+    public void setAfterUserId(Integer afterUserId) {
+        this.afterUserId = afterUserId;
+    }
+
+    public String getBeforeUserName() {
+        return beforeUserName;
+    }
+
+    public String getAfterUserName() {
+        return afterUserName;
+    }
+
     public Integer getId() {
         return id;
     }

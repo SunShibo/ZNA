@@ -13,7 +13,29 @@ public class TeamService {
     @Resource
     TeamDAO teamDAO;
     public List<TeamBO> getTeamBO(Integer pageOffset,Integer pageSize){
-        return teamDAO.getTeamBO(pageOffset,pageSize);
+        List<TeamBO> teamBOS=teamDAO.getTeamBO(pageOffset,pageSize);
+        return teamBOS;
+    }
+    public TeamBO getTeamBOById(Integer id){
+        List<TeamBO> teamBOS=teamDAO.getTeamBO(null,null);
+        TeamBO teamBO=teamDAO.getTeamBOById(id);
+        for (int i=0;i<teamBOS.size();i++) {
+            if(teamBOS.get(i).getId().equals(id)){
+               if(i!=0&&teamBOS.get(i-1)!=null){
+                   teamBO.setBeforeUserId(teamBOS.get(i-1).getId());
+                   teamBO.setBeforeUserName(teamBOS.get(i-1).getName());
+                   teamBO.setBeforeUserNameEnglish(teamBOS.get(i-1).getNameEnglish());
+               }
+                if(i<teamBOS.size()-1){
+                    if(teamBOS.get(i+1)!=null){
+                        teamBO.setAfterUserId(teamBOS.get(i+1).getId());
+                        teamBO.setAfterUserName(teamBOS.get(i+1).getName());
+                        teamBO.setAfterUserNameEnglish(teamBOS.get(i+1).getNameEnglish());
+                    }
+                }
+            }
+        }
+        return teamBO;
     }
     public Integer addTeamBO(TeamBO teamBO){
         return teamDAO.addTeamBO(teamBO);

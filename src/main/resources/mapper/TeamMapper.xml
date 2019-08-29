@@ -6,8 +6,17 @@
 <mapper namespace="com.zna.server.dao.TeamDAO">
 
     <select id="getTeamBO" resultType="com.zna.server.entity.bo.TeamBO">
-        SELECT * FROM `zna_team` order by sort desc LIMIT #{pageOffset},#{pageSize}
+        SELECT * FROM `zna_team` order by sort desc
+        <if test="pageOffset!=null and pageSize!=null">
+            LIMIT #{pageOffset},#{pageSize}
+        </if>
     </select>
+
+    <select id="getTeamBOById" resultType="com.zna.server.entity.bo.TeamBO">
+        SELECT * FROM `zna_team`
+        where id=#{id}
+    </select>
+
 
     <insert id="addTeamBO" parameterType="com.zna.server.entity.bo.TeamBO">
        INSERT  INTO zna_team
