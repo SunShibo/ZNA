@@ -30,4 +30,6 @@ public interface ProjectDAO {
      * @return
      */
     List<ProjectBO> getProject(@Param("title") String title,@Param("pageOffset")Integer pageOffset, @Param("pageSize")Integer pageSize);
+
+    Integer getCount(@Param("title") String title);
 }

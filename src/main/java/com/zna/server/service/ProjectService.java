@@ -75,4 +75,8 @@ public class ProjectService {
         return projectDAO.getProject(title,pageOffset,pageSize);
     }
 
+    public Integer getCount(String title){
+        return projectDAO.getCount(title);
+    }
+
 }

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/project")
@@ -192,7 +194,11 @@ public class ProjectController extends BaseCotroller {
             }
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
             List<ProjectBO> projectBOS = projectService.getProject(title,queryInfo.getPageOffset(),queryInfo.getPageSize());
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(projectBOS));
+            Integer count = projectService.getCount(title);
+            Map<String,Object> map = new HashMap<>();
+            map.put("projectBOS",projectBOS);
+            map.put("count",count);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
