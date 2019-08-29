@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.RecentNewsDAO">
+
+    <insert id="addRecentNews" parameterType="com.zna.server.entity.bo.RecentNewsBO">
+        INSERT INTO `zna_recent_news` ( `picture_url`, `title`, `title_english`,
+        `time`, `context`, `context_english`, `sort`, `create_user_id`, `create_time`)
+         VALUES (#{pictureUrl},#{title},#{titleEnglish},
+         #{time},#{context},#{contextEnglish},#{sort},#{createUserId},NOW())
+    </insert>
+
+    <delete id="delRecentNews" parameterType="java.lang.Integer">
+        DELETE FROM  `zna_recent_news` WHERE id=#{id}
+    </delete>
+
+    <update id="updateRecentNews" parameterType="com.zna.server.entity.bo.RecentNewsBO">
+        UPDATE `zna_recent_news` SET
+         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+         <if test="title!=null and title!=''">`title`=#{title}, </if>
+         <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish}, </if>
+         <if test="time!=null and time!=''"> `time`=#{time}, </if>
+         <if test="context!=null and context!=''">  `context`=#{context},</if>
+         <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish},</if>
+         <if test="sort!=null ">`sort`=#{sort},</if>
+          `update_user_id`=#{updateUserId},
+           `update_time`=NOW()
+        WHERE id = #{id}
+    </update>
+
+    <sql id="limit">
+        limit #{pageOffset},#{pageSize}
+    </sql>
+    <select id="selectRecentNews" resultType="com.zna.server.entity.bo.RecentNewsBO" parameterType="java.lang.Integer">
+        SELECT * FROM  `zna_recent_news`
+        <where>
+            <if test="id!=null">id=#{id}</if>
+        </where>
+        ORDER BY  sort DESC <include refid="limit" />
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT COUNT(id) FROM  `zna_recent_news`
+        <where>
+            <if test="id!=null">id=#{id}</if>
+        </where>
+    </select>
+
+</mapper>

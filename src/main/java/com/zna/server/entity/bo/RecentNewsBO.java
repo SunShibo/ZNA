@@ -9,7 +9,7 @@ public class RecentNewsBO extends BaseModel {
     private String pictureUrl; //图片url
     private String title; //标题
     private String titleEnglish; //标题（英文）
-    private Date time; //时间
+    private String time; //时间
     private String context; //内容
     private String contextEnglish; //内容（英文）
     private Integer sort; //序号
@@ -50,11 +50,11 @@ public class RecentNewsBO extends BaseModel {
         this.titleEnglish = titleEnglish;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
