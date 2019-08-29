@@ -433,7 +433,7 @@ public class JsonUtils {
 	}
 
 	/**
-	 * 将jsonarray字符串转成jsonarray对象
+     * 将jsonarray字符串转成jsonarray对象
 	 * @param jsonArrayStr
 	 * @return
      */
@@ -454,5 +454,12 @@ public class JsonUtils {
 		json.put("msg", msg);
 		json.put("data", data);
 		return json;
+	}
+	public static void main(String[] args) {
+			String str = "dsdhjkshd,大大声道";
+
+			String[] arr = str.split(","); // 用,分割
+                System.out.println(Arrays.toString(arr)); //
+        System.out.println(JsonUtils.getJSONArrayByStr(Arrays.toString(arr)));
 	}
 }
