@@ -35,15 +35,7 @@ public class BannerService {
      * @param state
      * @param createUserId
      */
-    public void addBanner(String pictureUrl,String skipUrl,String skipType,Integer skipId,Integer sort,String state,Integer createUserId){
-        BannerBO bannerBO = new BannerBO();
-        bannerBO.setPictureUrl(pictureUrl);
-        bannerBO.setSkipUrl(skipUrl);
-        bannerBO.setSkipType(skipType);
-        bannerBO.setSkipId(skipId);
-        bannerBO.setSort(sort);
-        bannerBO.setState(state);
-        bannerBO.setCreateUserId(createUserId);
+    public void addBanner(BannerBO bannerBO){
         bannerDAO.addBanner(bannerBO);
     }
 

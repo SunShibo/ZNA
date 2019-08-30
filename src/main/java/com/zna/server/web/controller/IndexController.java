@@ -39,9 +39,7 @@ public class IndexController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/addIndex")
-    public void addIndex(String title,String titleEnglish,String context,String contextEnglish,
-                         String pictureUrl,Integer sort,Integer skipId,String skipUrl,
-                         HttpServletRequest request,HttpServletResponse response){
+    public void addIndex(IndexBO indexBO,HttpServletRequest request,HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -55,13 +53,14 @@ public class IndexController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(title)||StringUtils.isEmpty(titleEnglish)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||StringUtils.isEmpty(pictureUrl)||sort==null||StringUtils.isEmpty(skipUrl)){
+            if (indexBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            indexService.addIndex(title,titleEnglish,context,contextEnglish,pictureUrl,sort,skipId,skipUrl,adminBO.getId());
+            indexBO.setCreateUserId(adminBO.getId());
+            indexService.addIndex(indexBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

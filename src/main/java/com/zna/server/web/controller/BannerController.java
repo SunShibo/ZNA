@@ -64,7 +64,7 @@ public class BannerController extends BaseCotroller {
      * @return
      */
     @RequestMapping("/addBanner")
-    public void addBanner(String pictureUrl,String skipUrl,String skipType,Integer skipId,Integer sort,String state, HttpServletRequest request, HttpServletResponse response){
+    public void addBanner(BannerBO bannerBO, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -78,13 +78,14 @@ public class BannerController extends BaseCotroller {
                 return ;
             }
             //验证参数
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(skipUrl)||StringUtils.isEmpty(skipType)||sort==null||StringUtils.isEmpty(state)){
+            if (bannerBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            bannerService.addBanner(pictureUrl,skipUrl,skipType,skipId,sort,state,loginAdmin.getId());
+            bannerBO.setCreateUserId(loginAdmin.getId());
+            bannerService.addBanner(bannerBO);
 
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);

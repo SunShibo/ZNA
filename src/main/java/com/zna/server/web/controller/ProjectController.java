@@ -31,21 +31,12 @@ public class ProjectController extends BaseCotroller {
 
     /**
      * 新增项目
-     * @param projectTypeName
-     * @param projectTypeNameEnglish
-     * @param title
-     * @param titleEnglish
-     * @param sort
-     * @param pictureUrl
-     * @param site
-     * @param siteEnglish
-     * @param context
-     * @param contextEnglish
+     * @param projectBO
      * @param request
      * @param response
      */
     @RequestMapping("/addProject")
-    public void addProject(String projectTypeName, String projectTypeNameEnglish, String title, String titleEnglish, Integer sort, String pictureUrl, String site, String siteEnglish, String context, String contextEnglish, HttpServletRequest request, HttpServletResponse response){
+    public void addProject(ProjectBO projectBO, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -59,13 +50,14 @@ public class ProjectController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(projectTypeName)||StringUtils.isEmpty(projectTypeNameEnglish)||StringUtils.isEmpty(title)||StringUtils.isEmpty(titleEnglish)||sort==null||StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(site)||StringUtils.isEmpty(siteEnglish)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)){
+            if (projectBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            projectService.addProject(projectTypeName,projectTypeNameEnglish,title,titleEnglish,sort,pictureUrl,site,siteEnglish,context,contextEnglish,loginAdmin.getId());
+            projectBO.setCreateUserId(loginAdmin.getId());
+            projectService.addProject(projectBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

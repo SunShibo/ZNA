@@ -27,18 +27,7 @@ public class IndexService {
      * @param skipUrl 跳转url
      * @param createUserId 创建人
      */
-    public void addIndex(String title,String titleEnglish,String context,String contextEnglish,
-                         String pictureUrl,Integer sort,Integer skipId,String skipUrl,Integer createUserId){
-        IndexBO indexBO = new IndexBO();
-        indexBO.setTitle(title);
-        indexBO.setTitleEnglish(titleEnglish);
-        indexBO.setContext(context);
-        indexBO.setContextEnglish(contextEnglish);
-        indexBO.setPictureUrl(pictureUrl);
-        indexBO.setSort(sort);
-        indexBO.setSkipId(skipId);
-        indexBO.setSkipUrl(skipUrl);
-        indexBO.setCreateUserId(createUserId);
+    public void addIndex(IndexBO indexBO){
         indexDAO.addIndex(indexBO);
     }
 

@@ -41,7 +41,7 @@ public class RecentNewsController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/addRecentNews")
-    public void addRecentNews(String pictureUrl,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,HttpServletRequest request, HttpServletResponse response){
+    public void addRecentNews(RecentNewsBO recentNewsBO,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -55,13 +55,14 @@ public class RecentNewsController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(title)||StringUtils.isEmpty(titleEnglish)||StringUtils.isEmpty(time)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||sort==null){
+            if (recentNewsBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            recentNewsService.addRecentNews(pictureUrl,title,titleEnglish,time,context,contextEnglish,sort,loginAdmin.getId());
+            recentNewsBO.setCreateUserId(loginAdmin.getId());
+            recentNewsService.addRecentNews(recentNewsBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

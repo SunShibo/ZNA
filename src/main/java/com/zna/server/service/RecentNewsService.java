@@ -15,16 +15,7 @@ public class RecentNewsService {
     @Resource
     private RecentNewsDAO recentNewsDAO;
 
-    public void addRecentNews(String pictureUrl,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,Integer createUserId){
-        RecentNewsBO recentNewsBO = new RecentNewsBO();
-        recentNewsBO.setPictureUrl(pictureUrl);
-        recentNewsBO.setTitle(title);
-        recentNewsBO.setTitleEnglish(titleEnglish);
-        recentNewsBO.setTime(time);
-        recentNewsBO.setContext(context);
-        recentNewsBO.setContextEnglish(contextEnglish);
-        recentNewsBO.setSort(sort);
-        recentNewsBO.setCreateUserId(createUserId);
+    public void addRecentNews(RecentNewsBO recentNewsBO){
         recentNewsDAO.addRecentNews(recentNewsBO);
     }
 

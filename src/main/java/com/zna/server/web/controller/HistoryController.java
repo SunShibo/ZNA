@@ -36,8 +36,7 @@ public class HistoryController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/addHistory")
-    public void addHistory(String pictureUrl,String time,String context,
-                           String contextEnglish,Integer sort,HttpServletRequest request, HttpServletResponse response){
+    public void addHistory(HistoryBO historyBO,HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -51,13 +50,14 @@ public class HistoryController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||StringUtils.isEmpty(time)||sort==null){
+            if (historyBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            historyService.addHistory(pictureUrl,time,context,contextEnglish,sort,loginAdmin.getId());
+            historyBO.setCreateUserId(loginAdmin.getId());
+            historyService.addHistory(historyBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

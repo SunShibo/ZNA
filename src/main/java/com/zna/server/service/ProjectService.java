@@ -22,19 +22,7 @@ public class ProjectService {
      * 新增项目
      * @param
      */
-    public void addProject(String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String site,String siteEnglish,String context,String contextEnglish,Integer createUserId){
-        ProjectBO projectBO = new ProjectBO();
-        projectBO.setProjectTypeName(projectTypeName);
-        projectBO.setProjectTypeNameEnglish(projectTypeNameEnglish);
-        projectBO.setTitle(title);
-        projectBO.setTitleEnglish(titleEnglish);
-        projectBO.setSort(sort);
-        projectBO.setPictureUrl(pictureUrl);
-        projectBO.setSite(site);
-        projectBO.setSiteEnglish(siteEnglish);
-        projectBO.setContext(context);
-        projectBO.setContextEnglish(contextEnglish);
-        projectBO.setCreateUserId(createUserId);
+    public void addProject(ProjectBO projectBO){
         projectDAO.addProject(projectBO);
     }
 

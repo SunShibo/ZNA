@@ -24,15 +24,7 @@ public class HistoryService {
      * @param sort
      * @param createUserId
      */
-    public void addHistory(String pictureUrl,String time,String context,
-                           String contextEnglish,Integer sort,Integer createUserId){
-        HistoryBO historyBO = new HistoryBO();
-        historyBO.setPictureUrl(pictureUrl);
-        historyBO.setTime(time);
-        historyBO.setContext(context);
-        historyBO.setContextEnglish(contextEnglish);
-        historyBO.setSort(sort);
-        historyBO.setCreateUserId(createUserId);
+    public void addHistory(HistoryBO historyBO){
         historyDAO.addHistory(historyBO);
     }
 
