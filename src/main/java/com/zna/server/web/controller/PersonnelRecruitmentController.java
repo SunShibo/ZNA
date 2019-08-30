@@ -2,9 +2,11 @@ package com.zna.server.web.controller;
 
 import com.zna.server.dao.PersonnelRecruitmentDAO;
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.OfficeContactBO;
 import com.zna.server.entity.bo.PersonnelRecruitmentBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.OfficeContactService;
 import com.zna.server.service.PersonnelRecruitmentContactService;
 import com.zna.server.util.JsonUtils;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //人才招聘
 @Controller
@@ -26,6 +30,8 @@ public class PersonnelRecruitmentController extends BaseCotroller{
     private static final Logger log = LoggerFactory.getLogger(PersonnelRecruitmentController.class);
     @Resource
     private PersonnelRecruitmentContactService personnelRecruitmentContactService;
+    @Resource
+    private ContactWayService contactWayService;
 
     @RequestMapping("/getPersonnelRecruitment")
     public void getPersonnelRecruitment(HttpServletRequest request, HttpServletResponse response){
@@ -43,6 +49,10 @@ public class PersonnelRecruitmentController extends BaseCotroller{
             }
             //验证参数
             List<PersonnelRecruitmentBO> officeContactBO=personnelRecruitmentContactService.getPersonnelRecruitment();
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("officeContactBO",officeContactBO);
+            map.put("contactWayBO",contactWayBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(officeContactBO));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

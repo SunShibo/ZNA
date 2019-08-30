@@ -1,9 +1,11 @@
 package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.CooperativeClientBO;
 import com.zna.server.entity.bo.OfficeContactBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.CooperativeClientService;
 import com.zna.server.service.OfficeContactService;
 import com.zna.server.util.JsonUtils;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //联系我们.. 办公室
 @Controller
@@ -26,6 +30,8 @@ public class OfficeContactController extends BaseCotroller{
     private static final Logger log = LoggerFactory.getLogger(OfficeContactController.class);
     @Resource
     private OfficeContactService officeContactService;
+    @Resource
+    private ContactWayService contactWayService;
 
     /**
      * 查询办公室
@@ -44,9 +50,13 @@ public class OfficeContactController extends BaseCotroller{
                 log.info("result{}",result);
                 return;
             }
-            //验证参数
+
             List<OfficeContactBO> officeContactBO=officeContactService.getOfficeContactBO();
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(officeContactBO));
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("officeContactBO",officeContactBO);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
