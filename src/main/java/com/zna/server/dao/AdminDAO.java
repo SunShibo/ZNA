@@ -160,4 +160,5 @@ public interface AdminDAO {
     int queryHotelCount(@Param("hotelId") Integer hotelId, @Param("roleId") Integer roldId);
 
     void addHotel(@Param("hotelId") Integer hotelId, @Param("roleId") Integer roldId);
+
 }

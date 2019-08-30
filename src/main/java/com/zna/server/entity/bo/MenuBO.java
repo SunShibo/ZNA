@@ -20,6 +20,24 @@ public class MenuBO extends BaseModel {
     private String url;//菜单路径
 
     private String path;//前端跳转路径
+    private String index;
+    private String icon;
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getPath() {
         return path;

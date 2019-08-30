@@ -6,7 +6,7 @@
 <mapper namespace="com.zna.server.dao.AdminDAO">
     <!--根据手机号查找管理员信息-->
     <select id="queryAdminInfoByMobile" parameterType="java.lang.String" resultType="com.zna.server.entity.bo.AdminBO">
-        select zna_admin.*,zna_role.id as  roleId
+        select zna_admin.*,zna_role.id as  roleId,zna_role.role_name AS roleName
             from  zna_admin left  join zna_role  on  zna_role.id=zna_admin.role_id where mobile =  #{mobile}
     </select>
 
@@ -202,4 +202,18 @@
     <insert id="addHotel"  >
         INSERT INTO `zna_role_hotel` ( `role_id`, `hotel_id`) VALUES (#{roleId},#{hotelId});
     </insert>
+
+    <!--  添加权限信息  -->
+    <insert id="addMenuByPid" parameterType="com.zna.server.entity.bo.MenuBO" useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO zna_menu  SET
+        menu_name=#{menuName},
+        pid=#{pid},
+        url=#{url},
+        path=#{path},
+        `index`=#{index},
+        icon=#{icon}
+    </insert>
+
+
 </mapper>
