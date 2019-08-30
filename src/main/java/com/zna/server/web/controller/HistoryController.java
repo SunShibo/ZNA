@@ -1,11 +1,13 @@
 package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.HistoryBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
+import com.zna.server.query.QueryInfo;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.HistoryService;
 import com.zna.server.util.JsonUtils;
-import com.zna.server.util.StringUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/history")
@@ -24,14 +28,16 @@ public class HistoryController extends BaseCotroller {
 
     @Resource
     private HistoryService historyService;
+    @Resource
+    private ContactWayService contactWayService;
 
     /**
      * 添加发展历史
-     * @param pictureUrl 图片地址
-     * @param time 时间
-     * @param context 内容
-     * @param contextEnglish 内容（英文）
-     * @param sort 序号
+     *  pictureUrl 图片地址
+     *  time 时间
+     *  context 内容
+     *  contextEnglish 内容（英文）
+     *  sort 序号
      * @param request
      * @param response
      */
@@ -165,7 +171,7 @@ public class HistoryController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/getHistory")
-    public void getHistory(HttpServletRequest request, HttpServletResponse response){
+    public void getHistory(Integer pageNo,Integer pageSize,HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -178,9 +184,15 @@ public class HistoryController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-
-            List<HistoryBO> historyBOS = historyService.getHistory();
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(historyBOS));
+            QueryInfo queryInfo = getQueryInfo(pageNo,pageSize);
+            List<HistoryBO> historyBOS = historyService.getHistory(queryInfo.getPageOffset(),queryInfo.getPageSize());
+            Integer count = historyService.getHistoryCount();
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("historyBOS",historyBOS);
+            map.put("count",count);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;

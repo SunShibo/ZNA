@@ -62,8 +62,11 @@ public class HistoryService {
      * 查询发展历史
      * @return
      */
-    public List<HistoryBO> getHistory(){
-        return historyDAO.getHistory();
+    public List<HistoryBO> getHistory(Integer pageOffset,Integer pageSize){
+        return historyDAO.getHistory(pageOffset,pageSize);
+    }
+    public Integer getHistoryCount(){
+        return historyDAO.getHistoryCount();
     }
 
 }

@@ -31,6 +31,14 @@
     <!--查询发展历史-->
     <select id="getHistory" resultType="com.zna.server.entity.bo.HistoryBO">
         SELECT * FROM  `zna_history`
+        <if test="pageOffset!=null and pageSize!=null">
+            LIMIT #{pageOffset},#{pageSize}
+        </if>
     </select>
+    <select id="getHistoryCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM  `zna_history`
+    </select>
+
+
 
 </mapper>

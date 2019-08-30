@@ -1,6 +1,7 @@
 package com.zna.server.dao;
 
 import com.zna.server.entity.bo.HistoryBO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,5 +28,6 @@ public interface HistoryDAO {
      * 查询发展历史
      * @return
      */
-    List<HistoryBO> getHistory();
+    List<HistoryBO> getHistory(@Param("pageOffset")Integer pageOffset, @Param("pageSize")Integer pageSize);
+    Integer getHistoryCount();
 }
