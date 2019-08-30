@@ -13,4 +13,8 @@ public interface TeamDAO {
     Integer addTeamBO(TeamBO teamBO);
     Integer delTeamBO(Integer id);
     Integer updTeamBO(TeamBO teamBO);
+
+    int addTeamProject(@Param("teamId") Integer teamId, @Param("projectIdArr") Integer[] projectIdArr);
+
+    TeamBO getTeamNews();
 }

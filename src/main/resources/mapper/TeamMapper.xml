@@ -113,5 +113,20 @@
     <delete id="delTeamBO" parameterType="java.lang.Integer">
         delete FROM `zna_team` where id=#{id}
     </delete>
+    <!--给人物添加项目-->
+    <insert id="addTeamProject">
+        insert into zna_team_project
+        (team_id,project_id)
+        values
+        <foreach collection="projectIdArr" item="projectId" separator=",">
+            (#{teamId},#{projectId})
+        </foreach>
+    </insert>
+
+    <!--查询刚刚添加的人物-->
+    <select id="getTeamNews" resultType="com.zna.server.entity.bo.TeamBO">
+        SELECT * FROM zna_team ORDER BY id DESC LIMIT 1
+    </select>
+
 
 </mapper>

@@ -176,7 +176,7 @@ public class TeamController extends BaseCotroller{
     }
 
     @RequestMapping("/addTeamBO")
-    public void addTeamBO(TeamBO teamBO,HttpServletRequest request, HttpServletResponse response){
+    public void addTeamBO(TeamBO teamBO,String projectIds,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -197,6 +197,15 @@ public class TeamController extends BaseCotroller{
             }
             teamBO.setCreateUserId(loginAdmin.getId());
             teamService.addTeamBO(teamBO);
+            TeamBO teamBO1 = teamService.getTeamNews();
+            //todo id获取不到
+            System.out.println(teamBO1.getId());
+            //添加项目
+            if (projectIds!=null) {
+                Integer[] projectIdArr = JsonUtils.getIntegerArray4Json(projectIds);
+                teamService.addTeamProject(teamBO1.getId(),projectIdArr);
+            }
+
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

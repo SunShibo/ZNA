@@ -49,4 +49,12 @@ public class TeamService {
     public Integer updTeamBO(TeamBO teamBO){
         return teamDAO.updTeamBO(teamBO);
     }
+
+    public int addTeamProject( Integer teamId, Integer[] projectIdArr){
+        return teamDAO.addTeamProject(teamId, projectIdArr);
+    }
+
+    public TeamBO getTeamNews(){
+        return teamDAO.getTeamNews();
+    }
 }
