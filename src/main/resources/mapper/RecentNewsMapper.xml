@@ -30,15 +30,19 @@
         WHERE id = #{id}
     </update>
 
-    <sql id="limit">
-        limit #{pageOffset},#{pageSize}
-    </sql>
+
     <select id="selectRecentNews" resultType="com.zna.server.entity.bo.RecentNewsBO" parameterType="java.lang.Integer">
         SELECT * FROM  `zna_recent_news`
         <where>
             <if test="id!=null">id=#{id}</if>
         </where>
-        ORDER BY  sort DESC <include refid="limit" />
+        ORDER BY  sort DESC
+        <if test="pageOffset!=null and pageSize!=null">
+            LIMIT #{pageOffset},#{pageSize}
+        </if>
+    </select>
+    <select id="selectRecentNewsDetails" resultType="com.zna.server.entity.bo.RecentNewsBO" parameterType="java.lang.Integer">
+        SELECT * FROM  `zna_recent_news` WHERE id=#{id}
     </select>
 
     <select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">

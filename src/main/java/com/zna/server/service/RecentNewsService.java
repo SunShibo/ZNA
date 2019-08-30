@@ -41,6 +41,24 @@ public class RecentNewsService {
         return recentNewsDAO.selectRecentNews(id,pageOffset,pageSize);
     }
 
+    public RecentNewsBO selectRecentNewsDetails(Integer id){
+        List<RecentNewsBO> recentNewsBOS = recentNewsDAO.selectRecentNews(null,null,null);
+        RecentNewsBO recentNewsBO = recentNewsDAO.selectRecentNewsDetails(id);
+        for (int i=0;i<recentNewsBOS.size();i++) {
+            if(recentNewsBOS.get(i).getId().equals(id)){
+                if(i!=0&&recentNewsBOS.get(i-1)!=null){
+                    recentNewsBO.setBeforeRecentNewsId(recentNewsBOS.get(i-1).getId());
+                }
+                if(i<recentNewsBOS.size()-1){
+                    if(recentNewsBOS.get(i+1)!=null){
+                        recentNewsBO.setAfterRecentNewsId(recentNewsBOS.get(i+1).getId());
+                    }
+                }
+            }
+        }
+        return recentNewsBO;
+    }
+
     public Integer getCount(Integer id){
         return recentNewsDAO.getCount(id);
     }

@@ -2,9 +2,11 @@ package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AboutUsBO;
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.CooperativeClientBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.service.AboutUsService;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.CooperativeClientService;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.util.StringUtils;
@@ -33,6 +35,8 @@ public class AboutUsController extends BaseCotroller {
     private AboutUsService aboutUsService;
     @Resource
     private CooperativeClientService cooperativeClientService;
+    @Resource
+    private ContactWayService contactWayService;
 
     /**
      * 更新关于我们
@@ -104,9 +108,12 @@ public class AboutUsController extends BaseCotroller {
            AboutUsBO aboutUsBO = aboutUsService.getAboutUs();
             //合作客户展示
             List<CooperativeClientBO> cooperativeClientBOS = cooperativeClientService.getCooperativeClient();
+            //最下面联系方式
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
             map.put("aboutUs",aboutUsBO);
             map.put("cooperativeClientBOS",cooperativeClientBOS);
+            map.put("contactWayBO",contactWayBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

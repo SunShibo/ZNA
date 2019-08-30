@@ -11,6 +11,9 @@
             LIMIT #{pageOffset},#{pageSize}
         </if>
     </select>
+    <select id="getTeamBOCount" resultType="java.lang.Integer">
+        SELECT COUNT(id) FROM `zna_team` order by sort desc
+    </select>
 
     <select id="getTeamBOById" resultType="com.zna.server.entity.bo.TeamBO">
         SELECT * FROM `zna_team`

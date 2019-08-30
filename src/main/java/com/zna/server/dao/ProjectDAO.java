@@ -29,7 +29,9 @@ public interface ProjectDAO {
      * @param title
      * @return
      */
-    List<ProjectBO> getProject(@Param("title") String title,@Param("pageOffset")Integer pageOffset, @Param("pageSize")Integer pageSize);
+    List<ProjectBO> getProject(@Param("title") String title,@Param("projectTypeName") String projectTypeName,@Param("projectTypeNameEnglish") String projectTypeNameEnglish,@Param("pageOffset")Integer pageOffset, @Param("pageSize")Integer pageSize);
 
-    Integer getCount(@Param("title") String title);
+    Integer getCount(@Param("title") String title,@Param("projectTypeName") String projectTypeName,@Param("projectTypeNameEnglish") String projectTypeNameEnglish);
+    /*项目详情 */
+    ProjectBO getProjectDetails(Integer id);
 }

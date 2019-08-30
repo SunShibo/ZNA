@@ -1,10 +1,12 @@
 package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.PersonnelRecruitmentBO;
 import com.zna.server.entity.bo.TeamBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.query.QueryInfo;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.PersonnelRecruitmentContactService;
 import com.zna.server.service.TeamService;
 import com.zna.server.util.JsonUtils;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //人才招聘
 @Controller
@@ -26,6 +30,8 @@ public class TeamController extends BaseCotroller{
     private static final Logger log = LoggerFactory.getLogger(TeamController.class);
     @Resource
     private TeamService teamService;
+    @Resource
+    private ContactWayService contactWayService;
 
     @RequestMapping("/getTeamBO")
     public void getTeamBO(Integer pageNo,Integer pageSize,HttpServletRequest request, HttpServletResponse response){
@@ -42,8 +48,15 @@ public class TeamController extends BaseCotroller{
                 return;
             }
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
+
             List<TeamBO> officeContactBO=teamService.getTeamBO(queryInfo.getPageOffset(),queryInfo.getPageSize());
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(officeContactBO));
+            Integer count = teamService.getTeamBOCount();
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("officeContactBO",officeContactBO);
+            map.put("count",count);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
@@ -72,7 +85,11 @@ public class TeamController extends BaseCotroller{
             }
 
             TeamBO officeContactBO=teamService.getTeamBOById(id);
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(officeContactBO));
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("officeContactBO",officeContactBO);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;

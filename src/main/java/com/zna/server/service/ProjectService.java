@@ -60,12 +60,31 @@ public class ProjectService {
      * @param title
      * @return
      */
-    public List<ProjectBO> getProject(String title,Integer pageOffset,Integer pageSize){
-        return projectDAO.getProject(title,pageOffset,pageSize);
+    public List<ProjectBO> getProject(String title,String projectTypeName,String projectTypeNameEnglish,Integer pageOffset,Integer pageSize){
+        return projectDAO.getProject(title,projectTypeName,projectTypeNameEnglish,pageOffset,pageSize);
     }
 
-    public Integer getCount(String title){
-        return projectDAO.getCount(title);
+    public Integer getCount(String title,String projectTypeName,String projectTypeNameEnglish){
+        return projectDAO.getCount(title, projectTypeName, projectTypeNameEnglish);
+    }
+
+    /*项目详情 */
+    public ProjectBO getProjectDetails(Integer id){
+        List<ProjectBO> projectBOS = projectDAO.getProject(null,null,null,null,null);
+        ProjectBO projectBO = projectDAO.getProjectDetails(id);
+        for (int i=0;i<projectBOS.size();i++) {
+            if(projectBOS.get(i).getId().equals(id)){
+                if(i!=0&&projectBOS.get(i-1)!=null){
+                    projectBO.setBeforeProjectId(projectBOS.get(i-1).getId());
+                }
+                if(i<projectBOS.size()-1){
+                    if(projectBOS.get(i+1)!=null){
+                        projectBO.setAfterProjectId(projectBOS.get(i+1).getId());
+                    }
+                }
+            }
+        }
+        return projectBO;
     }
 
 }

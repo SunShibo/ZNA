@@ -10,6 +10,7 @@
         SELECT * FROM `zna_banner`
         <where>
             <if test="state!=null and state!=''"> `state`=#{state}</if>
+            <if test="state==null">`state`='show'</if>
         </where>
         order by sort desc
     </select>

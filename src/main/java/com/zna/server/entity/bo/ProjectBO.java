@@ -21,6 +21,25 @@ public class ProjectBO extends BaseModel {
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
 
+    private Integer beforeProjectId;//前一个核心团队id
+    private Integer afterProjectId;//后一个核心团队id
+
+    public Integer getBeforeProjectId() {
+        return beforeProjectId;
+    }
+
+    public void setBeforeProjectId(Integer beforeProjectId) {
+        this.beforeProjectId = beforeProjectId;
+    }
+
+    public Integer getAfterProjectId() {
+        return afterProjectId;
+    }
+
+    public void setAfterProjectId(Integer afterProjectId) {
+        this.afterProjectId = afterProjectId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -159,6 +178,8 @@ public class ProjectBO extends BaseModel {
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +
                 ", updateTime=" + updateTime +
+                ", beforeProjectId=" + beforeProjectId +
+                ", afterProjectId=" + afterProjectId +
                 '}';
     }
 }

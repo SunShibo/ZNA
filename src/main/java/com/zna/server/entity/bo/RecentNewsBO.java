@@ -18,6 +18,25 @@ public class RecentNewsBO extends BaseModel {
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
 
+    private Integer beforeRecentNewsId;//前一个id
+    private Integer afterRecentNewsId;//后一个id
+
+    public Integer getBeforeRecentNewsId() {
+        return beforeRecentNewsId;
+    }
+
+    public void setBeforeRecentNewsId(Integer beforeRecentNewsId) {
+        this.beforeRecentNewsId = beforeRecentNewsId;
+    }
+
+    public Integer getAfterRecentNewsId() {
+        return afterRecentNewsId;
+    }
+
+    public void setAfterRecentNewsId(Integer afterRecentNewsId) {
+        this.afterRecentNewsId = afterRecentNewsId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -121,7 +140,7 @@ public class RecentNewsBO extends BaseModel {
                 ", pictureUrl='" + pictureUrl + '\'' +
                 ", title='" + title + '\'' +
                 ", titleEnglish='" + titleEnglish + '\'' +
-                ", time=" + time +
+                ", time='" + time + '\'' +
                 ", context='" + context + '\'' +
                 ", contextEnglish='" + contextEnglish + '\'' +
                 ", sort=" + sort +
@@ -129,6 +148,8 @@ public class RecentNewsBO extends BaseModel {
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +
                 ", updateTime=" + updateTime +
+                ", beforeRecentNewsId=" + beforeRecentNewsId +
+                ", afterRecentNewsId=" + afterRecentNewsId +
                 '}';
     }
 }

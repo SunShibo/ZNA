@@ -1,9 +1,11 @@
 package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.RecentNewsBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.query.QueryInfo;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.RecentNewsService;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.util.StringUtils;
@@ -27,16 +29,18 @@ public class RecentNewsController extends BaseCotroller {
 
     @Resource
     private RecentNewsService recentNewsService;
+    @Resource
+    private ContactWayService contactWayService;
 
     /**
      * 添加最新动态
-     * @param pictureUrl 图片地址
-     * @param title 标题
-     * @param titleEnglish 标题英文
-     * @param time 时间
-     * @param context 内容
-     * @param contextEnglish 内容英文
-     * @param sort 序号
+     *  pictureUrl 图片地址
+     *  title 标题
+     *  titleEnglish 标题英文
+     *  time 时间
+     *  context 内容
+     * contextEnglish 内容英文
+     * sort 序号
      * @param request
      * @param response
      */
@@ -188,9 +192,49 @@ public class RecentNewsController extends BaseCotroller {
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
             List<RecentNewsBO> recentNewsBOS = recentNewsService.selectRecentNews(id,queryInfo.getPageOffset(),queryInfo.getPageSize());
             Integer count = recentNewsService.getCount(id);
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
             map.put("recentNewsBOS",recentNewsBOS);
             map.put("count",count);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
+            super.safeJsonPrint(response, result);
+            log.info("result{}",result);
+            return ;
+
+        }catch (Exception e){
+            e.getStackTrace();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
+            super.safeJsonPrint(response, result);
+            log.error("updateAboutUsException",e);
+        }
+    }
+
+    @RequestMapping("/selectRecentNewsDetails")
+    public void selectRecentNewsDetails(Integer id,HttpServletRequest request, HttpServletResponse response){
+        try {
+            log.info(request.getRequestURI());
+            log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
+            //获取管理员对象
+            AdminBO loginAdmin = super.getLoginAdmin(request);
+            log.info("user{}",loginAdmin);
+            if (loginAdmin==null){
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}",result);
+                return ;
+            }
+            if (id==null){
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}",result);
+                return ;
+            }
+            RecentNewsBO recentNewsBO = recentNewsService.selectRecentNewsDetails(id);
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("recentNewsBO",recentNewsBO);
+            map.put("contactWayBO",contactWayBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

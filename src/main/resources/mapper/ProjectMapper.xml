@@ -41,13 +41,23 @@
         SELECT * FROM `zna_project`
         <where>
             <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName}</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish}</if>
         </where>
-        order by sort desc LIMIT #{pageOffset},#{pageSize}
+        order by sort desc
+        <if test="pageOffset!=null and pageSize!=null">
+            LIMIT #{pageOffset},#{pageSize}
+        </if>
     </select>
     <select id="getCount" resultType="java.lang.Integer">
         SELECT COUNT(id) FROM `zna_project`
         <where>
             <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName}</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish}</if>
         </where>
+    </select>
+    <select id="getProjectDetails" resultType="com.zna.server.entity.bo.ProjectBO">
+          SELECT * FROM `zna_project` WHERE id=#{id}
     </select>
 </mapper>

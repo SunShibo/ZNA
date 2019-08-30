@@ -15,5 +15,7 @@ public interface RecentNewsDAO {
 
     List<RecentNewsBO> selectRecentNews(@Param("id") Integer id,@Param("pageOffset")Integer pageOffset,@Param("pageSize")Integer pageSize);
 
+    RecentNewsBO selectRecentNewsDetails(Integer id);
+
     Integer getCount(@Param("id")Integer id);
 }

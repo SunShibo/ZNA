@@ -16,6 +16,9 @@ public class TeamService {
         List<TeamBO> teamBOS=teamDAO.getTeamBO(pageOffset,pageSize);
         return teamBOS;
     }
+    public Integer getTeamBOCount(){
+        return teamDAO.getTeamBOCount();
+    }
     public TeamBO getTeamBOById(Integer id){
         List<TeamBO> teamBOS=teamDAO.getTeamBO(null,null);
         TeamBO teamBO=teamDAO.getTeamBOById(id);
