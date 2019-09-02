@@ -218,7 +218,7 @@ public class IndexController extends BaseCotroller {
             //获取管理员对象
             AdminBO adminBO = super.getLoginAdmin(request);
             log.info("user{}",adminBO);
-            
+
             //首页banner
             List<BannerBO> bannerBOS = bannerService.selectBanner(state);
             //首页模块

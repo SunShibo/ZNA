@@ -210,7 +210,7 @@ public class ProjectController extends BaseCotroller {
     }
 
     /**
-     * 查询项目
+     * 查询项目详情
      * @param id
      * @param request
      * @param response

@@ -235,7 +235,7 @@ public class AdminController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/changePassword")
-    public void changePassword(HttpServletRequest request, HttpServletResponse response,String passWord,String newPassword){
+    public void changePassword(HttpServletRequest request, HttpServletResponse response,Integer id,String passWord){
         // 非空判断
         AdminBO loginAdmin = super.getLoginAdmin(request);
         //验证用户
@@ -245,19 +245,21 @@ public class AdminController extends BaseCotroller {
             return ;
         }
         //验证参数
-        if(StringUtils.isEmpty(passWord) || StringUtils.isEmpty(newPassword)){
+        if(StringUtils.isEmpty(passWord)){
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001" , "参数异常")) ;
             super.safeJsonPrint(response , result);
             return ;
         }
-        //判断之前的密码是否一样
-        AdminBO adminBO = adminService.queryAdminInfoByMobile(loginAdmin.getMobile());
-        if(!adminBO.getPassword().equals(MD5Util.digest(passWord))){
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000208")) ;
-            super.safeJsonPrint(response , result);
-            return ;
-        }
-        adminBO.setPassword(newPassword);
+//        //判断之前的密码是否一样
+//        AdminBO adminBO = adminService.queryAdminInfoByMobile(loginAdmin.getMobile());
+//        if(!adminBO.getPassword().equals(MD5Util.digest(passWord))){
+//            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000208")) ;
+//            super.safeJsonPrint(response , result);
+//            return ;
+//        }
+        AdminBO adminBO = new AdminBO();
+        adminBO.setId(id);
+        adminBO.setPassword(passWord);
         adminService.updateAdminUser(adminBO);
         String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success( "修改成功")) ;
         super.safeJsonPrint(response , result);

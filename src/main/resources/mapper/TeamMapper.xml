@@ -11,6 +11,37 @@
             LIMIT #{pageOffset},#{pageSize}
         </if>
     </select>
+
+    <resultMap id="teamMap" type="com.zna.server.entity.bo.TeamBO">
+        <id column="id" property="id"/>
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="nameEnglish" property="nameEnglish"/>
+        <result column="headPortrait" property="headPortrait"/>
+        <result column="position" property="position"/>
+        <result column="positionEnglish" property="positionEnglish"/>
+        <result column="intro" property="intro"/>
+        <result column="introEnglish" property="introEnglish"/>
+        <result column="educational" property="educational"/>
+        <result column="educationalEnglish" property="educationalEnglish"/>
+        <result column="aptitude" property="aptitude"/>
+        <result column="aptitudeEnglish" property="aptitudeEnglish"/>
+        <result column="sort" property="sort"/>
+        <collection property="projectPicture" ofType="com.zna.server.entity.bo.ProjectInvolvedBO">
+            <result column="pictureUrl" property="projectPicture"/>
+            <result column="projectId" property="id"/>
+        </collection>
+    </resultMap>
+    <select id="getTeamBOS" resultMap="teamMap">
+        SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl FROM (
+        (SELECT * from zna_team order by sort desc<if test="pageOffset!=null and pageSize!=null">
+        LIMIT #{pageOffset},#{pageSize}
+    </if> )) te
+	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
+	LEFT JOIN zna_project pr ON tp.project_id = pr.id
+	order by te.sort desc
+
+    </select>
     <select id="getTeamBOCount" resultType="java.lang.Integer">
         SELECT COUNT(id) FROM `zna_team` order by sort desc
     </select>
@@ -126,6 +157,18 @@
     <!--查询刚刚添加的人物-->
     <select id="getTeamNews" resultType="com.zna.server.entity.bo.TeamBO">
         SELECT * FROM zna_team ORDER BY id DESC LIMIT 1
+    </select>
+
+    <!--删除某个人物的某个项目-->
+    <delete id="delTeamProject">
+        DELETE FROM zna_team_project  WHERE team_id = #{teamId} AND project_id =#{projectId}
+    </delete>
+
+    <select id="getProjectById" resultType="com.zna.server.entity.bo.ProjectInvolvedBO">
+        SELECT pr.id AS id,pr.picture_url AS projectPicture FROM zna_team te
+	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
+	LEFT JOIN zna_project pr ON tp.project_id = pr.id
+	WHERE te.id = #{id}
     </select>
 
 

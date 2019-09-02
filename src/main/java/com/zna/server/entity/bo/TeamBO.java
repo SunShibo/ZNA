@@ -3,6 +3,7 @@ package com.zna.server.entity.bo;
 import com.zna.server.common.base.BaseModel;
 
 import java.util.Date;
+import java.util.List;
 
 public class TeamBO extends BaseModel {
     private Integer id; //核心团队
@@ -29,6 +30,16 @@ public class TeamBO extends BaseModel {
     private Integer afterUserId;//后一个核心团队id
     private String afterUserName;//后一个核心团队名称
     private String afterUserNameEnglish;//后一个核心团队名称
+
+    private List<ProjectInvolvedBO> projectPicture;//参与的项目
+
+    public List<ProjectInvolvedBO> getProjectPicture() {
+        return projectPicture;
+    }
+
+    public void setProjectPicture(List<ProjectInvolvedBO> projectPicture) {
+        this.projectPicture = projectPicture;
+    }
 
     public void setBeforeUserName(String beforeUserName) {
         this.beforeUserName = beforeUserName;

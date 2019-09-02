@@ -1,6 +1,7 @@
 package com.zna.server.service;
 
 import com.zna.server.dao.TeamDAO;
+import com.zna.server.entity.bo.ProjectInvolvedBO;
 import com.zna.server.entity.bo.TeamBO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,16 @@ public class TeamService {
         List<TeamBO> teamBOS=teamDAO.getTeamBO(pageOffset,pageSize);
         return teamBOS;
     }
+    public List<TeamBO> getTeamBOS(Integer pageOffset,Integer pageSize){
+        return teamDAO.getTeamBOS(pageOffset, pageSize);
+    }
     public Integer getTeamBOCount(){
         return teamDAO.getTeamBOCount();
     }
     public TeamBO getTeamBOById(Integer id){
         List<TeamBO> teamBOS=teamDAO.getTeamBO(null,null);
         TeamBO teamBO=teamDAO.getTeamBOById(id);
+        List<ProjectInvolvedBO> projectPictureS = teamDAO.getProjectById(id);
         for (int i=0;i<teamBOS.size();i++) {
             if(teamBOS.get(i).getId().equals(id)){
                if(i!=0&&teamBOS.get(i-1)!=null){
@@ -38,7 +43,11 @@ public class TeamService {
                 }
             }
         }
-        return teamBO;
+            if (teamBO!=null) {
+                teamBO.setProjectPicture(projectPictureS);
+            }
+                return teamBO;
+
     }
     public Integer addTeamBO(TeamBO teamBO){
         return teamDAO.addTeamBO(teamBO);
@@ -57,4 +66,9 @@ public class TeamService {
     public TeamBO getTeamNews(){
         return teamDAO.getTeamNews();
     }
+
+    public void delTeamProject( Integer teamId, Integer projectId){
+        teamDAO.delTeamProject(teamId, projectId);
+    }
+
 }
