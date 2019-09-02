@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -183,6 +185,50 @@ public class CooperativeClientController extends BaseCotroller{
             super.safeJsonPrint(response, result);
             log.error("getCooperativeClientException",e);
         }
+    }
 
+    /**
+     * 客户图片前段展示
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/getCooperativeClientS")
+    public void getCooperativeClientS(HttpServletRequest request, HttpServletResponse response){
+        try {
+            log.info(request.getRequestURI());
+            log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
+            //获取管理员对象
+            AdminBO loginAdmin = super.getLoginAdmin(request);
+            log.info("user{}",loginAdmin);
+            if (loginAdmin==null) {
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}", result);
+                return;
+            }
+            List<CooperativeClientBO> cooperativeClientBOS = cooperativeClientService.getCooperativeClient();
+            List<List<CooperativeClientBO>> listGroup = new ArrayList<>();
+            int listSize = cooperativeClientBOS.size();
+            //子集合的长度
+            int toIndex = 15;
+            for (int i = 0; i < cooperativeClientBOS.size(); i += 15) {
+                if (i + 15 > listSize) {
+                    toIndex = listSize - i;
+                }
+                List<CooperativeClientBO> newList = cooperativeClientBOS.subList(i, i + toIndex);
+                listGroup.add(newList);
+            }
+
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(listGroup));
+            super.safeJsonPrint(response, result);
+            log.info("result{}",result);
+            return ;
+
+        }catch (Exception e){
+            e.getStackTrace();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
+            super.safeJsonPrint(response, result);
+            log.error("getCooperativeClientException",e);
+        }
     }
 }
