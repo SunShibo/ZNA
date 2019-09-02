@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Hello Word!</h1>
-    <form method="post" action="/image/uploadImg" enctype="multipart/form-data">
+    <form method="post" action="/test/test" enctype="multipart/form-data">
         选择一个文件:
         <input type="file" name="file" />
         <br/><br/>

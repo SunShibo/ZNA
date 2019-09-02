@@ -1,19 +1,28 @@
 package com.zna.server.web.controller;
 
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.util.StringUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
+import jdk.internal.util.xml.impl.Input;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.*;
 
 @Controller
@@ -53,15 +62,14 @@ public class ImageController extends BaseCotroller {
         if(fileName!=null&&fileName!=""){
             //String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/static/imgs/";//存储路径
             String returnUrl = "/image/";//存储路径
-
-
             String path ="C:\\image";// request.getSession().getServletContext().getRealPath("static/imgs"); //文件存储位置
 
 
             String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
             fileName=new Date().getTime()+"_"+new Random().nextInt(1000)+fileF;//新的文件名
 
-            //先判断文件是否存在
+
+
 
             //获取文件夹路径
             File file1 =new File(path);
@@ -86,5 +94,30 @@ public class ImageController extends BaseCotroller {
             }
         }
 
+    }
+
+    /**
+     * 获取图片宽度和高度
+     *
+     * @param
+     * @return 返回图片的宽度
+     */
+    public static int[] getImgWidthHeight(File file) {
+        InputStream is = null;
+        BufferedImage src = null;
+        int result[] = { 0, 0 };
+        try {
+            // 获得文件输入流
+            is = new FileInputStream(file);
+            // 从流里将图片写入缓冲图片区
+            src = ImageIO.read(is);
+            result[0] =src.getWidth(null); // 得到源图片宽
+            result[1] =src.getHeight(null);// 得到源图片高
+            is.close();  //关闭输入流
+        } catch (Exception ef) {
+            ef.printStackTrace();
+        }
+
+        return result;
     }
 }

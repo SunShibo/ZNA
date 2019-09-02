@@ -42,7 +42,7 @@ public class TeamController extends BaseCotroller{
             //获取管理员对象
             AdminBO loginAdmin = super.getLoginAdmin(request);
             log.info("user{}",loginAdmin);
-            
+
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
 
             //List<TeamBO> officeContactBO=teamService.getTeamBO(queryInfo.getPageOffset(),queryInfo.getPageSize());
