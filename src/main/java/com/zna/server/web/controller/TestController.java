@@ -37,8 +37,8 @@ public class TestController extends BaseCotroller {
     public  void imgUploadZip( MultipartFile file, HttpServletRequest request, HttpServletResponse response)throws IllegalStateException, IOException {
 
 
-        String picturePC = ImageUtil.getPCpicture(file,3000,1500);
-        String picturePhone = ImageUtil.getPhonepicture(file,3000,1000);
+        String picturePC = ImageUtil.getPCpicture(file,1.5);
+        String picturePhone = ImageUtil.getPhonepicture(file,2);
         Map<String,Object> map = new HashMap<>();
         map.put("picturePC",picturePC);
         map.put("picturePhone",picturePhone);
