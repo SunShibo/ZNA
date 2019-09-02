@@ -185,12 +185,7 @@ public class IndexController extends BaseCotroller {
             //获取管理员对象
             AdminBO adminBO = super.getLoginAdmin(request);
             log.info("user{}",adminBO);
-            if (adminBO==null){
-                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002"));
-                super.safeJsonPrint(response, result);
-                log.info("result{}",result);
-                return ;
-            }
+
 
             List<IndexBO> indexBOS = indexService.selectIndex();
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(indexBOS));
