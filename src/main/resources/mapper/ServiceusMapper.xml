@@ -12,12 +12,12 @@
 
     <update id="updateservice" parameterType="com.zna.server.entity.bo.ServiceusBO">
         UPDATE `zna_service`
-        set
+        <set>
         <if test="title!=null and title!=''">`title`=#{title},</if>
          <if test="context!=null and context!=''">`context`=#{context},</if>
          <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
          <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}</if>
-
+        </set>
     </update>
 
     <!--查询条数-->

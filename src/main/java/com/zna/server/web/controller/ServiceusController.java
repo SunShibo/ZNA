@@ -46,12 +46,12 @@ public class ServiceusController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(pictureUrlPc)||StringUtils.isEmpty(context)||StringUtils.isEmpty(title)){
-                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
-                super.safeJsonPrint(response, result);
-                log.info("result{}",result);
-                return ;
-            }
+//            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(pictureUrlPc)||StringUtils.isEmpty(context)||StringUtils.isEmpty(title)){
+//                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+//                super.safeJsonPrint(response, result);
+//                log.info("result{}",result);
+//                return ;
+//            }
             serviceusService.updateservice(pictureUrl,pictureUrlPc,context,title);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
