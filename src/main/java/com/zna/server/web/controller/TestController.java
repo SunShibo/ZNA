@@ -2,7 +2,6 @@ package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
-import com.zna.server.util.ImageUtil;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
 import org.slf4j.Logger;
@@ -10,15 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @RequestMapping("/test")
@@ -102,4 +100,25 @@ public class TestController extends BaseCotroller {
 
     }
 
+    @Resource
+    private RequestMappingHandlerMapping handlerMapping;
+
+    /**
+     * 获取项目中的url
+     * @param id
+     * @param request
+     * @param response
+     */
+    @RequestMapping("/index")
+    public void index(Long id, HttpServletRequest request, HttpServletResponse response) {
+
+        Map map =  this.handlerMapping.getHandlerMethods();
+        Iterator<?> iterator = map.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            System.out.println(entry.getKey() );
+        }
+    }
 }
+
+

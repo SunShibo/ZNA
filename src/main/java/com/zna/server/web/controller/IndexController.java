@@ -130,7 +130,7 @@ public class IndexController extends BaseCotroller {
      * @param context 内容
      * @param contextEnglish 内容英文
      * @param pictureUrl 图片地址
-     * @param sort 序号
+     *  sort 序号
      * @param skipId 跳转id
      * @param skipUrl 跳转url
      * @param request

@@ -17,15 +17,15 @@ public class IndexService {
 
     /**
      * 添加首页内容
-     * @param title 标题
-     * @param titleEnglish 英文标题
-     * @param context 内容
-     * @param contextEnglish 英文内容
-     * @param pictureUrl 图片地址
-     * @param sort 序号
-     * @param skipId 跳转id
-     * @param skipUrl 跳转url
-     * @param createUserId 创建人
+     *  title 标题
+     *  titleEnglish 英文标题
+     *  context 内容
+     *  contextEnglish 英文内容
+     *  pictureUrl 图片地址
+     *  sort 序号
+     *  skipId 跳转id
+     *  skipUrl 跳转url
+     *  createUserId 创建人
      */
     public void addIndex(IndexBO indexBO){
         indexDAO.addIndex(indexBO);
