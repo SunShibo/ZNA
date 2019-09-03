@@ -19,9 +19,10 @@ public class FromPictureService {
      * 有数据就修改，没有数据就添加
      * @param pictureUrl
      */
-    public void updateFromPicture(String pictureUrl){
+    public void updateFromPicture(String pictureUrl,String pictureUrlPc){
         FromPictureBO fromPictureBO = new FromPictureBO();
         fromPictureBO.setPictureUrl(pictureUrl);
+        fromPictureBO.setPictureUrlPc(pictureUrlPc);
         //查询表中数据
         int t = fromPictureDAO.getCount();
         //没有数据就新增

@@ -25,7 +25,7 @@ public class FromPictureController extends BaseCotroller {
     private FromPictureService fromPictureService;
 
     @RequestMapping("/updateFromPicture")
-    public  void updateFromPicture( String pictureUrl, HttpServletRequest request, HttpServletResponse response) {
+    public  void updateFromPicture( String pictureUrl,String pictureUrlPc, HttpServletRequest request, HttpServletResponse response) {
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -39,13 +39,13 @@ public class FromPictureController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)){
+            if (StringUtils.isEmpty(pictureUrl)&&StringUtils.isEmpty(pictureUrlPc)){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            fromPictureService.updateFromPicture(pictureUrl);
+            fromPictureService.updateFromPicture(pictureUrl,pictureUrlPc);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

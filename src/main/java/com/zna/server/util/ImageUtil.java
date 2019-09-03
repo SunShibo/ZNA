@@ -60,7 +60,7 @@ public class ImageUtil {
             file2.mkdirs();
         String filePath = newFilePath + fileName;
         ImageIO.write(image, str[str.length-1], new File(filePath));
-        result = newFilePath + fileName;
+        result = "/image/" + fileName;
         return result;
     }
 
@@ -114,7 +114,7 @@ public class ImageUtil {
             file2.mkdirs();
         String filePath = newFilePath + fileName;
         ImageIO.write(image, str[str.length-1], new File(filePath));
-        result = newFilePath + fileName;
+        result = "/image/" + fileName;
         return result;
     }
 }

@@ -6,12 +6,14 @@
 <mapper namespace="com.zna.server.dao.FromPictureDAO">
 
     <insert id="addFromPicture" parameterType="com.zna.server.entity.bo.FromPictureBO">
-        INSERT INTO `zna_from_picture` (`picture_url`) VALUES (#{pictureUrl});
+        INSERT INTO `zna_from_picture` (`picture_url`,`picture_url_pc`)
+        VALUES (#{pictureUrl},#{pictureUrlPc})
     </insert>
     <!--修改关于我们-->
     <update id="updateFromPicture" parameterType="com.zna.server.entity.bo.FromPictureBO">
         UPDATE `zna_from_picture`
-        SET <if test="pictureUrl!=null and pictureUrl!=''">`picture_url` = #{pictureUrl}</if>
+        SET <if test="pictureUrl!=null and pictureUrl!=''">`picture_url` = #{pictureUrl},</if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc` = #{pictureUrlPc}</if>
     </update>
 
     <!--查询条数-->
