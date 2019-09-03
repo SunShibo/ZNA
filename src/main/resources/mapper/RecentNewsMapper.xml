@@ -6,9 +6,9 @@
 <mapper namespace="com.zna.server.dao.RecentNewsDAO">
 
     <insert id="addRecentNews" parameterType="com.zna.server.entity.bo.RecentNewsBO">
-        INSERT INTO `zna_recent_news` ( `picture_url`, `title`, `title_english`,
+        INSERT INTO `zna_recent_news` ( `picture_url`,`picture_url_pc`, `title`, `title_english`,
         `time`, `context`, `context_english`, `sort`, `create_user_id`, `create_time`)
-         VALUES (#{pictureUrl},#{title},#{titleEnglish},
+         VALUES (#{pictureUrl},#{pictureUrlPc},#{title},#{titleEnglish},
          #{time},#{context},#{contextEnglish},#{sort},#{createUserId},NOW())
     </insert>
 
@@ -19,6 +19,7 @@
     <update id="updateRecentNews" parameterType="com.zna.server.entity.bo.RecentNewsBO">
         UPDATE `zna_recent_news` SET
          <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
          <if test="title!=null and title!=''">`title`=#{title}, </if>
          <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish}, </if>
          <if test="time!=null and time!=''"> `time`=#{time}, </if>

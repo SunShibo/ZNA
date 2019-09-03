@@ -10,6 +10,7 @@ public class TeamBO extends BaseModel {
     private String name; //名字
     private String nameEnglish; //名字（英文）
     private String headPortrait; //头像
+    private String headPortraitPc; //头像
     private String position; //简介
     private String positionEnglish; //职位（英文）
     private String intro; //简介
@@ -32,6 +33,14 @@ public class TeamBO extends BaseModel {
     private String afterUserNameEnglish;//后一个核心团队名称
 
     private List<ProjectInvolvedBO> projectPicture;//参与的项目
+
+    public String getHeadPortraitPc() {
+        return headPortraitPc;
+    }
+
+    public void setHeadPortraitPc(String headPortraitPc) {
+        this.headPortraitPc = headPortraitPc;
+    }
 
     public List<ProjectInvolvedBO> getProjectPicture() {
         return projectPicture;

@@ -23,10 +23,11 @@ public class RecentNewsService {
         recentNewsDAO.delRecentNews(id);
     }
 
-    public void updateRecentNews(Integer id,String pictureUrl,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,Integer updateUserId){
+    public void updateRecentNews(Integer id,String pictureUrl,String pictureUrlPc,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,Integer updateUserId){
         RecentNewsBO recentNewsBO = new RecentNewsBO();
         recentNewsBO.setId(id);
         recentNewsBO.setPictureUrl(pictureUrl);
+        recentNewsBO.setPictureUrlPc(pictureUrlPc);
         recentNewsBO.setTitle(title);
         recentNewsBO.setTitleEnglish(titleEnglish);
         recentNewsBO.setTime(time);

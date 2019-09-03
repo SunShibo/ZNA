@@ -29,11 +29,13 @@
         <result column="sort" property="sort"/>
         <collection property="projectPicture" ofType="com.zna.server.entity.bo.ProjectInvolvedBO">
             <result column="pictureUrl" property="projectPicture"/>
+            <result column="pictureUrlPc" property="projectPicturePc"/>
             <result column="projectId" property="id"/>
         </collection>
     </resultMap>
     <select id="getTeamBOS" resultMap="teamMap">
-        SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl FROM (
+        SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl,pr.picture_url_pc AS pictureUrlPc
+        FROM (
         (SELECT * from zna_team order by sort desc<if test="pageOffset!=null and pageSize!=null">
         LIMIT #{pageOffset},#{pageSize}
     </if> )) te
@@ -63,6 +65,9 @@
            </if>
            <if test="headPortrait!=null and headPortrait!=''">
                `head_portrait`=#{headPortrait},
+           </if>
+           <if test="headPortraitPc!=null and headPortraitPc!=''">
+               `head_portrait_pc`=#{headPortraitPc},
            </if>
            <if test="position!=null and position!=''">
                `position`=#{position},
@@ -107,6 +112,9 @@
             </if>
             <if test="headPortrait!=null and headPortrait!=''">
                 `head_portrait`=#{headPortrait},
+            </if>
+            <if test="headPortraitPc!=null and headPortraitPc!=''">
+                `head_portrait_pc`=#{headPortraitPc},
             </if>
             <if test="position!=null and position!=''">
                 `position`=#{position},
@@ -165,7 +173,8 @@
     </delete>
 
     <select id="getProjectById" resultType="com.zna.server.entity.bo.ProjectInvolvedBO">
-        SELECT pr.id AS id,pr.picture_url AS projectPicture FROM zna_team te
+        SELECT pr.id AS id,pr.picture_url AS projectPicture,pr.picture_url_pc AS projectPicturePc
+        FROM zna_team te
 	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
 	LEFT JOIN zna_project pr ON tp.project_id = pr.id
 	WHERE te.id = #{id}

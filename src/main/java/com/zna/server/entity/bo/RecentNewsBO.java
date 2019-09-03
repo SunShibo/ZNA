@@ -7,6 +7,7 @@ import java.util.Date;
 public class RecentNewsBO extends BaseModel {
     private Integer id; //最新动态
     private String pictureUrl; //图片url
+    private String pictureUrlPc; //图片url
     private String title; //标题
     private String titleEnglish; //标题（英文）
     private String time; //时间
@@ -20,6 +21,14 @@ public class RecentNewsBO extends BaseModel {
 
     private Integer beforeRecentNewsId;//前一个id
     private Integer afterRecentNewsId;//后一个id
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
+    }
 
     public Integer getBeforeRecentNewsId() {
         return beforeRecentNewsId;

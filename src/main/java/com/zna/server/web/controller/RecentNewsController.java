@@ -135,7 +135,7 @@ public class RecentNewsController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateRecentNews")
-    public void updateRecentNews(Integer id,String pictureUrl,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,HttpServletRequest request, HttpServletResponse response){
+    public void updateRecentNews(Integer id,String pictureUrl,String pictureUrlPc,String title,String titleEnglish,String time,String context,String contextEnglish,Integer sort,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -155,7 +155,7 @@ public class RecentNewsController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            recentNewsService.updateRecentNews(id,pictureUrl,title,titleEnglish,time,context,contextEnglish,sort,loginAdmin.getId());
+            recentNewsService.updateRecentNews(id,pictureUrl,pictureUrlPc,title,titleEnglish,time,context,contextEnglish,sort,loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

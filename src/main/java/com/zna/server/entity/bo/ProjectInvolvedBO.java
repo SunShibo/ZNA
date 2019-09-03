@@ -6,6 +6,15 @@ public class ProjectInvolvedBO extends BaseModel{
 
     private Integer id;
     private String projectPicture;
+    private String projectPicturePc;
+
+    public String getProjectPicturePc() {
+        return projectPicturePc;
+    }
+
+    public void setProjectPicturePc(String projectPicturePc) {
+        this.projectPicturePc = projectPicturePc;
+    }
 
     public Integer getId() {
         return id;
