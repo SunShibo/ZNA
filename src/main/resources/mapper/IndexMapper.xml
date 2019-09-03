@@ -8,10 +8,10 @@
     <!--新增首页内容-->
     <insert id="addIndex" parameterType="com.zna.server.entity.bo.IndexBO">
         INSERT INTO `zna_index` ( `title`, `title_english`, `context`, `context_english`,
-                                  `picture_url`, `sort`, `skip_id`, `skip_url`,
+                                  `picture_url`,`picture_url_pc`, `sort`, `skip_id`, `skip_url`,
                                   `create_user_id`, `create_time` )
                     VALUES (#{title},#{titleEnglish},#{context},#{contextEnglish},
-                            #{pictureUrl},#{sort},#{skipId},#{skipUrl},
+                            #{pictureUrl},#{pictureUrlPc},#{sort},#{skipId},#{skipUrl},
                             #{createUserId},NOW())
     </insert>
     <!--删除首页内容-->
@@ -26,6 +26,7 @@
         <if test="context!=null and context!=''">`context`=#{context}, </if>
         <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish}, </if>
         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl}, </if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}, </if>
         <if test="sort!=null ">`sort`=#{sort},  </if>
         <if test="skipId!=null "> `skip_id`=#{skipId}, </if>
         <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},  </if>

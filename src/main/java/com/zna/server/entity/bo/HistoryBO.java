@@ -7,6 +7,7 @@ import java.util.Date;
 public class HistoryBO extends BaseModel {
     private Integer id; //发展历史表
     private String pictureUrl; //图片url
+    private String pictureUrlPc; //图片url
     private String time; //时间
     private String context; //内容
     private String contextEnglish; //内容（英文）
@@ -30,6 +31,14 @@ public class HistoryBO extends BaseModel {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
     }
 
     public String getTime() {
@@ -101,7 +110,8 @@ public class HistoryBO extends BaseModel {
         return "HistoryBO{" +
                 "id=" + id +
                 ", pictureUrl='" + pictureUrl + '\'' +
-                ", time=" + time +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
+                ", time='" + time + '\'' +
                 ", context='" + context + '\'' +
                 ", contextEnglish='" + contextEnglish + '\'' +
                 ", sort=" + sort +

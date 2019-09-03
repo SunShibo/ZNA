@@ -130,7 +130,7 @@ public class HistoryController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateHistory")
-    public void updateHistory(String pictureUrl,String time,String context, String contextEnglish,
+    public void updateHistory(String pictureUrl,String pictureUrlPc,String time,String context, String contextEnglish,
                               Integer sort,Integer id,HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
@@ -151,7 +151,7 @@ public class HistoryController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            historyService.updateHistory(pictureUrl,time,context,contextEnglish,sort,loginAdmin.getId(),id);
+            historyService.updateHistory(pictureUrl,pictureUrlPc,time,context,contextEnglish,sort,loginAdmin.getId(),id);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

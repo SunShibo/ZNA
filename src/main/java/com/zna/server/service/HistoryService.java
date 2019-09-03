@@ -46,10 +46,11 @@ public class HistoryService {
      * @param updateUserId
      * @param id
      */
-    public void updateHistory(String pictureUrl,String time,String context, String contextEnglish,
+    public void updateHistory(String pictureUrl,String pictureUrlPc,String time,String context, String contextEnglish,
                               Integer sort,Integer updateUserId,Integer id){
         HistoryBO historyBO = new HistoryBO();
         historyBO.setPictureUrl(pictureUrl);
+        historyBO.setPictureUrlPc(pictureUrlPc);
         historyBO.setTime(time);
         historyBO.setContext(context);
         historyBO.setContextEnglish(contextEnglish);

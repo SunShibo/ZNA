@@ -12,6 +12,7 @@ public class ProjectBO extends BaseModel {
     private String titleEnglish; //标题（英文）
     private Integer sort; //序号
     private String pictureUrl; //图片url
+    private String pictureUrlPc; //图片url
     private String site; //地点
     private String siteEnglish; //地点（英文）
     private String context; //内容
@@ -23,6 +24,14 @@ public class ProjectBO extends BaseModel {
 
     private Integer beforeProjectId;//前一个核心团队id
     private Integer afterProjectId;//后一个核心团队id
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
+    }
 
     public Integer getBeforeProjectId() {
         return beforeProjectId;
@@ -170,6 +179,7 @@ public class ProjectBO extends BaseModel {
                 ", titleEnglish='" + titleEnglish + '\'' +
                 ", sort=" + sort +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", site='" + site + '\'' +
                 ", siteEnglish='" + siteEnglish + '\'' +
                 ", context='" + context + '\'' +

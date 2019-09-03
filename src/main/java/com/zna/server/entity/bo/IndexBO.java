@@ -11,6 +11,7 @@ public class IndexBO extends BaseModel {
     private String context; //内容
     private String contextEnglish; //内容（英文）
     private String pictureUrl; //图片url
+    private String pictureUrlPc; //图片url
     private Integer sort; //序号
     private Integer skipId; //跳转id
     private String skipUrl; //跳转url
@@ -18,6 +19,14 @@ public class IndexBO extends BaseModel {
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
+    }
 
     public Integer getId() {
         return id;
@@ -132,6 +141,7 @@ public class IndexBO extends BaseModel {
                 ", context='" + context + '\'' +
                 ", contextEnglish='" + contextEnglish + '\'' +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", sort=" + sort +
                 ", skipId=" + skipId +
                 ", skipUrl='" + skipUrl + '\'' +

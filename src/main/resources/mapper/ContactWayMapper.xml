@@ -7,10 +7,12 @@
 
     <!--新增联系方式-->
     <insert id="addContactWay" parameterType="com.zna.server.entity.bo.ContactWayBO">
-        INSERT INTO `zna_contact_way` ( `mobile`, `fax_NO`, `email`, `picture_one`,
-                                  `picture_two`, `picture_three`, `create_user_id`, `create_time`)
-                                VALUES (#{mobile},#{faxNO},#{email},#{pictureOne},
-                                  #{pictureTwo},#{pictureThree},#{createUserId},NOW())
+        INSERT INTO `zna_contact_way` ( `mobile`, `fax_NO`, `email`, `picture_one`,`picture_one_pc`,
+           `picture_two`,`picture_two_pc`, `picture_three`,`picture_three_pc`,
+           `create_user_id`, `create_time`)
+                  VALUES (#{mobile},#{faxNO},#{email},#{pictureOne},#{pictureOnePc},
+                        #{pictureTwo},#{pictureTwoPc},#{pictureThree},#{pictureThreePc},
+                        #{createUserId},NOW())
     </insert>
     <!--修改联系方式-->
     <update id="updateContactWay" parameterType="com.zna.server.entity.bo.ContactWayBO">
@@ -19,8 +21,11 @@
          <if test="faxNO !=null and faxNO !=''">`fax_NO`=#{faxNO},</if>
         <if test="email !=null and email !=''">`email`=#{email},</if>
         <if test="pictureOne !=null and pictureOne !=''">`picture_one`=#{pictureOne},</if>
+        <if test="pictureOnePc !=null and pictureOnePc !=''">`picture_one_pc`=#{pictureOnePc},</if>
         <if test="pictureTwo !=null and pictureTwo !=''">`picture_two`=#{pictureTwo}, </if>
-         <if test="pictureThree !=null and pictureThree !=''"> `picture_three`=#{pictureThree},</if>
+        <if test="pictureTwoPc !=null and pictureTwoPc !=''">`picture_two_pc`=#{pictureTwoPc}, </if>
+        <if test="pictureThree !=null and pictureThree !=''"> `picture_three`=#{pictureThree},</if>
+        <if test="pictureThreePc !=null and pictureThreePc !=''"> `picture_three_pc`=#{pictureThreePc},</if>
               `update_user_id`=#{updateUserId}, `update_time`=NOW()
     </update>
     <!--查询条数-->

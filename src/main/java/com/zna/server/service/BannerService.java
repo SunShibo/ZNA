@@ -49,10 +49,11 @@ public class BannerService {
      * @param state
      * @param updateUserId
      */
-    public void updateBanner(Integer id,String pictureUrl,String skipUrl,String skipType,Integer skipId,Integer sort,String state,Integer updateUserId){
+    public void updateBanner(Integer id,String pictureUrl,String pictureUrlPc,String skipUrl,String skipType,Integer skipId,Integer sort,String state,Integer updateUserId){
         BannerBO bannerBO = new BannerBO();
         bannerBO.setId(id);
         bannerBO.setPictureUrl(pictureUrl);
+        bannerBO.setPictureUrlPc(pictureUrlPc);
         bannerBO.setSkipUrl(skipUrl);
         bannerBO.setSkipType(skipType);
         bannerBO.setSkipId(skipId);

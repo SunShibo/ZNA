@@ -10,8 +10,11 @@ public class ContactWayBO extends BaseModel {
     private String faxNO; //传真
     private String email; //邮箱
     private String pictureOne; //图片1（备用）
+    private String pictureOnePc; //图片1（备用）
     private String pictureTwo; //图片2（备用）
+    private String pictureTwoPc; //图片2（备用）
     private String pictureThree; //图片3（备用）
+    private String pictureThreePc; //图片3（备用）
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -57,6 +60,14 @@ public class ContactWayBO extends BaseModel {
         this.pictureOne = pictureOne;
     }
 
+    public String getPictureOnePc() {
+        return pictureOnePc;
+    }
+
+    public void setPictureOnePc(String pictureOnePc) {
+        this.pictureOnePc = pictureOnePc;
+    }
+
     public String getPictureTwo() {
         return pictureTwo;
     }
@@ -65,12 +76,28 @@ public class ContactWayBO extends BaseModel {
         this.pictureTwo = pictureTwo;
     }
 
+    public String getPictureTwoPc() {
+        return pictureTwoPc;
+    }
+
+    public void setPictureTwoPc(String pictureTwoPc) {
+        this.pictureTwoPc = pictureTwoPc;
+    }
+
     public String getPictureThree() {
         return pictureThree;
     }
 
     public void setPictureThree(String pictureThree) {
         this.pictureThree = pictureThree;
+    }
+
+    public String getPictureThreePc() {
+        return pictureThreePc;
+    }
+
+    public void setPictureThreePc(String pictureThreePc) {
+        this.pictureThreePc = pictureThreePc;
     }
 
     public Integer getCreateUserId() {
@@ -113,8 +140,11 @@ public class ContactWayBO extends BaseModel {
                 ", faxNO='" + faxNO + '\'' +
                 ", email='" + email + '\'' +
                 ", pictureOne='" + pictureOne + '\'' +
+                ", pictureOnePc='" + pictureOnePc + '\'' +
                 ", pictureTwo='" + pictureTwo + '\'' +
+                ", pictureTwoPc='" + pictureTwoPc + '\'' +
                 ", pictureThree='" + pictureThree + '\'' +
+                ", pictureThreePc='" + pictureThreePc + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +

@@ -43,7 +43,7 @@ public class IndexService {
      * @param
      */
     public void updateIndex(Integer id,String title,String titleEnglish,String context,
-                            String contextEnglish,String pictureUrl,Integer sort,Integer skipId,
+                            String contextEnglish,String pictureUrl,String pictureUrlPc,Integer sort,Integer skipId,
                             String skipUrl,Integer updateUserId){
         IndexBO indexBO = new IndexBO();
         indexBO.setId(id);
@@ -52,6 +52,7 @@ public class IndexService {
         indexBO.setContext(context);
         indexBO.setContextEnglish(contextEnglish);
         indexBO.setPictureUrl(pictureUrl);
+        indexBO.setPictureUrlPc(pictureUrlPc);
         indexBO.setSort(sort);
         indexBO.setSkipId(skipId);
         indexBO.setSkipUrl(skipUrl);

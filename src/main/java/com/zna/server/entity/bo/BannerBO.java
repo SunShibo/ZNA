@@ -7,6 +7,7 @@ import java.util.Date;
 public class BannerBO extends BaseModel {
     private Integer id; //banner
     private String pictureUrl; //图片url
+    private String pictureUrlPc; //图片url
     private String skipUrl; //跳转url
     private String skipType; //跳转类型
     private Integer skipId; //跳转id
@@ -31,6 +32,14 @@ public class BannerBO extends BaseModel {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
     }
 
     public String getSkipUrl() {
@@ -110,6 +119,7 @@ public class BannerBO extends BaseModel {
         return "BannerBO{" +
                 "id=" + id +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", skipUrl='" + skipUrl + '\'' +
                 ", skipType='" + skipType + '\'' +
                 ", skipId=" + skipId +

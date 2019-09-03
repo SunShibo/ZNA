@@ -37,14 +37,14 @@ public class IndexController extends BaseCotroller {
 
     /**
      * 新增首页内容
-     * @param title 标题
-     * @param titleEnglish 标题英文
-     * @param context 内容
-     * @param contextEnglish 内容英文
-     * @param pictureUrl 图片地址
-     * @param sort 序号
-     * @param skipId 跳转id
-     * @param skipUrl 跳转url
+     * title 标题
+     *titleEnglish 标题英文
+     *  context 内容
+     *  contextEnglish 内容英文
+     *  pictureUrl 图片地址
+     * sort 序号
+     * skipId 跳转id
+     *  skipUrl 跳转url
      * @param request
      * @param response
      */
@@ -138,7 +138,7 @@ public class IndexController extends BaseCotroller {
      */
     @RequestMapping("/updateIndex")
     public void updateIndex(Integer id,String title,String titleEnglish,String context,String contextEnglish,
-                         String pictureUrl,Integer sort,Integer skipId,String skipUrl,
+                            String pictureUrl,String pictureUrlPc,Integer sort,Integer skipId,String skipUrl,
                          HttpServletRequest request,HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
@@ -159,7 +159,7 @@ public class IndexController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            indexService.updateIndex(id,title,titleEnglish,context,contextEnglish,pictureUrl,sort,skipId,skipUrl,adminBO.getId());
+            indexService.updateIndex(id,title,titleEnglish,context,contextEnglish,pictureUrl,pictureUrlPc,sort,skipId,skipUrl,adminBO.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

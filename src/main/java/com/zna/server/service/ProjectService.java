@@ -2,7 +2,6 @@ package com.zna.server.service;
 
 import com.zna.server.dao.ProjectDAO;
 import com.zna.server.entity.bo.ProjectBO;
-import com.zna.server.util.JsonUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,7 +37,7 @@ public class ProjectService {
      * 修改项目
      * @param
      */
-    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String site,String siteEnglish,String context,String contextEnglish,Integer updateUserId){
+    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String pictureUrlPc,String site,String siteEnglish,String context,String contextEnglish,Integer updateUserId){
         ProjectBO projectBO = new ProjectBO();
         projectBO.setId(id);
         projectBO.setProjectTypeName(projectTypeName);
@@ -47,6 +46,7 @@ public class ProjectService {
         projectBO.setTitleEnglish(titleEnglish);
         projectBO.setSort(sort);
         projectBO.setPictureUrl(pictureUrl);
+        projectBO.setPictureUrlPc(pictureUrlPc);
         projectBO.setSite(site);
         projectBO.setSiteEnglish(siteEnglish);
         projectBO.setContext(context);

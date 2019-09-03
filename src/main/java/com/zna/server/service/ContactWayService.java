@@ -27,14 +27,18 @@ public class ContactWayService {
      * @param createUserId 创建人id
      * @param updateUserId 修改人id
      */
-   public void   updateContactWay(String mobile,String faxNO,String email,String pictureOne,String pictureTwo,String pictureThree,Integer createUserId,Integer updateUserId) {
+   public void   updateContactWay(String mobile,String faxNO,String email,String pictureOne,String pictureOnePc,
+                                  String pictureTwo,String pictureTwoPc,String pictureThree,String pictureThreePc,Integer createUserId,Integer updateUserId) {
        ContactWayBO contactWayBO = new ContactWayBO();
        contactWayBO.setMobile(mobile);
        contactWayBO.setFaxNO(faxNO);
        contactWayBO.setEmail(email);
        contactWayBO.setPictureOne(pictureOne);
+       contactWayBO.setPictureOnePc(pictureOnePc);
        contactWayBO.setPictureTwo(pictureTwo);
+       contactWayBO.setPictureTwoPc(pictureTwoPc);
        contactWayBO.setPictureThree(pictureThree);
+       contactWayBO.setPictureThreePc(pictureThreePc);
        int i = contactWayDAO.getCount();
        if (i<1){
            contactWayBO.setCreateUserId(createUserId);

@@ -100,7 +100,7 @@ public class BannerController extends BaseCotroller {
      * @return
      */
     @RequestMapping("/updateBanner")
-    public void updateBanner(Integer id,String pictureUrl,String skipUrl,String skipType,Integer skipId,Integer sort,String state, HttpServletRequest request, HttpServletResponse response){
+    public void updateBanner(Integer id,String pictureUrl,String pictureUrlPc,String skipUrl,String skipType,Integer skipId,Integer sort,String state, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -120,7 +120,7 @@ public class BannerController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            bannerService.updateBanner(id,pictureUrl,skipUrl,skipType,skipId,sort,state,loginAdmin.getId());
+            bannerService.updateBanner(id,pictureUrl,pictureUrlPc,skipUrl,skipType,skipId,sort,state,loginAdmin.getId());
 
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);

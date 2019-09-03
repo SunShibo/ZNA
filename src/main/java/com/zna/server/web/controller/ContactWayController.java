@@ -37,7 +37,7 @@ public class ContactWayController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateContactWay")
-    public void   updateContactWay(String mobile, String faxNO, String email, String pictureOne, String pictureTwo, String pictureThree, HttpServletRequest request, HttpServletResponse response) {
+    public void   updateContactWay(String mobile, String faxNO, String email, String pictureOne,String pictureOnePc, String pictureTwo, String pictureTwoPc,String pictureThree,String pictureThreePc, HttpServletRequest request, HttpServletResponse response) {
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -57,7 +57,7 @@ public class ContactWayController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            contactWayService.updateContactWay(mobile,faxNO,email,pictureOne,pictureTwo,pictureThree,loginAdmin.getId(),loginAdmin.getId());
+            contactWayService.updateContactWay(mobile,faxNO,email,pictureOne,pictureOnePc,pictureTwo,pictureTwoPc,pictureThree,pictureThreePc,loginAdmin.getId(),loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

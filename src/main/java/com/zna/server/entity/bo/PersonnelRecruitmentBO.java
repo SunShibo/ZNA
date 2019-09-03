@@ -11,10 +11,19 @@ public class PersonnelRecruitmentBO extends BaseModel {
     private String announcements; //注意事项
     private String announcementsEnglish; //注意事项（英文）
     private String pictureUrl; //图片
+    private String pictureUrlPc; //图片
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
+    }
 
     public Integer getId() {
         return id;
@@ -105,6 +114,7 @@ public class PersonnelRecruitmentBO extends BaseModel {
                 ", announcements='" + announcements + '\'' +
                 ", announcementsEnglish='" + announcementsEnglish + '\'' +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +

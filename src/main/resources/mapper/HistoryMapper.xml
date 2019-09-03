@@ -7,9 +7,9 @@
 
     <!--添加发展历史-->
     <insert id="addHistory" parameterType="com.zna.server.entity.bo.HistoryBO">
-        INSERT INTO `zna_history` (`picture_url`, `time`, `context`, `context_english`,
+        INSERT INTO `zna_history` (`picture_url`,`picture_url_pc`, `time`, `context`, `context_english`,
                                 `sort`, `create_user_id`, `create_time`)
-                      VALUES (#{pictureUrl},#{time},#{context},#{contextEnglish},
+                      VALUES (#{pictureUrl},#{pictureUrlPc},#{time},#{context},#{contextEnglish},
                               #{sort},#{createUserId},NOW())
     </insert>
     <!--删除发展历史-->
@@ -20,6 +20,7 @@
     <update id="updateHistory" parameterType="com.zna.server.entity.bo.HistoryBO">
         UPDATE `zna_server`.`zna_history` SET
         <if test="pictureUrl != null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+        <if test="pictureUrlPc != null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
         <if test="time != null and time!=''">`time`=#{time}, </if>
         <if test="context != null and context!=''">`context`=#{context}, </if>
         <if test="contextEnglish != null and contextEnglish!=''">`context_english`=#{contextEnglish}, </if>

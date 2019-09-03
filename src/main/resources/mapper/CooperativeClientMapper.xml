@@ -7,8 +7,8 @@
 
     <!--新增合作客户图片-->
     <insert id="addCooperativeClient" parameterType="com.zna.server.entity.bo.CooperativeClientBO">
-        INSERT INTO `zna_cooperative_client` ( `picture_url`, `create_user_id`, `create_time`)
-                VALUES (#{pictureUrl},#{createUserId},NOW())
+        INSERT INTO `zna_cooperative_client` ( `picture_url`,`picture_url_pc`, `create_user_id`, `create_time`)
+                VALUES (#{pictureUrl},#{pictureUrlPc},#{createUserId},NOW())
     </insert>
     <!--删除合作客户图片-->
     <delete id="delCooperativeClient" parameterType="Integer">
@@ -20,7 +20,9 @@
     <!--修改合作客户图片-->
     <update id="updateCooperativeClient" parameterType="com.zna.server.entity.bo.CooperativeClientBO">
         UPDATE `zna_cooperative_client` SET
-        `picture_url`=#{pictureUrl},  `update_user_id`=#{updateUserId}, `uodate_time`=NOW() WHERE `id`=#{id}
+        <if test="pictureUrl!=null and pictureUrl!=''"> `picture_url`=#{pictureUrl},</if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''"> `picture_url_pc`=#{pictureUrlPc},</if>
+          `update_user_id`=#{updateUserId}, `uodate_time`=NOW() WHERE `id`=#{id}
     </update>
     <!--查询合作客户图片-->
     <select id="getCooperativeClient" resultType="com.zna.server.entity.bo.CooperativeClientBO">
