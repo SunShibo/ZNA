@@ -6,9 +6,9 @@
 <mapper namespace="com.zna.server.dao.AboutUsDAO">
     <!--新增关于我们-->
     <insert id="addAboutUs" parameterType="com.zna.server.entity.bo.AboutUsBO">
-        INSERT INTO `zna_about_us` (`picture_url`,`context`,`context_english`,
+        INSERT INTO `zna_about_us` (`picture_url`,`picture_url_pc`,`context`,`context_english`,
 	                                `service`,`create_user_id`,`create_time`)
-	                                VALUES(#{pictureUrl},#{context},#{contextenglish},
+	                                VALUES(#{pictureUrl},#{pictureUrlPc},#{context},#{contextenglish},
 	                                #{service},#{createUserId},NOW())
     </insert>
 
@@ -16,8 +16,9 @@
     <update id="updateAboutUs" parameterType="com.zna.server.entity.bo.AboutUsBO">
         UPDATE `zna_about_us`
           SET <if test="pictureUrl!=null and pictureUrl!=''">`picture_url` = #{pictureUrl},</if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc` = #{pictureUrlPc},</if>
         <if test="context!=null and context!=''">`context`=#{context},</if>
-        <if test="contextenglish!=null and contextenglish!=''">`context_english` = #{contextenglish},</if>
+        <if test="contextEnglish!=null and contextEnglish!=''">`context_english` = #{contextEnglish},</if>
         <if test="service!=null and service!=''">`service` = #{service},</if>
                `update_user_id` = #{updateUserId},
                `update_time` = NOW()

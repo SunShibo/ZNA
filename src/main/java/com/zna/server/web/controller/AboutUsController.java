@@ -49,7 +49,7 @@ public class AboutUsController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateAboutUs")
-    public void updateAboutUs(String pictureUrl,String context,String contextEnglish,
+    public void updateAboutUs(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,
                            String service,HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
@@ -64,13 +64,13 @@ public class AboutUsController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||StringUtils.isEmpty(service)){
+            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(pictureUrlPc)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||StringUtils.isEmpty(service)){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            aboutUsService.updateAboutUs(pictureUrl,context,contextEnglish,service,loginAdmin.getId(),loginAdmin.getId());
+            aboutUsService.updateAboutUs(pictureUrl,pictureUrlPc,context,contextEnglish,service,loginAdmin.getId(),loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

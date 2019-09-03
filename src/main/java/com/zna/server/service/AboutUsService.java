@@ -24,10 +24,11 @@ public class AboutUsService {
      * @param service
      * @param updateUserId
      */
-    public void updateAboutUs(String pictureUrl,String context,String contextEnglish,
+    public void updateAboutUs(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,
                               String service,Integer createUserId,Integer updateUserId){
         AboutUsBO aboutUsBO = new AboutUsBO();
         aboutUsBO.setPictureUrl(pictureUrl);
+        aboutUsBO.setPictureUrlPc(pictureUrlPc);
         aboutUsBO.setContext(context);
         aboutUsBO.setContextEnglish(contextEnglish);
         aboutUsBO.setService(service);

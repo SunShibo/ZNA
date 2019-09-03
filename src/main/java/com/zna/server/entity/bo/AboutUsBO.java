@@ -7,6 +7,7 @@ import java.util.Date;
 public class AboutUsBO extends BaseModel {
     private Integer id; //关于我们
     private String pictureUrl; //图片url
+    private String pictureUrlPc;//
     private String context; //内容
     private String contextEnglish; //内容(英文)
     private String service; //服务
@@ -29,6 +30,14 @@ public class AboutUsBO extends BaseModel {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public String getPictureUrlPc() {
+        return pictureUrlPc;
+    }
+
+    public void setPictureUrlPc(String pictureUrlPc) {
+        this.pictureUrlPc = pictureUrlPc;
     }
 
     public String getContext() {
@@ -92,8 +101,9 @@ public class AboutUsBO extends BaseModel {
         return "AboutUsBO{" +
                 "id=" + id +
                 ", pictureUrl='" + pictureUrl + '\'' +
+                ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", context='" + context + '\'' +
-                ", contextenglish='" + contextEnglish + '\'' +
+                ", contextEnglish='" + contextEnglish + '\'' +
                 ", service='" + service + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
