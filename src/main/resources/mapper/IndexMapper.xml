@@ -27,7 +27,6 @@
         <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish}, </if>
         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl}, </if>
         <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}, </if>
-        <if test="sort!=null ">`sort`=#{sort},  </if>
         <if test="skipId!=null "> `skip_id`=#{skipId}, </if>
         <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},  </if>
         <if test="updateUserId!=null ">`update_user_id`=#{updateUserId},  </if>

@@ -138,7 +138,7 @@ public class IndexController extends BaseCotroller {
      */
     @RequestMapping("/updateIndex")
     public void updateIndex(Integer id,String title,String titleEnglish,String context,String contextEnglish,
-                            String pictureUrl,String pictureUrlPc,Integer sort,Integer skipId,String skipUrl,
+                            String pictureUrl,String pictureUrlPc,Integer skipId,String skipUrl,
                          HttpServletRequest request,HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
@@ -159,7 +159,7 @@ public class IndexController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            indexService.updateIndex(id,title,titleEnglish,context,contextEnglish,pictureUrl,pictureUrlPc,sort,skipId,skipUrl,adminBO.getId());
+            indexService.updateIndex(id,title,titleEnglish,context,contextEnglish,pictureUrl,pictureUrlPc,skipId,skipUrl,adminBO.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
