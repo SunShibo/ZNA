@@ -10,7 +10,6 @@ public class AboutUsBO extends BaseModel {
     private String pictureUrlPc;//
     private String context; //内容
     private String contextEnglish; //内容(英文)
-    private String service; //服务
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -56,14 +55,6 @@ public class AboutUsBO extends BaseModel {
         this.contextEnglish = contextEnglish;
     }
 
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
     public Integer getCreateUserId() {
         return createUserId;
     }
@@ -104,7 +95,6 @@ public class AboutUsBO extends BaseModel {
                 ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", context='" + context + '\'' +
                 ", contextEnglish='" + contextEnglish + '\'' +
-                ", service='" + service + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +

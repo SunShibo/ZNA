@@ -2,10 +2,7 @@ package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.*;
 import com.zna.server.entity.dto.ResultDTOBuilder;
-import com.zna.server.service.AboutUsService;
-import com.zna.server.service.ContactWayService;
-import com.zna.server.service.CooperativeClientService;
-import com.zna.server.service.FromPictureService;
+import com.zna.server.service.*;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.util.StringUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
@@ -37,6 +34,8 @@ public class AboutUsController extends BaseCotroller {
     private ContactWayService contactWayService;
     @Resource
     private FromPictureService fromPictureService;
+    @Resource
+    private ServiceusService serviceusService;
 
     /**
      * 更新关于我们
@@ -70,7 +69,7 @@ public class AboutUsController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            aboutUsService.updateAboutUs(pictureUrl,pictureUrlPc,context,contextEnglish,service,loginAdmin.getId(),loginAdmin.getId());
+            aboutUsService.updateAboutUs(pictureUrl,pictureUrlPc,context,contextEnglish,loginAdmin.getId(),loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
@@ -106,11 +105,13 @@ public class AboutUsController extends BaseCotroller {
             //最下面联系方式
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             FromPictureBO fromPictureBO = fromPictureService.getFromPicture();
+            ServiceusBO serviceusBO = serviceusService.getservice();
             Map<String,Object> map = new HashMap<>();
             map.put("aboutUs",aboutUsBO);
             map.put("cooperativeClientBOS",cooperativeClientBOS);
             map.put("contactWayBO",contactWayBO);
             map.put("fromPictureBO",fromPictureBO);
+            map.put("serviceusBO",serviceusBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
