@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.ServiceusDAO">
+
+    <insert id="addservice" parameterType="com.zna.server.entity.bo.ServiceusBO">
+        INSERT INTO `zna_service` (`title`, `context`, `picture_url`, `picture_url_pc`)
+        VALUES (#{title},#{context},#{pictureUrl},#{pictureUrlPc});
+    </insert>
+
+    <update id="updateservice" parameterType="com.zna.server.entity.bo.ServiceusBO">
+        UPDATE `zna_service`
+        set
+        <if test="title!=null and title!=''">`title`=#{title},</if>
+         <if test="context!=null and context!=''">`context`=#{context},</if>
+         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+         <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}</if>
+
+    </update>
+
+    <!--查询条数-->
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM `zna_service`
+    </select>
+
+    <!--查询-->
+    <select id="getservice" resultType="com.zna.server.entity.bo.ServiceusBO">
+        SELECT * FROM `zna_service`
+    </select>
+
+</mapper>
