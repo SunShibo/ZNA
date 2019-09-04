@@ -41,10 +41,10 @@
     <select id="getProject" resultType="com.zna.server.entity.bo.ProjectBO">
         SELECT * FROM `zna_project`
         <where>
-            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%',</if>
-            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName},</if>
-            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish},</if>
-            <if test="type!=null and type!=''">`type`=#{type}</if>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+            <if test="projectTypeName!=null and projectTypeName!=''"> AND project_type_name = #{projectTypeName}</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">and project_type_name_english = #{projectTypeNameEnglish}</if>
+            <if test="type!=null and type!=''">and `type`=#{type}</if>
         </where>
         order by sort desc
         <if test="pageOffset!=null and pageSize!=null">
@@ -54,10 +54,10 @@
     <select id="getCount" resultType="java.lang.Integer">
         SELECT COUNT(id) FROM `zna_project`
         <where>
-            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%',</if>
-            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName},</if>
-            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish},</if>
-            <if test="type!=null and type!=''">`type`=#{type}</if>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+            <if test="projectTypeName!=null and projectTypeName!=''">AND project_type_name = #{projectTypeName}</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">and project_type_name_english=#{projectTypeNameEnglish}</if>
+            <if test="type!=null and type!=''">and `type`=#{type}</if>
         </where>
     </select>
     <select id="getProjectDetails" resultType="com.zna.server.entity.bo.ProjectBO">
