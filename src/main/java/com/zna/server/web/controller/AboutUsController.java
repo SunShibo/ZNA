@@ -36,6 +36,8 @@ public class AboutUsController extends BaseCotroller {
     private FromPictureService fromPictureService;
     @Resource
     private ServiceusService serviceusService;
+    @Resource
+    private AboutBannerService aboutBannerService;
 
     /**
      * 更新关于我们
@@ -97,7 +99,8 @@ public class AboutUsController extends BaseCotroller {
             //获取管理员对象
             AdminBO loginAdmin = super.getLoginAdmin(request);
             log.info("user{}",loginAdmin);
-
+            //关于我们banner
+            List<AboutBannerBO> aboutBannerBOS = aboutBannerService.selectAboutBanner(null);
             //关于我们展示
            AboutUsBO aboutUsBO = aboutUsService.getAboutUs();
             //合作客户展示
@@ -107,6 +110,7 @@ public class AboutUsController extends BaseCotroller {
             FromPictureBO fromPictureBO = fromPictureService.getFromPicture();
             ServiceusBO serviceusBO = serviceusService.getservice();
             Map<String,Object> map = new HashMap<>();
+            map.put("aboutBannerBOS",aboutBannerBOS);
             map.put("aboutUs",aboutUsBO);
             map.put("cooperativeClientBOS",cooperativeClientBOS);
             map.put("contactWayBO",contactWayBO);

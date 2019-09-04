@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.AboutBannerDAO">
+
+    <!--查询banner-->
+    <select id="selectAboutBanner" resultType="com.zna.server.entity.bo.AboutBannerBO" parameterType="java.lang.String">
+        SELECT * FROM `zna_about_banner`
+        <where>
+            <if test="state!=null and state!=''"> `state`=#{state}</if>
+            <if test="state==null">`state`='show'</if>
+        </where>
+        order by sort desc
+    </select>
+    <!--新增banner-->
+    <insert id="addAboutBanner" parameterType="com.zna.server.entity.bo.AboutBannerBO">
+        INSERT INTO `zna_about_banner` ( `picture_url`,`picture_url_pc`, `skip_url`, `skip_type`, `skip_id`,
+                                  `sort`, `state`, `create_user_id`, `create_time`)
+                            VALUES (#{pictureUrl},#{pictureUrlPc}, #{skipUrl},#{skipType},#{skipId},
+                                    #{sort},#{state},#{createUserId},NOW())
+    </insert>
+    <!--修改banner-->
+    <update id="updateAboutBanner" parameterType="com.zna.server.entity.bo.AboutBannerBO">
+        UPDATE `zna_about_banner` SET
+        <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+        <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
+        <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},</if>
+        <if test="skipType!=null and skipType!=''">`skip_type`=#{skipType},</if>
+        <if test="skipId!=null and skipId!=''">`skip_id`=#{skipId},</if>
+        <if test="sort!=null and sort!=''">`sort`=#{sort},</if>
+        <if test="state!=null and state!=''">`state`=#{state},</if>
+        `update_user_id`=#{updateUserId},
+        `update_time`=NOW()
+        WHERE id=#{id}
+    </update>
+    <!--上下架-->
+    <update id="showOrNotAboutBanner">
+        UPDATE `zna_about_banner` SET `state`=#{state},`update_user_id`=#{updateUserId}, `update_time`=NOW()
+        WHERE id = #{id}
+    </update>
+    <!--物理删除banner-->
+    <delete id="removeAboutBanner">
+        delete from `zna_about_banner` where id=#{id}
+    </delete>
+
+</mapper>
