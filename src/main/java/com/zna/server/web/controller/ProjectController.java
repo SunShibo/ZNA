@@ -175,7 +175,7 @@ public class ProjectController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/getProject")
-    public void getProject(String title,String projectTypeName,String projectTypeNameEnglish,Integer pageNo,Integer pageSize, HttpServletRequest request, HttpServletResponse response){
+    public void getProject(String title,String type,String projectTypeName,String projectTypeNameEnglish,Integer pageNo,Integer pageSize, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -184,8 +184,8 @@ public class ProjectController extends BaseCotroller {
             log.info("user{}",loginAdmin);
 
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
-            List<ProjectBO> projectBOS = projectService.getProject(title,projectTypeName,projectTypeNameEnglish,queryInfo.getPageOffset(),queryInfo.getPageSize());
-            Integer count = projectService.getCount(title, projectTypeName, projectTypeNameEnglish);
+            List<ProjectBO> projectBOS = projectService.getProject(title,type,projectTypeName,projectTypeNameEnglish,queryInfo.getPageOffset(),queryInfo.getPageSize());
+            Integer count = projectService.getCount(title, type,projectTypeName, projectTypeNameEnglish);
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
             map.put("projectBOS",projectBOS);
@@ -211,7 +211,7 @@ public class ProjectController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/getProjectDetails")
-    public void getProjectDetails(Integer id, HttpServletRequest request, HttpServletResponse response){
+    public void getProjectDetails(Integer id,String type, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -227,7 +227,7 @@ public class ProjectController extends BaseCotroller {
                 return ;
             }
             //项目详情
-            ProjectBO projectBO = projectService.getProjectDetails(id);
+            ProjectBO projectBO = projectService.getProjectDetails(id,type);
             //联系方式
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();

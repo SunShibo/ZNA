@@ -7,11 +7,11 @@
 
     <!--新增项目-->
     <insert id="addProject" parameterType="com.zna.server.entity.bo.ProjectBO">
-        INSERT INTO `zna_project` ( `project_type_name`, `project_type_name_english`, `title`, `title_english`, `sort`, `picture_url`,`picture_url_pc`, `site`, `site_english`, `context`, `context_english`, `create_user_id`, `create_time`)
+        INSERT INTO `zna_project` ( `project_type_name`, `project_type_name_english`, `title`, `title_english`, `type`,`sort`, `picture_url`,`picture_url_pc`, `site`, `site_english`, `context`, `context_english`, `create_user_id`, `create_time`)
         VALUES
         <!--<foreach collection="pictureUrlArr" item="pictureUrl" separator=",">-->
         (#{projectTypeName},#{projectTypeNameEnglish},#{title},#{titleEnglish},
-        #{sort},#{pictureUrl},#{pictureUrlPc},#{site},#{siteEnglish},#{context},#{contextEnglish},
+        #{type},#{sort},#{pictureUrl},#{pictureUrlPc},#{site},#{siteEnglish},#{context},#{contextEnglish},
         #{createUserId},NOW())
         <!--</foreach>-->
     </insert>
@@ -41,9 +41,10 @@
     <select id="getProject" resultType="com.zna.server.entity.bo.ProjectBO">
         SELECT * FROM `zna_project`
         <where>
-            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
-            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName}</if>
-            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish}</if>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%',</if>
+            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName},</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish},</if>
+            <if test="type!=null and type!=''">`type`=#{type}</if>
         </where>
         order by sort desc
         <if test="pageOffset!=null and pageSize!=null">
@@ -53,9 +54,10 @@
     <select id="getCount" resultType="java.lang.Integer">
         SELECT COUNT(id) FROM `zna_project`
         <where>
-            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
-            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName}</if>
-            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish}</if>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%',</if>
+            <if test="projectTypeName!=null and projectTypeName!=''">project_type_name = #{projectTypeName},</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">project_type_name_english={projectTypeNameEnglish},</if>
+            <if test="type!=null and type!=''">`type`=#{type}</if>
         </where>
     </select>
     <select id="getProjectDetails" resultType="com.zna.server.entity.bo.ProjectBO">

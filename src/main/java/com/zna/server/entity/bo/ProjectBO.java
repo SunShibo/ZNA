@@ -10,6 +10,7 @@ public class ProjectBO extends BaseModel {
     private String projectTypeNameEnglish; //项目分类名称（英文）
     private String title; //标题
     private String titleEnglish; //标题（英文）
+    private String type;//分类
     private Integer sort; //序号
     private String pictureUrl; //图片url
     private String pictureUrlPc; //图片url
@@ -24,6 +25,14 @@ public class ProjectBO extends BaseModel {
 
     private Integer beforeProjectId;//前一个核心团队id
     private Integer afterProjectId;//后一个核心团队id
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getPictureUrlPc() {
         return pictureUrlPc;

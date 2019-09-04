@@ -60,17 +60,17 @@ public class ProjectService {
      * @param title
      * @return
      */
-    public List<ProjectBO> getProject(String title,String projectTypeName,String projectTypeNameEnglish,Integer pageOffset,Integer pageSize){
-        return projectDAO.getProject(title,projectTypeName,projectTypeNameEnglish,pageOffset,pageSize);
+    public List<ProjectBO> getProject(String title,String type,String projectTypeName,String projectTypeNameEnglish,Integer pageOffset,Integer pageSize){
+        return projectDAO.getProject(title,type,projectTypeName,projectTypeNameEnglish,pageOffset,pageSize);
     }
 
-    public Integer getCount(String title,String projectTypeName,String projectTypeNameEnglish){
-        return projectDAO.getCount(title, projectTypeName, projectTypeNameEnglish);
+    public Integer getCount(String title,String type,String projectTypeName,String projectTypeNameEnglish){
+        return projectDAO.getCount(title, type,projectTypeName, projectTypeNameEnglish);
     }
 
     /*项目详情 */
-    public ProjectBO getProjectDetails(Integer id){
-        List<ProjectBO> projectBOS = projectDAO.getProject(null,null,null,null,null);
+    public ProjectBO getProjectDetails(Integer id,String type){//查看详情的时候得传哪个分类
+        List<ProjectBO> projectBOS = projectDAO.getProject(null,type,null,null,null,null);
         ProjectBO projectBO = projectDAO.getProjectDetails(id);
         for (int i=0;i<projectBOS.size();i++) {
             if(projectBOS.get(i).getId().equals(id)){
