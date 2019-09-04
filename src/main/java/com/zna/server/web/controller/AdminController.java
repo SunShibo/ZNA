@@ -181,7 +181,6 @@ public class AdminController extends BaseCotroller {
         String date= JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000208"));
         super.safeJsonPrint(response,date);
         return;
-
     }
 
     /**
