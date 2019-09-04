@@ -172,10 +172,16 @@ public class AdminController extends BaseCotroller {
         }
         //转换为数组 批量删除
         Integer[] ids= JsonUtils.getIntegerArray4Json(idArr);
-        adminService.delAdminById(ids);
-        String date= JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("删除成功"));
+        boolean t =adminService.delAdminById(ids);
+        if (t){
+            String date= JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("删除成功"));
+            super.safeJsonPrint(response,date);
+            return;
+        }
+        String date= JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000208"));
         super.safeJsonPrint(response,date);
         return;
+
     }
 
     /**

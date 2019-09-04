@@ -91,7 +91,7 @@
 
     <!--查询角色下是否存在用户-->
     <select id="checkRoleUser"   parameterType="java.lang.Integer"  resultType="int">
-           SELECT count(id) FROM zna_admin  WHERE  role_id =#{roleId}
+        SELECT count(id) FROM zna_admin  WHERE  role_id =#{roleId}
     </select>
     <!--根据角色id修改角色名称  -->
     <select id="updateRoleNameByRoleId">
@@ -134,6 +134,10 @@
             id=#{id}
         </foreach>
     </delete>
+    <!--查询用户数量为1时不允许删除-->
+    <select id="getAdminCount" resultType="int">
+        SELECT COUNT(*) FROM  zna_admin
+    </select>
     <!--查询角色拥有的权限-->
     <select id="getMenuByRoleId"  resultType="com.zna.server.entity.bo.MenuBO"  parameterType="java.lang.Integer">
         select me.*

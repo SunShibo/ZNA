@@ -101,7 +101,8 @@ public interface AdminDAO {
      * @param idArr 用户id
      * @return
      */
-    boolean delAdminById(@Param("idArr") Integer[] idArr);
+    void delAdminById(@Param("idArr") Integer[] idArr);
+    int getAdminCount();
 
     /**
      * 根据角色id删除对应的所有权限

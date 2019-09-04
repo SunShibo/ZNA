@@ -304,7 +304,12 @@ public class AdminService {
      * @return
      */
     public boolean delAdminById(Integer[] idArr) {
-        return adminDAO.delAdminById(idArr);
+        int count = adminDAO.getAdminCount();
+        if (count==1){
+            return false;
+        }
+        adminDAO.delAdminById(idArr);
+        return true;
     }
 
     /**
