@@ -3,6 +3,7 @@ package com.zna.server.util;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,7 +19,8 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "C:/image/"; //生成的文件路径
+        String newFilePath = "C:/file/"; //生成的文件路径
+//        String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() ;//存储路径
         boolean isRatio = true;
 //        if(isRatio) {
 //            // 按照宽度还是高度进行压缩
@@ -60,7 +62,8 @@ public class ImageUtil {
             file2.mkdirs();
         String filePath = newFilePath + fileName;
         ImageIO.write(image, str[str.length-1], new File(filePath));
-        result = "/image/" + fileName;
+        result = "/file/" + fileName;
+
         return result;
     }
 
@@ -71,7 +74,7 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "C:/image/"; //生成的文件路径
+        String newFilePath = "C:/file/"; //生成的文件路径
         boolean isRatio = true;
 //        if(isRatio)
 //        {
@@ -114,7 +117,7 @@ public class ImageUtil {
             file2.mkdirs();
         String filePath = newFilePath + fileName;
         ImageIO.write(image, str[str.length-1], new File(filePath));
-        result = "/image/" + fileName;
+        result = "/file/" + fileName;
         return result;
     }
 }
