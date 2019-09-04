@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 【用户】 -->
+<mapper namespace="com.zna.server.dao.ProjectTypeDAO">
+
+    <update id="updateProjectType" parameterType="com.zna.server.entity.bo.ProjectTypeBO">
+        UPDATE `zna_project_type`
+        <set>
+
+            <if test="projectTypeName!=null and projectTypeName!=''">`project_type_name`=#{projectTypeName},</if>
+            <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">`project_type_name_english`=#{projectTypeNameEnglish},</if>
+            <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
+            <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}</if>
+        </set>
+          WHERE id=#{id}
+    </update>
+
+    <select id="selectProjectType" resultType="com.zna.server.entity.bo.ProjectTypeBO">
+        SELECT * FROM `zna_project_type`
+    </select>
+
+</mapper>
