@@ -42,16 +42,15 @@ public class AboutUsController extends BaseCotroller {
     /**
      * 更新关于我们
      * 有数据就修改，没有就添加
-     * @param pictureUrl
-     * @param context
-     * @param contextEnglish
-     * @param service
-     * @param request
-     * @param response
+     *  pictureUrl
+     *  context
+     *  contextEnglish
+     *  service
+     *  request
+     *  response
      */
     @RequestMapping("/updateAboutUs")
-    public void updateAboutUs(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,
-                           String service,HttpServletRequest request, HttpServletResponse response){
+    public void updateAboutUs(AboutUsBO aboutUsBO,HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -65,13 +64,15 @@ public class AboutUsController extends BaseCotroller {
                 return ;
             }
             //参数验证
-            if (StringUtils.isEmpty(pictureUrl)||StringUtils.isEmpty(pictureUrlPc)||StringUtils.isEmpty(context)||StringUtils.isEmpty(contextEnglish)||StringUtils.isEmpty(service)){
+            if (aboutUsBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            aboutUsService.updateAboutUs(pictureUrl,pictureUrlPc,context,contextEnglish,loginAdmin.getId(),loginAdmin.getId());
+            aboutUsBO.setCreateUserId(loginAdmin.getId());
+            aboutUsBO.setUpdateUserId(loginAdmin.getId());
+            aboutUsService.updateAboutUs( aboutUsBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

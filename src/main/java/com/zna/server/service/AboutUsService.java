@@ -24,22 +24,17 @@ public class AboutUsService {
      * @param service
      * @param updateUserId
      */
-    public void updateAboutUs(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,
-                              Integer createUserId,Integer updateUserId){
-        AboutUsBO aboutUsBO = new AboutUsBO();
-        aboutUsBO.setPictureUrl(pictureUrl);
-        aboutUsBO.setPictureUrlPc(pictureUrlPc);
-        aboutUsBO.setContext(context);
-        aboutUsBO.setContextEnglish(contextEnglish);
+    public void updateAboutUs(AboutUsBO aboutUsBO){
+
         //查询表中数据
         int t = aboutUsDAO.getCount();
         //没有数据就新增
         if (t<1){
-            aboutUsBO.setCreateUserId(createUserId);
+
             aboutUsDAO.addAboutUs(aboutUsBO);
         }else {
             //有数据就修改更新
-            aboutUsBO.setUpdateUserId(updateUserId);
+
             aboutUsDAO.updateAboutUs(aboutUsBO);
         }
 
