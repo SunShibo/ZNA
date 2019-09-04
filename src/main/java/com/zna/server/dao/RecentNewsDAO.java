@@ -13,7 +13,7 @@ public interface RecentNewsDAO {
 
     void updateRecentNews(RecentNewsBO recentNewsBO);
 
-    List<RecentNewsBO> selectRecentNews(@Param("id") Integer id,@Param("pageOffset")Integer pageOffset,@Param("pageSize")Integer pageSize);
+    List<RecentNewsBO> selectRecentNews(@Param("title") String title,@Param("id") Integer id,@Param("pageOffset")Integer pageOffset,@Param("pageSize")Integer pageSize);
 
     RecentNewsBO selectRecentNewsDetails(Integer id);
 

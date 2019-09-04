@@ -38,12 +38,12 @@ public class RecentNewsService {
         recentNewsDAO.updateRecentNews(recentNewsBO);
     }
 
-    public List<RecentNewsBO> selectRecentNews(Integer id,Integer pageOffset,Integer pageSize){
-        return recentNewsDAO.selectRecentNews(id,pageOffset,pageSize);
+    public List<RecentNewsBO> selectRecentNews(String title,Integer id,Integer pageOffset,Integer pageSize){
+        return recentNewsDAO.selectRecentNews(title,id,pageOffset,pageSize);
     }
 
     public RecentNewsBO selectRecentNewsDetails(Integer id){
-        List<RecentNewsBO> recentNewsBOS = recentNewsDAO.selectRecentNews(null,null,null);
+        List<RecentNewsBO> recentNewsBOS = recentNewsDAO.selectRecentNews(null,null,null,null);
         RecentNewsBO recentNewsBO = recentNewsDAO.selectRecentNewsDetails(id);
         for (int i=0;i<recentNewsBOS.size();i++) {
             if(recentNewsBOS.get(i).getId().equals(id)){

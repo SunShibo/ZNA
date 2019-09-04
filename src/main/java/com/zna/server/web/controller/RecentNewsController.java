@@ -176,7 +176,7 @@ public class RecentNewsController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/selectRecentNews")
-    public void selectRecentNews(Integer id,Integer pageNo,Integer pageSize,HttpServletRequest request, HttpServletResponse response){
+    public void selectRecentNews(String title,Integer id,Integer pageNo,Integer pageSize,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -185,7 +185,7 @@ public class RecentNewsController extends BaseCotroller {
             log.info("user{}",loginAdmin);
 
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
-            List<RecentNewsBO> recentNewsBOS = recentNewsService.selectRecentNews(id,queryInfo.getPageOffset(),queryInfo.getPageSize());
+            List<RecentNewsBO> recentNewsBOS = recentNewsService.selectRecentNews(title,id,queryInfo.getPageOffset(),queryInfo.getPageSize());
             Integer count = recentNewsService.getCount(id);
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
