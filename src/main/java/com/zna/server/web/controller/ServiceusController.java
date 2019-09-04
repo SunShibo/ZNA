@@ -32,7 +32,7 @@ public class ServiceusController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateservice")
-    public void updateservice(String pictureUrl,String pictureUrlPc,String context,String title, HttpServletRequest request, HttpServletResponse response){
+    public void updateservice(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,String title,String titleEnglish, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -52,7 +52,7 @@ public class ServiceusController extends BaseCotroller {
 //                log.info("result{}",result);
 //                return ;
 //            }
-            serviceusService.updateservice(pictureUrl,pictureUrlPc,context,title);
+            serviceusService.updateservice(pictureUrl,pictureUrlPc,context,contextEnglish,title,titleEnglish);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

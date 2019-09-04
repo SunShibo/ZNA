@@ -6,15 +6,17 @@
 <mapper namespace="com.zna.server.dao.ServiceusDAO">
 
     <insert id="addservice" parameterType="com.zna.server.entity.bo.ServiceusBO">
-        INSERT INTO `zna_service` (`title`, `context`, `picture_url`, `picture_url_pc`)
-        VALUES (#{title},#{context},#{pictureUrl},#{pictureUrlPc});
+        INSERT INTO `zna_service` (`title`,`title_english`, `context`,`context_english`, `picture_url`, `picture_url_pc`)
+        VALUES (#{title},#{titleEnglish},#{context},#{contextEnglish},#{pictureUrl},#{pictureUrlPc});
     </insert>
 
     <update id="updateservice" parameterType="com.zna.server.entity.bo.ServiceusBO">
         UPDATE `zna_service`
         <set>
         <if test="title!=null and title!=''">`title`=#{title},</if>
+            <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish},</if>
          <if test="context!=null and context!=''">`context`=#{context},</if>
+            <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish},</if>
          <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
          <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}</if>
         </set>

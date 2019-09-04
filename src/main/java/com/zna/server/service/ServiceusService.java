@@ -15,10 +15,12 @@ public class ServiceusService {
     private ServiceusDAO serviceusDAO;
 
 
-    public void updateservice(String pictureUrl,String pictureUrlPc,String context,String title){
+    public void updateservice(String pictureUrl,String pictureUrlPc,String context,String contextEnglish,String title,String titleEnglish){
         ServiceusBO serviceusBO = new ServiceusBO();
         serviceusBO.setTitle(title);
+        serviceusBO.setTitleEnglish(titleEnglish);
         serviceusBO.setContext(context);
+        serviceusBO.setContextEnglish(contextEnglish);
         serviceusBO.setPictureUrl(pictureUrl);
         serviceusBO.setPictureUrlPc(pictureUrlPc);
         //查询表中数据

@@ -5,9 +5,27 @@ import com.zna.server.common.base.BaseModel;
 public class ServiceusBO extends BaseModel {
     private Integer id;
     private String title;
+    private String titleEnglish;
     private String context;
+    private String contextEnglish;
     private String pictureUrl;
     private String pictureUrlPc;
+
+    public String getTitleEnglish() {
+        return titleEnglish;
+    }
+
+    public void setTitleEnglish(String titleEnglish) {
+        this.titleEnglish = titleEnglish;
+    }
+
+    public String getContextEnglish() {
+        return contextEnglish;
+    }
+
+    public void setContextEnglish(String contextEnglish) {
+        this.contextEnglish = contextEnglish;
+    }
 
     public Integer getId() {
         return id;
