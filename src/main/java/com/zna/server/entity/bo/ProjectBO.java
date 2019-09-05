@@ -16,6 +16,12 @@ public class ProjectBO extends BaseModel {
     private String pictureUrlPc; //图片url
     private String site; //地点
     private String siteEnglish; //地点（英文）
+    private String floorSpace;//场地面积
+    private String floorSpaceEnglish;//
+    private String coveredArea;//建筑面积
+    private String coveredAreaEnglish;//
+    private String client;//业主
+    private String clientEnglish;//
     private String context; //内容
     private String contextEnglish; //内容（英文）
     private Integer createUserId; //创建人
@@ -25,6 +31,54 @@ public class ProjectBO extends BaseModel {
 
     private Integer beforeProjectId;//前一个核心团队id
     private Integer afterProjectId;//后一个核心团队id
+
+    public String getFloorSpace() {
+        return floorSpace;
+    }
+
+    public void setFloorSpace(String floorSpace) {
+        this.floorSpace = floorSpace;
+    }
+
+    public String getFloorSpaceEnglish() {
+        return floorSpaceEnglish;
+    }
+
+    public void setFloorSpaceEnglish(String floorSpaceEnglish) {
+        this.floorSpaceEnglish = floorSpaceEnglish;
+    }
+
+    public String getCoveredArea() {
+        return coveredArea;
+    }
+
+    public void setCoveredArea(String coveredArea) {
+        this.coveredArea = coveredArea;
+    }
+
+    public String getCoveredAreaEnglish() {
+        return coveredAreaEnglish;
+    }
+
+    public void setCoveredAreaEnglish(String coveredAreaEnglish) {
+        this.coveredAreaEnglish = coveredAreaEnglish;
+    }
+
+    public String getClient() {
+        return client;
+    }
+
+    public void setClient(String client) {
+        this.client = client;
+    }
+
+    public String getClientEnglish() {
+        return clientEnglish;
+    }
+
+    public void setClientEnglish(String clientEnglish) {
+        this.clientEnglish = clientEnglish;
+    }
 
     public String getType() {
         return type;
