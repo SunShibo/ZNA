@@ -11,7 +11,7 @@ public class TeamBO extends BaseModel {
     private String nameEnglish; //名字（英文）
     private String headPortrait; //头像
     private String headPortraitPc; //头像
-    private String position; //简介
+    private String position; //职位
     private String positionEnglish; //职位（英文）
     private String intro; //简介
     private String introEnglish; //简介（英文）

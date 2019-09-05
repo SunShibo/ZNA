@@ -47,9 +47,13 @@ public class AboutBannerService {
      * @param state
      * @param updateUserId
      */
-    public void updateAboutBanner(Integer id,String pictureUrl,String pictureUrlPc,String skipUrl,String skipType,Integer skipId,Integer sort,String state,Integer updateUserId){
+    public void updateAboutBanner(Integer id,String title,String titleEnglish,String context,String contextEnglish,String pictureUrl,String pictureUrlPc,String skipUrl,String skipType,Integer skipId,Integer sort,String state,Integer updateUserId){
         AboutBannerBO bannerBO = new AboutBannerBO();
         bannerBO.setId(id);
+        bannerBO.setTitle(title);
+        bannerBO.setTitleEnglish(titleEnglish);
+        bannerBO.setContext(context);
+        bannerBO.setContextEnglish(contextEnglish);
         bannerBO.setPictureUrl(pictureUrl);
         bannerBO.setPictureUrlPc(pictureUrlPc);
         bannerBO.setSkipUrl(skipUrl);

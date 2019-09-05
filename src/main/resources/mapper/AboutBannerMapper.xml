@@ -16,14 +16,18 @@
     </select>
     <!--新增banner-->
     <insert id="addAboutBanner" parameterType="com.zna.server.entity.bo.AboutBannerBO">
-        INSERT INTO `zna_about_banner` ( `picture_url`,`picture_url_pc`, `skip_url`, `skip_type`, `skip_id`,
-                                  `sort`, `state`, `create_user_id`, `create_time`)
-                            VALUES (#{pictureUrl},#{pictureUrlPc}, #{skipUrl},#{skipType},#{skipId},
+        INSERT INTO `zna_about_banner` (`title`,`title_english`,`context`,`context_english`,`picture_url`,`picture_url_pc`, `skip_url`, `skip_type`, `skip_id`,
+                                  `sort`,`state`,`create_user_id`,`create_time`)
+                            VALUES (#{title},#{titleEnglish},#{context},#{contextEnglish},#{pictureUrl},#{pictureUrlPc}, #{skipUrl},#{skipType},#{skipId},
                                     #{sort},#{state},#{createUserId},NOW())
     </insert>
     <!--修改banner-->
     <update id="updateAboutBanner" parameterType="com.zna.server.entity.bo.AboutBannerBO">
         UPDATE `zna_about_banner` SET
+        <if test="title!=null and title!=''">`title`=#{title},</if>
+        <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish},</if>
+        <if test="context!=null and context!=''">`context`=#{context},</if>
+        <if test="contextEnglish!=null and contextEnglish!=''">`context_english`=#{contextEnglish},</if>
         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
         <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
         <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},</if>

@@ -6,6 +6,10 @@ import java.util.Date;
 
 public class AboutBannerBO extends BaseModel {
     private Integer id; //关于我们banner
+    private String title;//标题
+    private String titleEnglish;//
+    private String context;//内容
+    private String contextEnglish;//
     private String pictureUrl; //图片url
     private String pictureUrlPc; //图片url
     private String skipUrl; //跳转url
@@ -24,6 +28,38 @@ public class AboutBannerBO extends BaseModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitleEnglish() {
+        return titleEnglish;
+    }
+
+    public void setTitleEnglish(String titleEnglish) {
+        this.titleEnglish = titleEnglish;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public String getContextEnglish() {
+        return contextEnglish;
+    }
+
+    public void setContextEnglish(String contextEnglish) {
+        this.contextEnglish = contextEnglish;
     }
 
     public String getPictureUrl() {
