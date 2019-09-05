@@ -43,7 +43,7 @@ public class PersonnelRecruitmentController extends BaseCotroller{
             log.info("user{}",loginAdmin);
 
             //验证参数
-            List<PersonnelRecruitmentBO> officeContactBO=personnelRecruitmentContactService.getPersonnelRecruitment();
+            PersonnelRecruitmentBO officeContactBO=personnelRecruitmentContactService.getPersonnelRecruitment();
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
             map.put("officeContactBO",officeContactBO);
@@ -110,7 +110,7 @@ public class PersonnelRecruitmentController extends BaseCotroller{
                 log.info("result{}",result);
                 return;
             }
-            if (officeContactBO==null||officeContactBO.getId()==null){
+            if (officeContactBO==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);

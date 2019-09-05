@@ -13,16 +13,23 @@ public class PersonnelRecruitmentContactService {
     @Resource
     PersonnelRecruitmentDAO personnelRecruitmentDAO;
 
-    public List<PersonnelRecruitmentBO> getPersonnelRecruitment(){
+    public PersonnelRecruitmentBO getPersonnelRecruitment(){
         return personnelRecruitmentDAO.getPersonnelRecruitment();
     }
-    public Integer addPersonnelRecruitment(PersonnelRecruitmentBO personnelRecruitmentBO){
-        return personnelRecruitmentDAO.addPersonnelRecruitment(personnelRecruitmentBO);
+    public void addPersonnelRecruitment(PersonnelRecruitmentBO personnelRecruitmentBO){
+         personnelRecruitmentDAO.addPersonnelRecruitment(personnelRecruitmentBO);
     }
     public Integer delPersonnelRecruitment(Integer id){
         return personnelRecruitmentDAO.delPersonnelRecruitment(id);
     }
-    public Integer updPersonnelRecruitment(PersonnelRecruitmentBO personnelRecruitmentBO){
-        return personnelRecruitmentDAO.updPersonnelRecruitment(personnelRecruitmentBO);
+
+
+    public void updPersonnelRecruitment(PersonnelRecruitmentBO personnelRecruitmentBO){
+        int t = personnelRecruitmentDAO.getCount();
+        if (t<1){
+            personnelRecruitmentDAO.addPersonnelRecruitment(personnelRecruitmentBO);
+        }else {
+            personnelRecruitmentDAO.updPersonnelRecruitment(personnelRecruitmentBO);
+        }
     }
 }

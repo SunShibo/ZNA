@@ -12,6 +12,12 @@
     <insert id="addPersonnelRecruitment" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
        INSERT  INTO zna_personnel_recruitment
        <set>
+           <if test="title!=null and title!=''">
+               `title`=#{title},
+           </if>
+           <if test="titleEnglish!=null and titleEnglish!=''">
+               `title_english`=#{titleEnglish},
+           </if>
            <if test="context!=null and context!=''">
                `context`=#{context},
            </if>
@@ -38,6 +44,12 @@
     <update id="updPersonnelRecruitment" parameterType="com.zna.server.entity.bo.PersonnelRecruitmentBO">
         update  zna_personnel_recruitment
         <set>
+            <if test="title!=null and title!=''">
+                `title`=#{title},
+            </if>
+            <if test="titleEnglish!=null and titleEnglish!=''">
+                `title_english`=#{titleEnglish},
+            </if>
             <if test="context!=null and context!=''">
                 `context`=#{context},
             </if>
@@ -59,11 +71,14 @@
             update_user_id=#{updateUserId},
             update_time=now()
         </set>
-        where id=#{id}
     </update>
 
     <delete id="delPersonnelRecruitment" parameterType="java.lang.Integer">
         delete FROM `zna_personnel_recruitment` where id=#{id}
     </delete>
+
+    <select id="getCount" resultType="int">
+        SELECT COUNT(*) FROM `zna_personnel_recruitment`
+    </select>
 
 </mapper>

@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class PersonnelRecruitmentBO extends BaseModel {
     private Integer id; //人才招聘表
+    private String title;//标题
+    private String titleEnglish;//标题
     private String context; //内容
     private String contextEnglish; //内容（英文）
     private String announcements; //注意事项
@@ -31,6 +33,22 @@ public class PersonnelRecruitmentBO extends BaseModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitleEnglish() {
+        return titleEnglish;
+    }
+
+    public void setTitleEnglish(String titleEnglish) {
+        this.titleEnglish = titleEnglish;
     }
 
     public String getContext() {
