@@ -3,6 +3,7 @@ package com.zna.server.dao;
 import com.zna.server.entity.bo.OfficeContactBO;
 import com.zna.server.entity.bo.ProjectInvolvedBO;
 import com.zna.server.entity.bo.TeamBO;
+import com.zna.server.entity.bo.TeamProjectResultBO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,7 +21,9 @@ public interface TeamDAO {
 
     TeamBO getTeamNews();
 
-    void delTeamProject(@Param("teamId") Integer teamId, @Param("projectId") Integer projectId);
+    void delTeamProject(@Param("teamId") Integer teamId);
 
     List<ProjectInvolvedBO> getProjectById(Integer id);
+
+    List<TeamProjectResultBO> getProjectByTeamId(Integer id);
 }

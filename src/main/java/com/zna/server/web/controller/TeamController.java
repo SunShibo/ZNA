@@ -1,9 +1,6 @@
 package com.zna.server.web.controller;
 
-import com.zna.server.entity.bo.AdminBO;
-import com.zna.server.entity.bo.ContactWayBO;
-import com.zna.server.entity.bo.PersonnelRecruitmentBO;
-import com.zna.server.entity.bo.TeamBO;
+import com.zna.server.entity.bo.*;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.query.QueryInfo;
 import com.zna.server.service.ContactWayService;
@@ -270,14 +267,14 @@ public class TeamController extends BaseCotroller{
     }
 
     /**
-     * 删除人物的某个项目
+     * 修改人物的某些项目
      * @param teamId
-     * @param projectId
+     * @param projectIds
      * @param request
      * @param response
      */
-    @RequestMapping("/delTeamProject")
-    public void delTeamProject(Integer teamId,Integer projectId,HttpServletRequest request, HttpServletResponse response){
+    @RequestMapping("/updateTeamProject")
+    public void updateTeamProject(Integer teamId,String projectIds,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -290,15 +287,51 @@ public class TeamController extends BaseCotroller{
                 log.info("result{}",result);
                 return;
             }
-            if (teamId==null||projectId==null){
+            if (teamId==null||StringUtils.isEmpty(projectIds)){
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}",result);
+                return ;
+            }
+            Integer[] projectIdArr = JsonUtils.getIntegerArray4Json(projectIds);
+            teamService.updateTeamProject(teamId,projectIdArr);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功"));
+            super.safeJsonPrint(response, result);
+            log.info("result{}",result);
+            return ;
+        }catch (Exception e){
+            e.getStackTrace();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
+            super.safeJsonPrint(response, result);
+            log.error("delTeamProject",e);
+        }
+    }
+
+    /**
+     * 查询某个人参与的项目
+     * @param teamId
+     * @param request
+     * @param response
+     * return 项目id 项目标题
+     */
+    @RequestMapping("/getProjectByTeamId")
+    public void getProjectByTeamId(Integer teamId,HttpServletRequest request, HttpServletResponse response){
+        try {
+            log.info(request.getRequestURI());
+            log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
+            //获取管理员对象
+            AdminBO loginAdmin = super.getLoginAdmin(request);
+            log.info("user{}",loginAdmin);
+
+            if (teamId==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
 
-            teamService.delTeamProject(teamId,projectId);
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("删除成功"));
+            List<TeamProjectResultBO> teamProjectResultBOS = teamService.getProjectByTeamId(teamId);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(teamProjectResultBOS));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;

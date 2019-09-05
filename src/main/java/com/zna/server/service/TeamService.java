@@ -3,6 +3,7 @@ package com.zna.server.service;
 import com.zna.server.dao.TeamDAO;
 import com.zna.server.entity.bo.ProjectInvolvedBO;
 import com.zna.server.entity.bo.TeamBO;
+import com.zna.server.entity.bo.TeamProjectResultBO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,11 @@ public class TeamService {
                 return teamBO;
 
     }
+
+    public List<TeamProjectResultBO> getProjectByTeamId(Integer id){
+        return teamDAO.getProjectByTeamId(id);
+    }
+
     public Integer addTeamBO(TeamBO teamBO){
         return teamDAO.addTeamBO(teamBO);
     }
@@ -67,8 +73,9 @@ public class TeamService {
         return teamDAO.getTeamNews();
     }
 
-    public void delTeamProject( Integer teamId, Integer projectId){
-        teamDAO.delTeamProject(teamId, projectId);
+    public void updateTeamProject( Integer teamId, Integer[] projectIdArr){
+        teamDAO.delTeamProject(teamId);
+        teamDAO.addTeamProject(teamId,projectIdArr);
     }
 
 }

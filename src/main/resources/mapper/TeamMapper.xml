@@ -168,9 +168,9 @@
         SELECT * FROM zna_team ORDER BY id DESC LIMIT 1
     </select>
 
-    <!--删除某个人物的某个项目-->
+    <!--删除某个人物的某些项目-->
     <delete id="delTeamProject">
-        DELETE FROM zna_team_project  WHERE team_id = #{teamId} AND project_id =#{projectId}
+        DELETE FROM zna_team_project  WHERE team_id = #{teamId}
     </delete>
 
     <select id="getProjectById" resultType="com.zna.server.entity.bo.ProjectInvolvedBO">
@@ -179,6 +179,14 @@
 	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
 	LEFT JOIN zna_project pr ON tp.project_id = pr.id
 	WHERE te.id = #{id}
+    </select>
+
+    <select id="getProjectByTeamId" resultType="com.zna.server.entity.bo.TeamProjectResultBO">
+        SELECT pr.id,pr.title,pr.title_english
+        FROM zna_team te
+        LEFT JOIN zna_team_project tp ON te.id = tp.team_id
+        LEFT JOIN zna_project pr ON tp.project_id = pr.id
+        WHERE te.id = #{id}
     </select>
 
 
