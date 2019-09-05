@@ -12,9 +12,9 @@ public enum Constants {
     /* 首页跳转url : 办公综合体 */ OFFICEMIXEDUSE("OFFICE/MIXED-USE"),
     /* 首页跳转url : 文化教育 */ EDUCATIONSCIENCE("EDUCATION/SCIENCE"),
     /* 首页跳转url : 养生居住 */ RESIDENTIALHEALTHCARE("RESIDENTIAL/HEALTHCARE"),
-    /* 首页跳转url : 城市规划 */ MASTERPLANNING("MASTER PLANNING"),
-    /* 首页跳转url : 景观设计 */ LANDSCAPEDESIGN("LANDSCAPE DESIGN"),
-    /* 首页跳转url : 室内设计 */ INTERIORDESIGN("INTERIOR DESIGN"),
+    /* 首页跳转url : 城市规划 */ MASTERPLANNING("MASTER/PLANNING"),
+    /* 首页跳转url : 景观设计 */ LANDSCAPEDESIGN("LANDSCAPE/DESIGN"),
+    /* 首页跳转url : 室内设计 */ INTERIORDESIGN("INTERIOR/DESIGN"),
     /* 首页跳转url : 展览 */ CIVICEXHIBITION("CIVIC/EXHIBITION");
     Constants(String value) {
         this.value = value;
