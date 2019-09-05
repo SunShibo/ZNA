@@ -1,8 +1,10 @@
 package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
+import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.ProjectTypeBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
+import com.zna.server.service.ContactWayService;
 import com.zna.server.service.ProjectTypeService;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/projectType")
@@ -23,6 +27,8 @@ public class ProjectTypeController extends BaseCotroller {
 
     @Resource
     private ProjectTypeService projectTypeService;
+    @Resource
+    private ContactWayService contactWayService;
 
     @RequestMapping("/updateProjectType")
     public void updateProjectType(ProjectTypeBO projectTypeBO, HttpServletRequest request, HttpServletResponse response){
@@ -71,7 +77,11 @@ public class ProjectTypeController extends BaseCotroller {
             log.info("user{}",loginAdmin);
 
             List<ProjectTypeBO> projectTypeBOS = projectTypeService.selectProjectType();
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(projectTypeBOS));
+            ContactWayBO contactWayBO = contactWayService.getContactWay();
+            Map<String,Object> map = new HashMap<>();
+            map.put("projectTypeBOS",projectTypeBOS);
+            map.put("contactWayBO",contactWayBO);
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
