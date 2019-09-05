@@ -70,4 +70,10 @@
     <select id="getProjectDetails" resultType="com.zna.server.entity.bo.ProjectBO">
           SELECT * FROM `zna_project` WHERE id=#{id}
     </select>
+
+
+    <select id="getProjectIdList" resultMap="projectlist">
+        SELECT pr.id,pr.title,pr.title_english,pt.project_type_name_english
+        FROM zna_project pr LEFT JOIN zna_project_type pt ON pr.type=pt.project_type_name_english
+    </select>
 </mapper>
