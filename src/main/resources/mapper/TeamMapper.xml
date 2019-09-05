@@ -16,16 +16,17 @@
         <id column="id" property="id"/>
         <result column="id" property="id"/>
         <result column="name" property="name"/>
-        <result column="nameEnglish" property="nameEnglish"/>
-        <result column="headPortrait" property="headPortrait"/>
+        <result column="name_english" property="nameEnglish"/>
+        <result column="head_portrait" property="headPortrait"/>
+        <result column="head_portrait_pc" property="headPortraitPc"/>
         <result column="position" property="position"/>
-        <result column="positionEnglish" property="positionEnglish"/>
+        <result column="position_english" property="positionEnglish"/>
         <result column="intro" property="intro"/>
-        <result column="introEnglish" property="introEnglish"/>
+        <result column="intro_english" property="introEnglish"/>
         <result column="educational" property="educational"/>
-        <result column="educationalEnglish" property="educationalEnglish"/>
+        <result column="educational_english" property="educationalEnglish"/>
         <result column="aptitude" property="aptitude"/>
-        <result column="aptitudeEnglish" property="aptitudeEnglish"/>
+        <result column="aptitude_english" property="aptitudeEnglish"/>
         <result column="sort" property="sort"/>
         <collection property="projectPicture" ofType="com.zna.server.entity.bo.ProjectInvolvedBO">
             <result column="pictureUrl" property="projectPicture"/>
