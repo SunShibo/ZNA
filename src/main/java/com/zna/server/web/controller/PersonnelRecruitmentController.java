@@ -118,7 +118,7 @@ public class PersonnelRecruitmentController extends BaseCotroller{
             }
             officeContactBO.setUpdateUserId(loginAdmin.getId());
             personnelRecruitmentContactService.updPersonnelRecruitment(officeContactBO);
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功"));
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("更新成功"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
