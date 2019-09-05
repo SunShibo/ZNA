@@ -505,7 +505,7 @@
   <profile>
       <id>test</id>
       <properties>
-        <jdbc.url.ip>localhost:3306/test</jdbc.url.ip>
+        <jdbc.url.ip>localhost:3306/zna_server</jdbc.url.ip>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>root</jdbc.password>
 
