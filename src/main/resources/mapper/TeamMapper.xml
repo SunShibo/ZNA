@@ -186,7 +186,7 @@
         FROM zna_team te
         LEFT JOIN zna_team_project tp ON te.id = tp.team_id
         LEFT JOIN zna_project pr ON tp.project_id = pr.id
-        WHERE te.id = #{id}
+        WHERE te.id =  #{id}
     </select>
 
 
