@@ -74,8 +74,12 @@ public class TeamService {
     }
 
     public void updateTeamProject( Integer teamId, Integer[] projectIdArr){
-        teamDAO.delTeamProject(teamId);
-        teamDAO.addTeamProject(teamId,projectIdArr);
+        if (projectIdArr.length<=0){
+            teamDAO.delTeamProject(teamId);
+        }else {
+            teamDAO.delTeamProject(teamId);
+            teamDAO.addTeamProject(teamId, projectIdArr);
+        }
     }
 
 }
