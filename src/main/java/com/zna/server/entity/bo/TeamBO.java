@@ -19,6 +19,7 @@ public class TeamBO extends BaseModel {
     private String educationalEnglish; //教育背景（英文）
     private String aptitude; //专业资质
     private String aptitudeEnglish; //专业资质（英文）
+    private String aptitudeAbbreviation;//资质缩写
     private Integer sort; //序号
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
@@ -33,6 +34,14 @@ public class TeamBO extends BaseModel {
     private String afterUserNameEnglish;//后一个核心团队名称
 
     private List<ProjectInvolvedBO> projectPicture;//参与的项目
+
+    public String getAptitudeAbbreviation() {
+        return aptitudeAbbreviation;
+    }
+
+    public void setAptitudeAbbreviation(String aptitudeAbbreviation) {
+        this.aptitudeAbbreviation = aptitudeAbbreviation;
+    }
 
     public String getHeadPortraitPc() {
         return headPortraitPc;
