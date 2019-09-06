@@ -5,8 +5,7 @@ import com.zna.server.common.base.BaseModel;
 
 public class ProjectListBO extends BaseModel {
     private Integer id;
-    private String title;
-    private String titleEnglish;
+    private String label;
 
     public Integer getId() {
         return id;
@@ -16,19 +15,11 @@ public class ProjectListBO extends BaseModel {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getLabel() {
+        return label;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getTitleEnglish() {
-        return titleEnglish;
-    }
-
-    public void setTitleEnglish(String titleEnglish) {
-        this.titleEnglish = titleEnglish;
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

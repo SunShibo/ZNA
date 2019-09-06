@@ -5,22 +5,31 @@ import com.zna.server.common.base.BaseModel;
 import java.util.List;
 
 public class ProjectTypeNameBO extends BaseModel {
-    private String name;
-    private List<ProjectListBO> projectListBOS;//展览
+    private String id;
+    private String label;
+    private List<ProjectListBO> children;//展览
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public List<ProjectListBO> getProjectListBOS() {
-        return projectListBOS;
+    public String getLabel() {
+        return label;
     }
 
-    public void setProjectListBOS(List<ProjectListBO> projectListBOS) {
-        this.projectListBOS = projectListBOS;
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public List<ProjectListBO> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<ProjectListBO> children) {
+        this.children = children;
     }
 }
