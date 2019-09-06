@@ -2,6 +2,7 @@ package com.zna.server.service;
 
 import com.zna.server.dao.ProjectDAO;
 import com.zna.server.entity.bo.ProjectBO;
+import com.zna.server.entity.bo.ProjectTypeNameBO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -91,6 +92,11 @@ public class ProjectService {
             }
         }
         return projectBO;
+    }
+
+
+    public List<ProjectTypeNameBO> getProjectIdList(){
+        return projectDAO.getProjectIdList();
     }
 
 }

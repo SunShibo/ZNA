@@ -3,6 +3,7 @@ package com.zna.server.web.controller;
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.bo.ContactWayBO;
 import com.zna.server.entity.bo.ProjectBO;
+import com.zna.server.entity.bo.ProjectTypeNameBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.query.QueryInfo;
 import com.zna.server.service.ContactWayService;
@@ -234,6 +235,31 @@ public class ProjectController extends BaseCotroller {
             map.put("projectBO",projectBO);
             map.put("contactWayBO",contactWayBO);
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
+            super.safeJsonPrint(response, result);
+            log.info("result{}",result);
+            return ;
+
+        }catch (Exception e){
+            e.getStackTrace();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000005"));
+            super.safeJsonPrint(response, result);
+            log.error("getProjectDetailsException",e);
+        }
+    }
+
+
+    @RequestMapping("/getProjectIdList")
+    public void getProjectIdList( HttpServletRequest request, HttpServletResponse response){
+        try{
+            log.info(request.getRequestURI());
+            log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
+            //获取管理员对象
+            AdminBO loginAdmin = super.getLoginAdmin(request);
+            log.info("user{}",loginAdmin);
+
+
+            List<ProjectTypeNameBO> projectTypeNameBOS = projectService.getProjectIdList();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(projectTypeNameBOS));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;

@@ -183,9 +183,9 @@
 
     <select id="getProjectByTeamId" resultType="com.zna.server.entity.bo.TeamProjectResultBO">
         SELECT pr.id,pr.title,pr.title_english
-        FROM zna_team te
-        LEFT JOIN zna_team_project tp ON te.id = tp.team_id
-        LEFT JOIN zna_project pr ON tp.project_id = pr.id
+        FROM zna_project pr
+        LEFT JOIN zna_team_project tp ON pr.id=tp.project_id
+        LEFT JOIN  zna_team te ON tp.team_id=te.id
         WHERE te.id =  #{id}
     </select>
 

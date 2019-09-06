@@ -1,6 +1,7 @@
 package com.zna.server.dao;
 
 import com.zna.server.entity.bo.ProjectBO;
+import com.zna.server.entity.bo.ProjectTypeNameBO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -34,4 +35,7 @@ public interface ProjectDAO {
     Integer getCount(@Param("title") String title,@Param("type") String type,@Param("projectTypeName") String projectTypeName,@Param("projectTypeNameEnglish") String projectTypeNameEnglish);
     /*项目详情 */
     ProjectBO getProjectDetails(Integer id);
+
+
+    List<ProjectTypeNameBO> getProjectIdList();
 }
