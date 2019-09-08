@@ -2,6 +2,7 @@ package com.zna.server.entity.bo;
 
 import com.zna.server.common.base.BaseModel;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,10 @@ public class TeamBO extends BaseModel {
     }
 
     public List<ProjectInvolvedBO> getProjectPicture() {
-        return projectPicture;
+        if (projectPicture==null||projectPicture.size()<=1){
+            return new ArrayList<>();
+        }
+            return projectPicture;
     }
 
     public void setProjectPicture(List<ProjectInvolvedBO> projectPicture) {

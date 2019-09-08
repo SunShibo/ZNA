@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,7 +46,7 @@ public class TeamService {
             }
         }
             if (teamBO!=null) {
-                teamBO.setProjectPicture(projectPictureS);
+                    teamBO.setProjectPicture(projectPictureS);
             }
                 return teamBO;
 
