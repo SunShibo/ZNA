@@ -13,6 +13,7 @@ public class OfficeContactBO extends BaseModel {
     private String mobile; //手机
     private String faxNO; //传真
     private String email; //邮箱
+    private String coordinate; //坐标
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -80,6 +81,14 @@ public class OfficeContactBO extends BaseModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(String coordinate) {
+        this.coordinate = coordinate;
     }
 
     public Integer getCreateUserId() {

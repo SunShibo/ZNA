@@ -33,6 +33,9 @@
            <if test="email!=null and email!=''">
                `email`=#{email},
            </if>
+           <if test="coordinate!=null and coordinate!=''">
+               `coordinate`=#{coordinate},
+           </if>
            create_user_id=#{createUserId},
            create_time=now()
        </set>
@@ -61,6 +64,9 @@
             </if>
             <if test="email!=null and email!=''">
                 `email`=#{email},
+            </if>
+            <if test="coordinate!=null and coordinate!=''">
+                `coordinate`=#{coordinate},
             </if>
             update_user_id=#{updateUserId},
             update_time=now()
