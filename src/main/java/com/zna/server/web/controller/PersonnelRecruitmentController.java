@@ -48,7 +48,7 @@ public class PersonnelRecruitmentController extends BaseCotroller{
             Map<String,Object> map = new HashMap<>();
             map.put("officeContactBO",officeContactBO);
             map.put("contactWayBO",contactWayBO);
-            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(officeContactBO));
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
             return ;
