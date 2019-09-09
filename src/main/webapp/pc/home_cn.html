@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>zna</title>
+		<link href="css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js?v=1"></script>
+        <style>
+            #home-bg-lb{
+                max-height: 1080px;
+            }
+			#aboutImg{
+				width: 100%;
+			}
+        </style>
+	</head>
+	<body>
+		<div class="w-head">
+			<div data-id="home_cn" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+			<div class="w-lang">
+				<span class="w-langc">中文</span>
+				<span class="w-c">EN</span>
+			</div>
+			<div class="w-tabtle">
+				<span data-id="aboutus_cn" class="nav-span">关于我们</span>
+				<span data-id="project_cn" class="nav-span">经典项目</span>
+				<span data-id="team_cn" class="nav-span">核心团队</span>
+				<span data-id="dynamic_cn" class="nav-span">最新动态</span>
+				<span data-id="zp_cn" class="nav-span">联系我们</span>
+				<div class="w-tableindexsearch hide">
+					<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+					<img class="w-isimgsearch" src="img/uc-06.png">
+					<img class="w-isimgclose" src="img/sy-08.png">
+				</div>
+				<img class="w-tabtleimg" src="img/uc-06.png"/>
+			</div>
+		</div>
+		<div class="w-content">
+			<section>
+				<div class="swiper-container">
+					<div class="swiper-wrapper" id="home-bg-lb">
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+					<!-- 如果需要导航按钮 -->
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+
+				</div>
+			</section>
+			<div style="height: 70px;"></div>
+			<div class="w-indeximgbdiv">
+				<img id="aboutImg" />
+				<div class="w-indeximgbfont">
+					<div class="w-indexibft" id="aboutTitle"></div>
+					<div class="w-indexibfc" id="aboutContent">
+
+					</div>
+					<div class="w-indexibfc" onclick="goAbout();">more ></div>
+				</div>
+			</div>
+			<div class="w-indeximgdbdiv">
+				<div class="w-indexidbl">
+					<div class="w-indeximgbox">
+						<img id="projectImg" />
+						<div class="w-indeximgspan">
+							<span class="w-indexist" id="projectTitle"></span>
+							<span class="w-indexisc" id="projectContent"></span>
+							<span class="w-indexisb" onclick="goProject();">more ></span>
+						</div>
+						<div class="bg-mask"></div>
+					</div>
+					<div class="w-indeximgbox">
+						<img id="newsImg" />
+						<div class="w-indeximgspan">
+							<span class="w-indexist" id="newsTitle"></span>
+							<span class="w-indexisc" id="newsContent">
+                        </span>
+							<span class="w-indexisb"  onclick="goNews();">more ></span>
+						</div>
+						<div class="bg-mask"></div>
+					</div>
+				</div>
+				<div class="w-indexidbr">
+					<div class="w-indeximgbox">
+						<img id="teamImg" />
+						<div class="w-indeximgspan">
+							<span class="w-indexist" id="teamTitle"></span>
+							<span class="w-indexisc" id="teamContent">
+                        </span>
+							<span class="w-indexisb"  onclick="goTeam();">more ></span>
+						</div>
+						<div class="bg-mask"></div>
+					</div>
+					<div class="w-indeximgbox">
+						<img id="contactImg" />
+						<div class="w-indeximgspan">
+							<span class="w-indexist" id="contactTitle"></span>
+							<span class="w-indexisc"  id="contactContent">
+                        </span>
+							<span class="w-indexisb" onclick="goOffice();">more ></span>
+						</div>
+						<div class="bg-mask"></div>
+					</div>
+				</div>
+				<img src="img/sy-07.png" class="w-bgbottom"/>
+			</div>
+		</div>
+		<div class="w-bottom">
+			<div class="w-botleft">
+				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+				<span id="beian">京ICP备案号13030539号</span>
+			</div>
+			<div class="w-botright">
+				<div>
+					<img src="img/uc-03.png"/>
+					<img src="img/uc-04.png"/>
+					<img src="img/uc-05.png"/>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+<script>
+    $(function(){
+        $(".w-tabnav a").hover(function(){
+            $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        })
+    })
+
+
+
+    $.getJSON("/index/getIndex?r"+Date.now(),function (rs) {
+		// console.log(rs)
+		if(rs.success){
+
+            var data = rs.data;
+			var banner =  data.bannerBOS;
+			var indexBOS = data.indexBOS;
+			var bannerStr = '';
+			for(var i=0;i<banner.length;i++){
+                bannerStr+= '<div class="swiper-slide"><img class="home-lb-bg" src="'+banner[i]['pictureUrlPc']+'" /></div>';
+			}
+			$("#home-bg-lb").html(bannerStr);
+            var swiper = new Swiper('.swiper-container', {
+
+                pagination:{
+                    el: '.swiper-pagination',
+                    bulletClass : 'home-bg-bullet',
+                    bulletActiveClass: 'home-bg-bullet-active',
+                    clickable:true
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                loop: true, // 循环模式选项
+            });
+
+			$("#aboutTitle").html(indexBOS[0]['title']);
+            $("#aboutContent").html(indexBOS[0]['context']);
+            $("#projectTitle").html(indexBOS[1]['title']);
+            $("#projectContent").html(indexBOS[1]['context']);
+            $("#teamTitle").html(indexBOS[2]['title']);
+            $("#teamContent").html(indexBOS[2]['context']);
+            $("#newsTitle").html(indexBOS[3]['title']);
+            $("#newsContent").html(indexBOS[3]['context']);
+            $("#contactTitle").html(indexBOS[4]['title']);
+            $("#contactContent").html(indexBOS[4]['context']);
+            $("#aboutImg").attr("src",indexBOS[0]['pictureUrlPc']);
+            $("#projectImg").attr("src",indexBOS[1]['pictureUrlPc']);
+            $("#teamImg").attr("src",indexBOS[2]['pictureUrlPc']);
+            $("#newsImg").attr("src",indexBOS[3]['pictureUrlPc']);
+            $("#contactImg").attr("src",indexBOS[4]['pictureUrlPc']);
+
+			renderFloor(data.contactWayBO);
+        }
+    })
+
+
+	function goAbout() {
+		window.location.href = "aboutUs_cn.html";
+    }
+    function goTeam() {
+        window.location.href = "member_cn.html";
+    }
+    function goProject() {
+        window.location.href = "project_cn.html";
+    }
+    function goOffice() {
+        window.location.href = "zp_cn.html";
+    }
+    function goNews() {
+        window.location.href = "dynamic_cn.html";
+    }
+
+
+
+</script>

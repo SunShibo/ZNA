@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>项目分类加载更多</title>
+	<link href="css/style.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/main.js?v=1"></script>
+
+</head>
+<body>
+<div class="w-head">
+	<div data-id="home_cn" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+	<div class="w-lang">
+		<span class="w-langc">中文</span>
+		<span class="w-c">EN</span>
+	</div>
+	<div class="w-tabtle">
+		<span data-id="aboutus_cn" class="nav-span">关于我们</span>
+		<span data-id="project_cn" class="nav-span span-active">经典项目</span>
+		<span data-id="team_cn" class="nav-span">核心团队</span>
+		<span data-id="dynamic_cn" class="nav-span">最新动态</span>
+		<span data-id="zp_cn" class="nav-span">联系我们</span>
+		<div class="w-tableindexsearch hide">
+			<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+			<img class="w-isimgsearch" src="img/uc-06.png">
+			<img class="w-isimgclose" src="img/sy-08.png">
+		</div>
+		<img class="w-tabtleimg" src="img/uc-06.png"/>
+	</div>
+</div>
+<div class="w-content">
+	<div class="w-tabnav">
+		<a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">室内设计</a>
+		<a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">景观设计</a>
+		<a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">城市规划</a>
+		<a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">文化/教育</a>
+		<a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">养生/居住</a>
+		<a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">市民/展览</a>
+		<a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">办公/综合体</a>
+		<a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">酒店/度假村</a>
+	</div>
+	<div class="w-tabcontent">
+		<div class="" style="overflow: hidden;width:95vw;margin: auto" id="projectItem">
+
+
+		</div>
+		<div class="w-cpcdeatailist hide" id="moreWp">
+			<ul class="w-cpculfir">
+				<li>PROJECTS</li>
+				<li>SIZE</li>
+				<li>CLIENT</li>
+			</ul>
+			<div id="showMore">
+				<!--<ul>-->
+					<!--<li>KUMING CHENGJIANG LAKESIDE ECO RESORT, YUNNAN, CHINA</li>-->
+					<!--<li>743,830<a>㎡</a></li>-->
+					<!--<li>Yunnan YMCI Group</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>SANYA BAY CENTRAL SEASHORE WYNDHAM HOTEL , HAINAN, CHINA</li>-->
+					<!--<li>140,000<a>㎡</a></li>-->
+					<!--<li>Sanya Zhonggang Real Estate</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>HUZHOU CFLD NANXUN HILTON HOTEL, ZHEJIANG, CHINA</li>-->
+					<!--<li>47,000<a>㎡</a></li>-->
+					<!--<li>CFLD Group</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>JINYU BADALING SPA HOTEL, BEIJING, CHINA</li>-->
+					<!--<li>117,006<a>㎡</a></li>-->
+					<!--<li>Beijing Jinyu Badaling Spa Hotel Co, Ltd.</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>DALYAN BOUTIQUE HOTEL AND SERVICED APARTMENTS, CESME, TURKEY</li>-->
+					<!--<li>9,360<a>㎡</a></li>-->
+					<!--<li>Aryom Group</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>AL-RAJHI TOWER, BURAIDAH, SAUDI ARABIA</li>-->
+					<!--<li>127,605<a>㎡</a></li>-->
+					<!--<li>Al-Rajhi Real Estate Group</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>NESCO HOTEL COMPLEX, CAIRO, EGYPT</li>-->
+					<!--<li>251,221<a>㎡</a></li>-->
+					<!--<li>CFLD Group</li>-->
+				<!--</ul>-->
+				<!--<ul>-->
+					<!--<li>DUBAI THE WORLD VILLAS, DUBAI, UAE</li>-->
+					<!--<li></li>-->
+					<!--<li></li>-->
+				<!--</ul>-->
+			</div>
+		</div>
+		<div class="w-cpcmore" id="loadMore">Show More Results +</div>
+	</div>
+</div>
+<div class="w-bottom">
+	<div class="w-botleft">
+		<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+		<span id="beian">京ICP备案号13030539号</span>
+	</div>
+	<div class="w-botright">
+		<div>
+			<img src="img/uc-03.png"/>
+			<img src="img/uc-04.png"/>
+			<img src="img/uc-05.png"/>
+		</div>
+	</div>
+</div>
+<script>
+    $(function(){
+        // $(".w-tabnav a").hover(function(){
+        //     $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        // })
+    })
+	var pageSize = 8;
+    var pageNo = 1;
+	
+	$.getJSON("/project/getProject?r="+Date.now()+"&type="+getUrl("id")+"&pageNo="+pageNo+"&pageSize="+pageSize,function (rs) {
+
+        renderFloor(rs.data.contactWayBO);
+			var data = rs.data.projectBOS;
+			var pStr = '';
+// if(data.length==0)return;
+
+        // var ty = data[0].projectTypeNameEnglish.replace("/","");
+        // $("#"+ty).addClass("w-tabnavaed");
+			for(var i=0;i<data.length;i++){
+			    if(i==8)break;
+			    var imgstr = '';
+			    try{
+                    imgstr = JSON.parse(data[i]['pictureUrlPc'])[0];
+				}catch(e){}
+
+           		pStr+=	['<div class="item goDetail" data-type="',data[i]['type'],'" data-id="',data[i]['id'],'">',
+                        '<div class="box horizaCenter verticalCenter">',
+                        '<div class="inp" style="background-size: 100% 100%;;background-repeat: no-repeat;;background-image: url(\''+imgstr+'\')">',
+                    '<div class="inp-mask">',
+                    data[i].projectTypeName,
+                    '</div>',
+					'</div>',
+                        '</div>',
+                    '</div>'].join("")
+			}
+
+			$("#projectItem").html(pStr);
+        	pageNo++;
+// debugger;
+        var ddd = getUrl("id").replace("/","");
+        $(".project-nav").on("click",function () {
+            window.location.href = "/pc/projectType_cn.html?id=" + $(this).data("id");
+        })
+        $("#"+ddd).addClass("w-tabnavaed")
+    })
+
+
+	$("#loadMore").on("click",function () {
+        appendData();
+    })
+
+	function appendData() {
+        $.getJSON("/project/getProject?r="+Date.now()+"&type="+getUrl("id")+"&pageNo="+pageNo+"&pageSize="+pageSize,function (rs) {
+
+            var data = rs.data.projectBOS;
+            if(data.length==0){
+                alert("没有更多");
+                return;
+			}
+
+			$("#moreWp").removeClass("hide");
+            var pStr = '';
+            for(var i=0;i<data.length;i++){
+
+                pStr+=	['<ul class="goDetail" data-id="',data[i]['id'],'" data-type="',data[i]['type'],'"> <li>',
+					data[i]['projectTypeName'],
+                   '</li> <li>',
+                        data[i]['sort'],
+                    '</li> <li>',
+                    data[i]['site'],
+                    '</li></ul>'].join("")
+            }
+
+            $("#showMore").append(pStr);
+
+            pageNo++;
+        })
+    }
+
+
+
+    $(document).on("click",".goDetail",function () {
+		var type = this.dataset.type;
+        var id = this.dataset.id;
+		window.location.href = 'projectDetail_cn.html?id='+id+"&type="+type;
+    })
+</script>
+</body>
+</html>
