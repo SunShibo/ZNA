@@ -26,9 +26,10 @@
       width: 100%;
     }
     .gallery-thumbs {
-      height: 140px;
+      height: 160px;
       box-sizing: border-box;
       padding: 10px 0;
+		width: 90%;
     }
     .gallery-thumbs .swiper-slide {
       width: 25%;
@@ -38,6 +39,10 @@
     .gallery-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
+
+	.gallery-thumbs .swiper-slide{
+		opacity: 1!important;
+	}
   </style>
 	</head>
 	<body>
@@ -97,33 +102,24 @@
 						<!-- Swiper -->
 						<div class="swiper-container gallery-top">
 						  <div class="swiper-wrapper" id="upImg">
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-01.png);"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-02.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-03.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-04.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-06.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-12.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-07.png)"></div>-->
-							<!--<div class="swiper-slide" style="background-image:url(img/cp-08.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-10.png)"></div>-->
+
 						  </div>
 						  <!-- Add Arrows -->
 						  <div class="swiper-button-next swiper-button-white"></div>
 						  <div class="swiper-button-prev swiper-button-white"></div>
 						</div>
-						<div class="swiper-container gallery-thumbs">
-						  <div class="swiper-wrapper" id="downImg">
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-01.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-02.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-03.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-04.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-06.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-07.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-12.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-08.png)"></div>-->
-						    <!--<div class="swiper-slide" style="background-image:url(img/cp-10.png)"></div>-->
-						  </div>
+						<div style="height: 20px;"></div>
+						<div style="position: relative">
+							<div class="swiper-container gallery-thumbs">
+								<div class="swiper-wrapper" id="downImg">
+
+								 </div>
+
+							</div>
+							<div class="swiper-button-next button_next"></div>
+							<div class="swiper-button-prev button_prev"></div>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -225,7 +221,7 @@
                       watchSlidesVisibility: true,
                       watchSlidesProgress: true,
                       // centeredSlides: true,
-                      slidesOffsetBefore:5,
+                      // slidesOffsetBefore:5,
                       // slidesOffsetAfter:-20,
 
                       navigation: {

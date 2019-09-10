@@ -1100,6 +1100,23 @@ body{
 #about-us-img{
 	/*margin: 0 50px;*/
 }
+.button_next{
+	right: 0px!important;
+	background-image: url(../img/right_down.png) !important;
+	background-size: 45px 140px !important;
+	width: 45px!important;
+	height: 140px!important;
+	margin-top: -70px!important;
+}
+
+.button_prev{
+	left: 0px!important;
+	background-image: url(../img/left_down.png) !important;
+	background-size: 45px 140px !important;
+	width: 45px!important;
+	height: 140px!important;
+	margin-top: -70px!important;
+}
 
 
 .item {
