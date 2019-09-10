@@ -19,36 +19,13 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "C:/file/"; //生成的文件路径
-//        String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() ;//存储路径
+        String newFilePath = "/www/image"; //生成的文件路径
         boolean isRatio = true;
-//        if(isRatio) {
-//            // 按照宽度还是高度进行压缩
-//            //注意几个变量都是int类型，需要加float强转，否则取整很容易都相等
-//            if (((float)widthR / heightR) > ((float)width / height)) {
-//                heightW = (int) (heightR * width / widthR);
-//                widthW = width;
-//            } else {
-//                heightW = height;
-//                widthW = (int) (widthR* height / heightR);
-//            }
-//        }
-//        else {
-//            heightW = height;
-//            widthW = width;
-//        }
         if(isRatio) {
             if (ratio>0){
                 heightW = (int) (heightR / ratio);
                 widthW = (int) (widthR  / ratio);
             }
-//            else if (ratio<0){
-//                heightW = (int) (heightR / -ratio);
-//                widthW = (int) (widthR / -ratio);
-//            }else {
-//                heightW = heightR ;
-//                widthW = widthR ;
-//            }
         }
         BufferedImage image = new BufferedImage(widthW, heightW,BufferedImage.TYPE_INT_RGB );
         image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
@@ -74,36 +51,13 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "C:/file/"; //生成的文件路径
+        String newFilePath = "/www/image"; //生成的文件路径
         boolean isRatio = true;
-//        if(isRatio)
-//        {
-//            // 按照宽度还是高度进行压缩
-//            //注意几个变量都是int类型，需要加float强转，否则取整很容易都相等
-//            if (((float)widthR / heightR) > ((float)width / height)) {
-//                heightW = (int) (heightR * width / widthR);
-//                widthW = width;
-//            } else {
-//                heightW = height;
-//                widthW = (int) (widthR* height / heightR);
-//            }
-//        }
-//        else {
-//            heightW = height;
-//            widthW = width;
-//        }
         if(isRatio) {
             if (ratio>0){
                 heightW = (int) (heightR / ratio);
                 widthW = (int) (widthR / ratio);
             }
-//            else if (ratio<0){
-//                heightW = (int) (heightR / -ratio);
-//                widthW = (int) (widthR / -ratio);
-//            }else {
-//                heightW = heightR ;
-//                widthW = widthR ;
-//            }
         }
         BufferedImage image = new BufferedImage(widthW, heightW,BufferedImage.TYPE_INT_RGB );
         image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
