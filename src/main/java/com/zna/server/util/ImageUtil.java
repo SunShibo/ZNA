@@ -1,5 +1,6 @@
 package com.zna.server.util;
 
+import com.zna.server.pop.SystemConfig;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -19,7 +20,7 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "/www/image"; //生成的文件路径
+        String newFilePath =  SystemConfig.getString("pictureurl"); //生成的文件路径
         boolean isRatio = true;
         if(isRatio) {
             if (ratio>0){
@@ -51,7 +52,7 @@ public class ImageUtil {
         int heightR = img.getHeight(null);  // 得到源图宽
         int widthW =0;
         int heightW =0;
-        String newFilePath = "/www/image"; //生成的文件路径
+        String newFilePath = SystemConfig.getString("pictureurl"); //生成的文件路径
         boolean isRatio = true;
         if(isRatio) {
             if (ratio>0){

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZNA-RECRUITMENT</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="app-page">
+    <div class="head">
+        <div class="head-item logo">
+            <a href="home.html"><img src="image/logo.png" id="logoImage" alt="" width="100%" height="100%"></a>
+        </div>
+
+        <div class="head-item head-btn">
+            <div class="close-menu" id="closeMenu">
+                <img src="image/icon/ic_menuClose.png" alt="" width="100%" height="100%">
+            </div>
+
+            <div class="menu head-item-btn" id="clickMenu">
+                <img src="image/icon/ic_menuOpen.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="search head-item-btn" id="clickSearch">
+                <img src="image/icon/ic_search.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="language head-item-btn" id="language"></div>
+        </div>
+    </div>
+
+    <!--搜索框-->
+    <div class="head_search">
+        <div>
+            <div class="search_icon"><img src="image/icon/ic_search.png" alt="" width="100%" height="100%"></div>
+            <input type="search" placeholder="SEARCH" autocomplete="off"/>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <nav id="nav">
+        <ul class="nav-ul">
+            <li><a href="aboutUs.html" id="about" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="project" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="project.html?id=HOTEL/RESORT"></a></li>
+                        <li><a href="project.html?id=OFFICE/MIXED-USE"></a></li>
+                        <li><a href="project.html?id=CIVIC/EXHIBITION"></a></li>
+                        <li><a href="project.html?id=RESIDENTIAL/HEALTHCARE"></a></li>
+                        <li><a href="project.html?id=EDUCATION/SCIENCE"></a></li>
+                        <li><a href="project.html?id=MASTER/PLANNING"></a></li>
+                        <li><a href="project.html?id=LANDSCAPE/DESIGN"></a></li>
+                        <li><a href="project.html?id=INTERIOR/DESIGN"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="team.html" id="team" class="nav-href"></a></li>
+            <li><a href="news.html" id="dynamic" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="information" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="office.html"></a></li>
+                        <li><a href="recruitment.html"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="recruitment">
+            <div class="recruitment-image">
+                <img src="" id="recruitmentImage" alt="" width="100%" height="100%">
+                <div class="image-content">
+                    <div class="image-content-title"></div>
+                    <div class="image-content-text"></div>
+                </div>
+            </div>
+            <div class="recruitment-introduction">
+                <div class="main-content">
+                </div>
+                <div class="main-career">
+                    <div class="career-title"></div>
+                    <div class="career-info">
+                        <ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="foot">
+        <div class="foot-center">
+            <div class="foot-office-info">
+                <div class="contact">TEL: <span id="mobile"></span></div>
+                <div class="contact">FAX: <span id="faxNO"></span></div>
+            </div>
+            <div class="contact">EMAIL: <span id="email"></span></div>
+            <div class="icon-list">
+                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="foot-icp contact">京ICP备案号13030539号</div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function (window, $) {
+
+        var data = [];
+
+        window.switch_language = function (lang) {
+            if (data.length) {
+                setting(lang);
+            } else {
+                init(lang);
+            }
+        };
+
+        function setting(lang) {
+            if (lang) {
+                $('.image-content-title').text(data[0].titleEnglish);
+                $('.image-content-text').html(data[0].contextEnglish);
+                $('.main-content').html(data[0].announcementsEnglish);
+                $('.career-title').html('CAREER');
+            } else {
+                $('.image-content-title').text(data[0].title);
+                $('.image-content-text').html(data[0].context);
+                $('.main-content').html(data[0].announcements);
+                $('.career-title').html('在招岗位');
+            }
+            var dom = $('.career-info>ul li');
+            for (var i = 0, len = data[1].length; i < len; i++) {
+                dom.eq(i).find('.item-name').text(lang ? data[1][i].jobTitleEnglish : data[1][i].jobTitle);
+                dom.eq(i).find('.obligation-title').text(lang ? 'Responsibilities:' : '岗位职责：');
+                dom.eq(i).find('.obligation-content').html(lang ? data[1][i].positionStatementEnglish : data[1][i].positionStatement);
+                dom.eq(i).find('.qualification-title').text(lang ? 'Requirements:' : '任职资格：');
+                dom.eq(i).find('.qualification-content').html(lang ? data[1][i].qualificationEnglish : data[1][i].qualification);
+            }
+        }
+
+        function init(lang) {
+            $.when(
+                $.ajax({
+                    url: '/personnelRecruitment/getPersonnelRecruitment',
+                    type: 'POST',
+                    dataType: 'json'
+                }),
+                $.ajax({
+                    url: '/recruitingJob/getRecruitingJob',
+                    type: 'POST',
+                    dataType: 'json'
+                })
+            ).then(function (r, c) {
+                data.push(r[0].data.officeContactBO);
+                data.push(c[0].data);
+                $('#recruitmentImage').prop('src', r[0].data.officeContactBO.pictureUrl);
+
+                var domArr = [];
+
+                for (var i = 0, len = data[1].length; i < len; i++) {
+                    domArr.push('<li data-flag="false">',
+                        '<div class="info-title">',
+                        '<div class="item-name">', lang ? data[1][i].jobTitleEnglish : data[1][i].jobTitle, '</div>',
+                        '<div class="image-list"><img src="image/icon/ic_list_show.png" alt="" width="100%" height="100%"></div>',
+                        '</div>',
+                        '<div class="info-text">',
+                        '<div class="info-text-obligation">',
+                        '<div class="obligation-title">', lang ? 'Responsibilities:' : '岗位职责：', '</div>',
+                        '<div class="obligation-content">', lang ? data[1][i].positionStatementEnglish : data[1][i].positionStatement, '</div>',
+                        '</div>',
+                        '<div class="info-text-qualification">',
+                        '<div class="qualification-title">', lang ? 'Requirements:' : '任职资格：', '</div>',
+                        '<div class="qualification-content">', lang ? data[1][i].qualificationEnglish : data[1][i].qualification, '</div>',
+                        '</div>',
+                        '</div>',
+                        '</li>')
+                }
+
+                $('.career-info>ul').append(domArr.join(''));
+
+                setting(lang);
+                $.footData(r[0].data.contactWayBO)
+            })
+        }
+
+        $(document).on('click', '.career-info li', function () {
+            var flag = $(this).data('flag') === 'true';
+            $(this).data('flag', !flag + '');
+            if (!flag) {
+                $(this).find('img').attr('src', './image/icon/ic_list_hide.png');
+            } else {
+                $(this).find('img').attr('src', './image/icon/ic_list_show.png');
+            }
+            $(this).children('.info-text').slideToggle(500);
+        });
+    })(window, jQuery);
+</script>
+</body>
+</html>

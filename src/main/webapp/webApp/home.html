@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZNA-HOME</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="stylesheet" href="swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="app-page">
+    <div class="head">
+        <div class="head-item logo">
+            <a href="home.html"><img src="image/logo.png" id="logoImage" alt="" width="100%" height="100%"></a>
+        </div>
+
+        <div class="head-item head-btn">
+            <div class="close-menu" id="closeMenu">
+                <img src="image/icon/ic_menuClose.png" alt="" width="100%" height="100%">
+            </div>
+
+            <div class="menu head-item-btn" id="clickMenu">
+                <img src="image/icon/ic_menuOpen.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="search head-item-btn" id="clickSearch">
+                <img src="image/icon/ic_search.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="language head-item-btn" id="language"></div>
+        </div>
+    </div>
+
+    <!--搜索框-->
+    <div class="head_search">
+        <div>
+            <div class="search_icon"><img src="image/icon/ic_search.png" alt="" width="100%" height="100%"></div>
+            <input type="search" placeholder="SEARCH" autocomplete="off"/>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <nav id="nav">
+        <ul class="nav-ul">
+            <li><a href="aboutUs.html" id="about" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="project" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="project.html?id=HOTEL/RESORT"></a></li>
+                        <li><a href="project.html?id=OFFICE/MIXED-USE"></a></li>
+                        <li><a href="project.html?id=CIVIC/EXHIBITION"></a></li>
+                        <li><a href="project.html?id=RESIDENTIAL/HEALTHCARE"></a></li>
+                        <li><a href="project.html?id=EDUCATION/SCIENCE"></a></li>
+                        <li><a href="project.html?id=MASTER/PLANNING"></a></li>
+                        <li><a href="project.html?id=LANDSCAPE/DESIGN"></a></li>
+                        <li><a href="project.html?id=INTERIOR/DESIGN"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="team.html" id="team" class="nav-href"></a></li>
+            <li><a href="news.html" id="dynamic" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="information" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="office.html"></a></li>
+                        <li><a href="recruitment.html"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <!--首页banner-->
+        <div class="banner banner-item">
+            <div class="swiper-container">
+                <div class="swiper-wrapper" id="home-banner">
+
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!--关于我们-->
+        <div class="home-about home-item">
+            <div class="about-text">
+                <!--id="homeAboutTitle"-->
+                <div class="about-title" id="title0"></div>
+                <div class="about-content-test">
+                    <p id="context0"></p>
+                </div>
+                <a href="#" class="home-href about-a" style="color: #666666;">more &gt;</a>
+            </div>
+        </div>
+
+        <!--经典项目-->
+        <div class="home-items home-project">
+            <div class="items-content">
+                <div class="titles" id="title1"></div>
+                <div class="contents" id="context1"></div>
+                <a href="project_classification.html" class="home-href" style="color: #fefefe;">more &gt;</a>
+            </div>
+        </div>
+
+        <!--核心团队-->
+        <div class="home-items home-team">
+            <div class="items-content">
+                <div class="titles" id="title2"></div>
+                <div class="contents" id="context2"></div>
+                <a href="#" class="home-href" style="color: #fefefe;">more &gt;</a>
+            </div>
+        </div>
+
+        <!--最新动态-->
+        <div class="home-items home-news">
+            <div class="items-content">
+                <div class="titles" id="title3"></div>
+                <div class="contents" id="context3"></div>
+                <a href="#" class="home-href" style="color: #fefefe;">more &gt;</a>
+            </div>
+        </div>
+
+        <!--联系我们-->
+        <div class="home-items home-understand">
+            <div class="items-content">
+                <div class="titles" id="title4"></div>
+                <div class="contents" id="context4"></div>
+                <a href="#" class="home-href" style="color: #fefefe;">more &gt;</a>
+            </div>
+        </div>
+    </div>
+    <div id="foot">
+        <div class="foot-center">
+            <div class="foot-office-info">
+                <div class="contact">TEL: <span id="mobile"></span></div>
+                <div class="contact">FAX: <span id="faxNO"></span></div>
+            </div>
+            <div class="contact">EMAIL: <span id="email"></span></div>
+            <div class="icon-list">
+                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="foot-icp contact">京ICP备案号13030539号</div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="swiper/js/swiper.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function (window, $) {
+
+        var data = [];
+
+        //切换中英文回调
+        window.switch_language = function (lang) {
+
+            if (data.length) {
+                setting(lang)
+            } else {
+                var dom = $('.items-content');
+                var langStr = lang ? 'en' : 'cn';
+                for (var i = 0, len = dom.length; i < len; i++) {
+                    dom.eq(i).children('a').attr('href', dom.children('a').attr('href') + '?language=' + langStr);
+                }
+
+                $.ajax({
+                    url: '/index/getIndex',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (r) {
+                        data = r.data.indexBOS;
+                        //将需要中英文切换的数据保存到数组内
+                        homeBanner(r.data.bannerBOS);
+                        //不需要中英文切换的图片类和文本类数据直接加载
+                        //关于我们信息的图片
+                        $('.home-about').css('background-image', 'url(' + data[0].pictureUrl + ')');
+                        $('.home-project').css('background-image', 'url(' + data[1].pictureUrl + ')');
+                        $('.home-team').css('background-image', 'url(' + data[2].pictureUrl + ')');
+                        $('.home-news').css('background-image', 'url(' + data[3].pictureUrl + ')');
+                        $('.home-understand').css('background-image', 'url(' + data[4].pictureUrl + ')');
+
+                        $.footData(r.data.contactWayBO);
+
+                        //需要中英文切换的图片类和文本类数据通过方法传参方式进行加载
+                        //根据语言设置页面
+                        setting(lang);
+                    }
+                });
+            }
+        };
+
+        //设置中英文
+        function setting(lang) {
+            //根据data数组进行循环
+            for (var i = 0, len = data.length; i < len; i++) {
+                //遍历出对象中每一个属性名
+                for (var item in data[i]) {
+                    //根据中英文，判断获取的数据字段
+                    var keyName = lang ? item + 'English' : item;
+                    if (!!data[i][keyName]) $('#' + item + i).html(data[i][keyName]);
+                }
+            }
+        }
+
+
+        //banner设置
+        function homeBanner(data) {
+            var bannerArr = [];
+            //添加数据
+            for (var i = 0, len = data.length; i < len; i++) {
+                bannerArr.push('<div class="swiper-slide"><img src="' + data[i].pictureUrl + '" alt="" width="100%" height="100%"></div>')
+            }
+            $('#home-banner').append(bannerArr.join(''));
+
+            //加载Swiper
+            new Swiper('.swiper-container', {
+                loop: true, // 循环模式选项
+                grabCursor: true,
+                parallax: true,
+                autoplay: {
+                    delay: 5000
+                    //loop无效  stopOnLastSlide: true,
+                },
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                }
+            });
+        }
+
+
+    })(window, jQuery);
+</script>
+</body>
+</html>
