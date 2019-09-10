@@ -32,11 +32,11 @@
 		</div>
 		<div class="w-content">
 			<div class="w-tabnav">
-				<a id="navsec" class="w-tabnavaed">CAREER</a>
-				<a id="navfir">OFFICE</a>
+				<a id="navsec" class="w-tabnavaed">职位</a>
+				<a id="navfir">办公室</a>
 			</div>
 			<div class="w-tabcontent">
-				<div class="w-contenta" style="display: block;position: relative" onmousemove="test(event)">
+				<div class="w-contenta" style="display: none;position: relative" onmousemove="test(event)">
 					<div class="w-addimgdetail" id="div1">
 						<span class="w-aidspant" id="a_city"></span>
 						<span id="d_address"></span>
@@ -57,12 +57,12 @@
 					<div class="w-contentdiv" id="address">
 					</div>
 				</div>
-				<div class="w-contentb" style="display: none">
+				<div class="w-contentb">
 					<div class="w-contentbimg" id="pictureUrl">
 						<div style="height: 500px;"></div>
 						<div class="w-contentbimgdiv">
-							<span class="w-mt" id="titleEnglish">1</span>
-							<div class="w-mb" id="contextEnglish">2
+							<span class="w-mt" id="titleEnglish"></span>
+							<div class="w-mb" id="contextEnglish">
 							</div>
 						</div>
 					</div>
@@ -120,14 +120,15 @@
     })
         $.getJSON("/personnelRecruitment/getPersonnelRecruitment?r="+Date.now(),function (rs) {
             console.log("招聘banner信息",rs.data);
-			$("#announcementsEnglish").html(rs.data.announcements);
-            $("#contextEnglish").html(rs.data.context);
-            $("#titleEnglish").html(rs.data.title);
-            $("#pictureUrl").css("background-image","url("+rs.data.pictureUrlPc+") ");
+			$("#announcementsEnglish").html(rs.data.officeContactBO.announcements);
+            $("#contextEnglish").html(rs.data.officeContactBO.context);
+            $("#titleEnglish").html(rs.data.officeContactBO.title);
+            $("#pictureUrl").css("background-image","url("+rs.data.officeContactBO.pictureUrlPc+") ");
             // $("#pictureUrl").css("background-size","100% 100%");
             // background-size:
         })
         $.getJSON("/officeContact/getOfficeContact?r="+Date.now(),function (rs) {
+            renderFloor(rs.data.contactWayBO);
             console.log("办公室信息",rs.data);
             var d = offices = rs.data.officeContactBO;
             var dStr = '';

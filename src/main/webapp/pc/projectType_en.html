@@ -83,7 +83,7 @@
     var pageNo = 1;
 	
 	$.getJSON("/project/getProject?r="+Date.now()+"&type="+getUrl("id")+"&pageNo="+pageNo+"&pageSize="+pageSize,function (rs) {
-
+// debugger;
         	renderFloor(rs.data.contactWayBO);
 			var data = rs.data.projectBOS;
 			var pStr = '';
@@ -98,7 +98,7 @@
                         '<div class="box horizaCenter verticalCenter">',
                         '<div class="inp" style="background-size: 100% 100%;;background-repeat: no-repeat;;background-image: url(\''+imgstr+'\')">',
                     '<div class="inp-mask">',
-                    data[i].projectTypeNameEnglish,
+                    data[i].titleEnglish,
                     '</div>',
 					'</div>',
                         '</div>',
@@ -132,11 +132,11 @@
             for(var i=0;i<data.length;i++){
 
                 pStr+=	['<ul class="goDetail" data-id="',data[i]['id'],'" data-type="',data[i]['type'],'"> <li>',
-					data[i]['projectTypeNameEnglish'],
+					data[i]['titleEnglish'],
                    '</li> <li>',
-                        data[i]['sort'],
+                        data[i]['coveredAreaEnglish'],
                     '</li> <li>',
-                    data[i]['siteEnglish'],
+                    data[i]['client'],
                     '</li></ul>'].join("")
             }
 

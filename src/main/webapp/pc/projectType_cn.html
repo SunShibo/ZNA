@@ -49,9 +49,9 @@
 		</div>
 		<div class="w-cpcdeatailist hide" id="moreWp">
 			<ul class="w-cpculfir">
-				<li>PROJECTS</li>
-				<li>SIZE</li>
-				<li>CLIENT</li>
+				<li>项目</li>
+				<li>面积</li>
+				<li>客户</li>
 			</ul>
 			<div id="showMore">
 				<!--<ul>-->
@@ -141,7 +141,7 @@
                         '<div class="box horizaCenter verticalCenter">',
                         '<div class="inp" style="background-size: 100% 100%;;background-repeat: no-repeat;;background-image: url(\''+imgstr+'\')">',
                     '<div class="inp-mask">',
-                    data[i].projectTypeName,
+                    data[i].title,
                     '</div>',
 					'</div>',
                         '</div>',
@@ -177,11 +177,11 @@
             for(var i=0;i<data.length;i++){
 
                 pStr+=	['<ul class="goDetail" data-id="',data[i]['id'],'" data-type="',data[i]['type'],'"> <li>',
-					data[i]['projectTypeName'],
+					data[i]['title'],
                    '</li> <li>',
-                        data[i]['sort'],
+                        data[i]['coveredArea'],
                     '</li> <li>',
-                    data[i]['site'],
+                    data[i]['client'],
                     '</li></ul>'].join("")
             }
 
