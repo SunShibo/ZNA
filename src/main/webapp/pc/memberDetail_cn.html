@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>项目详情</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/yi-scroll.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js?v=1"></script>
+    <style>
+        ._scroll{
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="w-head">
+    <div data-id="home" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+    <div class="w-lang">
+        <span class="w-langc">中文</span>
+        <span class="w-c">EN</span>
+    </div>
+    <div class="w-tabtle">
+        <span data-id="aboutus_cn" class="nav-span">关于我们</span>
+        <span data-id="project_cn" class="nav-span">经典项目</span>
+        <span data-id="team_cn" class="nav-span span-active">核心团队</span>
+        <span data-id="dynamic_cn" class="nav-span">最新动态</span>
+        <span data-id="zp_cn" class="nav-span">联系我们</span>
+        <div class="w-tableindexsearch hide">
+            <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+            <img class="w-isimgsearch" src="img/uc-06.png">
+            <img class="w-isimgclose" src="img/sy-08.png">
+        </div>
+        <img class="w-tabtleimg" src="img/uc-06.png"/>
+    </div>
+</div>
+<div class="w-content">
+    <div class="w-pcdiv">
+        <div class="w-pcdivl">
+            <div id="fir">
+                <div class="w-perdetaill">
+                    <img id="headPortraitPc" src="" />
+                </div>
+                <div class="w-perdetailr ">
+                    <div class="_scroll">
+                        <div class="_panel-box">
+                            <span class="w-perspant" id="name"></span>
+                            <span class="w-perspanc" id="position"></span>
+                            <div class="w-perspanb" id="intro_english"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="w-pcdivr">
+            <div class="w-perrtittle">相关项目</div>
+            <div class="w-perrimgdiv" id="projectPicture">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="w-nextbtns">
+        <span class="previous" id="previous"></span>
+        <img class="previous" src="img/left.png"/>
+        <img class="next" src="img/right.png"/>
+        <span class="next" id="next"></span>
+    </div>
+</div>
+<div class="w-bottom">
+    <div class="w-botleft">
+        <span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+        <span id="beian">京ICP备案号13030539号</span>
+    </div>
+    <div class="w-botright">
+        <div>
+            <img src="img/uc-03.png"/>
+            <img src="img/uc-04.png"/>
+            <img src="img/uc-05.png"/>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        $(".w-tabnav a").hover(function(){
+            $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        })
+        $("#prebtn").click(function(){
+            $("#fir").show();
+            $("#sec").hide();
+        })
+        $("#nexbtn").click(function(){
+            $("#fir").hide();
+            $("#sec").show();
+        })
+
+    })
+
+
+    $.getJSON("/team/getTeamBOById?id="+getUrl("id"),function (rs) {
+        renderFloor(rs.data.contactWayBO);
+        var data = rs.data.teamBO;
+        var projectPictureStr = '';
+        // debugger;
+        $("#name").html(data.name);
+        $("#position").html(data.position);
+        $("#intro_english").html(data.intro);
+        $("#headPortraitPc").attr("src",data.headPortraitPc);
+  // debugger;
+        for(var i=0;i<data.projectPicture.length;i++){
+            if(data.projectPicture[0]==null){
+                projectPictureStr+='<img  class="project-pic" data-id="22" src="img/te-13.png"/>';
+            }else{
+                projectPictureStr+='<img class="project-pic" data-id="'+data.projectPicture[i]['id']+'" src="'+JSON.parse(data.projectPicture[i]['projectPicturePc'])[0]+'"/>'
+            }
+            // projectPictureStr+='<img class="project-pic" data-id="'+data.projectPicture[i]['id']+'" src="'+data.projectPicture[i]['img']+'"/>'
+        }
+        $("#projectPicture").html(projectPictureStr);
+
+
+        $(document).on("click",".project-pic",function () {
+            // debugger;
+            window.location.href = "projectDetail_cn.html?id="+$(this).data("id")
+        })
+
+
+
+        if(data.beforeUserId==0){
+            $(".previous").css("cursor", 'not-allowed')
+            $("#previous").html("没有了")
+        }else{
+            $("#previous").html(data.beforeUserName)
+        }
+        if(data.afterUserId==0){
+            $(".next").css("cursor", 'not-allowed')
+            $("#next").html("没有了")
+        }else{
+            $("#next").html(data.afterUserName)
+        }
+        $(".previous").on("click",function () {
+
+            if(data.beforeUserId == 0 ){
+                console.log("没有上一个");
+            }else{
+                window.location.href = "/pc/memberDetail_cn.html?id="+data.beforeUserId;
+            }
+        })
+        $(".next").on("click",function () {
+            if(data.afterProjectId == 0 ){
+                console.log("没有下一个")
+            }else{
+                window.location.href = "/pc/memberDetail_cn.html?id="+data.afterUserId;
+            }
+        })
+
+        $("._scroll").css("height","700px");
+        $("._scroll").yi_scroll();
+
+    })
+</script>
+</body>
+</html>
+	

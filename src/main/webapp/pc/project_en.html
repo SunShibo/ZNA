@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>项目一级页面</title>
+		<link href="css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js?v=1"></script>
+	</head>
+	<body>
+	<div class="w-head">
+		<div data-id="home_en" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+
+			<div data-id="home" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+			<div class="w-lang">
+				<span class="w-langc">中文</span>
+				<span class="w-c">EN</span>
+			</div>
+		<div class="w-tabtle">
+			<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+			<span data-id="project_en" class="nav-span span-active">PROJECTS</span>
+			<span data-id="team_en" class="nav-span">TEAM</span>
+			<span data-id="dynamic_en" class="nav-span">NEWS</span>
+			<span data-id="zp_en" class="nav-span">CONTACT US</span>
+			<div class="w-tableindexsearch hide">
+				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+				<img class="w-isimgsearch" src="img/uc-06.png">
+				<img class="w-isimgclose" src="img/sy-08.png">
+			</div>
+			<img class="w-tabtleimg" src="img/uc-06.png"/>
+		</div>
+		</div>
+		<div class="w-content">
+			<div class="" style="overflow: hidden;width:95vw;margin: auto" id="projectItem">
+
+			</div>
+		</div>
+		<div class="w-bottom" style="margin-top: 100px">
+			<div class="w-botleft">
+				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+				<span id="beian">京ICP备案号13030539号</span>
+			</div>
+			<div class="w-botright">
+				<div>
+					<img src="img/uc-03.png"/>
+					<img src="img/uc-04.png"/>
+					<img src="img/uc-05.png"/>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$(".w-tabnav a").hover(function(){
+					$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+				})
+			})
+
+
+			$.getJSON("/projectType/selectProjectType?r="+Date.now(),function (rs) {
+				var data = rs.data.projectTypeBOS;
+
+                renderFloor(rs.data.contactWayBO);
+
+
+
+                var data = rs.data.projectTypeBOS;
+                var pStr = '';
+                for(var i=0;i<data.length;i++){
+                    if(i==8)break;
+                    var imgstr = '';
+                    try{
+                        imgstr = data[i]['pictureUrlPc'];
+                    }catch(e){}
+
+                    pStr+=	['<div class="item" data-id="',data[i]['projectTypeNameEnglish'],'">',
+                        '<div class="box horizaCenter verticalCenter">',
+                        '<div class="inp" style="background-size: 100% 100%;;background-repeat: no-repeat;;background-image: url(\''+imgstr+'\')">',
+                        '<div class="inp-mask-p">',
+                        data[i].projectTypeNameEnglish,
+                        '</div>',
+                        '</div>',
+                        '</div>',
+                        '</div>'].join("")
+                }
+
+                $("#projectItem").html(pStr);
+
+            })
+
+			$(document).on("click",'.item',function () {
+			    var id = $(this).data("id");
+			    if(id){
+			        window.location.href = 'projectType_en.html?id='+id
+				}
+				// console.log($(this).data("id"))
+            })
+		</script>
+	</body>
+</html>

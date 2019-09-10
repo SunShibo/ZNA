@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>核心团队</title>
+		<link href="css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js?v=1"></script>
+        <style>
+            .box-mask{
+                /*position: absolute;bottom: 0px;height: 30px;width: 100%;background: transparent;*/
+            }
+            .box-wp{
+                overflow: hidden;position: relative;height: 100%;
+            }
+			img{
+				vertical-align: middle;
+				transition: all 0.6s;
+			}
+
+			.footer{margin-top:-100px;background-color: #ffc0cb;}/* margin-top（负值的）高度等于footer的height值 */
+        </style>
+	</head>
+	<body>
+		<div class="w-head">
+			<div data-id="home_cn" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+			<div class="w-lang">
+				<span class="w-langc">中文</span>
+				<span class="w-c">EN</span>
+			</div>
+			<div class="w-tabtle">
+				<span data-id="aboutus_cn" class="nav-span">关于我们</span>
+				<span data-id="project_cn" class="nav-span">经典项目</span>
+				<span data-id="team_cn" class="nav-span span-active">核心团队</span>
+				<span data-id="dynamic_cn" class="nav-span">最新动态</span>
+				<span data-id="zp_cn" class="nav-span">联系我们</span>
+				<div class="w-tableindexsearch hide">
+					<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+					<img class="w-isimgsearch" src="img/uc-06.png">
+					<img class="w-isimgclose" src="img/sy-08.png">
+				</div>
+				<img class="w-tabtleimg" src="img/uc-06.png"/>
+			</div>
+		</div>
+		<div style="height: 40px;"></div>
+		<div class="w-content">
+			<div class="w-teamdiv" id="memberDom">
+
+			</div>
+		</div>
+		<div class="w-bottom">
+			<div class="w-botleft">
+				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+				<span id="beian">京ICP备案号13030539号</span>
+			</div>
+			<div class="w-botright">
+				<div>
+					<img src="img/uc-03.png"/>
+					<img src="img/uc-04.png"/>
+					<img src="img/uc-05.png"/>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$(".w-tabnav a").hover(function(){
+					$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+				})
+
+			})
+
+            // return;
+
+			$.getJSON("/team/getTeamBO?r="+Date.now(),function (rs) {
+// return;
+                renderFloor(rs.data.contactWayBO);
+				var data = rs.data.teamBOS;
+				var dom = "";
+				for(var i=0;i<data.length;i++){
+				    // debugger;
+				    if((i)%4==0||i==0){
+                        dom+=['<div>',
+                            '    <div class="w-teambox" data-id="',
+							data[i].id,
+							'">',
+                        '    <div class="box-wp">',
+                        '    <img src="',
+									data[i]['headPortraitPc'],
+							'"/>',
+                        '    </div>',
+                        '    <div class="w-teambfont">',
+                        '   <span class="w-teambft">',
+                            data[i]['name'],
+							'</span>',
+                        ' <span class="w-teambfb">',
+
+                            data[i]['position'],
+							'| ',
+                            data[i]['aptitudeAbbreviation'],
+							'</span>',
+                        ' </div>',
+                        ' </div>'].join("")
+					}else if((i+1)%4==0||i==data.length){
+                        dom+=[
+                            '    <div class="w-teambox mr-0" data-id="',
+                            data[i].id,
+                            '">',
+                            '    <div class="box-wp">',
+                            '    <img src="',
+                            data[i]['headPortraitPc'],
+                            '"/>',
+                            '    </div>',
+                            '    <div class="w-teambfont">',
+                            '   <span class="w-teambft">',
+                            data[i]['name'],
+                            '</span>',
+                            ' <span class="w-teambfb">',
+
+                            data[i]['position'],
+                            '| ',
+                            data[i]['aptitudeAbbreviation'],
+                            '</span>',
+                            ' </div>',
+                            ' </div>',
+                            ' </div>'].join("")
+					}else{
+                        dom+=[
+                            '    <div class="w-teambox" data-id="',
+                            data[i].id,
+                            '">',
+                            '    <div class="box-wp">',
+                            '    <img src="',
+                            data[i]['headPortraitPc'],
+                            '"/>',
+                            '    </div>',
+                            '    <div class="w-teambfont">',
+                            '   <span class="w-teambft">',
+                            data[i]['name'],
+                            '</span>',
+                            ' <span class="w-teambfb">',
+
+                            data[i]['position'],
+                            '| ',
+                            data[i]['aptitudeAbbreviation'],
+                            '</span>',
+                            ' </div>',
+                            ' </div>'].join("")
+					}
+				}
+
+				$("#memberDom").html(dom + "</div>");
+
+
+
+				$(document).on("click",".w-teambox",function () {
+					// console.log($(this).data("id"))
+					window.location.href = "/pc/memberDetail_cn.html?id="+$(this).data("id");
+                })
+
+            })
+
+		</script>
+	</body>
+</html>
