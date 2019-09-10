@@ -317,6 +317,8 @@ body{
 	/* min-width: 230px; */
 	width: 236px;
 	height: 177px;
+	z-index: 999;
+	display: none;
 }
 .w-addimgdetail span{
 	display: block;
@@ -1193,3 +1195,13 @@ body{
 }
 
 .fixed-bottom {position: fixed;bottom: 0;width: 95%}
+
+.w-aidspant{
+	color: rgb(88,36,134)!important;
+	font-size: 22px!important;
+	line-height: 40px!important;
+}
+
+.d_mask{
+	position: absolute; width: 30px;height: 30px;
+}

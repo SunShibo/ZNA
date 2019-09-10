@@ -11,7 +11,7 @@
 	</head>
 	<body>
 	<div class="w-head">
-		<div data-id="home" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+		<div data-id="home_cn" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
 			<div class="w-lang">
 				<span class="w-langc">中文</span>
 				<span class="w-c">EN</span>
@@ -38,15 +38,20 @@
 			<div class="w-tabcontent">
 				<div class="w-contenta" style="display: block;position: relative" onmousemove="test(event)">
 					<div class="w-addimgdetail" id="div1">
-						<span class="w-aidspant">BEIJING</span>
-						<span>Chaowai SOHO, Building A,Beijing, China 100022Beijing, China 100022Beijing, China 100022</span>
+						<span class="w-aidspant" id="a_city"></span>
+						<span id="d_address"></span>
 
-						<span>Tel: 86-10-6543 5058 </span>
-						<span>Fax: 86-10-6543 5076</span>
-						<span>E: info-beijing@znarch.com</span>
+						<span>Tel: <b id="d_tel"></b></span>
+						<span>Fax: <b id="d_fax"></b></span>
+						<span>E:   <b id="d_e"></b></span>
 					</div>
 					<div style="position: relative">
-						<div style="position: absolute;top: 35.8%;width: 30px;height: 30px;left: 30.6%;background: #000"></div>
+						<div class="d_mask" data-id="0"></div>
+						<div class="d_mask" data-id="1" ></div>
+						<div class="d_mask" data-id="2"></div>
+						<div class="d_mask" data-id="3"></div>
+						<div class="d_mask" data-id="4"></div>
+						<div class="d_mask" data-id="5"></div>
 						<img src="img/cu-01.png" id="imgaddress" class="w-contentaimg"/>
 					</div>
 					<div class="w-contentdiv" id="address">
@@ -126,9 +131,13 @@
             console.log("办公室信息",rs.data);
             var d = offices = rs.data.officeContactBO;
             var dStr = '';
-
+            var $mask = $(".d_mask");
             for(var i=0;i<d.length;i++){
+
                 var a = d[i];
+                $mask[i].style.top = a.coordinate.split("-")[0];
+                $mask[i].style.left = a.coordinate.split("-")[1];
+                // debugger;
             	dStr+=[
                     '<div class="w-tabcadd">',
                     '<a>',a.name,'</a>',
@@ -178,73 +187,24 @@
         })
 
 		function test(e) {
-            document.getElementById('div1').style.display = 'none';
-// return false;
+return;
             e=e||window.event;
             var scrollX=document.documentElement.scrollLeft||document.body.scrollLeft;//分别兼容ie和chrome
             var scrollY=document.documentElement.scrollTop||document.body.scrollTop;
             var x=e.pageX||(e.clientX+scrollX);//兼容火狐和其他浏览器
             var y=e.pageY||(e.clientY+scrollY);
            console.log("鼠标x="+x,"鼠标y="+y);
-           // return;
-            // return {x:x,y:y};
-
-           //  console.log("x"+e.clientX,"y"+e.clientY)
-           //  console.log(document.getElementById('imgaddress').height,document.getElementById("imgaddress").width )
-            // console.log("x/width=",e.clientX/document.getElementById("imgaddress").width);
-            // console.log("y/height=",e.clientY/document.getElementById("imgaddress").height);
             var px1 = e.clientX/document.getElementById("imgaddress").width;
             var py1 = (e.clientY+scrollY)/document.getElementById("imgaddress").height;
- console.log("x坐标值"+px1.toFixed(2),"y坐标值"+py1.toFixed(2))
-
-			// for(var i=0;i<offices.length;i++){
-
-                // var xx = Number(offices[i].coordinate.split("-")[0]);
-                // var yy = Number(offices[i].coordinate.split("-")[1]);
-// console.log(xx,yy);
-
-				// var ba = ((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[i].coordinate.split("-")[1]);
-				if(
-				    px1<(Number(offices[0].coordinate.split("-")[1])+0.02)
-                    &&  px1 > (Number(offices[0].coordinate.split("-")[0])-0.02)
-                    &&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[0].coordinate.split("-")[1])+0.02)
-                    &&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[0].coordinate.split("-")[1])-0.02) )
-
-				{
-
-					document.getElementById('div1').style.display = 'block';
-				}else if(
-
-				    	px1<(Number(offices[1].coordinate.split("-")[1])+0.02)
-					&&  px1 > (Number(offices[1].coordinate.split("-")[1])-0.02)
-					&&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[1].coordinate.split("-")[1])+0.02)
-					&&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[1].coordinate.split("-")[1])-0.02) )
-				{
-				    // debugger;
-                    document.getElementById('div1').style.display = 'block';
-				}
-                else if(
-
-                    px1<(Number(offices[2].coordinate.split("-")[2])+0.02)
-                    &&  px1 > (Number(offices[2].coordinate.split("-")[2])-0.02)
-                    &&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[2].coordinate.split("-")[2])+0.02)
-                    &&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[2].coordinate.split("-")[2])-0.02) )
-                {
-                    // debugger;
-                    document.getElementById('div1').style.display = 'block';
-                }
+ 			console.log("x坐标值"+px1.toFixed(2),"y坐标值"+py1.toFixed(2))
 
 
-				else{
-                    document.getElementById('div1').style.display = 'none';
-				}
-            // }
         }
 
 
 
     document.onmousemove=function(ev){
-        return false;
+        // return false;
         var oEvent=ev||event;
         var oDiv=document.getElementById('div1');
         var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
@@ -253,5 +213,17 @@
         oDiv.style.top=oEvent.clientY+scrollTop-330+'px';
 
     }
+
+    $(".d_mask").hover(function () {
+		var id= Number(this.dataset.id);
+        document.getElementById('div1').style.display = 'block';
+        document.getElementById("a_city").textContent = offices[id]['name'];
+        document.getElementById("d_address").textContent = offices[id]['address'];
+        document.getElementById("d_tel").textContent = offices[id]['mobile'];
+        document.getElementById("d_fax").textContent = offices[id]['faxNO'];
+        document.getElementById("d_e").textContent = offices[id]['email'];
+    },function () {
+        document.getElementById('div1').style.display = 'none';
+    })
 
 </script>
