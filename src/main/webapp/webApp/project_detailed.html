@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZNA-DETAILED</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="app-page">
+    <div class="head">
+        <div class="head-item logo">
+            <a href="home.html"><img src="image/logo.png" id="logoImage" alt="" width="100%" height="100%"></a>
+        </div>
+
+        <div class="head-item head-btn">
+            <div class="close-menu" id="closeMenu">
+                <img src="image/icon/ic_menuClose.png" alt="" width="100%" height="100%">
+            </div>
+
+            <div class="menu head-item-btn" id="clickMenu">
+                <img src="image/icon/ic_menuOpen.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="search head-item-btn" id="clickSearch">
+                <img src="image/icon/ic_search.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="language head-item-btn" id="language"></div>
+        </div>
+    </div>
+
+    <!--搜索框-->
+    <div class="head_search">
+        <div>
+            <div class="search_icon"><img src="image/icon/ic_search.png" alt="" width="100%" height="100%"></div>
+            <input type="search" placeholder="SEARCH" autocomplete="off"/>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <nav id="nav">
+        <ul class="nav-ul">
+            <li><a href="aboutUs.html" id="about" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="project" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="project.html?id=HOTEL/RESORT"></a></li>
+                        <li><a href="project.html?id=OFFICE/MIXED-USE"></a></li>
+                        <li><a href="project.html?id=CIVIC/EXHIBITION"></a></li>
+                        <li><a href="project.html?id=RESIDENTIAL/HEALTHCARE"></a></li>
+                        <li><a href="project.html?id=EDUCATION/SCIENCE"></a></li>
+                        <li><a href="project.html?id=MASTER/PLANNING"></a></li>
+                        <li><a href="project.html?id=LANDSCAPE/DESIGN"></a></li>
+                        <li><a href="project.html?id=INTERIOR/DESIGN"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="team.html" id="team" class="nav-href"></a></li>
+            <li><a href="news.html" id="dynamic" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="information" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="office.html"></a></li>
+                        <li><a href="recruitment.html"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="project-detailed-image">
+            <img src="" id="projectDetailedImage" alt="" width="100%" height="100%">
+        </div>
+        <div class="project-detailed-info">
+            <div class="detailed-title">
+            </div>
+            <div class="detailed-info">
+                <div class="location"></div>
+                <div class="site-area"></div>
+                <div class="building-area"></div>
+                <div class="client"></div>
+            </div>
+            <div class="detailed-content"></div>
+            <div class="switch">
+                <a href="#" id="info">info +</a>
+            </div>
+            <div class="detailed-image-items"></div>
+        </div>
+        <div class="details-default detailed-fixed">
+            <div class="back-page">
+                <a href=""></a>
+            </div>
+            <div class="nav-page">
+                <div class="nav-default nav-pre">
+                    <a href="">
+                        <span class="nav-btn-pre"></span>
+                        <div class="nav-img">
+                            <img src="./image/icon/ic_pre.png" alt="" width="100%" height="100%">
+                        </div>
+                    </a>
+                </div>
+                <div class="nav-default nav-next">
+                    <a href="">
+                        <div class="nav-img">
+                            <img src="./image/icon/ic_next.png" alt="" width="100%" height="100%">
+                        </div>
+                        <span class="nav-btn-next">NEXT</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="foot">
+        <div class="foot-center">
+            <div class="foot-office-info">
+                <div class="contact">TEL: <span id="mobile"></span></div>
+                <div class="contact">FAX: <span id="faxNO"></span></div>
+            </div>
+            <div class="contact">EMAIL: <span id="email"></span></div>
+            <div class="icon-list">
+                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="foot-icp contact">京ICP备案号13030539号</div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function (window, $) {
+
+        var data = [], infoState = false, scrollHeight = 0, windowHeight = 0, windowHeight7 = 0;
+
+        window.switch_language = function (lang) {
+            if (data.length) {
+                setting(lang);
+            } else {
+                init(lang);
+            }
+        };
+
+        function setting(lang) {
+            $('.detailed-title').text(lang ? data[0].titleEnglish : data[0].title);
+            $('.location').text(lang ? 'Location: ' + data[0].siteEnglish : '地点: ' + data[0].site);
+            $('.site-area').text(lang ? 'Site Area: ' + data[0].floorSpaceEnglish : '场地面积: ' + data[0].floorSpace);
+            $('.building-area').text(lang ? 'Building Area: ' + data[0].coveredAreaEnglish : '建筑面积: ' + data[0].coveredArea);
+            $('.client').text(lang ? 'Client: ' + data[0].clientEnglish : '业主: ' + data[0].client);
+            $('.detailed-content').text(lang ? data[0].contextEnglish : data[0].context);
+
+            //底部导航栏
+            var pre = data[0].beforeProjectId ? ('project_detailed.html?id=' + data[0].beforeProjectId) : '';
+            var next = data[0].afterProjectId ? ('project_detailed.html?id=' + data[0].afterProjectId) : '';
+            var back = lang ? data[0].projectTypeNameEnglish : data[0].projectTypeName;
+            $('.nav-pre>a').attr('href', pre).children('.nav-btn-pre').text(lang ? 'PREVIOUS' : '上一个');
+            $('.nav-next>a').attr('href', next).children('.nav-btn-next').text(lang ? 'NEXT' : '下一个');
+            $('.back-page>a').attr('href', 'project.html?language=' + $.getLangStr() + '&id='+data[0].projectTypeNameEnglish).text("< " + back);
+
+            //变量scrollHeight是滚动条的总高度
+            scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            //变量windowHeight是可视区的高度
+            windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            //七分之一的可视区高度
+            windowHeight7 = Math.ceil(windowHeight / 7);
+        }
+
+        function init(lang) {
+            $.ajax({
+                url: '/project/getProjectDetails',
+                type: 'POST',
+                dataType: 'json',
+                data: {id: $.getUrl('id')},
+                success: function (r) {
+                    data.push(r.data.projectBO);
+                    //获取图片
+                    var imageListUrl = JSON.parse(data[0].pictureUrl);
+
+                    $('#projectDetailedImage').prop('src', imageListUrl[0]);
+
+
+                    //项目图片设置
+                    var domArr = [];
+                    for (var i = 1, len = imageListUrl.length; i < len; i++) {
+                        domArr.push('<div class="image-item">',
+                            '<img src="', imageListUrl[i], '" alt="" width="100%" height="100%">',
+                            '</div>')
+                    }
+                    //绑定dom
+                    $('.detailed-image-items').append(domArr.join(''));
+
+                    //按语言设置
+                    setting(lang);
+                    //底部信息设置
+                    $.footData(r.data.contactWayBO);
+                }
+            })
+        }
+
+
+        $(window).on('scroll', function () {
+            //变量scrollTop是滚动条滚动时，距离顶部的距离
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            //滚动条到底部的条件
+            if (Math.ceil(scrollTop + windowHeight) > Math.ceil(scrollHeight - windowHeight7)) {
+                $('.details-default').removeClass('detailed-fixed').addClass('detailed-href');
+            } else {
+                $('.details-default').removeClass('detailed-href').addClass('detailed-fixed');
+            }
+        });
+
+        $('#info').on('click', function (e) {
+            $('.detailed-content').slideToggle(500, function (e) {
+                infoState = !infoState;
+                if (infoState) {
+                    $('.switch a').text('info -');
+                } else {
+                    $('.switch a').text('info +');
+                }
+            });
+        })
+    })(window, jQuery);
+</script>
+</body>
+</html>

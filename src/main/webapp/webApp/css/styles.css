@@ -1,0 +1,1048 @@
+/*
+        需要注意的是：
+        样式的reset中需先设置html字体的初始化大小为50px，这是为了防止js被禁用或者加载不到或者执行错误而做的兼容
+        样式的reset中需先设置body字体的初始化大小为16px，这是为了让body内的字体大小不继承父级html元素的50px，而用系统默认的16px
+        */
+body, dl, dd, ul, ol, h1, h2, h3, h4, h5, h6, pre, form, input, textarea, p, hr, thead, tbody, tfoot, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+html {
+    -ms-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    font-size: 50px;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+body, button, input, select, textarea {
+    font-family: 'helvetica neue', tahoma, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+i, em {
+    font-style: normal;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+table th {
+    font-weight: inherit;
+    border-bottom-width: 2px;
+    border-bottom-color: #ccc;
+}
+
+img {
+    border: 0 none;
+    width: auto \9;
+    max-width: 100%;
+    vertical-align: top;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button[disabled], input[disabled] {
+    cursor: default;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input {
+        line-height: normal !important;
+    }
+}
+
+select[size], select[multiple], select[size][multiple] {
+    border: 1px solid #AAA;
+    padding: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+audio, canvas, video, progress {
+    display: inline-block;
+}
+
+/*公共部分*/
+#app-page {
+    width: 7.5rem;
+    margin: 0 auto;
+    background: #ffffff;
+}
+
+#app-page .home-href {
+    font-size: 0.22rem;
+    font-weight: bold;
+}
+
+#app-page .titles {
+    font-size: 0.4rem;
+    color: #ffffff;
+}
+
+#app-page .contents {
+    font-size: 0.24rem;
+    line-height: 0.36rem;
+    color: #ffffff;
+    margin-bottom: .26rem;
+}
+
+#app-page .home-items {
+    margin: 0.2rem;
+
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    width: 7.1rem;
+    height: 8rem;
+    position: relative;
+}
+
+.home-understand {
+    height: 6.69rem;
+}
+
+.home-project {
+    height: 9.29rem;
+}
+
+.home-news {
+    height: 6.7rem;
+}
+
+.home-team {
+    height: 7.04rem;
+}
+
+.home-items .items-content {
+    position: absolute;
+    left: .4rem;
+    bottom: 1rem;
+    width: 4rem;
+}
+
+.banner-item {
+    margin-bottom: .2rem;
+}
+
+#app-page .head_search {
+    width: 7.5rem;
+    height: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 10;
+    display: none;
+}
+
+.head_search > div {
+    margin: 0 auto;
+    position: relative;
+    top: 50%; /*偏移*/
+    transform: translateY(-50%);
+    border-bottom: 1px #999999 solid;
+    width: 70%;
+}
+
+.head_search .search_icon {
+    width: .4rem;
+    margin: 0 .1rem;
+    display: inline-block;
+}
+
+.head_search .search_icon img {
+    vertical-align: middle;
+    height: .4rem;
+    margin: .1rem 0 .05rem;
+}
+
+.head_search input {
+    background: rgba(255, 255, 255, 0.1);
+    border-style: none;
+    outline: none;
+    display: inline-block;
+    padding-left: .1rem;
+    width: 80%;
+    height: .5rem;
+    font-size: .3rem;
+    vertical-align: bottom;
+    margin-left: .1rem;
+}
+
+.head_search input::placeholder {
+    color: #999999;
+    font-size: .3rem;
+}
+
+#app-page #nav {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    top: 1rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+    z-index: 19;
+    width: 7.5rem;
+}
+
+#nav .nav-ul {
+    z-index: 20;
+    background: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-end;
+    flex-direction: column;
+}
+
+#nav .nav-ul li {
+    border: 1px #cccccc solid;
+}
+
+li .nav-href {
+    display: block;
+    width: 6.45rem;
+    font-size: .28rem;
+    padding: .1rem .5rem;
+    line-height: .65rem;
+    color: #cccccc;
+}
+
+.sub {
+    display: none;
+}
+
+.sub-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.sub-nav li {
+    width: 3.487rem;
+    text-align: center;
+    line-height: .65rem;
+    padding: .1rem;
+}
+
+.sub-nav li a {
+    display: block;
+    color: #cccccc;
+    font-size: .28rem;
+}
+
+/*头部*/
+#app-page .head {
+    width: 7.5rem;
+    height: 1rem;
+
+    position: relative;
+    background: #ffffff;
+}
+
+.head .head-item {
+    display: inline-block;
+    position: absolute;
+    top: .2rem;
+    bottom: .2rem;
+}
+
+.head .logo {
+    width: 1.5rem;
+    left: .1rem;
+    text-align: center;
+    padding: 0 .1rem;
+}
+
+.head .logo > a {
+    display: inline-block;
+}
+
+.head .head-btn {
+    width: 2rem;
+    right: .1rem;
+    padding: 0 .1rem;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.head .head-item .language {
+    color: #666666;
+    font-size: .4rem;
+    line-height: .35rem;
+}
+
+.head .head-item .head-item-btn {
+    margin: .12rem;
+}
+
+.head .head-item .menu img, .head .head-item .search img {
+    vertical-align: top;
+}
+
+.head-item:last-child .close-menu {
+    display: none;
+    vertical-align: top;
+    position: absolute;
+    right: .2rem;
+    top: .1rem;
+    bottom: .1rem;
+    width: .5rem;
+    margin: auto;
+}
+
+.close-menu img {
+    vertical-align: top;
+    animation: closeMenu .4s ease-in-out;
+}
+
+@keyframes closeMenu {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(1.5);
+    }
+}
+
+/*首页内容部分*/
+.banner, .swiper-containers {
+    height: 5rem;
+}
+
+.swiper-pagination-bullet {
+    border: 1px #ffffff solid;
+    height: .1rem;
+    width: .1rem;
+    background: transparent;
+    z-index: 999;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ffffff;
+    width: .3rem;
+    opacity: 1;
+    border-radius: .25rem;
+}
+
+.swiper-coopterative {
+    overflow: hidden;
+    background-image: url("../image/logo_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.swiper-coopterative .logo-center {
+    width: 7.1rem;
+    padding: .25rem .2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.swiper-coopterative .logo-center li {
+    width: 1.12rem;
+    height: .7rem;
+    display: inline-block;
+    margin: .1rem .15rem;
+}
+
+.about-pagination {
+    text-align: center;
+}
+
+.about-pagination-bullet {
+    display: inline-block;
+    text-align: center;
+    border: 1px #999999 solid;
+    height: .1rem;
+    width: .1rem;
+    border-radius: 50%;
+    background: transparent;
+    z-index: 999;
+    margin: 0 .05rem;
+}
+
+.about-pagination-bullet-active {
+    background: #999999;
+    width: .3rem;
+    opacity: 1;
+    border-radius: .25rem;
+}
+
+.banner .about-banner {
+    position: relative;
+}
+
+.about-banner img {
+    filter: blur(2px);
+}
+
+.about-banner .banner-item-content {
+    position: absolute;
+    bottom: 1.5rem;
+    left: .5rem;
+    right: .5rem;
+    margin: auto;
+    color: #ffffff;
+    text-align: center;
+    padding: .3rem .2rem;
+    z-index: 99;
+}
+
+.banner-item-content .banner-item-title {
+    font-size: .3rem;
+}
+
+.banner-item-content .banner-item-text {
+    font-size: .2rem;
+}
+
+.content .home-about {
+    /*background-image: url("../image/home/home.png");*/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 7.5rem;
+    height: 4.5rem;
+    position: relative;
+}
+
+.content .about-items {
+    width: 7.1rem;
+    margin: .2rem;
+}
+
+.content .about-href {
+    position: relative;
+}
+
+.about-href div {
+    position: absolute;
+    bottom: .2rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.about-href div a {
+    border-radius: .05rem;
+    border: solid 1px #ffffff;
+    color: #ffffff;
+    font-size: .2rem;
+    padding: .1rem .2rem;
+}
+
+.about-items .about-item-content {
+    line-height: .4rem;
+    /*text-indent: .6rem*/
+    padding: 0 .2rem;
+    font-size: .24rem;
+    font-weight: normal;
+    font-stretch: normal;
+    width: 6.9rem;
+    color: #2e2e2e;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.about-items .about-service {
+    padding: .4rem .2rem 0 .1rem;
+}
+
+.about-service .about-service-item {
+    font-size: .25rem;
+
+}
+
+.about-service .about-font {
+    font-size: .28rem;
+    font-weight: 600;
+    color: #313131;
+}
+
+.home-about .about-text {
+    width: 4.5rem;
+    position: absolute;
+    top: .3rem;
+    bottom: .3rem;
+    right: .2rem;
+    margin: auto;
+    background: #ffffff;
+    z-index: 10;
+    padding: .3rem;
+}
+
+.about-text .about-a {
+    position: absolute;
+    bottom: .3rem;
+    left: .3rem;
+
+}
+
+.about-text .about-title, .about-title {
+    font-size: .28rem;
+    color: #000000;
+    display: inline-block;
+    padding-bottom: .09rem;
+    margin-bottom: .16rem;
+    border-bottom: 1px #313131 solid;
+}
+
+.about-text .about-content-test p {
+    font-size: .24rem;
+    font-weight: normal;
+    font-stretch: normal;
+    color: #313131;
+}
+
+.content .team-list {
+    width: 7.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.team-list .team-items {
+    margin: 0 .2rem;
+    width: 3.34rem;
+    position: relative;
+}
+
+.team-items .item-image {
+    height: 79%;
+}
+
+.team-items .team-item-content {
+    height: 20%;
+}
+
+.team-item-content div:first-child {
+    font-size: .24rem;
+    font-weight: bold;
+    letter-spacing: .01rem;
+    color: #333333;
+}
+
+.team-item-content div:last-child {
+    font-size: .18rem;
+    font-weight: bold;
+    letter-spacing: .01rem;
+    color: #666666;
+}
+
+.team-items .item-content-rows {
+    margin: .05rem .2rem;
+
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.content .detailed {
+    margin: 0 .15rem;
+}
+
+.page_next {
+    text-align: center;
+}
+
+.page_next a {
+    text-decoration: underline;
+    color: #535353;
+}
+
+.detailed .detailed-image {
+    width: 7.19rem;
+    height: 9.28rem;
+}
+
+.detailed .detailed-content {
+    margin: 0 .2rem;
+    color: #333333;
+    font-size: .25rem;
+    /*div换行*/
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.detailed-content .detailed-name {
+    font-size: .5rem;
+    margin-top: .4rem;
+}
+
+.detailed-content .detailed-position {
+    font-size: .3rem;
+    margin-bottom: .3rem;
+}
+
+.detailed-content .detailed-office, .detailed-content .detailed-professional {
+    margin-top: .3rem;
+}
+
+.detailed-content .detailed-content-title {
+    color: #5e258e;
+    font-size: .25rem;
+}
+
+.content .team-project {
+    padding: .4rem
+}
+
+.team-project .team-project-title {
+    font-size: .24rem;
+    line-height: .24rem;
+    letter-spacing: .01rem;
+    color: #333333;
+}
+
+.team-project ul {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    width: 6.7rem;
+    margin: .16rem 0;
+    flex-wrap: wrap;
+}
+
+.team-project ul li {
+    width: 2.09rem;
+    height: 1.29rem;
+    display: inline-block;
+    background: #000;
+    margin: 0 .07rem .16rem;
+}
+
+.details-default {
+    display: flex;
+    justify-content: space-between;
+    background: #ffffff;
+}
+
+.content .detailed-href {
+    width: 6.72rem;
+    height: .4rem;
+    margin: .3rem auto;
+    position: relative;
+}
+
+.content .detailed-fixed {
+    width: 7.5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: .3rem 0;
+}
+
+.details-default .back-page, .details-default .nav-page {
+    margin: 0 .2rem;
+    font-size: .22rem;
+    letter-spacing: .01rem;
+}
+
+.details-default a {
+    color: #666666;
+    vertical-align: middle;
+}
+
+.details-default .nav-page {
+    display: flex;
+    align-content: center;
+}
+
+.nav-page .nav-default {
+    display: inline-block;
+    margin: 0 .1rem;
+}
+
+.nav-default .nav-img {
+    width: .4rem;
+    height: .4rem;
+    display: inline-block;
+}
+
+.nav-img img {
+    vertical-align: middle;
+}
+
+.office-content .office-items {
+    margin: .5rem .3rem;
+    color: #333333;
+}
+
+.office-items .office-item-name {
+    font-size: .4rem;
+    border-bottom: 1px #333333 solid;
+    display: inline-block;
+}
+
+.office-items .item-info {
+    font-size: .28rem;
+}
+
+.item-info div {
+    margin: .1rem 0;
+}
+
+.content .history-items {
+    margin: 0 0 .2rem;
+    padding: 0 .25rem;
+}
+
+.history-items .item-image {
+    width: 7rem;
+    height: 3rem;
+}
+
+.history-items .history-item-info {
+    padding: .1rem .15rem;
+}
+
+.history-item-info .history-year {
+    font-size: .28rem;
+    font-weight: 600;
+    font-style: italic;
+    color: #111111;
+}
+
+.history-item-info .history-introduction {
+    font-size: .24rem;
+    line-height: .3rem;
+    color: #111111;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.content .history-next {
+    font-size: .24rem;
+    line-height: .34rem;
+    letter-spacing: .02rem;
+    color: #666666;
+    text-align: center;
+}
+
+.history-next a {
+    font-size: .24rem;
+    line-height: .34rem;
+    letter-spacing: .02rem;
+    color: #666666;
+}
+
+.content .items {
+    position: relative;
+    width: 7.5rem;
+    height: 5rem;
+    margin-bottom: .02rem;
+}
+
+.content .items-bottom {
+    margin-bottom: .17rem;
+}
+
+.items .item-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: .3rem;
+    padding: .05rem .4rem;
+    color: #ffffff;
+}
+
+.items .class-title {
+    text-align: center;
+}
+
+.items .project-title {
+    text-align: right;
+}
+
+.content .news-items {
+    width: 7.18rem;
+    margin: 0 .16rem .16rem;
+}
+
+.news-items .news-item-image {
+    height: 4.41rem;
+}
+
+.news-items .news-info {
+    padding: .26rem .24rem;
+}
+
+.news-info .news-item-title {
+    font-size: .24rem;
+    line-height: .28rem;
+    letter-spacing: .02rem;
+    color: #000000;
+}
+
+.news-info .news-item-date {
+    font-size: .18rem;
+    line-height: .36rem;
+    letter-spacing: .01rem;
+    color: #777777;
+}
+
+.news-info .news-item-content {
+    display: none;
+    font-size: .24rem;
+    line-height: .34rem;
+    letter-spacing: .02rem;
+    margin-top: .5rem;
+    color: #333333;
+}
+
+.content .project-detailed-image {
+    width: 7.5rem;
+    height: 4.82rem;
+}
+
+.content .project-detailed-info {
+    padding: .5rem .4rem;
+}
+
+.project-detailed-info .detailed-title {
+    font-size: .36rem;
+    line-height: .4rem;
+    letter-spacing: .03rem;
+    color: #333333;
+    border-bottom: 1px #333333 solid;
+    padding-bottom: .1rem;
+}
+
+.project-detailed-info .detailed-info {
+    font-size: .26rem;
+    line-height: .34rem;
+    letter-spacing: .02rem;
+    color: #333333;
+    padding: .11rem 0;
+}
+
+.project-detailed-info .detailed-content {
+    display: none;
+    font-size: 0.24rem;
+    line-height: 0.32rem;
+    letter-spacing: 0.01rem;
+    color: #333333;
+}
+
+.project-detailed-info .switch {
+    margin: .4rem 0;
+}
+
+.switch a {
+    display: inline-block;
+    width: 1.04rem;
+    height: .4rem;
+    border-radius: .04rem;
+    border: solid 1px #333333;
+    text-align: center;
+    font-size: .24rem;
+    line-height: .4rem;
+    letter-spacing: .01rem;
+    color: #333333;
+}
+
+.project-detailed-info .image-item {
+    width: 6.7rem;
+    height: 4.08rem;
+    margin-bottom: .2rem;
+}
+
+.content .recruitment {
+    width: 7.5rem;
+}
+
+.recruitment .recruitment-image {
+    height: 4.22rem;
+    position: relative;
+    margin-bottom: .6rem;
+}
+
+.recruitment-image .image-content {
+    position: absolute;
+    right: .16rem;
+    bottom: -.6rem;
+    width: 5.47rem;
+    background: rgba(17, 3, 36, .8);
+    padding: .3rem .2rem;
+    color: #ffffff;
+    text-align: right;
+}
+
+.image-content .image-content-title {
+    font-size: 0.3rem;
+}
+
+.image-content .image-content-text {
+    font-size: 0.22rem;
+    letter-spacing: 0.02rem;
+}
+
+.content .recruitment-introduction {
+    margin: 1.2rem .4rem .5rem;
+
+}
+
+.recruitment-introduction .main-content {
+    margin-bottom: .6rem;
+    font-size: 0.24rem;
+    color: #000000;
+}
+
+.main-career .career-title {
+    font-size: 0.3rem;
+    color: #000000;
+    border-bottom: 1px #333333 solid;
+    padding-bottom: .13rem;
+}
+
+.career-info ul {
+    width: 6.7rem;
+}
+
+.career-info ul li {
+    border-bottom: 1px #cccccc solid;
+}
+
+.career-info ul li .info-title {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+ul li .info-title div:first-child {
+    display: inline-block;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: 0.28rem;
+    letter-spacing: 0.01rem;
+    color: #000000;
+}
+
+ul li .info-title div:last-child {
+    margin: .275rem 0;
+    width: .45rem;
+    height: 0.25rem;
+}
+
+ul li .info-text {
+    display: none;
+    color: #000000;
+    letter-spacing: 0.01rem;
+    font-size: 0.26rem;
+    line-height: 0.48rem;
+}
+
+.info-text-obligation .obligation-title{
+    margin-top: .2rem;
+}
+
+.info-text-qualification .qualification-title {
+    margin-top: .4rem;
+}
+
+/*尾部*/
+#app-page #foot {
+    background: #ffffff;
+    border-top: 1px #999999 solid;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: .4rem;
+}
+
+#foot .foot-center {
+    width: 70%;
+    margin: .3rem auto;
+    text-align: center;
+}
+
+.foot-center > div {
+    margin: .1rem 0;
+}
+
+#foot .foot-office-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+#foot .contact {
+    color: #cccccc;
+    font-size: .25rem;
+}
+
+#foot .icon-list {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.icon-list img {
+    width: .35rem;
+    margin: 0 .1rem;
+}
