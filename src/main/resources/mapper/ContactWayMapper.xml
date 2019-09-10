@@ -7,11 +7,11 @@
 
     <!--新增联系方式-->
     <insert id="addContactWay" parameterType="com.zna.server.entity.bo.ContactWayBO">
-        INSERT INTO `zna_contact_way` ( `mobile`, `fax_NO`, `email`, `picture_one`,`picture_one_pc`,
-           `picture_two`,`picture_two_pc`, `picture_three`,`picture_three_pc`,
+        INSERT INTO `zna_contact_way` ( `mobile`, `fax_NO`, `email`, `picture_one`,`picture_one_pc`,`picture_one_url`,
+           `picture_two`,`picture_two_pc`, `picture_two_url`,`picture_three`,`picture_three_pc`,`picture_three_url`,
            `create_user_id`, `create_time`)
-                  VALUES (#{mobile},#{faxNO},#{email},#{pictureOne},#{pictureOnePc},
-                        #{pictureTwo},#{pictureTwoPc},#{pictureThree},#{pictureThreePc},
+                  VALUES (#{mobile},#{faxNO},#{email},#{pictureOne},#{pictureOnePc},#{pictureOneUrl},
+                        #{pictureTwo},#{pictureTwoPc},#{pictureTwoUrl},#{pictureThree},#{pictureThreePc},#{pictureThreeUrl},
                         #{createUserId},NOW())
     </insert>
     <!--修改联系方式-->
@@ -22,10 +22,13 @@
         <if test="email !=null and email !=''">`email`=#{email},</if>
         <if test="pictureOne !=null and pictureOne !=''">`picture_one`=#{pictureOne},</if>
         <if test="pictureOnePc !=null and pictureOnePc !=''">`picture_one_pc`=#{pictureOnePc},</if>
+        <if test="pictureOneUrl !=null and pictureOneUrl !=''">`picture_one_url`=#{pictureOneUrl},</if>
         <if test="pictureTwo !=null and pictureTwo !=''">`picture_two`=#{pictureTwo}, </if>
         <if test="pictureTwoPc !=null and pictureTwoPc !=''">`picture_two_pc`=#{pictureTwoPc}, </if>
+        <if test="pictureTwoUrl !=null and pictureTwoUrl !=''">`picture_two_url`=#{pictureTwoUrl},</if>
         <if test="pictureThree !=null and pictureThree !=''"> `picture_three`=#{pictureThree},</if>
         <if test="pictureThreePc !=null and pictureThreePc !=''"> `picture_three_pc`=#{pictureThreePc},</if>
+        <if test="pictureThreeUrl !=null and pictureThreeUrl !=''">`picture_three_url`=#{pictureThreeUrl},</if>
               `update_user_id`=#{updateUserId}, `update_time`=NOW()
     </update>
     <!--查询条数-->

@@ -11,14 +11,41 @@ public class ContactWayBO extends BaseModel {
     private String email; //邮箱
     private String pictureOne; //图片1（备用）
     private String pictureOnePc; //图片1（备用）
+    private String pictureOneUrl; //图片1跳转连接
     private String pictureTwo; //图片2（备用）
     private String pictureTwoPc; //图片2（备用）
+    private String pictureTwoUrl; //图片2跳转连接
     private String pictureThree; //图片3（备用）
     private String pictureThreePc; //图片3（备用）
+    private String pictureThreeUrl; //图片3跳转连接
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
+
+    public String getPictureOneUrl() {
+        return pictureOneUrl;
+    }
+
+    public void setPictureOneUrl(String pictureOneUrl) {
+        this.pictureOneUrl = pictureOneUrl;
+    }
+
+    public String getPictureTwoUrl() {
+        return pictureTwoUrl;
+    }
+
+    public void setPictureTwoUrl(String pictureTwoUrl) {
+        this.pictureTwoUrl = pictureTwoUrl;
+    }
+
+    public String getPictureThreeUrl() {
+        return pictureThreeUrl;
+    }
+
+    public void setPictureThreeUrl(String pictureThreeUrl) {
+        this.pictureThreeUrl = pictureThreeUrl;
+    }
 
     public Integer getId() {
         return id;
