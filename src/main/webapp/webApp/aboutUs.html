@@ -84,15 +84,7 @@
         <div class="banner banner-item">
             <div class="swiper-container">
                 <div class="swiper-wrapper" id="aboutUsBanner">
-                    <!--<div class="swiper-slide">-->
-                    <!--<div class="about-banner">-->
-                    <!--<img src="image/aboutBanner.jpg" alt="" width="100%" height="100%">-->
-                    <!--<div class="banner-item-content">-->
-                    <!--<div class="banner-item-title">不忘初心</div>-->
-                    <!--<div class="banner-item-text">我们始终相信设计具有改变生活的力量</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
+
                     <!--<div class="swiper-slide">-->
                     <!--<div class="about-banner">-->
                     <!--<img src="image/aboutBanner.jpg" alt="" width="100%" height="100%">-->
@@ -154,42 +146,6 @@
             <div>
                 <div class="swiper-coopterative">
                     <div class="swiper-wrapper" id="coopterative">
-
-                        <!--<div class="swiper-slide">-->
-                            <!--<ul class="logo-center">-->
-                                <!--<li><img src="./image/logo/3d93121066a459663f354e8bdae5f355.png" alt="" width="100%"-->
-                                         <!--height="100%"></li>-->
-                                <!--<li><img src="./image/logo/Asset 1.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-01.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-02.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-03.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-04.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-05.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-06.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-07.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-08.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-11.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-12.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-01.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-11.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-06.png" alt="" width="100%" height="100%"></li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                        <!--<div class="swiper-slide">-->
-                            <!--<ul class="logo-center">-->
-                                <!--<li><img src="./image/logo/3d93121066a459663f354e8bdae5f355.png" alt="" width="100%"-->
-                                         <!--height="100%"></li>-->
-                                <!--<li><img src="./image/logo/Asset 1.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-01.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-02.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-03.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-04.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-05.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-06.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-07.png" alt="" width="100%" height="100%"></li>-->
-                                <!--<li><img src="./image/logo/合作客户logo-08.png" alt="" width="100%" height="100%"></li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="about-pagination"></div>
@@ -222,7 +178,7 @@
 <script>
     (function (window, $) {
 
-        var data = [];
+        var data = [], mySwiper ={};
 
         //按语言加载页面数据
         window.switch_language = function (lang) {
@@ -276,22 +232,28 @@
         //设置aboutBanner图片
         function setBanners(data) {
             var aboutBanner = [];
-
             //设置banner图
             for (var i = 0, len = data.length; i < len; i++) {
-                aboutBanner.push(['<div class="swiper-slide">',
+
+                aboutBanner.push([' <div class="swiper-slide">',
                     '<div class="about-banner">',
                     '<img src="' + data[i].pictureUrl + '" alt="" width="100%" height="100%">',
+                    '<div class="banner-item-content">',
+                    '<div class="banner-item-title">', $.getLang() ? data[i].titleEnglish : data[i].title, '</div>',
+                    '<div class="banner-item-text">', $.getLang() ? data[i].contextEnglish : data[i].context, '</div>',
+                    '</div>',
                     '</div>',
                     '</div>'].join(''))
             }
+            if(Object.keys(mySwiper).length) mySwiper.destroy();
             //动态添加dom
-            $('#aboutUsBanner').append(aboutBanner.join(''));
+            $('#aboutUsBanner').empty().append(aboutBanner.join(''));
             //创建banner轮播对象
-            new Swiper('.swiper-container', {
+            mySwiper = new Swiper('.swiper-container', {
                 loop: true, // 循环模式选项
                 grabCursor: true,
                 parallax: true,
+                observeSlideChildren:true,
                 autoplay: {
                     delay: 5000
                     //loop无效  stopOnLastSlide: true,
@@ -308,6 +270,9 @@
          * 根据语言设置页面数据
          */
         function setting(lang) {
+
+            setBanners(data[0]);
+
             //中英文切换
             if (lang) {
                 //设置英文关于我们简介
@@ -337,7 +302,7 @@
                 ];
                 //控制ul中的li图片个数
                 for (var j = 0, jLen = data[i].length; j < jLen; j++) {
-                    domArr.push('<li><img src="'+data[i][j].pictureUrl+'" alt="" width="100%" height="100%"></li>')
+                    domArr.push('<li><img src="' + data[i][j].pictureUrl + '" alt="" width="100%" height="100%"></li>')
                 }
                 domArr.push('</ul></div>');
                 $('#coopterative').append(domArr.join(''));

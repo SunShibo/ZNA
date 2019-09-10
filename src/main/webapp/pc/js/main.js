@@ -1,6 +1,60 @@
 
 
 $(function () {
+    if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
+    }else{
+        //移动端浏览器请求
+        // aboutUs.html 关于我们
+        // history.html 关于我们历史
+        // home.html 首页
+        // news.html 最新动态
+        // office.html 办公室
+        // project.html 项目列表
+        // project_classification.html 项目分类列表
+        // project_detailed.html  项目详情
+        // recruitment.html  人才招聘
+        // team.html  团队列表
+        // team_detailed.html  团队详情
+        // debugger;
+        var language = "cn";
+        var href = window.location.href;
+        href = href.replace("/pc/","/webApp/");
+        if(href.indexOf("_cn")>-1){
+            // 中文
+        }else{
+
+            //英文
+            if(href.indexOf("language=")>-1){
+                href.replace("language=cn","language=en")
+            }else if(href.indexOf("?=")>-1){
+                href +="&language=en"
+            }else{
+                href +="?language=en"
+            }
+        }
+        href = href.replace("/aboutUs_en.html","/aboutUs.html")
+        href = href.replace("/aboutUs_cn.html","/aboutUs.html")
+        href = href.replace("/dynamic_en.html","/news.html")
+        href = href.replace("/dynamic_cn.html","/news.html")
+        href = href.replace("/home_en.html","/home.html")
+        href = href.replace("/home_cn.html","/home.html")
+        href = href.replace("/history_en.html","/history.html")
+        href = href.replace("/history_cn.html","/history.html")
+        href = href.replace("/member_en.html","/team.html")
+        href = href.replace("/member_cn.html","/team.html")
+        href = href.replace("/projectDetail_en.html","/project_detailed.html")
+        href = href.replace("/projectDetail_cn.html","/project_detailed.html")
+        href = href.replace("/project_en.html","/project.html")
+        href = href.replace("/project_cn.html","/project.html")
+        href = href.replace("/projectType_en.html","/project_classification.html")
+        href = href.replace("/projectType_cn.html","/project_classification.html")
+        href = href.replace("/zp_en.html","/recruitment.html")
+        href = href.replace("/zp_cn.html","/recruitment.html")
+        href = href.replace("/memberDetail_en.html","/team_detailed.html")
+        href = href.replace("/memberDetail_cn.html","/team_detailed.html")
+        console.log("链接来了:"+href);
+        window.location.href = href;
+    }
 
 
     $(".w-langc").on('click',function () {
@@ -160,3 +214,50 @@ function getUrl(variable)
     //     footerPosition();
     //     $(window).resize(footerPosition);
     // });
+
+
+
+//webApp
+//判断是否手机端
+ function checkPlatform() {
+    var strUrl = ($.getLang() ? '_en.html' : '_cn.html') + window.location.search;
+    switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.lastIndexOf('.'))) {
+        case 'aboutUs':
+            strUrl = 'aboutUs' + strUrl;
+            break;
+        case 'history':
+            strUrl = 'history' + strUrl;
+            break;
+        case 'home':
+            strUrl = 'home' + strUrl;
+            break;
+        case 'news':
+            strUrl = 'dynamic' + strUrl;
+            break;
+        case 'office':
+            strUrl = 'zp' + strUrl;
+            break;
+        case 'project':
+            strUrl = 'project' + strUrl;
+            break;
+        case 'project_classification':
+            strUrl = 'projectType' + strUrl;
+            break;
+        case 'project_detailed':
+            strUrl = 'projectDetail' + strUrl;
+            break;
+        case 'recruitment':
+            strUrl = 'zp' + strUrl;
+            break;
+        case 'team':
+            strUrl = 'member' + strUrl;
+            break;
+        case 'team_detailed':
+            strUrl = 'memberDetail' + strUrl;
+            break;
+    }
+    //判断是否是PC端   依据判断只要不是android系统和IOS系统就算是PC系统
+    if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
+        location.href = '/pc/' + strUrl;
+    }
+}
