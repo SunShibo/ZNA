@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js?v=1"></script>
+	</head>
+	<body>
+	<div class="w-head">
+		<div data-id="home" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+			<div class="w-lang">
+				<span class="w-langc">中文</span>
+				<span class="w-c">EN</span>
+			</div>
+		<div class="w-tabtle">
+			<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+			<span data-id="project_en" class="nav-span">PROJECTS</span>
+			<span data-id="team_en" class="nav-span">TEAM</span>
+			<span data-id="dynamic_en" class="nav-span">NEWS</span>
+			<span data-id="zp_en" class="nav-span span-active">CONTACT US</span>
+			<div class="w-tableindexsearch hide">
+				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+				<img class="w-isimgsearch" src="img/uc-06.png">
+				<img class="w-isimgclose" src="img/sy-08.png">
+			</div>
+			<img class="w-tabtleimg" src="img/uc-06.png"/>
+		</div>
+		</div>
+		<div class="w-content">
+			<div class="w-tabnav">
+				<a id="navsec" class="w-tabnavaed">CAREER</a>
+				<a id="navfir">OFFICE</a>
+			</div>
+			<div class="w-tabcontent">
+				<div class="w-contenta" style="display: none;position: relative" onmousemove="test(event)">
+					<div class="w-addimgdetail" id="div1">
+						<span class="w-aidspant">BEIJING</span>
+						<span>Chaowai SOHO, Building A,Beijing, China 100022Beijing, China 100022Beijing, China 100022</span>
+
+						<span>Tel: 86-10-6543 5058 </span>
+						<span>Fax: 86-10-6543 5076</span>
+						<span>E: info-beijing@znarch.com</span>
+					</div>
+					<img src="img/cu-01.png" id="imgaddress" class="w-contentaimg"/>
+					<div class="w-contentdiv" id="address">
+						<!--<div class="w-tabcadd">-->
+							<!--<a>BEIJING</a>-->
+							<!--<span>Chaowai SOHO, Building A, RM 0711  Chaoyang District, Beijing, China 100022</span>-->
+							<!--<span>Tel：86-10-6543 5058</span>-->
+							<!--<span>Fax：86-10-6543 5057</span>-->
+							<!--<span>E：info-beijing@znarch.com</span>-->
+						<!--</div>-->
+
+					</div>
+				</div>
+				<div class="w-contentb">
+					<div class="w-contentbimg" id="pictureUrl">
+						<div style="height: 500px;"></div>
+						<div class="w-contentbimgdiv">
+							<span class="w-mt" id="titleEnglish">1</span>
+							<div class="w-mb" id="contextEnglish">2
+							</div>
+						</div>
+					</div>
+					<div class="w-condiv" id="announcementsEnglish">3
+					</div>
+					<div class="w-concondiv">
+						<div class="w-contittle">CAREER</div>
+						<div id="gwDom">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="w-bottom">
+				<div class="w-botleft">
+					<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+					<span id="beian">京ICP备案号13030539号</span>
+				</div>
+				<div class="w-botright">
+					<div>
+						<img src="img/uc-03.png"/>
+						<img src="img/uc-04.png"/>
+						<img src="img/uc-05.png"/>
+					</div>
+				</div>
+			</div>
+
+	</body>
+</html>
+<script>
+	var offices = [];
+    $(function(){
+        $("#navfir").click(function(){
+            $(".w-contenta").show();
+            $(".w-contentb").hide();
+            $("#navfir").addClass("w-tabnavaed");
+            $("#navsec").removeClass("w-tabnavaed");
+        })
+        $("#navsec").click(function(){
+            $(".w-contentb").show();
+            $(".w-contenta").hide();
+            $("#navsec").addClass("w-tabnavaed");
+            $("#navfir").removeClass("w-tabnavaed");
+        })
+        $("#imgaddress").mouseover(function(e){
+            // $(".w-addimgdetail").show();
+            // console.log(e.clientX,e.clientY)
+        })
+        $("#imgaddress").mouseout(function(){
+            // $(".w-addimgdetail").hide();
+        })
+
+
+    })
+        $.getJSON("/personnelRecruitment/getPersonnelRecruitment?r="+Date.now(),function (rs) {
+            console.log("招聘banner信息",rs.data);
+			$("#announcementsEnglish").html(rs.data.announcementsEnglish);
+            $("#contextEnglish").html(rs.data.contextEnglish);
+            $("#titleEnglish").html(rs.data.titleEnglish);
+            $("#pictureUrl").css("background-image","url("+rs.data.pictureUrlPc+") ");
+            // $("#pictureUrl").css("background-size","100% 100%");
+            // background-size:
+        })
+        $.getJSON("/officeContact/getOfficeContact?r="+Date.now(),function (rs) {
+            console.log("办公室信息",rs.data);
+            var d = offices = rs.data.officeContactBO;
+            var dStr = '';
+
+            for(var i=0;i<d.length;i++){
+                var a = d[i];
+            	dStr+=[
+                    '<div class="w-tabcadd">',
+                    '<a>',a.nameEnglish,'</a>',
+                    ' <span>',a.addressEnglish,'</span>',
+                    '<span>Tel：',a.mobile,'</span>',
+                    '<span>Fax：',a.faxNO,'</span>',
+                    '<span>E：',a.email,'</span>',
+                    '</div>'
+				].join("")
+			}
+			$("#address").append(dStr);
+        })
+        $.getJSON("/recruitingJob/getRecruitingJob?r="+Date.now(),function (rs) {
+            console.log("岗位信息",rs.data);
+            var gw = rs.data;
+            var gwStr = '';
+            for(var i=0;i<gw.length;i++){
+                var d = gw[i];
+                gwStr+=[
+                    '<div class="w-concontent">',
+                    '<div class="w-showbtn" data-id="showid-',d.id,'"><span>',d.jobTitleEnglish,' </span><img id="img"',d.id,' src="img/uc-08.png"/></div>',
+                    '<div class="w-showcon" id="showid-',d.id,'">',
+                    '<span class="w-showcont">Responsibilities:</span>',
+                    '<div>',d.positionStatementEnglish,'</div>',
+                    '<span class="w-showcont">Requirements:</span>',
+                    '<div>',d.qualificationEnglish,'</div></div> </div>'
+                ].join("")
+
+
+            }
+            $("#gwDom").html(gwStr);
+
+
+            $(document).on("click",".w-showbtn",function () {
+                // debugger;
+                var v = $(this).data("id");
+                var f = $("#"+v).css("display");
+                console.log(v,f);
+                if(f=='none'){
+                    $("#"+v).show();
+                    $(this).children("img").attr("src", "img/uc-07.png");
+                }else{
+                    $("#"+v).hide();
+                    $(this).children("img").attr("src", "img/uc-08.png");
+                }
+            })
+        })
+
+		function test(e) {
+            document.getElementById('div1').style.display = 'none';
+return false;
+            e=e||window.event;
+            var scrollX=document.documentElement.scrollLeft||document.body.scrollLeft;//分别兼容ie和chrome
+            var scrollY=document.documentElement.scrollTop||document.body.scrollTop;
+            var x=e.pageX||(e.clientX+scrollX);//兼容火狐和其他浏览器
+            var y=e.pageY||(e.clientY+scrollY);
+           console.log(x,y);
+           return;
+            // return {x:x,y:y};
+
+           //  console.log("x"+e.clientX,"y"+e.clientY)
+           //  console.log(document.getElementById('imgaddress').height,document.getElementById("imgaddress").width )
+            // console.log("x/width=",e.clientX/document.getElementById("imgaddress").width);
+            // console.log("y/height=",e.clientY/document.getElementById("imgaddress").height);
+            var px1 = e.clientX/document.getElementById("imgaddress").width;
+            var py1 = (e.clientY+scrollY)/document.getElementById("imgaddress").height;
+ console.log("x坐标值"+px1.toFixed(2),"y坐标值"+py1.toFixed(2))
+
+			// for(var i=0;i<offices.length;i++){
+
+                // var xx = Number(offices[i].coordinate.split("-")[0]);
+                // var yy = Number(offices[i].coordinate.split("-")[1]);
+// console.log(xx,yy);
+
+				// var ba = ((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[i].coordinate.split("-")[1]);
+				if(
+				    px1<(Number(offices[0].coordinate.split("-")[1])+0.02)
+                    &&  px1 > (Number(offices[0].coordinate.split("-")[0])-0.02)
+                    &&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[0].coordinate.split("-")[1])+0.02)
+                    &&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[0].coordinate.split("-")[1])-0.02) )
+
+				{
+
+					document.getElementById('div1').style.display = 'block';
+				}else if(
+
+				    	px1<(Number(offices[1].coordinate.split("-")[1])+0.02)
+					&&  px1 > (Number(offices[1].coordinate.split("-")[1])-0.02)
+					&&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[1].coordinate.split("-")[1])+0.02)
+					&&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[1].coordinate.split("-")[1])-0.02) )
+				{
+				    // debugger;
+                    document.getElementById('div1').style.display = 'block';
+				}
+                else if(
+
+                    px1<(Number(offices[2].coordinate.split("-")[2])+0.02)
+                    &&  px1 > (Number(offices[2].coordinate.split("-")[2])-0.02)
+                    &&  py1 < (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[2].coordinate.split("-")[2])+0.02)
+                    &&  py1 > (((1920-document.getElementById("imgaddress").width)/100*0.01)+Number(offices[2].coordinate.split("-")[2])-0.02) )
+                {
+                    // debugger;
+                    document.getElementById('div1').style.display = 'block';
+                }
+
+
+				else{
+                    document.getElementById('div1').style.display = 'none';
+				}
+            // }
+        }
+
+
+
+    document.onmousemove=function(ev){
+        return false;
+        var oEvent=ev||event;
+        var oDiv=document.getElementById('div1');
+        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+        var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
+        oDiv.style.left=oEvent.clientX+scrollLeft-140+'px';
+        oDiv.style.top=oEvent.clientY+scrollTop-330+'px';
+
+    }
+
+</script>
