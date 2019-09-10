@@ -45,7 +45,10 @@
 						<span>Fax: 86-10-6543 5076</span>
 						<span>E: info-beijing@znarch.com</span>
 					</div>
-					<img src="img/cu-01.png" id="imgaddress" class="w-contentaimg"/>
+					<div style="position: relative">
+						<div style="position: absolute;top: 35.8%;width: 30px;height: 30px;left: 30.6%;background: #000"></div>
+						<img src="img/cu-01.png" id="imgaddress" class="w-contentaimg"/>
+					</div>
 					<div class="w-contentdiv" id="address">
 					</div>
 				</div>
@@ -176,14 +179,14 @@
 
 		function test(e) {
             document.getElementById('div1').style.display = 'none';
-return false;
+// return false;
             e=e||window.event;
             var scrollX=document.documentElement.scrollLeft||document.body.scrollLeft;//分别兼容ie和chrome
             var scrollY=document.documentElement.scrollTop||document.body.scrollTop;
             var x=e.pageX||(e.clientX+scrollX);//兼容火狐和其他浏览器
             var y=e.pageY||(e.clientY+scrollY);
-           console.log(x,y);
-           return;
+           console.log("鼠标x="+x,"鼠标y="+y);
+           // return;
             // return {x:x,y:y};
 
            //  console.log("x"+e.clientX,"y"+e.clientY)
