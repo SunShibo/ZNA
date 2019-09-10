@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZNA-OFFICE</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="app-page">
+    <div class="head">
+        <div class="head-item logo">
+            <a href="home.html"><img src="image/logo.png" id="logoImage" alt="" width="100%" height="100%"></a>
+        </div>
+
+        <div class="head-item head-btn">
+            <div class="close-menu" id="closeMenu">
+                <img src="image/icon/ic_menuClose.png" alt="" width="100%" height="100%">
+            </div>
+
+            <div class="menu head-item-btn" id="clickMenu">
+                <img src="image/icon/ic_menuOpen.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="search head-item-btn" id="clickSearch">
+                <img src="image/icon/ic_search.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="language head-item-btn" id="language"></div>
+        </div>
+    </div>
+
+    <!--搜索框-->
+    <div class="head_search">
+        <div>
+            <div class="search_icon"><img src="image/icon/ic_search.png" alt="" width="100%" height="100%"></div>
+            <input type="search" placeholder="SEARCH" autocomplete="off"/>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <nav id="nav">
+        <ul class="nav-ul">
+            <li><a href="aboutUs.html" id="about" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="project" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="project.html?id=HOTEL/RESORT"></a></li>
+                        <li><a href="project.html?id=OFFICE/MIXED-USE"></a></li>
+                        <li><a href="project.html?id=CIVIC/EXHIBITION"></a></li>
+                        <li><a href="project.html?id=RESIDENTIAL/HEALTHCARE"></a></li>
+                        <li><a href="project.html?id=EDUCATION/SCIENCE"></a></li>
+                        <li><a href="project.html?id=MASTER/PLANNING"></a></li>
+                        <li><a href="project.html?id=LANDSCAPE/DESIGN"></a></li>
+                        <li><a href="project.html?id=INTERIOR/DESIGN"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="team.html" id="team" class="nav-href"></a></li>
+            <li><a href="news.html" id="dynamic" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="information" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="office.html"></a></li>
+                        <li><a href="recruitment.html"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="office-image">
+            <img src="./image/office.png" alt="" width="100%" height="100%">
+        </div>
+        <div class="office-content">
+
+        </div>
+    </div>
+
+    <div id="foot">
+        <div class="foot-center">
+            <div class="foot-office-info">
+                <div class="contact">TEL: <span id="mobile"></span></div>
+                <div class="contact">FAX: <span id="faxNO"></span></div>
+            </div>
+            <div class="contact">EMAIL: <span id="email"></span></div>
+            <div class="icon-list">
+                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="foot-icp contact">京ICP备案号13030539号</div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function (window, $) {
+        var data = [];
+
+        window.switch_language = function (lang) {
+            if (data.length) {
+                setting(lang);
+            } else {
+                init(lang);
+            }
+        };
+
+        function setting(lang) {
+            var domArr = [];
+            for (var i = 0, len = data.length; i < len; i++) {
+                domArr.push('<div class="office-items">',
+                    '<div class="office-item-name">',
+                    lang ? data[i].nameEnglish : data[i].name,
+                    '</div>',
+                    '<div class="item-info">',
+                    '<div class="office-item-address">',
+                    lang ? data[i].addressEnglish : data[i].address,
+                    '</div>',
+                    data[i].mobile ? '<div class="office-item-phone">' + (lang ? 'Tel: ' : '电话：') + '<span>' + data[i].mobile + '</span></div>' : '',
+                    data[i].faxNO ? '<div class="office-item-fax">' + (lang ? 'Fax: ' : '传真：') + '<span>' + data[i].faxNO + '</span></div><div class="office-item-mail">' : '',
+                    data[i].email ? (lang ? 'E: ' : '邮箱：') +'<span>' + data[i].email + '</span>' : '',
+                    '</div>',
+                    '</div>',
+                    '</div>');
+            }
+
+            $('.office-content').empty().append(domArr.join(''))
+        }
+
+        function init(lang) {
+            $.ajax({
+                url: '/officeContact/getOfficeContact',
+                type: 'POST',
+                dataType: 'json',
+                success: function (r) {
+                    data = r.data.officeContactBO;
+                    setting(lang);
+                }
+            })
+        }
+    })(window, jQuery);
+</script>
+</body>
+</html>

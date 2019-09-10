@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZNA-HISTORY</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <meta content="telephone=no" name="format-detection">
+    <meta name="applicable-device" content="mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div id="app-page">
+    <div class="head">
+        <div class="head-item logo">
+            <a href="home.html"><img src="image/logo.png" id="logoImage" alt="" width="100%" height="100%"></a>
+        </div>
+
+        <div class="head-item head-btn">
+            <div class="close-menu" id="closeMenu">
+                <img src="image/icon/ic_menuClose.png" alt="" width="100%" height="100%">
+            </div>
+
+            <div class="menu head-item-btn" id="clickMenu">
+                <img src="image/icon/ic_menuOpen.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="search head-item-btn" id="clickSearch">
+                <img src="image/icon/ic_search.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="language head-item-btn" id="language"></div>
+        </div>
+    </div>
+
+    <!--搜索框-->
+    <div class="head_search">
+        <div>
+            <div class="search_icon"><img src="image/icon/ic_search.png" alt="" width="100%" height="100%"></div>
+            <input type="search" placeholder="SEARCH" autocomplete="off"/>
+        </div>
+    </div>
+
+    <!--菜单-->
+    <nav id="nav">
+        <ul class="nav-ul">
+            <li><a href="aboutUs.html" id="about" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="project" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="project.html?id=HOTEL/RESORT"></a></li>
+                        <li><a href="project.html?id=OFFICE/MIXED-USE"></a></li>
+                        <li><a href="project.html?id=CIVIC/EXHIBITION"></a></li>
+                        <li><a href="project.html?id=RESIDENTIAL/HEALTHCARE"></a></li>
+                        <li><a href="project.html?id=EDUCATION/SCIENCE"></a></li>
+                        <li><a href="project.html?id=MASTER/PLANNING"></a></li>
+                        <li><a href="project.html?id=LANDSCAPE/DESIGN"></a></li>
+                        <li><a href="project.html?id=INTERIOR/DESIGN"></a></li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="team.html" id="team" class="nav-href"></a></li>
+            <li><a href="news.html" id="dynamic" class="nav-href"></a></li>
+            <li>
+                <a href="#" id="information" class="nav-href"></a>
+                <div class="sub">
+                    <ul class="sub-nav">
+                        <li><a href="office.html"></a></li>
+                        <li><a href="recruitment.html"></a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="info">
+            <!--<div class="history-items">-->
+            <!--<div class="item-image">-->
+            <!--<img src="./image/history.png" alt="" width="100%" height="100%">-->
+            <!--</div>-->
+            <!--<div class="history-item-info">-->
+            <!--<div class="history-year">2016</div>-->
+            <!--<p class="history-introduction">-->
+            <!--The Shanghai office was set up, and won Shanghai 3310 Talent Program.-->
+            <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="history-items">-->
+            <!--<div class="item-image">-->
+            <!--<img src="./image/history.png" alt="" width="100%" height="100%">-->
+            <!--</div>-->
+            <!--<div class="history-item-info">-->
+            <!--<div class="history-year">2016</div>-->
+            <!--<p class="history-introduction">-->
+            <!--The Shanghai office was set up, and won Shanghai 3310 Talent Program.-->
+            <!--</p>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="history-next">
+            <a href="javascript:void(0)" id="next">Show More Results +</a>
+        </div>
+    </div>
+
+    <div id="foot">
+        <div class="foot-center">
+            <div class="foot-office-info">
+                <div class="contact">TEL: <span id="mobile"></span></div>
+                <div class="contact">FAX: <span id="faxNO"></span></div>
+            </div>
+            <div class="contact">EMAIL: <span id="email"></span></div>
+            <div class="icon-list">
+                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+            </div>
+            <div class="foot-icp contact">京ICP备案号13030539号</div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/rem.js"></script>
+<script src="js/index.js"></script>
+<script>
+    (function (window, $) {
+        var data = [], current = 1, limit = 6, count = 0;
+
+        //按语言加载页面数据
+        window.switch_language = function (lang) {
+
+            if (data.length) {
+                setting(lang);
+            } else {
+                init(lang);
+            }
+        };
+
+        //初始化加载
+        function init(lang) {
+            $.ajax({
+                url: '/history/getHistory',
+                type: 'POST',
+                dataType: 'json',
+                data: {pageNo: current, pageSize: limit},
+                success: function (r) {
+                    Array.prototype.push.apply(data, r.data.historyBOS)
+                    count = r.data.count;
+                    var domArr = [];
+                    //加载数据
+                    for (var i = 0, len = r.data.historyBOS.length; i < len; i++) {
+                        domArr.push('<div class="history-items">',
+                            '                <div class="item-image">',
+                            '                    <img src="', r.data.historyBOS[i].pictureUrl, '" alt="" width="100%" height="100%">',
+                            '                </div>',
+                            '                <div class="history-item-info">',
+                            '                    <div class="history-year">', r.data.historyBOS[i].time, '</div>',
+                            '                    <div class="history-introduction">', lang ? r.data.historyBOS[i].contextEnglish : r.data.historyBOS[i].context, '</div>',
+                            '                </div>',
+                            '            </div>')
+                    }
+                    $('.info').append(domArr.join(''));
+
+                    //底部信息
+                    $.footData(r.data.contactWayBO);
+                }
+            })
+        }
+
+        //加载更多
+        $('#next').on('click', function (e) {
+            var lang = $.getLang();
+            if (Math.ceil(count / limit) < current) {
+                lang ? $(this).text('NO MORE') : $(this).text('暂无更多');
+                $(this).off('click');
+                return
+            }
+            current++;
+            init(lang);
+        });
+
+        //根据语言设置页面数据
+        function setting(lang) {
+            for (var i = 0, len = data.length; i < len; i++) {
+                var dom = $('.history-introduction').eq(i);
+                lang ? dom.text(data[i].contextEnglish) : dom.text(data[i].context);
+            }
+        }
+    })(window, jQuery);
+</script>
+</body>
+</html>
