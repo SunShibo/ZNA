@@ -48,7 +48,7 @@
     <select id="getProject" resultType="com.zna.server.entity.bo.ProjectBO">
         SELECT * FROM `zna_project`
         <where>
-            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
+            <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%' OR `site` LIKE  '%${title}%' OR `site_english` LIKE  '%${title}%'</if>
             <if test="projectTypeName!=null and projectTypeName!=''"> AND project_type_name = #{projectTypeName}</if>
             <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">and project_type_name_english = #{projectTypeNameEnglish}</if>
             <if test="type!=null and type!=''">and `type`=#{type}</if>
