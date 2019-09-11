@@ -252,7 +252,7 @@ body{
 	background: #FFFFFF;
 	margin: 0 35px;
 	border-top: solid 1px #999999;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	position: relative;
 	padding: 20px 0;
 }
@@ -1214,6 +1214,15 @@ body{
 	position: absolute; width: 30px;height: 30px;
 }
 #service-title1{
-	font-size: 32px;
-	margin: 30px 30px 20px 50px;
+	font-size: 22px;
+	margin: 25px 30px 20px 50px;
+}
+.code-wp{
+	display: inline-block;position: relative;
+}
+.code-img{
+	display: none;position: absolute;bottom: 30px;right: -87px;z-index: 999999
+}
+#code-img,#weibo,#inlink{
+	cursor: pointer;
 }

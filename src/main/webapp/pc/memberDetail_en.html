@@ -72,7 +72,7 @@
 <div class="w-bottom">
     <div class="w-botleft">
         <span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-        <span id="beian">京ICP备案号13030539号</span>
+        <span id="beian">沪ICP备案号17050193</span>
     </div>
     <div class="w-botright">
         <div>
@@ -110,6 +110,9 @@
         $("#headPortraitPc").attr("src",data.headPortraitPc);
   // debugger;
         for(var i=0;i<data.projectPicture.length;i++){
+            if(data.projectPicture[i]==null){
+                continue;
+            }
             if(data.projectPicture[0]==null){
                 projectPictureStr+='<img  class="project-pic" data-id="22" src="img/te-13.png"/>';
             }else{
@@ -129,13 +132,13 @@
 
         if(data.beforeUserId==0){
             $(".previous").css("cursor", 'not-allowed')
-            $("#previous").html("没有了")
+            $("#previous").html("no more")
         }else{
             $("#previous").html(data.beforeUserNameEnglish)
         }
         if(data.afterUserId==0){
             $(".next").css("cursor", 'not-allowed')
-            $("#next").html("没有了")
+            $("#next").html("no more")
         }else{
             $("#next").html(data.afterUserNameEnglish)
         }
