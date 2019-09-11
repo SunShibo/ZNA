@@ -261,3 +261,10 @@ function getUrl(variable)
         location.href = '/pc/' + strUrl;
     }
 }
+
+
+$("#weixin").hover(function () {
+    document.getElementById('div1').style.display = 'block';
+},function () {
+    document.getElementById('div1').style.display = 'none';
+})

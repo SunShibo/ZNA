@@ -38,8 +38,8 @@ $.fn.yi_scroll = function(options)
 		sMouseWheel = "DOMMouseScroll";
 	}   
 	$(document).on(sMouseWheel,function(ev){			/*处理区域滚动与文档默认滚动冲突*/
-		if(w.MouseInScroll)
-			ev.preventDefault();
+		// if(w.MouseInScroll)
+		// 	ev.preventDefault();
 	});
 
 	return this.each(function(){

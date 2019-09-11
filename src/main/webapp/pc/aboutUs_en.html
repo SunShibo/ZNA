@@ -8,7 +8,7 @@
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
 		<script src="js/main.js?v=1"></script>
-
+		<script src="js/yi-scroll.js"></script>
 	</head>
 	<body>
 		<div class="w-head">
@@ -50,12 +50,14 @@
 			<div style="height: 70px;"></div>
 			<div class="w-hindeximgdiv">
 				<img class="w-hindeximg" id="as-img"/>
+				<div class="_scroll">
+					<div class="_panel-box">
 				<div class="w-hindexspan">
 						<span id="as-content">
 
 						</span>
 
-				</div>
+				</div></div></div>
 			</div>
 			<div class="w-audivc">
 				<img class="w-indeximgt" id="from-pic" />
@@ -102,17 +104,9 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			// $(function(){
-			// 	$(".w-tabnav a").hover(function(){
-			// 		$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
-			// 	})
-			// 	var height = $(".w-hindeximg").height();
-			// 	$(".w-hindexspan").css("height",height)
-			// })
-	  </script>
+
 	  <script>
-		 // var banner  = [{"createTime":{"date":3,"day":2,"hours":17,"minutes":46,"month":8,"seconds":9,"time":1567503969000,"timezoneOffset":-480,"year":119},"createUserId":1,"id":5,"pictureUrl":"1213","pictureUrlPc":"/image/1567506046678_822Phone.jpeg","skipId":0,"skipType":"213","skipUrl":"213","sort":12,"state":"show","updateTime":{"date":3,"day":2,"hours":18,"minutes":20,"month":8,"seconds":54,"time":1567506054000,"timezoneOffset":-480,"year":119},"updateUserId":1},{"createTime":{"date":3,"day":2,"hours":12,"minutes":15,"month":8,"seconds":50,"time":1567484150000,"timezoneOffset":-480,"year":119},"createUserId":1,"id":3,"pictureUrl":"111111111111","pictureUrlPc":"https://partner.huawei.com/image/journal/article?img_id=5012545&t=1567129231208","skipId":11,"skipType":"111111111","skipUrl":"11111111111","sort":1,"state":"show","updateTime":null,"updateUserId":0},{"createTime":{"date":3,"day":2,"hours":17,"minutes":49,"month":8,"seconds":18,"time":1567504158000,"timezoneOffset":-480,"year":119},"createUserId":1,"id":6,"pictureUrl":"5555555","pictureUrlPc":"22222222222222222","skipId":0,"skipType":"","skipUrl":"","sort":0,"state":"show","updateTime":{"date":3,"day":2,"hours":17,"minutes":52,"month":8,"seconds":47,"time":1567504367000,"timezoneOffset":-480,"year":119},"updateUserId":1},{"createTime":{"date":30,"day":5,"hours":12,"minutes":32,"month":7,"seconds":55,"time":1567139575000,"timezoneOffset":-480,"year":119},"createUserId":1,"id":2,"pictureUrl":"https://appimg.81.cn/data/pic/article/jinzhao/2019/08/19/4d86c77fcc8cc3c896a013e9a01fd630.jpg","pictureUrlPc":"https://www.guangjiego.com/wp-content/uploads/2018/12/2018-12-0792.jpg","skipId":2,"skipType":"发送到发大水","skipUrl":"按时大大","sort":0,"state":"show","updateTime":null,"updateUserId":0}];
+
           $.getJSON("/aboutUs/getAboutUs?r"+Date.now(),function (rs) {
 
 
@@ -126,7 +120,7 @@
                   bannerStr+= '<div class="swiper-slide"><img class="home-lb-bg" src="'+banner[i]['pictureUrlPc']+'" /></div>';
               }
               $("#about-bg-lb").html(bannerStr);
-			  $("#as-content").html(as.context);
+			  $("#as-content").html(as.contextEnglish);
               $("#as-img").attr("src",as.pictureUrlPc)
               $("#from-pic").attr("src",data.fromPictureBO.pictureUrlPc)
 			  // debugger;
@@ -134,9 +128,6 @@
               $("#service-title").html(data.serviceusBO.titleEnglish)
               $("#service-content").html(data.serviceusBO.contextEnglish)
 
-				console.log(data.serviceusBO.titleEnglish)
-              console.log(data.serviceusBO.pictureUrlPc)
-              // https://cmsqn.infinitus.com.cn/upload/resources/image/2019/08/16/3975374.jpg
               new Swiper('.about-banner', {
 
                   pagination:{
@@ -153,12 +144,13 @@
               });
 
 
-              setTimeout(function () {
-				var height = $(".w-hindeximg").height();
-				$(".w-hindexspan").css("height",height)
-			  },1000)
 
-
+				window.onload = function (ev) {
+					var height = $(".w-hindeximg").height();
+					console.log('onload 方法执行完毕')
+                    $("._scroll").css("height",height);
+                    $("._scroll").yi_scroll();
+				}
               for(var i=0;i<cp.length;i++){
                   floorStr+= '<div class="swiper-slide"><img  src="'+cp[i]['pictureUrlPc']+'" /></div>';
               }

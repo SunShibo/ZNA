@@ -172,7 +172,7 @@
 
             // return;
 
-			$.getJSON("/team/getTeamBO?r="+Date.now(),function (rs) {
+            $.getJSON("/team/getTeamBO?r="+Date.now()+"&pageSize=30",function (rs) {
 // return;
                 renderFloor(rs.data.contactWayBO);
 				var data = rs.data.teamBOS;

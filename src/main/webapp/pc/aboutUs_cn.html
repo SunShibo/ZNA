@@ -8,6 +8,7 @@
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
 		<script src="js/main.js?v=1"></script>
+		<script src="js/yi-scroll.js"></script>
 
 	</head>
 	<body>
@@ -50,12 +51,14 @@
 			<div style="height: 70px;"></div>
 			<div class="w-hindeximgdiv">
 				<img class="w-hindeximg" id="as-img"/>
+				<div class="_scroll">
+					<div class="_panel-box">
 				<div class="w-hindexspan">
 						<span id="as-content">
 
 						</span>
 
-				</div>
+				</div></div></div>
 			</div>
 			<div class="w-audivc">
 				<img class="w-indeximgt" id="from-pic" />
@@ -71,7 +74,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="w-audivt"><span>OUR CLIENTS</span></div>
+			<div class="w-audivt"><span></span></div>
 			<div class="swiperdiv" style="position: relative">
 				<div class="swiper-container" id="about-us-floor">
 					<div class="swiper-wrapper" id="about-us-img">
@@ -153,11 +156,6 @@
               });
 
 
-              setTimeout(function () {
-				var height = $(".w-hindeximg").height();
-				$(".w-hindexspan").css("height",height)
-			  },1000)
-
 
               for(var i=0;i<cp.length;i++){
                   floorStr+= '<div class="swiper-slide"><img  src="'+cp[i]['pictureUrlPc']+'" /></div>';
@@ -174,7 +172,19 @@
                   },
               });
               renderFloor(data.contactWayBO);
-
+              $(window).load(function () {
+                  var height = $(".w-hindeximg").height();
+                  console.log('onload 方法执行完毕')
+                  $("._scroll").css("height",height);
+                  $("._scroll").yi_scroll();
+              })
+              // window.onload = function (ev) {
+              //     // debugger;
+              //     var height = $(".w-hindeximg").height();
+              //     console.log('onload 方法执行完毕')
+              //     $("._scroll").css("height",height);
+              //     $("._scroll").yi_scroll();
+              // }
           })
 			
 		  function goHistory() {

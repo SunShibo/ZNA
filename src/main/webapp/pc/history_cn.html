@@ -185,7 +185,7 @@
 
 
 
-            $.getJSON("/history/getHistory?r"+Date.now(),function (rs) {
+            $.getJSON("/history/getHistory?r"+Date.now()+"&pageSize=30",function (rs) {
 
                 // historyBOS
                 var data = rs.data;

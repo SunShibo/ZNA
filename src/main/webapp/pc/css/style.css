@@ -49,6 +49,7 @@ body{
 	color: #666666;
 	padding: 0;
 	margin: 0;
+	min-width: 1300px;
 }
 .w-head{
 	height: 53px;
@@ -201,6 +202,7 @@ body{
 }
 .w-mb{
 	line-height: 35px;
+	padding: 0 30px;
 }
 .w-contentbimgdiv{
 	color: #FFFFFF;
@@ -655,26 +657,39 @@ body{
 	overflow: hidden;
 }
 .w-indexibft{
-	font-size:20px;
+	font-size:40px;
 	color:#000000;
 	position: relative;
-	margin: 50px 30px 30px 30px;
+	margin: 50px 30px 30px 50px;
 }
-.w-indexibft:after{
-	position: absolute;
-	width: 100px;
-	height: 2px;
-	content: "";
-	background: #000000;
-	bottom: -3px;
-	left: 0;
-}
+/*.w-indexibft:after{*/
+	/*position: absolute;*/
+	/*width: 100px;*/
+	/*height: 2px;*/
+	/*content: "";*/
+	/*background: #000000;*/
+	/*bottom: -3px;*/
+	/*left: 0;*/
+/*}*/
 .w-indexibfc{
-	font-size:14px;
+	font-size:18px;
 	color:#666666;
-	margin: 0 30px;
+	margin: 0 50px;
 	margin-top: 15px;
 	cursor: pointer;
+	line-height: 30px;
+
+}
+.w-indexibfcp{
+	display: inline-block;
+	padding-bottom: 5px;
+	border-bottom: #1F1F1F 2px solid;
+}
+
+.w-indexibfcpw{
+	display: inline-block;
+	padding-bottom: 5px;
+	border-bottom: #fff 2px solid;
 }
 .w-indeximgdbdiv{
 	overflow: hidden;
@@ -781,15 +796,7 @@ body{
 	font-size: 30px;
 	margin-bottom: 25px;
 }
-.w-indexist:after{
-	position: absolute;
-	height: 2px;
-	width: 145px;
-	content: "";
-	background: #fff;
-	bottom: 0;
-	left: 0;
-}
+
 .w-indexisc{
 	font-size: 14px;
 	color: #FFFFFF;
@@ -1028,10 +1035,10 @@ body{
 	position: relative;
 }
 .w-hindexspan{
-	float: left;
+	float: right;
 	width: 45%;
-	text-align: justify;
-	overflow-y: auto;
+	/*text-align: justify;*/
+	/*overflow-y: auto;*/
 }
 .w-hindexspan span{
 	padding: 35px 20px 0 35px;
