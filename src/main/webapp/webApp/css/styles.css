@@ -366,7 +366,7 @@ li .nav-href {
 }
 
 /*首页内容部分*/
-.banner, .swiper-containers {
+.banner, .swiper-container {
     height: 5rem;
 }
 
@@ -433,6 +433,7 @@ li .nav-href {
 
 .banner .about-banner {
     position: relative;
+    height: 100%;
 }
 
 .about-banner img {
@@ -572,7 +573,7 @@ li .nav-href {
 }
 
 .team-items .item-image {
-    height: 79%;
+    height: 3.83rem;
 }
 
 .team-items .team-item-content {
@@ -606,6 +607,7 @@ li .nav-href {
 
 .page_next {
     text-align: center;
+    margin-top: .4rem;
 }
 
 .page_next a {
@@ -777,7 +779,7 @@ li .nav-href {
     word-wrap: break-word;
 }
 
-.content .history-next {
+.content .history-next, .content .news-next {
     font-size: .24rem;
     line-height: .34rem;
     letter-spacing: .02rem;
@@ -785,7 +787,7 @@ li .nav-href {
     text-align: center;
 }
 
-.history-next a {
+.history-next a, .news-next a    {
     font-size: .24rem;
     line-height: .34rem;
     letter-spacing: .02rem;
