@@ -15,6 +15,8 @@
 			#aboutImg{
 				width: 100%;
 			}
+
+
         </style>
 	</head>
 	<body>
@@ -55,7 +57,9 @@
 			<div class="w-indeximgbdiv">
 				<img id="aboutImg" />
 				<div class="w-indeximgbfont">
-					<div class="w-indexibft" id="aboutTitle"></div>
+					<div class="w-indexibft">
+						<p class="w-indexibfcp" id="aboutTitle"></p>
+					</div>
 					<div class="w-indexibfc" id="aboutContent">
 
 					</div>
@@ -67,7 +71,9 @@
 					<div class="w-indeximgbox">
 						<img id="projectImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="projectTitle"></span>
+							<div class="w-indexist">
+								<p class="w-indexibfcpw" id="projectTitle"></p>
+							</div>
 							<span class="w-indexisc" id="projectContent"></span>
 							<span class="w-indexisb" onclick="goProject();">more ></span>
 						</div>
@@ -76,7 +82,9 @@
 					<div class="w-indeximgbox">
 						<img id="newsImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="newsTitle"></span>
+							<div class="w-indexist" id="n1ewsTitle">
+								<p class="w-indexibfcpw" id="newsTitle"></p>
+							</div>
 							<span class="w-indexisc" id="newsContent">
                         </span>
 							<span class="w-indexisb"  onclick="goNews();">more ></span>
@@ -88,7 +96,9 @@
 					<div class="w-indeximgbox">
 						<img id="teamImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="teamTitle"></span>
+							<div class="w-indexist" id="teamTitle1">
+								<p class="w-indexibfcpw" id="teamTitle"></p>
+							</div>
 							<span class="w-indexisc" id="teamContent">
                         </span>
 							<span class="w-indexisb"  onclick="goTeam();">more ></span>
@@ -98,7 +108,9 @@
 					<div class="w-indeximgbox">
 						<img id="contactImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="contactTitle"></span>
+							<div class="w-indexist" id="contactTitle1">
+								<p class="w-indexibfcpw" id="contactTitle"></p>
+							</div>
 							<span class="w-indexisc"  id="contactContent">
                         </span>
 							<span class="w-indexisb" onclick="goOffice();">more ></span>
@@ -112,15 +124,9 @@
 		<div class="w-bottom">
 			<div class="w-botleft">
 				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-				<span id="beian">京ICP备案号13030539号</span>
+				<span id="beian">沪ICP备案号17050193</span>
 			</div>
-			<div class="w-botright">
-				<div>
-					<img src="img/uc-03.png"/>
-					<img src="img/uc-04.png"/>
-					<img src="img/uc-05.png"/>
-				</div>
-			</div>
+<div class="w-botright">   <div>      <div class="code-wp">         <img class="code-img" src="img/erweima.png">         <img id="code-img" src="img/uc-05.png"/>      </div>      <img id="weibo" src="img/uc-03.png"/>      <img id="inlink" src="img/uc-04.png"/>   </div></div>
 		</div>
 
 	</body>
@@ -162,7 +168,14 @@
             });
 
 			$("#aboutTitle").html(indexBOS[0]['titleEnglish']);
-            $("#aboutContent").html(indexBOS[0]['contextEnglish']);
+			var cc = indexBOS[0]['contextEnglish'];
+			if(cc.length<200){
+                $("#aboutContent").html(indexBOS[0]['contextEnglish'] + "</br>...");
+			}else{
+
+                $("#aboutContent").html(cc.substring(0,200) + "</br>...");
+			}
+
             $("#projectTitle").html(indexBOS[1]['titleEnglish']);
             $("#projectContent").html(indexBOS[1]['contextEnglish']);
             $("#teamTitle").html(indexBOS[2]['titleEnglish']);

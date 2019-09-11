@@ -3,19 +3,7 @@
 $(function () {
     if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
     }else{
-        //移动端浏览器请求
-        // aboutUs.html 关于我们
-        // history.html 关于我们历史
-        // home.html 首页
-        // news.html 最新动态
-        // office.html 办公室
-        // project.html 项目列表
-        // project_classification.html 项目分类列表
-        // project_detailed.html  项目详情
-        // recruitment.html  人才招聘
-        // team.html  团队列表
-        // team_detailed.html  团队详情
-        // debugger;
+
         var language = "cn";
         var href = window.location.href;
         href = href.replace("/pc/","/webApp/");
@@ -52,7 +40,6 @@ $(function () {
         href = href.replace("/zp_cn.html","/recruitment.html")
         href = href.replace("/memberDetail_en.html","/team_detailed.html")
         href = href.replace("/memberDetail_cn.html","/team_detailed.html")
-        console.log("链接来了:"+href);
         window.location.href = href;
     }
 
@@ -150,12 +137,10 @@ $(function () {
     
     $(".w-tabtleimg").on("click",function () {
         if($(this).hasClass("show")){
-            console.log("hasClass")
             $(this).removeClass("show");
             $(".w-tableindexsearch").addClass("hide");
             $(".nav-span").removeClass("hide");
         }else{
-            console.log("no-hasClass")
             $(this).addClass("show");
             $(".w-tableindexsearch").removeClass("hide");
             $(".nav-span").addClass("hide");
@@ -179,12 +164,28 @@ $(function () {
         console.log("您点击了清除按钮")
         $("#searchInput").val("");
     });
+
+    $("#weibo").on("click",function () {
+        window.location.href = $(this).data("id")
+    })
+    $("#inlink").on("click",function () {
+        window.location.href = $(this).data("id")
+    })
+
+    $(".code-wp").hover(function () {
+        // debugger;
+        $(".code-img").css("display","block")
+    },function () {
+        $(".code-img").css("display","none")
+    })
 });
 
 function renderFloor(d) {
     $("#tel").html(d.mobile);
     $("#fax").html(d.faxNO);
     $("#mail").html(d.email);
+    $("#weibo").data("id",d.pictureOneUrl);
+    $("#inlink").data("id",d.pictureTwoUrl);
 }
 
 function getUrl(variable)
@@ -197,24 +198,6 @@ function getUrl(variable)
     }
     return("");
 }
-
-    // $(function(){
-    //     function footerPosition(){
-    //         // debugger;
-    //         $(".w-bottom").removeClass("fixed-bottom");
-    //         var contentHeight = document.body.scrollHeight,//网页正文全文高度
-    //             winHeight = window.innerHeight;//可视窗口高度，不包括浏览器顶部工具栏
-    //         if(!(contentHeight > winHeight)){
-    //             //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
-    //             $(".w-bottom").addClass("fixed-bottom");
-    //         } else {
-    //             $(".w-bottom").removeClass("fixed-bottom");
-    //         }
-    //     }
-    //     footerPosition();
-    //     $(window).resize(footerPosition);
-    // });
-
 
 
 //webApp
@@ -261,3 +244,13 @@ function getUrl(variable)
         location.href = '/pc/' + strUrl;
     }
 }
+
+
+$("#weixin").hover(function () {
+    document.getElementById('div1').style.display = 'block';
+},function () {
+    document.getElementById('div1').style.display = 'none';
+})
+
+
+

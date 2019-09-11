@@ -55,11 +55,13 @@
 			<div class="w-indeximgbdiv">
 				<img id="aboutImg" />
 				<div class="w-indeximgbfont">
-					<div class="w-indexibft" id="aboutTitle"></div>
+					<div class="w-indexibft">
+						<p class="w-indexibfcp" id="aboutTitle"></p>
+					</div>
 					<div class="w-indexibfc" id="aboutContent">
 
 					</div>
-					<div class="w-indexibfc" onclick="goAbout();">更多 ></div>
+					<div class="w-indexibfc" onclick="goAbout();">more ></div>
 				</div>
 			</div>
 			<div class="w-indeximgdbdiv">
@@ -67,19 +69,23 @@
 					<div class="w-indeximgbox">
 						<img id="projectImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="projectTitle"></span>
+							<div class="w-indexist">
+								<p class="w-indexibfcpw" id="projectTitle"></p>
+							</div>
 							<span class="w-indexisc" id="projectContent"></span>
-							<span class="w-indexisb" onclick="goProject();">更多 ></span>
+							<span class="w-indexisb" onclick="goProject();">more ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
 					<div class="w-indeximgbox">
 						<img id="newsImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="newsTitle"></span>
+							<div class="w-indexist" id="n1ewsTitle">
+								<p class="w-indexibfcpw" id="newsTitle"></p>
+							</div>
 							<span class="w-indexisc" id="newsContent">
                         </span>
-							<span class="w-indexisb"  onclick="goNews();">更多 ></span>
+							<span class="w-indexisb"  onclick="goNews();">more ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
@@ -88,20 +94,24 @@
 					<div class="w-indeximgbox">
 						<img id="teamImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="teamTitle"></span>
+							<div class="w-indexist" id="teamTitle1">
+								<p class="w-indexibfcpw" id="teamTitle"></p>
+							</div>
 							<span class="w-indexisc" id="teamContent">
                         </span>
-							<span class="w-indexisb"  onclick="goTeam();">更多 ></span>
+							<span class="w-indexisb"  onclick="goTeam();">more ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
 					<div class="w-indeximgbox">
 						<img id="contactImg" />
 						<div class="w-indeximgspan">
-							<span class="w-indexist" id="contactTitle"></span>
+							<div class="w-indexist" id="contactTitle1">
+								<p class="w-indexibfcpw" id="contactTitle"></p>
+							</div>
 							<span class="w-indexisc"  id="contactContent">
                         </span>
-							<span class="w-indexisb" onclick="goOffice();">更多 ></span>
+							<span class="w-indexisb" onclick="goOffice();">more ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
@@ -112,13 +122,13 @@
 		<div class="w-bottom">
 			<div class="w-botleft">
 				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-				<span id="beian">京ICP备案号13030539号</span>
+				<span id="beian">沪ICP备案号17050193</span>
 			</div>
 			<div class="w-botright">
 				<div>
-					<img src="img/uc-03.png"/>
-					<img src="img/uc-04.png"/>
-					<img src="img/uc-05.png"/>
+					<img id="weibo" src="img/uc-03.png"/>
+					<img id="inlin" src="img/uc-04.png"/>
+					<img id="weixin" src="img/uc-05.png"/>
 				</div>
 			</div>
 		</div>
@@ -160,10 +170,18 @@
                 },
                 loop: true, // 循环模式选项
             });
+            var cc = indexBOS[0]['context'];
+            // debugger;
+            if(cc.length<100){
+                $("#aboutContent").html(indexBOS[0]['context'] + "</br>...");
+            }else{
 
+                $("#aboutContent").html(cc.substring(0,100) + "</br>...");
+            }
 			$("#aboutTitle").html(indexBOS[0]['title']);
-            $("#aboutContent").html(indexBOS[0]['context']);
+           // $("#aboutContent").html(indexBOS[0]['context']);
             $("#projectTitle").html(indexBOS[1]['title']);
+
             $("#projectContent").html(indexBOS[1]['context']);
             $("#teamTitle").html(indexBOS[2]['title']);
             $("#teamContent").html(indexBOS[2]['context']);

@@ -83,8 +83,8 @@
 						<div class="w-dcdcon _scroll">
 							<div class="_panel-box">
 								<span class="w-dcdcontit" id="titleEnglish"></span>
-								<span class="w-dcdconsm">Location: <b id="siteEnglish"></b><br/> Area: <b id="floorSpace"></b>
-									<br/>Building Area: <b id="coveredArea"></b><br/>Client: <b id="client"></b></span>
+								<span class="w-dcdconsm">位置: <b id="siteEnglish"></b><br/> 面积: <b id="floorSpace"></b>
+									<br/>建筑面积: <b id="coveredArea"></b><br/>客户: <b id="client"></b></span>
 								<span class="w-dcdconcon" id="contextEnglish">
 
 								</span>
@@ -92,10 +92,10 @@
 							</div>
 						</div>
 						<div class="w-nextbtn">
-							<span class="previous">PREVIOUS</span>
+							<span class="previous">上一个</span>
 							<img class="previous" src="img/left.png"/>
 							<img class="next" src="img/right.png"/>
-							<span class="next">NEXT</span>
+							<span class="next">下一个</span>
 						</div>
 					</div>
 					<div class="w-detailcdr">
@@ -127,7 +127,7 @@
 			<div class="w-bottom">
 				<div class="w-botleft">
 					<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-					<span id="beian">京ICP备案号13030539号</span>
+					<span id="beian">沪ICP备案号17050193</span>
 				</div>
 				<div class="w-botright">
 					<div>
@@ -223,7 +223,7 @@
                       // centeredSlides: true,
                       // slidesOffsetBefore:5,
                       // slidesOffsetAfter:-20,
-
+						loop:true,
                       navigation: {
                           nextEl: '.swiper-button-next',
                           prevEl: '.swiper-button-prev',
@@ -231,7 +231,9 @@
                   });
                   var galleryTop = new Swiper('.gallery-top', {
                       spaceBetween: 10,
+
                       slidesOffsetBefore:5,
+                      loop:true,
                       navigation: {
                           nextEl: '.swiper-button-next',
                           prevEl: '.swiper-button-prev',

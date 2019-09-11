@@ -22,11 +22,11 @@
         <span class="w-c">EN</span>
     </div>
     <div class="w-tabtle">
-        <span data-id="aboutus" class="nav-span">ABOUT US</span>
-        <span data-id="project" class="nav-span">PROJECTS</span>
-        <span data-id="team" class="nav-span span-active">TEAM</span>
-        <span data-id="dynamic" class="nav-span">NEWS</span>
-        <span data-id="zp" class="nav-span">CONTACT US</span>
+        <span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+        <span data-id="project_en" class="nav-span">PROJECTS</span>
+        <span data-id="team_en" class="nav-span span-active">TEAM</span>
+        <span data-id="dynamic_en" class="nav-span">NEWS</span>
+        <span data-id="zp_en" class="nav-span">CONTACT US</span>
         <div class="w-tableindexsearch hide">
             <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
             <img class="w-isimgsearch" src="img/uc-06.png">
@@ -72,7 +72,7 @@
 <div class="w-bottom">
     <div class="w-botleft">
         <span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-        <span id="beian">京ICP备案号13030539号</span>
+        <span id="beian">沪ICP备案号17050193</span>
     </div>
     <div class="w-botright">
         <div>
@@ -110,6 +110,9 @@
         $("#headPortraitPc").attr("src",data.headPortraitPc);
   // debugger;
         for(var i=0;i<data.projectPicture.length;i++){
+            if(data.projectPicture[i]==null){
+                continue;
+            }
             if(data.projectPicture[0]==null){
                 projectPictureStr+='<img  class="project-pic" data-id="22" src="img/te-13.png"/>';
             }else{
@@ -129,15 +132,15 @@
 
         if(data.beforeUserId==0){
             $(".previous").css("cursor", 'not-allowed')
-            $("#previous").html("没有了")
+            $("#previous").html("no more")
         }else{
-            $("#previous").html(data.beforeUserName)
+            $("#previous").html(data.beforeUserNameEnglish)
         }
         if(data.afterUserId==0){
             $(".next").css("cursor", 'not-allowed')
-            $("#next").html("没有了")
+            $("#next").html("no more")
         }else{
-            $("#next").html(data.afterUserName)
+            $("#next").html(data.afterUserNameEnglish)
         }
         $(".previous").on("click",function () {
 
@@ -148,7 +151,7 @@
             }
         })
         $(".next").on("click",function () {
-            if(data.afterProjectId == 0 ){
+            if(data.afterUserId == 0 ){
                 console.log("没有下一个")
             }else{
                 window.location.href = "/pc/memberDetail_en.html?id="+data.afterUserId;
