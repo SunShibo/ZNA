@@ -31,7 +31,7 @@
     </update>
     <!--查询发展历史-->
     <select id="getHistory" resultType="com.zna.server.entity.bo.HistoryBO">
-        SELECT * FROM  `zna_history` ORDER BY `sort` DESC 
+        SELECT * FROM  `zna_history` ORDER BY `sort` DESC
         <if test="pageOffset!=null and pageSize!=null">
             LIMIT #{pageOffset},#{pageSize}
         </if>
