@@ -42,7 +42,7 @@ public class TeamController extends BaseCotroller{
 
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
 
-            //List<TeamBO> officeContactBO=teamService.getTeamBO(queryInfo.getPageOffset(),queryInfo.getPageSize());
+
             List<TeamBO> teamBOS=teamService.getTeamBOS(queryInfo.getPageOffset(),queryInfo.getPageSize());
             Integer count = teamService.getTeamBOCount();
             ContactWayBO contactWayBO = contactWayService.getContactWay();

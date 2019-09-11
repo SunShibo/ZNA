@@ -13,7 +13,6 @@
     </select>
 
     <resultMap id="teamMap" type="com.zna.server.entity.bo.TeamBO">
-        <id column="id" property="id"/>
         <result column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="name_english" property="nameEnglish"/>
@@ -30,15 +29,16 @@
         <result column="aptitude_abbreviation" property="aptitudeAbbreviation"/>
         <result column="sort" property="sort"/>
         <collection property="projectPicture" ofType="com.zna.server.entity.bo.ProjectInvolvedBO">
+            <result column="projectId" property="id"/>
             <result column="pictureUrl" property="projectPicture"/>
             <result column="pictureUrlPc" property="projectPicturePc"/>
-            <result column="projectId" property="id"/>
         </collection>
     </resultMap>
     <select id="getTeamBOS" resultMap="teamMap">
         SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl,pr.picture_url_pc AS pictureUrlPc
         FROM (
-        (SELECT * from zna_team order by sort desc<if test="pageOffset!=null and pageSize!=null">
+        (SELECT * from zna_team order by sort desc
+        <if test="pageOffset!=null and pageSize!=null">
         LIMIT #{pageOffset},#{pageSize}
     </if> )) te
 	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
@@ -185,7 +185,7 @@
         FROM zna_team te
 	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
 	LEFT JOIN zna_project pr ON tp.project_id = pr.id
-	WHERE te.id = #{id}
+	WHERE te.id = #{id}  AND pr.id is not null
     </select>
 
     <select id="getProjectByTeamId" resultType="com.zna.server.entity.bo.TeamProjectResultBO">

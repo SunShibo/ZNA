@@ -34,83 +34,7 @@ public class TeamBO extends BaseModel {
     private String afterUserName;//后一个核心团队名称
     private String afterUserNameEnglish;//后一个核心团队名称
 
-    private List<ProjectInvolvedBO> projectPicture;//参与的项目
-
-    public String getAptitudeAbbreviation() {
-        return aptitudeAbbreviation;
-    }
-
-    public void setAptitudeAbbreviation(String aptitudeAbbreviation) {
-        this.aptitudeAbbreviation = aptitudeAbbreviation;
-    }
-
-    public String getHeadPortraitPc() {
-        return headPortraitPc;
-    }
-
-    public void setHeadPortraitPc(String headPortraitPc) {
-        this.headPortraitPc = headPortraitPc;
-    }
-
-    public List<ProjectInvolvedBO> getProjectPicture() {
-        if (projectPicture==null||projectPicture.size()<=1){
-            return new ArrayList<>();
-        }
-            return projectPicture;
-    }
-
-    public void setProjectPicture(List<ProjectInvolvedBO> projectPicture) {
-        this.projectPicture = projectPicture;
-    }
-
-    public void setBeforeUserName(String beforeUserName) {
-        this.beforeUserName = beforeUserName;
-    }
-
-    public String getBeforeUserNameEnglish() {
-        return beforeUserNameEnglish;
-    }
-
-    public void setBeforeUserNameEnglish(String beforeUserNameEnglish) {
-        this.beforeUserNameEnglish = beforeUserNameEnglish;
-    }
-
-    public void setAfterUserName(String afterUserName) {
-        this.afterUserName = afterUserName;
-    }
-
-    public String getAfterUserNameEnglish() {
-        return afterUserNameEnglish;
-    }
-
-    public void setAfterUserNameEnglish(String afterUserNameEnglish) {
-        this.afterUserNameEnglish = afterUserNameEnglish;
-    }
-
-    public Integer getBeforeUserId() {
-        return beforeUserId;
-    }
-
-    public void setBeforeUserId(Integer beforeUserId) {
-        this.beforeUserId = beforeUserId;
-    }
-
-
-    public Integer getAfterUserId() {
-        return afterUserId;
-    }
-
-    public void setAfterUserId(Integer afterUserId) {
-        this.afterUserId = afterUserId;
-    }
-
-    public String getBeforeUserName() {
-        return beforeUserName;
-    }
-
-    public String getAfterUserName() {
-        return afterUserName;
-    }
+    private List<ProjectInvolvedBO> projectPicture=new ArrayList<ProjectInvolvedBO>();//参与的项目
 
     public Integer getId() {
         return id;
@@ -142,6 +66,14 @@ public class TeamBO extends BaseModel {
 
     public void setHeadPortrait(String headPortrait) {
         this.headPortrait = headPortrait;
+    }
+
+    public String getHeadPortraitPc() {
+        return headPortraitPc;
+    }
+
+    public void setHeadPortraitPc(String headPortraitPc) {
+        this.headPortraitPc = headPortraitPc;
     }
 
     public String getPosition() {
@@ -208,6 +140,14 @@ public class TeamBO extends BaseModel {
         this.aptitudeEnglish = aptitudeEnglish;
     }
 
+    public String getAptitudeAbbreviation() {
+        return aptitudeAbbreviation;
+    }
+
+    public void setAptitudeAbbreviation(String aptitudeAbbreviation) {
+        this.aptitudeAbbreviation = aptitudeAbbreviation;
+    }
+
     public Integer getSort() {
         return sort;
     }
@@ -248,26 +188,69 @@ public class TeamBO extends BaseModel {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "TeamBO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", nameEnglish='" + nameEnglish + '\'' +
-                ", headPortrait='" + headPortrait + '\'' +
-                ", position='" + position + '\'' +
-                ", positionEnglish='" + positionEnglish + '\'' +
-                ", intro='" + intro + '\'' +
-                ", introEnglish='" + introEnglish + '\'' +
-                ", educational='" + educational + '\'' +
-                ", educationalEnglish='" + educationalEnglish + '\'' +
-                ", aptitude='" + aptitude + '\'' +
-                ", aptitudeEnglish='" + aptitudeEnglish + '\'' +
-                ", sort=" + sort +
-                ", createUserId=" + createUserId +
-                ", createTime=" + createTime +
-                ", updateUserId=" + updateUserId +
-                ", updateTime=" + updateTime +
-                '}';
+    public Integer getBeforeUserId() {
+        return beforeUserId;
     }
+
+    public void setBeforeUserId(Integer beforeUserId) {
+        this.beforeUserId = beforeUserId;
+    }
+
+    public String getBeforeUserName() {
+        return beforeUserName;
+    }
+
+    public void setBeforeUserName(String beforeUserName) {
+        this.beforeUserName = beforeUserName;
+    }
+
+    public String getBeforeUserNameEnglish() {
+        return beforeUserNameEnglish;
+    }
+
+    public void setBeforeUserNameEnglish(String beforeUserNameEnglish) {
+        this.beforeUserNameEnglish = beforeUserNameEnglish;
+    }
+
+    public Integer getAfterUserId() {
+        return afterUserId;
+    }
+
+    public void setAfterUserId(Integer afterUserId) {
+        this.afterUserId = afterUserId;
+    }
+
+    public String getAfterUserName() {
+        return afterUserName;
+    }
+
+    public void setAfterUserName(String afterUserName) {
+        this.afterUserName = afterUserName;
+    }
+
+    public String getAfterUserNameEnglish() {
+        return afterUserNameEnglish;
+    }
+
+    public void setAfterUserNameEnglish(String afterUserNameEnglish) {
+        this.afterUserNameEnglish = afterUserNameEnglish;
+    }
+
+    public List<ProjectInvolvedBO> getProjectPicture() {
+        return projectPicture;
+    }
+
+    public void setProjectPicture(List<ProjectInvolvedBO> projectPicture) {
+        this.projectPicture = projectPicture;
+    }
+/*    public List<ProjectInvolvedBO> getProjectPicture() {
+        if (projectPicture==null||projectPicture.size()<1){
+            return new ArrayList<>();
+        }
+        return projectPicture;
+    }
+
+    public void setProjectPicture(List<ProjectInvolvedBO> projectPicture) {
+        this.projectPicture = projectPicture;
+    }*/
 }

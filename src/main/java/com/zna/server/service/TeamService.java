@@ -45,7 +45,7 @@ public class TeamService {
                 }
             }
         }
-            if (teamBO!=null) {
+            if (teamBO!=null&& projectPictureS!=null) {
                     teamBO.setProjectPicture(projectPictureS);
             }
                 return teamBO;
