@@ -147,6 +147,7 @@
                 success: function (r) {
                     data = r.data.officeContactBO;
                     setting(lang);
+                    $.footData(r.data.contactWayBO);
                 }
             })
         }

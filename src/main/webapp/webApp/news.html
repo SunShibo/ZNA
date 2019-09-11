@@ -77,7 +77,14 @@
         </ul>
     </nav>
 
-    <div class="content"></div>
+    <div class="content">
+        <div class="news">
+
+        </div>
+        <div class="news-next">
+            <a href="javascript:void(0)" id="next"></a>
+        </div>
+    </div>
 
     <div id="foot">
         <div class="foot-center">
@@ -133,12 +140,25 @@
                             '</div>',
                             '</div>')
                     }
-                    $('.content').append(domArr.join(''));
+                    $('.news').empty().append(domArr.join(''));
+
+                    $('#next').text(lang ? 'Show More Results +' : '加载更多 +');
                     $.footData(r.data.contactWayBO);
                 }
             })
-
         }
+
+        //加载更多
+        $('#next').on('click', function (e) {
+            var lang = $.getLang();
+            if (Math.ceil(count / limit) < current) {
+                lang ? $(this).text('NO MORE') : $(this).text('暂无更多');
+                $(this).off('click');
+                return
+            }
+            current++;
+            init(lang);
+        });
 
         //按语言设置数据
         function setting(lang) {
@@ -151,6 +171,7 @@
                     $('.news-item-content').eq(i).html(data[i].context);
                 }
             }
+            $('#next').text(lang ? 'Show More Results +' : '加载更多 +');
         }
 
 

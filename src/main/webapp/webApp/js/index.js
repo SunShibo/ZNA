@@ -1,4 +1,6 @@
 (function (window, $) {
+
+
     var lang = false, langDom = $('#language'), navDom = $('#nav, #closeMenu'),
         m = false, s = false, closeDom = $('#closeMenu'), openDom = $('.menu, .search, .language');
 
@@ -20,8 +22,8 @@
         {name: '最新动态', nameEN: 'NEWS', children: []},
         {
             name: '联系我们', nameEN: 'CONTACT US', children: [
-                {name: '经典项目', nameEN: 'PROJECTS'},
-                {name: '经典项目', nameEN: 'PROJECTS'}
+                {name: '办公室', nameEN: 'OFFICE'},
+                {name: '人才招聘', nameEN: 'CAREER'}
             ]
         }
     ];
@@ -30,17 +32,22 @@
     window.switch_language = new Function();
 
     $(function () {
+
         $.checkPlatform();
-        if (location.href.indexOf('?') === -1) {
-            location.href = location.href + "?language=" + $.getLangStr();
-        }
-        //获取语言类型
-        lang = $.getLang();
-        //设置菜单
-        settingMenu(lang);
-        lang ? langDom.text('英') : langDom.text('中');
-        //执行回调
-        window.switch_language(lang);
+
+        //延迟500ms加载数据
+        setTimeout(function () {
+            if (location.href.indexOf('?') === -1) {
+                location.href = location.href + "?language=" + $.getLangStr();
+            }
+            //获取语言类型
+            lang = $.getLang();
+            //设置菜单
+            settingMenu(lang);
+            lang ? langDom.text('英') : langDom.text('中');
+            //执行回调
+            window.switch_language(lang);
+        }, 500)
     });
 
     //按语言设置菜单
@@ -63,11 +70,13 @@
             //设置二级菜单
             if (menu[i].children.length) {
                 for (var j = 0, jLen = menu[i].children.length; j < jLen; j++) {
-                    var subSrc = dom.find('.sub-nav').children('li').eq(j).children('a').attr('href');
+                    var subDom = dom.find('.sub-nav').children('li').eq(j).children('a');
+                    var subSrc = subDom.attr('href');
+                    subSrc = subSrc.indexOf('?') === -1 ? subSrc + '?' : subSrc + '&';
                     if (lang) {
-                        dom.find('.sub-nav').children('li').eq(j).children('a').text(menu[i].children[j].nameEN).attr('href', subSrc + '&language=' + $.getLangStr());
+                        subDom.text(menu[i].children[j].nameEN).attr('href', subSrc + 'language=' + $.getLangStr());
                     } else {
-                        dom.find('.sub-nav').children('li').eq(j).children('a').text(menu[i].children[j].name).attr('href', subSrc + '&language=' + $.getLangStr());
+                        subDom.text(menu[i].children[j].name).attr('href', subSrc + 'language=' + $.getLangStr());
                     }
                 }
             }

@@ -173,7 +173,10 @@
                 var dom = $('.items-content');
                 var langStr = lang ? 'en' : 'cn';
                 for (var i = 0, len = dom.length; i < len; i++) {
-                    dom.eq(i).children('a').attr('href', dom.children('a').attr('href') + '?language=' + langStr);
+                    var thisDom = dom.eq(i).children('a'), hrefUrl = thisDom.attr('href');
+                    if (hrefUrl.indexOf('?') === -1) {
+                        thisDom.attr('href', hrefUrl + '?language=' + langStr);
+                    }
                 }
 
                 $.ajax({
@@ -210,7 +213,12 @@
                 for (var item in data[i]) {
                     //根据中英文，判断获取的数据字段
                     var keyName = lang ? item + 'English' : item;
-                    if (!!data[i][keyName]) $('#' + item + i).html(data[i][keyName]);
+                    if (i === 0) {
+                        var str = data[i][keyName].toString().substr(0, 100) + '......';
+                        if (!!data[i][keyName]) $('#' + item + i).html(str);
+                    } else {
+                        if (!!data[i][keyName]) $('#' + item + i).html(data[i][keyName]);
+                    }
                 }
             }
         }
