@@ -28,23 +28,32 @@
         }
     ];
 
+    var search_menu = [
+        {
+            name: '经典项目', nameEN: 'PROJECTS'
+        },
+        {
+            name: '最新动态', nameEN: 'NEWS'
+        }
+    ];
+
     //全局上声明一个切换中英文的方法
     window.switch_language = new Function();
 
     $(function () {
 
         $.checkPlatform();
+        //获取语言类型
+        lang = $.getLang();
+        lang ? langDom.text('英') : langDom.text('中');
 
         //延迟500ms加载数据
         setTimeout(function () {
             if (location.href.indexOf('?') === -1) {
                 location.href = location.href + "?language=" + $.getLangStr();
             }
-            //获取语言类型
-            lang = $.getLang();
             //设置菜单
             settingMenu(lang);
-            lang ? langDom.text('英') : langDom.text('中');
             //执行回调
             window.switch_language(lang);
         }, 500)
@@ -123,8 +132,8 @@
 
     //搜索框显示
     function searchState(state) {
-        var search = $('.head_search');
-        $('.head_search input').val('');
+        var search = $('.head_search, .search_list');
+        $('#keyword').val('');
         if (state) {
             search.fadeOut();
             topHeadState(state);
@@ -132,6 +141,9 @@
         } else {
             search.fadeIn();
             topHeadState(state);
+            for (var i = 0, len = search_menu.length; i < len; i++) {
+                $('.search_list .list div').eq(i).children('a').text($.getLang() ? search_menu[i].nameEN : search_menu[i].name);
+            }
             s = true;
         }
     }
@@ -193,6 +205,45 @@
             case 'information':
                 subMenuState(false, that);
                 break;
+        }
+    });
+
+    //搜索页面导航
+    $('.list').on('click', function (ev) {
+        var ev = ev || window.event, target = ev.target || ev.srcElement;
+        var search = $('#keyword').val();
+        switch (target.id) {
+            case 'toProject':
+                location.href = 'project.html?language=' + $.getLangStr() + "&search=" + search;
+                break;
+            case 'toNews':
+                location.href = 'news.html?language=' + $.getLangStr() + "&search=" + search;
+                break;
+        }
+    });
+
+    //底部跳转链接
+    $('.icon-list').on('click', function (ev) {
+        var ev = ev || window.event, target = ev.target || ev.srcElement;
+        switch (target.id) {
+            case 'toMicroblog':
+                location.href = 'https://weibo.com/znabeijing?topnav=1&wvr=6&topsug=1&is_all=1';
+                break;
+            case 'toIn':
+                location.href = 'https://www.linkedin.com/feed/?trk=v5nav_cap_to_consumer_home';
+                break;
+            case 'toWechat':
+                $(document.body).css({"overflow-y": "hidden"});
+                $('#icon_wechat').show();
+                break;
+        }
+    });
+
+    $('#icon_wechat').on('click', function (e) {
+        var ev = ev || window.event, target = ev.target || ev.srcElement;
+        if(target.id === 'icon_wechat'){
+            $('#icon_wechat').hide();
+            $(document.body).css({"overflow-y": "auto"});
         }
     });
 

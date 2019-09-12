@@ -114,6 +114,16 @@ audio, canvas, video, progress {
     display: inline-block;
 }
 
+/*--清除谷歌浏览器下的 search 叉号*/
+input::-webkit-search-cancel-button {
+    display: none;
+}
+
+/*--清除IE下的 search 叉号*/
+input[type=search]::-ms-clear {
+    display: none;
+}
+
 /*公共部分*/
 #app-page {
     width: 7.5rem;
@@ -177,37 +187,26 @@ audio, canvas, video, progress {
 }
 
 #app-page .head_search {
-    width: 7.5rem;
-    height: 1rem;
+    height: .5rem;
+    vertical-align: top;
     position: absolute;
-    top: 1rem;
-    left: 0;
-    right: 0;
+    right: .2rem;
+    top: 0;
+    bottom: 0;
     margin: auto;
-    background: rgba(255, 255, 255, 0.9);
-    z-index: 10;
     display: none;
-}
-
-.head_search > div {
-    margin: 0 auto;
-    position: relative;
-    top: 50%; /*偏移*/
-    transform: translateY(-50%);
-    border-bottom: 1px #999999 solid;
-    width: 70%;
+    z-index: 10;
+    border-bottom: 1px #333333 solid;
 }
 
 .head_search .search_icon {
-    width: .4rem;
-    margin: 0 .1rem;
+    width: .45rem;
     display: inline-block;
 }
 
 .head_search .search_icon img {
     vertical-align: middle;
     height: .4rem;
-    margin: .1rem 0 .05rem;
 }
 
 .head_search input {
@@ -219,7 +218,6 @@ audio, canvas, video, progress {
     width: 80%;
     height: .5rem;
     font-size: .3rem;
-    vertical-align: bottom;
     margin-left: .1rem;
 }
 
@@ -287,6 +285,33 @@ li .nav-href {
     font-size: .28rem;
 }
 
+.search_list {
+    background: rgba(255, 255, 255, 0.7);
+    display: none;
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 20;
+}
+
+.search_list .list {
+    display: flex;
+    justify-content: center;
+}
+
+.search_list .list div {
+    vertical-align: middle;
+    width: 3.75rem;
+    text-align: center;
+    padding: .15rem 0;
+}
+
+.list div a {
+    color: #333333;
+}
+
 /*头部*/
 #app-page .head {
     width: 7.5rem;
@@ -349,6 +374,7 @@ li .nav-href {
     bottom: .1rem;
     width: .5rem;
     margin: auto;
+    z-index: 10;
 }
 
 .close-menu img {
@@ -787,7 +813,7 @@ li .nav-href {
     text-align: center;
 }
 
-.history-next a, .news-next a    {
+.history-next a, .news-next a {
     font-size: .24rem;
     line-height: .34rem;
     letter-spacing: .02rem;
@@ -1003,7 +1029,7 @@ ul li .info-text {
     line-height: 0.48rem;
 }
 
-.info-text-obligation .obligation-title{
+.info-text-obligation .obligation-title {
     margin-top: .2rem;
 }
 
@@ -1012,6 +1038,48 @@ ul li .info-text {
 }
 
 /*尾部*/
+
+#icon_wechat{
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0, 0, 0, .6);
+    z-index: 22;
+    display: none;
+}
+
+#icon_wechat .wechat{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 23;
+    width: 5.38rem;
+    height: 6.54rem;
+    box-shadow: 0 0 0.117rem .013rem
+    rgba(15, 15, 15, .33);
+    background-image: url('../image/wechat_background.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.wechat .wechat_text{
+    width: 100%;
+    height: 1.17rem;
+    text-align: center;
+    line-height: 1.17rem;
+}
+
+.wechat .wechat_image{
+    padding: .2rem;
+}
+
 #app-page #foot {
     background: #ffffff;
     border-top: 1px #999999 solid;
