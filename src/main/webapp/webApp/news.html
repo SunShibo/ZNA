@@ -91,6 +91,15 @@
         </div>
     </div>
 
+    <div id="icon_wechat">
+        <div class="wechat">
+            <div class="wechat_image">
+                <img src="./image/wechat.jpg" alt="">
+            </div>
+            <div class="wechat_text">扫描二维码，关注微信公众号</div>
+        </div>
+    </div>
+
     <div id="foot">
         <div class="foot-center">
             <div class="foot-office-info">
@@ -99,9 +108,9 @@
             </div>
             <div class="contact">EMAIL: <span id="email"></span></div>
             <div class="icon-list">
-                <img src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
-                <img src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
-                <img src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
+                <img id="toMicroblog" src="./image/icon/ic_microblog.png" alt="" width="100%" height="100%">
+                <img id="toIn" src="./image/icon/ic_in.png" alt="" width="100%" height="100%">
+                <img id="toWechat" src="./image/icon/ic_wechat.png" alt="" width="100%" height="100%">
             </div>
             <div class="foot-icp contact">沪ICP备案号17050193</div>
         </div>
@@ -133,19 +142,19 @@
                     count = r.data.count;
                     Array.prototype.push.apply(data, r.data.recentNewsBOS);
                     var domArr = [];
-                    for (var i = 0, len = data.length; i < len; i++) {
+                    for (var i = 0, len = r.data.recentNewsBOS.length; i < len; i++) {
                         domArr.push('<div class="news-items">',
                             '<div class="news-item-image">',
-                            '<img src="', data[i].pictureUrl, '" alt="" width="100%" height="100%">',
+                            '<img src="', r.data.recentNewsBOS[i].pictureUrl, '" alt="" width="100%" height="100%">',
                             '</div>',
                             '<div class="news-info">',
-                            '<div class="news-item-title">', lang ? data[i].titleEnglish : data[i].title, '</div>',
-                            '<div class="news-item-date">', data[i].time, '</div>',
-                            '<div class="news-item-content">', lang ? data[i].contextEnglish : data[i].context, '</div>',
+                            '<div class="news-item-title">', lang ? r.data.recentNewsBOS[i].titleEnglish : r.data.recentNewsBOS[i].title, '</div>',
+                            '<div class="news-item-date">', r.data.recentNewsBOS[i].time, '</div>',
+                            '<div class="news-item-content">', lang ? r.data.recentNewsBOS[i].contextEnglish : r.data.recentNewsBOS[i].context, '</div>',
                             '</div>',
                             '</div>')
                     }
-                    $('.news').empty().append(domArr.join(''));
+                    $('.news').append(domArr.join(''));
 
                     $('#next').text(lang ? 'Show More Results +' : '加载更多 +');
                     $.footData(r.data.contactWayBO);
