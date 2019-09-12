@@ -47,6 +47,9 @@
         lang = $.getLang();
         lang ? langDom.text('英') : langDom.text('中');
 
+        //LOGO
+        setLogo(lang);
+
         //延迟500ms加载数据
         setTimeout(function () {
             if (location.href.indexOf('?') === -1) {
@@ -97,6 +100,10 @@
     langDom.on('click', function (e) {
         //更改当前页面的语言变量
         lang = !lang;
+
+        //设置logo
+        setLogo(lang);
+
         //保存语言类型
         localStorage.setItem('EN_LANG', lang ? 'EN_US' : 'EN_CH');
         //更新菜单
@@ -105,6 +112,13 @@
         //触发并更新回调参数
         window.switch_language($.getLang());
     });
+
+    //根据语言设置logo
+    function setLogo(lang) {
+        //LOGO
+        var imageUrl = lang ? 'image/logo.jpg' : 'image/logo_cn.jpg';
+        $('#logoImage').attr('src', imageUrl);
+    }
 
     //菜单显示
     $('#clickMenu').on('click', function () {
@@ -247,6 +261,15 @@
         }
     });
 
+    //页面适配
+    // $(window).resize(function (ev) {
+    //     console.log(document.body.clientWidth);
+    //     var clientWidth = document.body.clientWidth;
+    //     if(clientWidth > 750){
+    //         $.checkPlatform();
+    //     }
+    // });
+
     //扩展jquery方法
     $.extend({
         footData: function (data) {
@@ -316,46 +339,48 @@
             if (window.location.search.indexOf('search') > -1 && (htmlUrl === 'news' || htmlUrl === 'project')) {
                 // /pc/dynamic_search_cn.html?title=%E9%A1%B9%E7%9B%AE
                 if (htmlUrl === 'project') {
-
-                }else if (htmlUrl === 'news'){
-
+                    strUrl = (lang ? 'project_search_en.html' : 'project_search_cn.html') + "?title=" + $.getUrl('search');
+                } else if (htmlUrl === 'news') {
+                    strUrl = (lang ? 'dynamic_search_en.html' : 'dynamic_search_cn.html') + "?title=" + $.getUrl('search');
+                }
+            } else {
+                switch (htmlUrl) {
+                    case 'aboutUs':
+                        strUrl = 'aboutUs' + strUrl;
+                        break;
+                    case 'history':
+                        strUrl = 'history' + strUrl;
+                        break;
+                    case 'home':
+                        strUrl = 'home' + strUrl;
+                        break;
+                    case 'news':
+                        strUrl = 'dynamic' + strUrl;
+                        break;
+                    case 'office':
+                        strUrl = 'zp' + strUrl;
+                        break;
+                    case 'project':
+                        strUrl = 'project' + strUrl;
+                        break;
+                    case 'project_classification':
+                        strUrl = 'projectType' + strUrl;
+                        break;
+                    case 'project_detailed':
+                        strUrl = 'projectDetail' + strUrl;
+                        break;
+                    case 'recruitment':
+                        strUrl = 'zp' + strUrl;
+                        break;
+                    case 'team':
+                        strUrl = 'member' + strUrl;
+                        break;
+                    case 'team_detailed':
+                        strUrl = 'memberDetail' + strUrl;
+                        break;
                 }
             }
-            switch (htmlUrl) {
-                case 'aboutUs':
-                    strUrl = 'aboutUs' + strUrl;
-                    break;
-                case 'history':
-                    strUrl = 'history' + strUrl;
-                    break;
-                case 'home':
-                    strUrl = 'home' + strUrl;
-                    break;
-                case 'news':
-                    strUrl = 'dynamic' + strUrl;
-                    break;
-                case 'office':
-                    strUrl = 'zp' + strUrl;
-                    break;
-                case 'project':
-                    strUrl = 'project' + strUrl;
-                    break;
-                case 'project_classification':
-                    strUrl = 'projectType' + strUrl;
-                    break;
-                case 'project_detailed':
-                    strUrl = 'projectDetail' + strUrl;
-                    break;
-                case 'recruitment':
-                    strUrl = 'zp' + strUrl;
-                    break;
-                case 'team':
-                    strUrl = 'member' + strUrl;
-                    break;
-                case 'team_detailed':
-                    strUrl = 'memberDetail' + strUrl;
-                    break;
-            }
+            // location.href = '/pc/' + strUrl;
             //判断是否是PC端   依据判断只要不是android系统和IOS系统就算是PC系统
             if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
                 location.href = '/pc/' + strUrl;
