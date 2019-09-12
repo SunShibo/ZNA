@@ -1226,3 +1226,25 @@ body{
 #code-img,#weibo,#inlink{
 	cursor: pointer;
 }
+.ss{
+	float: right;
+	display: inline-block;
+	padding: 0 13px;
+	line-height: 68px;
+	cursor: pointer;
+}
+.ss-wp{
+	height: 50px;border-bottom: 2px solid #999;padding-right: 100px;
+}
+
+.ss.active{
+	color: rgba(94,37,142,1);
+}
+
+.ss:hover{
+	color: rgba(94,37,142,1);
+}
+
+.searchDiv{
+	display: none;
+}

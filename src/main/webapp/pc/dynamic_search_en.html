@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>zna</title>
+		<link href="css/style.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<script src="js/jquery-2.0.3.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/main.js?v=1"></script>
+	</head>
+	<body>
+	<div class="w-head">
+		<div data-id="home_en" class="nav-span" style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+		<div class="w-lang">
+			<span class="w-langc">中文</span>
+			<span class="w-c">EN</span>
+		</div>
+		<div class="w-tabtle">
+			<div class="w-tableindexsearch">
+				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+				<img class="w-isimgsearch" src="img/uc-06.png">
+				<img class="w-isimgclose" src="img/sy-08.png">
+			</div>
+			<img class="w-tabtleimg" src="img/uc-06.png"/>
+		</div>
+	</div>
+	<div class="ss-wp">
+		<a class="ss active" id="news_search">NEWS</a>
+		<a class="ss" id="project_search">PROJECT</a>
+	</div>
+	<div style="height: 30px;"></div>
+		<div class="w-content" id="">
+			<div class="w-news" id="domData">
+
+			</div>
+
+		</div>
+
+		<div class="w-bottom">
+			<div class="w-botleft">
+				<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+				<span id="beian">沪ICP备案号17050193</span>
+			</div>
+<div class="w-botright">   <div>      <div class="code-wp">         <img class="code-img" src="img/erweima.png">         <img id="code-img" src="img/uc-05.png"/>      </div>      <img id="weibo" src="img/uc-03.png"/>      <img id="inlink" src="img/uc-04.png"/>   </div></div>
+		</div>
+		<script>
+			$(function(){
+				$(".w-tabnav a").hover(function(){
+					$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+				})
+
+				$("#searchInput").val(decodeURIComponent(getUrl("title")));
+			})
+			var pageNo = 1;
+			var domStr = '';
+			var $dom = $("#domData");
+			$.getJSON("/recentNews/selectRecentNews?r="+Date.now()+"&pageSize=99&pageNo="+pageNo+"&title="+getUrl("title"),function (rs) {
+                renderFloor(rs.data.contactWayBO);
+			    var d = rs.data.recentNewsBOS;
+			    for(var i=0;i<d.length;i++)
+					 domStr +=['',
+                    '   <div class="w-newsbox">',
+                '   <div class="w-newsboxl">',
+                '   <img src="',
+					d[i].pictureUrlPc,
+						 '"/>',
+                '   </div>',
+                '   <div class="w-newsboxr">',
+                '   <div class="w-newsfontbox">',
+                '   <span class="w-newsfontt">',
+                         d[i].titleEnglish,
+                '   </span>',
+                '   <span class="w-newsfontc" >',
+                         d[i].time,
+						 '</span>',
+                '   <div class="w-newsfontb" >',
+                         d[i].contextEnglish,
+                '  </div> </div> </div></div>'].join("");
+                $dom.html(domStr);
+            })
+
+
+
+
+		</script>
+	</body>
+</html>

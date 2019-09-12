@@ -40,6 +40,12 @@ $(function () {
         href = href.replace("/zp_cn.html","/recruitment.html")
         href = href.replace("/memberDetail_en.html","/team_detailed.html")
         href = href.replace("/memberDetail_cn.html","/team_detailed.html")
+
+        href =href.replace("/project_search_cn.html?title=","/project.html?language=cn&search=")
+        href =href.replace("/project_search_en.html?title=","/project.html?language=en&search=")
+        href =href.replace("/dynamic_search_cn.html?title=","/news.html?language=cn&search=")
+        href =href.replace("/dynamic_search_en.html?title=","/news.html?language=en&search=")
+
         window.location.href = href;
     }
 
@@ -66,6 +72,34 @@ $(function () {
             }
     })
 
+
+    $('#searchInput').bind('keyup', function(event) {
+        if(document.getElementById("searchInput").value==''){
+            return;
+        }
+
+        if (event.keyCode == "13") {
+            var url = window.location.href;
+            if(url.indexOf("home_")>-1||url.indexOf("project_search_")){
+
+                if(window.location.href.indexOf("_cn")>-1){
+                    window.location.href = "/pc/project_search_cn.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+                }else{
+                    window.location.href = "/pc/project_search_en.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+                }
+
+
+            }else{
+                if(window.location.href.indexOf("_cn")>-1){
+                    window.location.href = "/pc/dynamic_search_cn.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+                }else{
+                    window.location.href = "/pc/dynamic_en.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+                }
+            }
+
+        }
+    });
+
     $(".w-c").on('click',function () {
         var i = window.location.href.indexOf('?');
         var l = window.location.href.indexOf('language=cn');
@@ -84,9 +118,37 @@ $(function () {
                 }
             }
         }
+
+
+
+
+
+
     })
 
-    
+
+    $("#news_search").on("click",function () {
+        if(document.getElementById("searchInput").value==''){
+            return;
+        }
+        if(window.location.href.indexOf("_cn")>-1){
+            window.location.href = "/pc/dynamic_search_cn.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+        }else{
+            window.location.href = "/pc/dynamic_search_en.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+        }
+
+    })
+
+    $("#project_search").on("click",function () {
+        if(document.getElementById("searchInput").value==''){
+            return;
+        }
+        if(window.location.href.indexOf("_cn")>-1){
+            window.location.href = "/pc/project_search_cn.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+        }else{
+            window.location.href = "/pc/project_search_en.html?title="+ encodeURIComponent(document.getElementById("searchInput").value)
+        }
+    })
     
     
     $(".nav-span").on("click",function () {
@@ -135,29 +197,31 @@ $(function () {
     });
     
     
-    $(".w-tabtleimg").on("click",function () {
-        if($(this).hasClass("show")){
-            $(this).removeClass("show");
-            $(".w-tableindexsearch").addClass("hide");
-            $(".nav-span").removeClass("hide");
-        }else{
-            $(this).addClass("show");
-            $(".w-tableindexsearch").removeClass("hide");
-            $(".nav-span").addClass("hide");
-        }
+    $("#topImg").on("click",function () {
+            $("#w-head-nav").css("display","none");
+            $(".searchDiv").css("display","block");
+
+    });
+
+    $(".w-isimgclose").on("click",function () {
+        $("#w-head-nav").css("display","block");
+        $(".searchDiv").css("display","none");
     });
 
 
-    $(".w-tableindexsearch").mouseout(function (e) {
-        if(e.clientY>50){
-            $(".nav-span").removeClass("hide");
-            $(".w-tableindexsearch").addClass("hide");
-            $(".w-tabtleimg").removeClass("show")
-        }
-    });
-
+    //
     $(".w-isimgsearch").on("click",function () {
-        console.log("您点击了搜索按钮")
+        if(document.getElementById("searchInput").value==''){
+            return;
+        }
+        if(window.location.href.indexOf("_cn")>-1){
+            
+            window.location.href = "/pc/project_search_cn.html?title="+ encodeURIComponent(document.getElementById("searchInput").value);
+        }else{
+            window.location.href = "/pc/project_search_en.html?title="+ encodeURIComponent(document.getElementById("searchInput").value);
+        }
+
+
     });
 
     $(".w-isimgclose").on("click",function () {
@@ -251,6 +315,5 @@ $("#weixin").hover(function () {
 },function () {
     document.getElementById('div1').style.display = 'none';
 })
-
 
 
