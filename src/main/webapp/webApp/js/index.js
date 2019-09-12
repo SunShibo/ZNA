@@ -214,10 +214,10 @@
         var search = $('#keyword').val();
         switch (target.id) {
             case 'toProject':
-                location.href = 'project.html?language=' + $.getLangStr() + "&search=" + search;
+                location.href = 'project.html?language=' + $.getLangStr() + "&search=" + encodeURIComponent(search);
                 break;
             case 'toNews':
-                location.href = 'news.html?language=' + $.getLangStr() + "&search=" + search;
+                location.href = 'news.html?language=' + $.getLangStr() + "&search=" + encodeURIComponent(search);
                 break;
         }
     });
@@ -241,7 +241,7 @@
 
     $('#icon_wechat').on('click', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
-        if(target.id === 'icon_wechat'){
+        if (target.id === 'icon_wechat') {
             $('#icon_wechat').hide();
             $(document.body).css({"overflow-y": "auto"});
         }
@@ -312,7 +312,16 @@
         //判断是否手机端
         checkPlatform: function () {
             var strUrl = ($.getLang() ? '_en.html' : '_cn.html') + window.location.search;
-            switch (window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.lastIndexOf('.'))) {
+            var htmlUrl = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1, window.location.pathname.lastIndexOf('.'));
+            if (window.location.search.indexOf('search') > -1 && (htmlUrl === 'news' || htmlUrl === 'project')) {
+                // /pc/dynamic_search_cn.html?title=%E9%A1%B9%E7%9B%AE
+                if (htmlUrl === 'project') {
+
+                }else if (htmlUrl === 'news'){
+
+                }
+            }
+            switch (htmlUrl) {
                 case 'aboutUs':
                     strUrl = 'aboutUs' + strUrl;
                     break;

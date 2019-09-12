@@ -166,6 +166,13 @@
             $('.client').text(lang ? 'Client: ' + data[0].clientEnglish : '业主: ' + data[0].client);
             $('.detailed-content').text(lang ? data[0].contextEnglish : data[0].context);
 
+            //查看详情按钮
+            if (infoState) {
+                $('.switch a').text($.getLang() ? 'info -' : '详情 -');
+            } else {
+                $('.switch a').text($.getLang() ? 'info +' : '详情 +');
+            }
+
             //底部导航栏
             var pre = data[0].beforeProjectId ? ('project_detailed.html?id=' + data[0].beforeProjectId) : '';
             var next = data[0].afterProjectId ? ('project_detailed.html?id=' + data[0].afterProjectId) : '';
@@ -230,9 +237,9 @@
             $('.detailed-content').slideToggle(500, function (e) {
                 infoState = !infoState;
                 if (infoState) {
-                    $('.switch a').text('info -');
+                    $('.switch a').text($.getLang() ? 'info -' : '详情 -');
                 } else {
-                    $('.switch a').text('info +');
+                    $('.switch a').text($.getLang() ? 'info +' : '详情 +');
                 }
             });
         })

@@ -118,7 +118,7 @@
             <div class="nav-page">
                 <div class="nav-default nav-pre">
                     <a href="#">
-                        <span class="team-pre">MARK NEEM</span>
+                        <span class="team-pre"></span>
                         <div class="nav-img">
                             <img src="./image/icon/ic_pre.png" alt="" width="100%" height="100%">
                         </div>
@@ -129,7 +129,7 @@
                         <div class="nav-img">
                             <img src="./image/icon/ic_next.png" alt="" width="100%" height="100%">
                         </div>
-                        <span class="team-next">KENNETH WEN</span>
+                        <span class="team-next"></span>
                     </a>
                 </div>
             </div>
@@ -190,10 +190,10 @@
             var nextStr = lang ? data.afterUserNameEnglish : data.afterUserName;
             var hrefUrl = 'team_detailed.html?language=' + $.getLangStr() + '&id=';
             var herfPreUrl = data.beforeUserId ? hrefUrl + data.beforeUserId : '#';
-            var herfNextUrl = data.beforeUserId ? hrefUrl + data.beforeUserId : '#';
+            var herfNextUrl = data.afterUserId ? hrefUrl + data.afterUserId : '#';
             $('.nav-pre>a').attr('href', herfPreUrl).children('.team-pre').text(data.beforeUserName ? preStr : navStr);
             $('.nav-next>a').attr('href', herfNextUrl).children('.team-next').text(data.afterUserName ? nextStr : navStr);
-            $('.back-page>a').attr('href', 'team.html?language=' + $.getLangStr() ).text(lang ? '< TEAM': '< 核心团队')
+            $('.back-page>a').attr('href', 'team.html?language=' + $.getLangStr()).text(lang ? '< TEAM' : '< 核心团队')
         }
 
         //第一次初始化数据
@@ -212,9 +212,14 @@
                     //参与的项目
                     for (var i = 0, len = r.data.teamBO.projectPicture.length; i < len; i++) {
                         if (!!r.data.teamBO.projectPicture[i]) {
-                            projectArr.push('<li><img src="' + r.data.teamBO.projectPicture[i] + '" alt="" width="100%" height="100%"></li>')
+                            var id = r.data.teamBO.projectPicture[i].id;
+                            var imageUrl = JSON.parse(r.data.teamBO.projectPicture[i].projectPicture)[0];
+                            projectArr.push('<li><a href="project_detailed.html?id=' + id + '"><img src="' + imageUrl + '" alt="" width="100%" height="100%"></a></li>')
                         }
                     }
+
+                    $('.project-list-image').append(projectArr.join(''));
+
                     //如果项目为空隐藏dom
                     if (!r.data.teamBO.projectPicture.length) {
                         $('.team-project').hide();

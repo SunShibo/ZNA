@@ -130,7 +130,7 @@
                 dataType: 'json',
                 data: {pageNo: current, pageSize: limit},
                 success: function (r) {
-
+                    count = r.data.count;
                     Array.prototype.push.apply(data, r.data.teamBOS);
                     var itemArr = [];
 
