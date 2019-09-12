@@ -17,5 +17,5 @@ public interface RecentNewsDAO {
 
     RecentNewsBO selectRecentNewsDetails(Integer id);
 
-    Integer getCount(@Param("id")Integer id);
+    Integer getCount(@Param("id")Integer id,@Param("title") String title);
 }

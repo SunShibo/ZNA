@@ -60,8 +60,8 @@ public class RecentNewsService {
         return recentNewsBO;
     }
 
-    public Integer getCount(Integer id){
-        return recentNewsDAO.getCount(id);
+    public Integer getCount(Integer id,String title){
+        return recentNewsDAO.getCount(id,title);
     }
 
 }

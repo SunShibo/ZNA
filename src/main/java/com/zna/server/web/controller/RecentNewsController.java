@@ -186,7 +186,7 @@ public class RecentNewsController extends BaseCotroller {
 
             QueryInfo queryInfo=getQueryInfo(pageNo,pageSize);
             List<RecentNewsBO> recentNewsBOS = recentNewsService.selectRecentNews(title,id,queryInfo.getPageOffset(),queryInfo.getPageSize());
-            Integer count = recentNewsService.getCount(id);
+            Integer count = recentNewsService.getCount(id,title);
             ContactWayBO contactWayBO = contactWayService.getContactWay();
             Map<String,Object> map = new HashMap<>();
             map.put("recentNewsBOS",recentNewsBOS);
