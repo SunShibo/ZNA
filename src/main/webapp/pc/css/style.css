@@ -1251,3 +1251,26 @@ body{
 .searchDiv{
 	display: none;
 }
+
+.aboutBannerSwiper{
+	position: relative;
+}
+.aboutBannerSwiper-p{
+	position: absolute;
+	top: 40%;
+	font-size: 50px;
+	color: #fff;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.aboutBannerSwiper-content{
+	position: absolute;
+	top: 57%;
+	font-size: 24px;
+	color: #fff;
+	left: 50%;
+	max-width: 500px;
+	text-align: center;
+	transform: translate(-50%,-50%);
+}

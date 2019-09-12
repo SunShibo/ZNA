@@ -139,7 +139,18 @@
               var bannerStr = '';
               var floorStr = '';
               for(var i=0;i<banner.length;i++){
-                  bannerStr+= '<div class="swiper-slide"><img class="home-lb-bg" src="'+banner[i]['pictureUrlPc']+'" /></div>';
+                  bannerStr+= [
+                      '<div class="swiper-slide aboutBannerSwiper">',
+					  '<p class="aboutBannerSwiper-p">',
+                      banner[i]['title'],
+					  ,'</p>',
+					  '<p class="aboutBannerSwiper-content">',
+                      banner[i]['context'],
+					  '</p>',
+					  '<img class="home-lb-bg" src="',
+					  banner[i]['pictureUrlPc'],
+					  '" /></div>'
+				  ].join("")
               }
               $("#about-bg-lb").html(bannerStr);
 			  $("#as-content").html(as.context);
