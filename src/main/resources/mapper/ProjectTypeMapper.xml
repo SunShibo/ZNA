@@ -22,7 +22,7 @@
     </select>
 
     <resultMap id="map" type="com.zna.server.entity.bo.TypeProjectBO">
-        <result column="id" property=""></result>
+        <result column="id" property="id"></result>
         <result column="project_type_name" property="lable"></result>
         <collection property="children" ofType="com.zna.server.entity.bo.ProjectNameBO">
             <result column="projectId" property="value"></result>
