@@ -52,12 +52,12 @@ body{
 	min-width: 1300px;
 }
 .w-head{
-	height: 53px;
-	line-height: 53px;
+	height: 100px;
+	line-height: 100px;
 	overflow: hidden;
 	padding: 0 35px;
 	background: url(../img/uc-00.png) 36px center no-repeat;
-	background-size: 42px;
+	background-size: 50px;
 	position: relative;
 }
 .w-lang{
@@ -82,7 +82,7 @@ body{
 	height: 16px;
 	content: "";
 	background: #333;
-	top: 20px;
+	top: 42px;
 	left: 37px;
 }
 .w-tabtle{
@@ -91,7 +91,7 @@ body{
 .w-tabtle span{
 	display: block;
 	float: left;
-	margin: 16.5px 10px 16.5px 0;
+	margin: 38.5px 10px 36.5px 0;
 	cursor: pointer;
 	height: 20px;
 	line-height: 20px;
@@ -112,7 +112,7 @@ body{
 .w-tabtleimg{
 	width: 15px;
 	height: 15px;
-	margin: 20px 20px 20px 10px;
+	margin: 42px 20px 20px 10px;
 	cursor: pointer;
 }
 .w-tabnav{
@@ -136,7 +136,10 @@ body{
 	color: #5E258E;
 }
 
-.w-c{
+.w-c.active{
+	color: #5E258E;
+}
+.w-langc.active{
 	color: #5E258E;
 }
 .w-tabnavaed:after{
@@ -749,6 +752,7 @@ body{
 .w-tableindexsearch{
 	position: relative;
 	overflow: hidden;
+	padding: 24px 0;
 }
 .w-indexsearch{
 	width: 240px;
@@ -767,7 +771,7 @@ body{
 	cursor: pointer;
 	position: absolute;
 	left: 3px;
-	top: 20px;
+	top: 41px;
 }
 .w-isimgclose{
 	width: 12px;
@@ -775,7 +779,7 @@ body{
 	cursor: pointer;
 	position: absolute;
 	right: 18px;
-	top: 23px;
+	top: 43px;
 }
 .w-indeximgbox{
 	position: relative;
@@ -945,7 +949,7 @@ body{
 /* 最新动态 Beign */
 /* 成员详情 begin */
 .w-nextbtns{
-	width: 265px;
+	width: 365px;
 	margin: 30px auto;
 	margin-top: 50px;
 }
