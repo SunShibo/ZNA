@@ -18,7 +18,7 @@
 <div id="app-page">
     <div class="head">
         <div class="head-item logo">
-            <a href="home.html"><img src="image/logo.jpg" id="logoImage" alt="" width="100%" height="100%"></a>
+            <a href="home.html"><img src="image/logo.jpg" id="logoImage" alt="" height="100%"></a>
         </div>
 
         <div class="head-item head_search">
@@ -162,9 +162,9 @@
             var dom = $('.career-info>ul li');
             for (var i = 0, len = data[1].length; i < len; i++) {
                 dom.eq(i).find('.item-name').text(lang ? data[1][i].jobTitleEnglish : data[1][i].jobTitle);
-                dom.eq(i).find('.obligation-title').text(lang ? 'Responsibilities:' : '岗位职责：');
-                dom.eq(i).find('.obligation-content').html(lang ? data[1][i].positionStatementEnglish : data[1][i].positionStatement);
-                dom.eq(i).find('.qualification-title').text(lang ? 'Requirements:' : '任职资格：');
+                // dom.eq(i).find('.obligation-title').text(lang ? 'Responsibilities:' : '岗位职责：');
+                // dom.eq(i).find('.obligation-content').html(lang ? data[1][i].positionStatementEnglish : data[1][i].positionStatement);
+                // dom.eq(i).find('.qualification-title').text(lang ? 'Requirements:' : '任职资格：');
                 dom.eq(i).find('.qualification-content').html(lang ? data[1][i].qualificationEnglish : data[1][i].qualification);
             }
         }
@@ -213,9 +213,9 @@
             var flag = $(this).data('flag') === 'true';
             $(this).data('flag', !flag + '');
             if (!flag) {
-                $(this).find('img').attr('src', './image/icon/ic_list_hide.png');
+                $(this).addClass('hide-info')
             } else {
-                $(this).find('img').attr('src', './image/icon/ic_list_show.png');
+                $(this).removeClass('hide-info');
             }
             $(this).children('.info-text').slideToggle(500);
         });
