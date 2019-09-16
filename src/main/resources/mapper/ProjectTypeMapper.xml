@@ -21,4 +21,18 @@
         SELECT * FROM `zna_project_type`
     </select>
 
+    <resultMap id="map" type="com.zna.server.entity.bo.TypeProjectBO">
+        <result column="id" property=""></result>
+        <result column="project_type_name" property="lable"></result>
+        <collection property="children" ofType="com.zna.server.entity.bo.ProjectNameBO">
+            <result column="projectId" property="value"></result>
+            <result column="title" property="lable"></result>
+        </collection>
+    </resultMap>
+    
+    <select id="getTypeProject" resultMap="map">
+        SELECT  ty.id,ty.project_type_name,pr.id AS projectId,pr.title FROM zna_project_type ty
+        LEFT JOIN zna_project pr ON ty.project_type_name_english = pr.type
+    </select>
+
 </mapper>

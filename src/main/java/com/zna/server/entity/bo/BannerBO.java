@@ -11,12 +11,21 @@ public class BannerBO extends BaseModel {
     private String skipUrl; //跳转url
     private String skipType; //跳转类型
     private Integer skipId; //跳转id
+    private String skipTitle;//跳转标题
     private Integer sort; //序号
     private String state; //状态 展示show 不展示 notshow
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
     private Date updateTime; //修改时间
+
+    public String getSkipTitle() {
+        return skipTitle;
+    }
+
+    public void setSkipTitle(String skipTitle) {
+        this.skipTitle = skipTitle;
+    }
 
     public Integer getId() {
         return id;

@@ -17,9 +17,9 @@
     <!--新增banner-->
     <insert id="addBanner" parameterType="com.zna.server.entity.bo.BannerBO">
         INSERT INTO `zna_banner` ( `picture_url`,`picture_url_pc`, `skip_url`, `skip_type`, `skip_id`,
-                                  `sort`, `state`, `create_user_id`, `create_time`)
+                                  `skip_title`,`sort`, `state`, `create_user_id`, `create_time`)
                             VALUES (#{pictureUrl},#{pictureUrlPc}, #{skipUrl},#{skipType},#{skipId},
-                                    #{sort},#{state},#{createUserId},NOW())
+                                    #{skipTitle},#{sort},#{state},#{createUserId},NOW())
     </insert>
     <!--修改banner-->
     <update id="updateBanner" parameterType="com.zna.server.entity.bo.BannerBO">
@@ -29,6 +29,7 @@
         <if test="skipUrl!=null and skipUrl!=''">`skip_url`=#{skipUrl},</if>
         <if test="skipType!=null and skipType!=''">`skip_type`=#{skipType},</if>
         <if test="skipId!=null and skipId!=''">`skip_id`=#{skipId},</if>
+        <if test="skipTitle!=null and skipTitle!=''">`skip_title`=#{skipTitle},</if>
         <if test="sort!=null and sort!=''">`sort`=#{sort},</if>
         <if test="state!=null and state!=''">`state`=#{state},</if>
         `update_user_id`=#{updateUserId},
