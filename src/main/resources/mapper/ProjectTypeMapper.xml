@@ -24,6 +24,7 @@
 
     <resultMap id="map" type="com.zna.server.entity.bo.TypeProjectBO">
         <result column="project_type_name" property="label"></result>
+        <result column="id" property="value"></result>
         <collection property="children" ofType="com.zna.server.entity.bo.ProjectNameBO">
             <result column="projectId" property="value"></result>
             <result column="title" property="label"></result>

@@ -1,29 +1,18 @@
 package com.zna.server.web.controller;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.util.ImageUtil;
 import com.zna.server.util.JsonUtils;
-import com.zna.server.util.StringUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
-import jdk.internal.util.xml.impl.Input;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.*;
 
 @Controller
