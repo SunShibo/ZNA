@@ -1277,6 +1277,13 @@ body {
     text-align: justify;
 }
 
+@media (max-width: 1250px) and (min-width: 900px){
+    .w-perdetailr {
+        width: 54.5%!important;
+    }
+
+}
+
 .w-perdetailr span {
     display: block;
 }
