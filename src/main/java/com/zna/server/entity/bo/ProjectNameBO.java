@@ -4,7 +4,7 @@ import com.zna.server.common.base.BaseModel;
 
 public class ProjectNameBO extends BaseModel {
     private Integer value;
-    private String lable;
+    private String label;
 
     public Integer getValue() {
         return value;
@@ -14,11 +14,11 @@ public class ProjectNameBO extends BaseModel {
         this.value = value;
     }
 
-    public String getLable() {
-        return lable;
+    public String getLabel() {
+        return label;
     }
 
-    public void setLable(String lable) {
-        this.lable = lable;
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
