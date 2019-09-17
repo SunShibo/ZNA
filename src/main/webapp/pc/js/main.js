@@ -6,7 +6,7 @@ $(function () {
         $(".w-lang").css("margin-right",1200-document.documentElement.clientWidth-20);
     }
 
-    if(document.documentElement.clientWidth<751 || !(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
+    if(document.documentElement.clientWidth<751 || (/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
         // currentEnvironmental  = 'mobile'
     // }
     // if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
