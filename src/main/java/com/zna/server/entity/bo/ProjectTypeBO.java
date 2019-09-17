@@ -6,6 +6,7 @@ public class ProjectTypeBO extends BaseModel {
     private Integer id;
     private String projectTypeName;
     private String projectTypeNameEnglish;
+    private String type;
     private String pictureUrl;
     private String pictureUrlPc;
     private Integer sort;//序号
@@ -32,6 +33,14 @@ public class ProjectTypeBO extends BaseModel {
 
     public void setProjectTypeNameEnglish(String projectTypeNameEnglish) {
         this.projectTypeNameEnglish = projectTypeNameEnglish;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getPictureUrl() {
