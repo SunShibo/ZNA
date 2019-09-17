@@ -1,8 +1,13 @@
 
+var currentEnvironmental = 'pc';
 
 $(function () {
-    if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
-    }else{
+    if(document.documentElement.clientWidth<751){
+        currentEnvironmental  = 'mobile'
+    // }
+    // if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
+    //
+    // }else{
 
         var language = "cn";
         var href = window.location.href;
@@ -317,3 +322,59 @@ $("#weixin").hover(function () {
 })
 
 
+
+window.onload = function () {
+    window.onresize = function () {
+        var width  = document.documentElement.clientWidth;
+        if( width < 751 && currentEnvironmental == 'pc'){
+            openMobile();
+        }
+    }
+}
+
+
+function openMobile() {
+    var language = "cn";
+    var href = window.location.href;
+    href = href.replace("/pc/","/webApp/");
+    if(href.indexOf("_cn")>-1){
+        // 中文
+    }else{
+
+        //英文
+        if(href.indexOf("language=")>-1){
+            href.replace("language=cn","language=en")
+        }else if(href.indexOf("?=")>-1){
+            href +="&language=en"
+        }else{
+            href +="?language=en"
+        }
+    }
+    href = href.replace("/aboutUs_en.html","/aboutUs.html")
+    href = href.replace("/aboutUs_cn.html","/aboutUs.html")
+    href = href.replace("/dynamic_en.html","/news.html")
+    href = href.replace("/dynamic_cn.html","/news.html")
+    href = href.replace("/home_en.html","/home.html")
+    href = href.replace("/home_cn.html","/home.html")
+    href = href.replace("/history_en.html","/history.html")
+    href = href.replace("/history_cn.html","/history.html")
+    href = href.replace("/member_en.html","/team.html")
+    href = href.replace("/member_cn.html","/team.html")
+    href = href.replace("/projectDetail_en.html","/project_detailed.html")
+    href = href.replace("/projectDetail_cn.html","/project_detailed.html")
+    href = href.replace("/project_en.html","/project.html")
+    href = href.replace("/project_cn.html","/project.html")
+    href = href.replace("/projectType_en.html","/project_classification.html")
+    href = href.replace("/projectType_cn.html","/project_classification.html")
+    href = href.replace("/zp_en.html","/recruitment.html")
+    href = href.replace("/zp_cn.html","/recruitment.html")
+    href = href.replace("/memberDetail_en.html","/team_detailed.html")
+    href = href.replace("/memberDetail_cn.html","/team_detailed.html")
+
+    href =href.replace("/project_search_cn.html?title=","/project.html?language=cn&search=")
+    href =href.replace("/project_search_en.html?title=","/project.html?language=en&search=")
+    href =href.replace("/dynamic_search_cn.html?title=","/news.html?language=cn&search=")
+    href =href.replace("/dynamic_search_en.html?title=","/news.html?language=en&search=")
+
+    window.location.href = href;
+}

@@ -1,262 +1,272 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>项目详情</title>
-		<link href="css/style.css" rel="stylesheet"/>
-		<link href="css/swiper.min.css" rel="stylesheet"/>
-		<script src="js/jquery-2.0.3.min.js"></script>
-		<script src="js/yi-scroll.js"></script>
-		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1"></script>
+<head>
+    <meta charset="utf-8">
+    <title>项目详情</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/swiper.min.css" rel="stylesheet"/>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/yi-scroll.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js?v=1"></script>
 
-  <style>
-	  .swiper-container {
-		  width: 100%;
-		  height: 500px;
-		  margin-left: auto;
-		  margin-right: auto;
-	  }
-	  .swiper-slide {
-		  background-size: cover;
-		  background-position: center;
-	  }
-	  .gallery-top {
-		  height: 580px;
-		  width: 100%;
-	  }
-	  .gallery-thumbs {
-		  height: 160px;
-		  box-sizing: border-box;
-		  padding: 10px 0;
-		  width: 90%;
-	  }
-	  .gallery-thumbs .swiper-slide {
-		  width: 25%;
-		  height: 100%;
-		  opacity: 0.4;
-	  }
-	  .gallery-thumbs .swiper-slide-thumb-active {
-		  opacity: 1;
-	  }
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-	  .gallery-thumbs .swiper-slide{
-		  opacity: 1!important;
-	  }
-  </style>
-	</head>
-	<body>
-	<div class="w-head" id="w-head-nav">
-		<div data-id="home_en" class="nav-span loginPoint"></div>
-			<div class="w-lang">
-				<span class="w-langc">中文</span>
-				<span class="w-c active">EN</span>
-			</div>
-			<div class="w-tabtle">
-				<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
-				<span data-id="project_en" class="nav-span span-active">PROJECTS</span>
-				<span data-id="team_en" class="nav-span">TEAM</span>
-				<span data-id="dynamic_en" class="nav-span">NEWS</span>
-				<span data-id="zp_en" class="nav-span">CONTACT US</span>
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
 
-                <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
-			</div>
-		</div>
-	<div class="w-head searchDiv" id="w-head-search">
-		<div data-id="home_en" class="nav-span loginPoint"></div>
-		<div class="w-lang">
-			<span class="w-langc">中文</span>
-			<span class="w-c active">EN</span>
-		</div>
-		<div class="w-tabtle">
-			<div class="w-tableindexsearch">
-				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-				<img class="w-isimgsearch" src="img/uc-06.png">
-				<img class="w-isimgclose" src="img/sy-08.png">
-			</div>
-			<img class="w-tabtleimg" src="img/uc-06.png"/>
-		</div>
-	</div>
-	<div class="ss-wp searchDiv">
-		<a class="ss" id="news_search">NEWS</a>
-		<a class="ss" id="project_search">PROJECT</a>
-	</div>
-	<div style="height: 30px;" class="searchDiv"></div>
-		<div class="w-content">
-			<div class="w-tabnav">
-				<a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">INTERIOR DESIGN</a>
-				<a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">LANDSCAPE DESIGN</a>
-				<a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">MASTER PLANNING</a>
-				<a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">EDUCATION/SCIENCE</a>
-				<a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">RESIDENTIAL/HEALTHCARE</a>
-				<a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">CIVIC/EXHIBITION</a>
-				<a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">OFFICE/MIXED-USE</a>
-				<a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">HOTEL/RESORT</a>
-			</div>
-			<div class="w-tabcontent">
-				<div class="w-detailondiv">
-					<div class="w-detailcdl">
-						<div class="w-dcdcon _scroll">
-							<div class="_panel-box">
-								<span class="w-dcdcontit" id="titleEnglish"></span>
-								<span class="w-dcdconsm">Location: <b id="siteEnglish"></b><br/> Area: <b id="floorSpace"></b>
+        .gallery-top {
+            height: 580px;
+            width: 100%;
+        }
+
+        .gallery-thumbs {
+            height: 160px;
+            box-sizing: border-box;
+            padding: 10px 0;
+            width: 90%;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .gallery-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="w-head" id="w-head-nav">
+    <div data-id="home_en" class="nav-span"
+         style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+    <div class="w-lang">
+        <span class="w-langc">中文</span>
+        <span class="w-c">EN</span>
+    </div>
+    <div class="w-tabtle">
+        <span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+        <span data-id="project_en" class="nav-span span-active">PROJECTS</span>
+        <span data-id="team_en" class="nav-span">TEAM</span>
+        <span data-id="dynamic_en" class="nav-span">NEWS</span>
+        <span data-id="zp_en" class="nav-span">CONTACT US</span>
+
+        <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
+    </div>
+</div>
+<div class="w-head searchDiv" id="w-head-search">
+    <div data-id="home_cn" class="nav-span"
+         style="width: 60px;height: 30px;opacity: 0;cursor: pointer;position: absolute;top: 10px;left: 30px;"></div>
+    <div class="w-lang">
+        <span class="w-langc">中文</span>
+        <span class="w-c">EN</span>
+    </div>
+    <div class="w-tabtle">
+        <div class="w-tableindexsearch">
+            <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+            <img class="w-isimgsearch" src="img/uc-06.png">
+            <img class="w-isimgclose" src="img/sy-08.png">
+        </div>
+        <img class="w-tabtleimg" src="img/uc-06.png"/>
+    </div>
+</div>
+<div class="ss-wp searchDiv">
+    <a class="ss" id="news_search">NEWS</a>
+    <a class="ss" id="project_search">PROJECT</a>
+</div>
+<div style="height: 30px;"></div>
+<div class="w-content">
+    <div class="w-tabnav">
+        <a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">INTERIOR DESIGN</a>
+        <a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">LANDSCAPE DESIGN</a>
+        <a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">MASTER PLANNING</a>
+        <a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">EDUCATION/SCIENCE</a>
+        <a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">RESIDENTIAL/HEALTHCARE</a>
+        <a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">CIVIC/EXHIBITION</a>
+        <a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">OFFICE/MIXED-USE</a>
+        <a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">HOTEL/RESORT</a>
+    </div>
+    <div class="w-tabcontent">
+        <div class="w-detailondiv">
+            <div class="w-detailcdl">
+                <div class="w-dcdcon _scroll">
+                    <div class="_panel-box">
+                        <span class="w-dcdcontit" id="titleEnglish"></span>
+                        <span class="w-dcdconsm">Location: <b id="siteEnglish"></b><br/> Area: <b id="floorSpace"></b>
 									<br/>Building Area: <b id="coveredArea"></b><br/>Client: <b id="client"></b></span>
-								<span class="w-dcdconcon" id="contextEnglish">
+                        <span class="w-dcdconcon" id="contextEnglish">
 
 								</span>
 
-							</div>
-						</div>
-						<div class="w-nextbtn">
-							<span class="previous">PREVIOUS</span>
-							<img class="previous" src="img/left.png"/>
-							<img class="next" src="img/right.png"/>
-							<span class="next">NEXT</span>
-						</div>
-					</div>
-					<div class="w-detailcdr">
-						<!-- Swiper -->
-						<div class="swiper-container gallery-top">
-							<div class="swiper-wrapper" id="upImg">
+                    </div>
+                </div>
+                <div class="w-nextbtn">
+                    <span class="previous">PREVIOUS</span>
+                    <img class="previous" src="img/left.png"/>
+                    <img class="next" src="img/right.png"/>
+                    <span class="next">NEXT</span>
+                </div>
+            </div>
+            <div class="w-detailcdr">
+                <!-- Swiper -->
+                <div class="swiper-container gallery-top">
+                    <div class="swiper-wrapper" id="upImg">
 
-							</div>
-							<!-- Add Arrows -->
-							<div class="swiper-button-next swiper-button-white"></div>
-							<div class="swiper-button-prev swiper-button-white"></div>
-						</div>
-						<div style="height: 20px;"></div>
-						<div style="position: relative">
-							<div class="swiper-container gallery-thumbs">
-								<div class="swiper-wrapper" id="downImg">
+                    </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                </div>
+                <div style="height: 20px;"></div>
+                <div style="position: relative">
+                    <div class="swiper-container gallery-thumbs">
+                        <div class="swiper-wrapper" id="downImg">
 
-								</div>
+                        </div>
 
-							</div>
-							<div class="swiper-button-next button_next"></div>
-							<div class="swiper-button-prev button_prev"></div>
-						</div>
+                    </div>
+                    <div class="swiper-button-next button_next"></div>
+                    <div class="swiper-button-prev button_prev"></div>
+                </div>
 
-					</div>
-				</div>
-			</div>
-		</div>
-			<div class="w-bottom">
-				<div class="w-botleft">
-					<span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
-					<span id="beian">沪ICP备案号17050193</span>
-				</div>
-				<div class="w-botright">   <div>      <div class="code-wp">         <img class="code-img" src="img/erweima.png">         <img id="code-img" src="img/uc-05.png"/>      </div>      <img id="weibo" src="img/uc-03.png"/>      <img id="inlink" src="img/uc-04.png"/>   </div></div>
-			</div>
-			<script>
-				$(function(){
-					$(".w-tabnav a").hover(function(){
-						$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
-					})
-					var width = document.documentElement.clientWidth;
-					if(width <= 1680){
-						$(".w-dcdcon").css("height","590px");
-						$(".w-dcdimgdivimg").css("height","115px");
-						$(".w-dcdimgdivimg").css("margin-right","0");
-					}else{
-                        $(".w-dcdcon").css("height","620px");
-					}
-					$("._scroll").yi_scroll();		
-					// $("._scroll-mh").yi_scroll({isMaxHeight:true,isBar:true});
-				})
-			</script>
-		  <script>
-
-
-
-              var id = getUrl("id");
-			var type = getUrl("type");
-			  $.getJSON("/project/getProjectDetails?r="+Date.now()+"&id="+id+"&type="+type,function (rs) {
-                  renderFloor(rs.data.contactWayBO);
-			      var data = rs.data.projectBO;
-				  $("#titleEnglish").html(rs.data.projectBO.titleEnglish);
-                  $("#siteEnglish").html(rs.data.projectBO.siteEnglish);
-                  $("#contextEnglish").html(rs.data.projectBO.contextEnglish);
-                  $("#floorSpace").html(rs.data.projectBO.floorSpaceEnglish);
-                  $("#coveredArea").html(rs.data.projectBO.coveredAreaEnglish);
-                  $("#client").html(rs.data.projectBO.clientEnglish);
-
-                  if(data.beforeProjectId==0){
-					  $(".previous").css("cursor", 'not-allowed')
-                  }
-                  if(data.afterProjectId==0){
-                      $(".next").css("cursor", 'not-allowed')
-                  }
-                  $(".previous").on("click",function () {
-
-					  if(data.beforeProjectId == 0 ){
-                          console.log("没有上一个");
-					  }else{
-							window.location.href = "/pc/projectDetail_en.html?id="+data.beforeProjectId+"&type="+getUrl("type");
-					  }
-                  })
-                  $(".next").on("click",function () {
-                      if(data.afterProjectId == 0 ){
-                          console.log("没有下一个")
-                      }else{
-                          window.location.href = "/pc/projectDetail.html_en?id="+data.afterProjectId+"&type="+getUrl("type");
-                      }
-                  })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w-bottom">
+    <div class="w-botleft">
+        <span>Tel：<b id="tel"></b><a>fax：<b id="fax"></b></a><a>email：<b id="mail"></b></a></span>
+        <span id="beian">沪ICP备案号17050193</span>
+    </div>
+    <div class="w-botright">
+        <div>
+            <div class="code-wp"><img class="code-img" src="img/erweima.png"> <img id="code-img" src="img/uc-05.png"/>
+            </div>
+            <img id="weibo" src="img/uc-03.png"/> <img id="inlink" src="img/uc-04.png"/></div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(".w-tabnav a").hover(function () {
+            $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        })
+        var width = document.documentElement.clientWidth;
+        if (width <= 1680) {
+            $(".w-dcdcon").css("height", "590px");
+            $(".w-dcdimgdivimg").css("height", "115px");
+            $(".w-dcdimgdivimg").css("margin-right", "0");
+        } else {
+            $(".w-dcdcon").css("height", "620px");
+        }
+        $("._scroll").yi_scroll();
+        // $("._scroll-mh").yi_scroll({isMaxHeight:true,isBar:true});
+    })
+</script>
+<script>
 
 
+    var id = getUrl("id");
+    var type = getUrl("type");
+    $.getJSON("/project/getProjectDetails?r=" + Date.now() + "&id=" + id + "&type=" + type, function (rs) {
+        renderFloor(rs.data.contactWayBO);
+        var data = rs.data.projectBO;
+        $("#titleEnglish").html(rs.data.projectBO.titleEnglish);
+        $("#siteEnglish").html(rs.data.projectBO.siteEnglish);
+        $("#contextEnglish").html(rs.data.projectBO.contextEnglish);
+        $("#floorSpace").html(rs.data.projectBO.floorSpaceEnglish);
+        $("#coveredArea").html(rs.data.projectBO.coveredAreaEnglish);
+        $("#client").html(rs.data.projectBO.clientEnglish);
 
-				  var ddd = getUrl("type").replace("/","");
-                  $(".project-nav").on("click",function () {
-					  window.location.href = "/pc/projectType_en.html?id=" + $(this).data("id");
-                  })
-				  $("#"+ddd).addClass("w-tabnavaed")
+        if (data.beforeProjectId == 0) {
+            $(".previous").css("cursor", 'not-allowed')
+        }
+        if (data.afterProjectId == 0) {
+            $(".next").css("cursor", 'not-allowed')
+        }
+        $(".previous").on("click", function () {
 
-
-
-					var pic  = JSON.parse(data.pictureUrlPc);
-                  	var picStr = "";
-                  for(var i=0;i<pic.length;i++){
-                      picStr+='<div class="swiper-slide" style="background-image:url('+pic[i]+')"></div>';
-				  }
-
-				  $("#upImg").html(picStr);
-                  $("#downImg").html(picStr);
-
-
-
-
-                  var galleryThumbs = new Swiper('.gallery-thumbs', {
-                      spaceBetween: 10,
-                      slidesPerView: 4,
-                      // freeMode: true,
-                      watchSlidesVisibility: true,
-                      watchSlidesProgress: true,
-                      // centeredSlides: true,
-                      // slidesOffsetBefore:5,
-                      // slidesOffsetAfter:-20,
-						loop:true,
-                      navigation: {
-                          nextEl: '.swiper-button-next',
-                          prevEl: '.swiper-button-prev',
-                      },
-                  });
-                  var galleryTop = new Swiper('.gallery-top', {
-                      loop:true,
-                      spaceBetween: 10,
-                      slidesOffsetBefore:5,
-                      navigation: {
-                          nextEl: '.swiper-button-next',
-                          prevEl: '.swiper-button-prev',
-                      },
-                      thumbs: {
-                          swiper: galleryThumbs
-                      }
-                  });
-
-              })
+            if (data.beforeProjectId == 0) {
+                console.log("没有上一个");
+            } else {
+                window.location.href = "/pc/projectDetail_en.html?id=" + data.beforeProjectId + "&type=" + getUrl("type");
+            }
+        })
+        $(".next").on("click", function () {
+            if (data.afterProjectId == 0) {
+                console.log("没有下一个")
+            } else {
+                window.location.href = "/pc/projectDetail.html_en?id=" + data.afterProjectId + "&type=" + getUrl("type");
+            }
+        })
 
 
+        var ddd = getUrl("type").replace("/", "");
+        $(".project-nav").on("click", function () {
+            window.location.href = "/pc/projectType_en.html?id=" + $(this).data("id");
+        })
+        $("#" + ddd).addClass("w-tabnavaed")
 
-		  </script>
-		</body>
-	</html>
+
+        var pic = JSON.parse(data.pictureUrlPc);
+        var picStr = "";
+        for (var i = 0; i < pic.length; i++) {
+            picStr += '<div class="swiper-slide"><img src="' + pic[i] + '" alt="" width="100%" height="100%"></div>';
+        }
+
+        $("#upImg").html(picStr);
+        $("#downImg").html(picStr);
+
+
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 'auto',
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            slidesOffsetBefore: 70,
+            slidesOffsetAfter: 70,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            on: {
+                init: function () {
+                    console.log(this);
+                }
+            }
+        });
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+
+            slidesOffsetBefore: 5,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-next',
+                prevEl: '.swiper-prev'
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+
+    })
+
+
+</script>
+</body>
+</html>
 	
