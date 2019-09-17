@@ -41,23 +41,38 @@ b {
 #searchInput:focus{
 	outline: none;
 }
+.loginPoint{
+	width: 105px;height: 35px;opacity: 0;cursor: pointer;position: absolute;top: 30px;left: 38px;
+}
 
+.loginPoint.cn{
+	width: 230px;height: 35px;opacity: 0;cursor: pointer;position: absolute;top: 30px;left: 38px;
+}
 	/* 联系我们 begin */
 body{
 	font-family: "microsoft yahei";
-	font-size: 14px;
+	font-size: 16px;
 	color: #666666;
 	padding: 0;
 	margin: 0;
-	min-width: 1300px;
+	min-width: 1200px;
 }
 .w-head{
 	height: 100px;
 	line-height: 100px;
 	overflow: hidden;
-	padding: 0 35px;
-	background: url(../img/uc-00.png) 36px center no-repeat;
-	background-size: 50px;
+	padding: 0 60px;
+	background: url(../img/uc-00.png) 60px center no-repeat;
+	background-size: 85px;
+	position: relative;
+}
+.w-head.cn{
+	height: 100px;
+	line-height: 100px;
+	overflow: hidden;
+	padding: 0 60px;
+	background: url(../img/log_cn.jpg) 60px center no-repeat;
+	background-size: 200px;
 	position: relative;
 }
 .w-lang{
@@ -655,11 +670,14 @@ body{
 	width: 50%;
 	height: 50%;
 	max-height: 60%;
+	min-height: 340px;
 	background: #FFFFFF;
-	/*opacity:0.9;*/
+	opacity:0.9;
 	padding-bottom: 10px;
 	overflow: hidden;
 }
+
+
 .w-indexibft{
 	font-size:30px;
 	color:#000000;
@@ -677,7 +695,7 @@ body{
 /*}*/
 .w-indexibfc{
 	font-size:18px;
-	color:#666666;
+	color:#313131;
 	margin: 0 50px;
 	margin-top: 15px;
 	cursor: pointer;
@@ -726,15 +744,46 @@ body{
 		width: calc(47% - 20px) !important;
 
 	}
+
+	.w-indeximgbfont{
+		position: absolute;
+		right: 40px;
+		bottom: 5%;
+		width: 50%;
+		height: 50%;
+		max-height: 60%;
+		min-height: 300px;
+		background: #FFFFFF;
+		opacity:0.9;
+		padding-bottom: 10px;
+		overflow: hidden;
+	}
+
 }
 
-@media (max-width:1400px) and (min-width:1300px) {
+@media (max-width:1400px) and (min-width:750px) {
 
 	.w-indexidbr{
 
 		width: calc(47% - 30px) !important;
 
 	}
+	.w-indeximgbfont{
+		position: absolute;
+		right: 40px;
+		bottom: 0;
+		width: 50%;
+		height: 50%;
+		max-height: 60%;
+		min-height: 300px;
+		background: #FFFFFF;
+		opacity:0.9;
+		padding-bottom: 10px;
+		overflow: hidden;
+	}
+
+
+
 }
 .w-indexidbr img{
 	width: 100%;

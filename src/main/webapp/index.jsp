@@ -11,12 +11,11 @@
     <title>Index</title>
 </head>
 <body>
-    <h1>Hello Word!</h1>
-    <form method="post" action="/image/uploadImg" enctype="multipart/form-data">
-        选择一个文件:
-        <input type="file" name="file" />
-        <br/><br/>
-        <input type="submit" value="上传" />
-    </form>
+
 </body>
 </html>
+<script>
+    window.onload = function (ev) {
+        window.location.href = "/pc/home_cn.html";
+    }
+</script>
