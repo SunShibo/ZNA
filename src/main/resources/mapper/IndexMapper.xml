@@ -35,6 +35,6 @@
     </update>
     <!--获取首页内容-->
     <select id="selectIndex" resultType="com.zna.server.entity.bo.IndexBO">
-        SELECT * FROM `zna_index` ORDER BY `sort` DESC
+        SELECT * FROM `zna_index` ORDER BY `sort` ASC
     </select>
 </mapper>

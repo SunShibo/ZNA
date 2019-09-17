@@ -53,7 +53,7 @@
             <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">and project_type_name_english = #{projectTypeNameEnglish}</if>
             <if test="type!=null and type!=''">and `type`=#{type}</if>
         </where>
-        order by sort desc
+        order by sort asc
         <if test="pageOffset!=null and pageSize!=null">
             LIMIT #{pageOffset},#{pageSize}
         </if>

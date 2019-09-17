@@ -6,7 +6,7 @@
 <mapper namespace="com.zna.server.dao.TeamDAO">
 
     <select id="getTeamBO" resultType="com.zna.server.entity.bo.TeamBO">
-        SELECT * FROM `zna_team` order by sort desc
+        SELECT * FROM `zna_team` order by sort ASC
         <if test="pageOffset!=null and pageSize!=null">
             LIMIT #{pageOffset},#{pageSize}
         </if>
@@ -37,17 +37,17 @@
     <select id="getTeamBOS" resultMap="teamMap">
         SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl,pr.picture_url_pc AS pictureUrlPc
         FROM (
-        (SELECT * from zna_team order by sort desc
+        (SELECT * from zna_team order by sort ASC
         <if test="pageOffset!=null and pageSize!=null">
         LIMIT #{pageOffset},#{pageSize}
     </if> )) te
 	LEFT JOIN zna_team_project tp ON te.id = tp.team_id
 	LEFT JOIN zna_project pr ON tp.project_id = pr.id
-	order by te.sort desc
+	order by te.sort ASC
 
     </select>
     <select id="getTeamBOCount" resultType="java.lang.Integer">
-        SELECT COUNT(id) FROM `zna_team` order by sort desc
+        SELECT COUNT(id) FROM `zna_team` order by sort ASC
     </select>
 
     <select id="getTeamBOById" resultType="com.zna.server.entity.bo.TeamBO">

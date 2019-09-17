@@ -38,7 +38,7 @@
             <if test="id!=null">id=#{id},</if>
             <if test="title!=null and title!=''">`title` LIKE  '%${title}%' OR `title_english` LIKE  '%${title}%'</if>
         </where>
-        ORDER BY  sort DESC
+        ORDER BY  sort asc
         <if test="pageOffset!=null and pageSize!=null">
             LIMIT #{pageOffset},#{pageSize}
         </if>
