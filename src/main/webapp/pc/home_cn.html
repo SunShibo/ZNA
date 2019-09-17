@@ -15,8 +15,15 @@
 			#aboutImg{
 				width: 100%;
 			}
-			.swiper-button-next{
-				background-image:url("img/left.jpg");
+			.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+				width: 60px!important;
+				height: 60px;
+			}
+			.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+				width: 60px!important;
+				height: 60px;
+				left: 30px;
+
 			}
         </style>
 	</head>
@@ -64,8 +71,8 @@
 					<!-- 如果需要分页器 -->
 					<div class="swiper-pagination"></div>
 					<!-- 如果需要导航按钮 -->
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev button_prev"></div>
+					<div class="swiper-button-next button_next"></div>
 
 				</div>
 			</section>
