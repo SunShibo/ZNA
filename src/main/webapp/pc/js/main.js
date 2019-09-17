@@ -2,8 +2,12 @@
 var currentEnvironmental = 'pc';
 
 $(function () {
-    if(document.documentElement.clientWidth<751){
-        currentEnvironmental  = 'mobile'
+    if(document.documentElement.clientWidth<1150){
+        $(".w-lang").css("margin-right",1200-document.documentElement.clientWidth-20);
+    }
+
+    if(document.documentElement.clientWidth<751 || (/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
+        // currentEnvironmental  = 'mobile'
     // }
     // if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
     //
@@ -326,8 +330,10 @@ $("#weixin").hover(function () {
 window.onload = function () {
     window.onresize = function () {
         var width  = document.documentElement.clientWidth;
-        if( width < 751 && currentEnvironmental == 'pc'){
+        if( width < 850 ){
             openMobile();
+        }else if(width<1150){
+            $(".w-lang").css("margin-right",1200-width-50);
         }
     }
 }
