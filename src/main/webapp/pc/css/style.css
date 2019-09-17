@@ -504,7 +504,7 @@ body {
 }
 
 .w-cpcmore {
-    margin: 30px 35px;
+    margin: 30px 70px;
     cursor: pointer;
 }
 
@@ -880,6 +880,17 @@ body {
     padding-right: 70px;
     margin-bottom: 30px;
 }
+
+@media (max-width: 1823px) and (min-width: 1200px){
+    .item {
+        position: relative;
+        margin: 10px;
+        /*固定盒子模型内每个item的宽度*/
+        width: 23% !important;
+        overflow: hidden;
+    }
+}
+
 
 @media (max-width: 1800px) and (min-width: 1600px) {
 
@@ -1500,7 +1511,7 @@ body {
     position: relative;
     margin: 10px;
     /*固定盒子模型内每个item的宽度*/
-    width: 23%;
+    width: 23.8%;
     overflow: hidden;
 }
 
