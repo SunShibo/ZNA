@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>关于我们</title>
-		<link href="css/style.css" rel="stylesheet"/>
+		<link href="css/style.css?v=1.0" rel="stylesheet"/>
 		<link href="css/swiper.min.css" rel="stylesheet"/>
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1"></script>
+		<script src="js/main.js?v=1.0"></script>
 		<script src="js/yi-scroll.js"></script>
 
 	</head>
@@ -168,7 +168,9 @@
               console.log(data.serviceusBO.pictureUrlPc)
               // https://cmsqn.infinitus.com.cn/upload/resources/image/2019/08/16/3975374.jpg
               new Swiper('.about-banner', {
-
+                  autoplay:{
+                      delay:5000,
+                  },
                   pagination:{
                       el: '.swiper-pagination',
                       bulletClass : 'home-bg-bullet',

@@ -131,7 +131,7 @@ body {
     content: "";
     background: #333;
     top: 42px;
-    left: 37px;
+    left: 40px;
 }
 
 .w-tabtle {
@@ -195,10 +195,12 @@ body {
 
 .w-c.active {
     color: #5E258E;
+    font-size: 17px;
 }
 
 .w-langc.active {
     color: #5E258E;
+    font-size: 17px;
 }
 
 .w-tabnavaed:after {
