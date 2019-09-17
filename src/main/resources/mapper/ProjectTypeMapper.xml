@@ -12,13 +12,14 @@
             <if test="projectTypeName!=null and projectTypeName!=''">`project_type_name`=#{projectTypeName},</if>
             <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''">`project_type_name_english`=#{projectTypeNameEnglish},</if>
             <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
-            <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc}</if>
+            <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
+            <if test="sort!=null ">`sort`=#{sort}</if>
         </set>
           WHERE id=#{id}
     </update>
 
     <select id="selectProjectType" resultType="com.zna.server.entity.bo.ProjectTypeBO">
-        SELECT * FROM `zna_project_type`
+        SELECT * FROM `zna_project_type` ORDER BY `sort` ASC
     </select>
 
     <resultMap id="map" type="com.zna.server.entity.bo.TypeProjectBO">

@@ -8,6 +8,7 @@ public class ProjectTypeBO extends BaseModel {
     private String projectTypeNameEnglish;
     private String pictureUrl;
     private String pictureUrlPc;
+    private Integer sort;//序号
 
     public Integer getId() {
         return id;
@@ -47,5 +48,13 @@ public class ProjectTypeBO extends BaseModel {
 
     public void setPictureUrlPc(String pictureUrlPc) {
         this.pictureUrlPc = pictureUrlPc;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 }
