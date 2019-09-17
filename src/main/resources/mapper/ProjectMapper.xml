@@ -81,6 +81,6 @@
     <select id="getProjectIdList" resultMap="projectList">
        	SELECT pt.id as ttt,pt.project_type_name , pr.id ,pr.title ,pr.title_english
        	  FROM   zna_project_type pt  LEFT JOIN   zna_project pr
-       	          ON pr.type=pt.project_type_name_english
+       	          ON pr.project_type_name_english=pt.project_type_name_english
        	 </select>
 </mapper>
