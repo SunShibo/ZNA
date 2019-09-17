@@ -94,6 +94,11 @@ public class ProjectService {
         return projectBO;
     }
 
+    /*项目详情 */
+    public ProjectBO getProjectById(Integer id){
+        return projectDAO.getProjectDetails(id);
+    }
+
 
     public List<ProjectTypeNameBO> getProjectIdList(){
         return projectDAO.getProjectIdList();

@@ -2,8 +2,10 @@ package com.zna.server.web.controller;
 
 import com.zna.server.entity.bo.AdminBO;
 import com.zna.server.entity.bo.BannerBO;
+import com.zna.server.entity.bo.ProjectBO;
 import com.zna.server.entity.dto.ResultDTOBuilder;
 import com.zna.server.service.BannerService;
+import com.zna.server.service.ProjectService;
 import com.zna.server.util.JsonUtils;
 import com.zna.server.util.StringUtils;
 import com.zna.server.web.controller.base.BaseCotroller;
@@ -24,6 +26,8 @@ public class BannerController extends BaseCotroller {
 
     @Resource
     private BannerService bannerService;
+    @Resource
+    private ProjectService projectService;
 
     /**
      * 查询banner
@@ -80,6 +84,11 @@ public class BannerController extends BaseCotroller {
                 return ;
             }
             bannerBO.setCreateUserId(loginAdmin.getId());
+            ProjectBO projectBO = projectService.getProjectById(bannerBO.getSkipId());
+            if (projectBO!=null){
+                bannerBO.setSkipTitle(projectBO.getTitle());
+            }
+
             bannerService.addBanner(bannerBO);
 
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));

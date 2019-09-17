@@ -1,7 +1,9 @@
 package com.zna.server.service;
 
 import com.zna.server.dao.BannerDAO;
+import com.zna.server.dao.ProjectDAO;
 import com.zna.server.entity.bo.BannerBO;
+import com.zna.server.entity.bo.ProjectBO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,8 @@ import java.util.List;
 public class BannerService {
     @Resource
     private BannerDAO bannerDAO;
+    @Resource
+    private ProjectDAO projectDAO;
 
 
     /**
@@ -57,6 +61,10 @@ public class BannerService {
         bannerBO.setSkipUrl(skipUrl);
         bannerBO.setSkipType(skipType);
         bannerBO.setSkipId(skipId);
+        ProjectBO projectBO = projectDAO.getProjectDetails(skipId);
+        if (projectBO!=null){
+            bannerBO.setSkipTitle(projectBO.getTitle());
+        }
         bannerBO.setSort(sort);
         bannerBO.setState(state);
         bannerBO.setUpdateUserId(updateUserId);
