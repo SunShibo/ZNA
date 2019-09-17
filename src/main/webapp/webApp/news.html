@@ -190,12 +190,9 @@
 
 
         //事件委托
-        $(document).on('click', '.news-info', function (e) {
-            var ev = ev || window.event, target = ev.target || ev.srcElement;
-            if (target.className === 'news-item-title' || target.parentNode.className === 'news-info') {
-                $(this).children('.news-item-content').slideToggle(500);
-            }
-        })
+        $(document).on('tap', '.news-info', function (e) {
+            $(this).children('.news-item-content').slideToggle(500);
+        });
     })(window, jQuery);
 </script>
 </body>

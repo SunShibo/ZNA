@@ -42,10 +42,9 @@
 
     $(function () {
 
-        $.checkPlatform();
         //获取语言类型
         lang = $.getLang();
-        lang ? langDom.text('英') : langDom.text('中');
+        lang ? langDom.text('中') : langDom.text('EN');
 
         //LOGO
         setLogo(lang);
@@ -108,7 +107,7 @@
         localStorage.setItem('EN_LANG', lang ? 'EN_US' : 'EN_CH');
         //更新菜单
         settingMenu($.getLang());
-        lang ? langDom.text('英') : langDom.text('中');
+        lang ? langDom.text('中') : langDom.text('EN');
         //触发并更新回调参数
         window.switch_language($.getLang());
     });
@@ -261,14 +260,14 @@
         }
     });
 
-    //页面适配
-    // $(window).resize(function (ev) {
-    //     console.log(document.body.clientWidth);
-    //     var clientWidth = document.body.clientWidth;
-    //     if(clientWidth > 750){
-    //         $.checkPlatform();
-    //     }
-    // });
+    // 页面适配
+    $(window).resize(function (ev) {
+        console.log(document.body.clientWidth);
+        var clientWidth = document.body.clientWidth;
+        if(clientWidth > 750){
+            $.checkPlatform();
+        }
+    });
 
     //扩展jquery方法
     $.extend({
@@ -380,11 +379,11 @@
                         break;
                 }
             }
-            // location.href = '/pc/' + strUrl;
+            location.href = '/pc/' + strUrl;
             //判断是否是PC端   依据判断只要不是android系统和IOS系统就算是PC系统
-            if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
-                location.href = '/pc/' + strUrl;
-            }
+            // if (!(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
+            //     location.href = '/pc/' + strUrl;
+            // }
         }
     });
 })(window, jQuery);
