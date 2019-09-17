@@ -41,7 +41,6 @@
             <div class="language head-item-btn" id="language"></div>
         </div>
     </div>
-
     <!--搜索页面-->
     <div class="search_list">
         <div class="list">
@@ -229,7 +228,7 @@
                     //根据中英文，判断获取的数据字段
                     var keyName = lang ? item + 'English' : item;
                     if (i === 0 && item === 'context') {
-                        var str = data[i][keyName].toString().substr(0, 100) + '......';
+                        var str = data[i][keyName].toString().substr(0, lang ? 210 : 95) + '......';
                         if (!!data[i][keyName]) $('#' + item + i).html(str);
                     } else {
                         if (!!data[i][keyName]) $('#' + item + i).html(data[i][keyName]);

@@ -119,7 +119,7 @@
                         <div class="nav-img">
                             <img src="./image/icon/ic_next.png" alt="" width="100%" height="100%">
                         </div>
-                        <span class="nav-btn-next">NEXT</span>
+                        <span class="nav-btn-next"></span>
                     </a>
                 </div>
             </div>
@@ -157,7 +157,7 @@
 <script>
     (function (window, $) {
 
-        var data = [], infoState = false, scrollHeight = 0, windowHeight = 0, windowHeight7 = 0;
+        var data = [], infoState = false, scrollHeight = 0, windowHeight = 0, windowHeight6 = 0;
 
         window.switch_language = function (lang) {
             if (data.length) {
@@ -186,8 +186,12 @@
             var pre = data[0].beforeProjectId ? ('project_detailed.html?id=' + data[0].beforeProjectId) : '';
             var next = data[0].afterProjectId ? ('project_detailed.html?id=' + data[0].afterProjectId) : '';
             var back = lang ? data[0].projectTypeNameEnglish : data[0].projectTypeName;
-            $('.nav-pre>a').attr('href', pre).children('.nav-btn-pre').text(lang ? 'PREVIOUS' : '上一个');
-            $('.nav-next>a').attr('href', next).children('.nav-btn-next').text(lang ? 'NEXT' : '下一个');
+            var nextBtn = $('.nav-next>a'), preBtn = $('.nav-pre>a');
+            preBtn.attr('href', pre).children('.nav-btn-pre').text(lang ? 'PREVIOUS' : '上一个');
+            nextBtn.attr('href', next).children('.nav-btn-next').text(lang ? 'NEXT' : '下一个');
+            //置灰
+            !next ? nextBtn.css('color', '#bababa'): '';
+            !pre ? preBtn.css('color', '#bababa'): '';
             $('.back-page>a').attr('href', 'project.html?language=' + $.getLangStr() + '&id='+data[0].projectTypeNameEnglish).text("< " + back);
 
             //变量scrollHeight是滚动条的总高度
@@ -195,7 +199,7 @@
             //变量windowHeight是可视区的高度
             windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
             //七分之一的可视区高度
-            windowHeight7 = Math.ceil(windowHeight / 7);
+            windowHeight6 = Math.ceil(windowHeight / 6);
         }
 
         function init(lang) {
@@ -235,7 +239,7 @@
             //变量scrollTop是滚动条滚动时，距离顶部的距离
             var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             //滚动条到底部的条件
-            if (Math.ceil(scrollTop + windowHeight) > Math.ceil(scrollHeight - windowHeight7)) {
+            if (Math.ceil(scrollTop + windowHeight) > Math.ceil(scrollHeight - windowHeight6)) {
                 $('.details-default').removeClass('detailed-fixed').addClass('detailed-href');
             } else {
                 $('.details-default').removeClass('detailed-href').addClass('detailed-fixed');

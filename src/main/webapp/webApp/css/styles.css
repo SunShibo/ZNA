@@ -156,7 +156,7 @@ input[type=search]::-ms-clear {
     background-repeat: no-repeat;
     /*background-size: 100% 100%;*/
 
-    width: 7.1rem;
+    width: 7.18rem;
     height: 8rem;
     position: relative;
 }
@@ -362,12 +362,12 @@ li .nav-href {
 }
 
 .head .head-item .head-item-btn {
-    margin: .12rem;
+    margin: auto .12rem;
 }
 
-#clickMenu img {
+#clickMenu {
     width: .5rem;
-    height: .36rem;;
+    height: .46rem;;
 }
 
 #clickSearch {
@@ -397,8 +397,14 @@ li .nav-href {
 }
 
 /*首页内容部分*/
-.banner, .swiper-container {
-    height: 5rem;
+
+/*首页banner*/
+.banner {
+    height: 4rem;
+}
+
+#app-page .content .about-us-banner, .swiper-container {
+    height: 3rem;
 }
 
 .swiper-pagination-bullet {
@@ -473,7 +479,7 @@ li .nav-href {
 
 .about-banner .banner-item-content {
     position: absolute;
-    bottom: 1.5rem;
+    top: .7rem;
     left: .5rem;
     right: .5rem;
     margin: auto;
@@ -488,8 +494,12 @@ li .nav-href {
 }
 
 .banner-item-content .banner-item-text {
+    width: 3.83rem;
     font-size: 0.22rem;
-    line-height: 0.099rem;
+    margin: 0 auto;
+    word-wrap: break-word;
+    white-space: normal;
+    word-break: break-all;
 }
 
 .content .home-about {
@@ -504,6 +514,22 @@ li .nav-href {
 .content .about-items {
     width: 7.1rem;
     margin: .2rem;
+}
+
+.about-items .about-item-image {
+    width: 7.18rem;
+    margin: 0 auto .16rem;
+    height: 5rem;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.about-item-image .banner-img__wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .content .about-href {
@@ -527,10 +553,11 @@ li .nav-href {
     padding: .1rem .2rem;
 }
 
-.about-items .about-item-content {
+.about-item-content {
     line-height: .4rem;
     /*text-indent: .6rem*/
     padding: 0 .2rem;
+    background: rgba(153, 153, 153, .1);
     font-size: .24rem;
     font-weight: normal;
     font-stretch: normal;
@@ -682,7 +709,7 @@ li .nav-href {
 }
 
 .content .team-project {
-    padding: .4rem
+    padding: 0 .4rem
 }
 
 .team-project .team-project-title {
@@ -738,7 +765,7 @@ li .nav-href {
 }
 
 .details-default .back-page, .details-default .nav-page {
-    margin: 0 .2rem;
+    margin: 0 .1rem;
     font-size: .22rem;
     letter-spacing: .01rem;
 }
@@ -769,18 +796,20 @@ li .nav-href {
 }
 
 .office-content .office-items {
-    margin: .5rem .3rem;
+    margin: .43rem .3rem;
     color: #333333;
 }
 
 .office-items .office-item-name {
-    font-size: .4rem;
+    font-size: 0.32rem;
+    color: #333333;
     border-bottom: 1px #333333 solid;
     display: inline-block;
 }
 
 .office-items .item-info {
-    font-size: .28rem;
+    font-size: 0.24rem;
+    line-height: 0.3rem;
 }
 
 .item-info div {
@@ -788,7 +817,7 @@ li .nav-href {
 }
 
 .content .history-items {
-    margin: 0 0 .2rem;
+    margin: 0 0 .38rem;
     padding: 0 .25rem;
 }
 
@@ -849,7 +878,8 @@ li .nav-href {
     bottom: 0;
     margin: auto;
     background: rgba(0, 0, 0, 0.5);
-    font-size: .3rem;
+    font-size: .22rem;
+    line-height: 0.36rem;
     padding: .05rem .4rem;
     color: #ffffff;
 }
@@ -872,6 +902,7 @@ li .nav-href {
 }
 
 .news-items .news-info {
+    cursor:pointer;
     padding: .26rem .24rem;
 }
 

@@ -88,7 +88,7 @@
 
     <div class="content">
         <!--关于我们banner-->
-        <div class="banner banner-item">
+        <div class="banner banner-item about-us-banner">
             <div class="swiper-container">
                 <div class="swiper-wrapper" id="aboutUsBanner"></div>
                 <!-- 如果需要分页器 -->
@@ -97,15 +97,20 @@
         </div>
 
         <div class="about-items">
-            <div>
-                <img src="" id="aboutItemImage" alt="" width="100%">
+            <!-- 这个div设置为宽度100%，并且溢出显示隐藏 -->
+            <div class="about-item-image">
+                <!-- 这个div设置为和img图片同样的宽高，并且用absolute定位设置为居中 -->
+                <div class="about-item-image-wrapper">
+                    <img src="" id="aboutItemImage" alt="" width="100%">
+                </div>
             </div>
-            <div class="about-item-content"></div>
         </div>
+
+        <div class="about-item-content"></div>
 
         <div class="about-href">
             <img src="" id="aboutHref" alt="" width="100%" height="100%">
-            <div><a href="history.html" id="aboutHistoryHref">去了解></a></div>
+            <div><a href="history.html" id="aboutHistoryHref"></a></div>
         </div>
 
         <div class="about-items">
@@ -199,10 +204,8 @@
             data.push(r.data.serviceusBO);
 
             //不需要中英文切换的图片类和文本类数据直接加载
-            //banner图片设置
-            setBanners(r.data.aboutBannerBOS);
             //关于我们信息的图片
-            $('#aboutItemImage').prop('src', data[1].pictureUrl);
+            $('#aboutItemImage').prop('src', "http://39.96.173.228:8080" + data[1].pictureUrl);
             //from历史图片
             $('#aboutHref').prop('src', r.data.fromPictureBO.pictureUrl);
             //服务图片
@@ -224,7 +227,7 @@
 
                 aboutBanner.push([' <div class="swiper-slide">',
                     '<div class="about-banner">',
-                    '<img src="' + data[i].pictureUrl + '" alt="" width="100%" height="100%">',
+                    '<img src="' + "http://39.96.173.228:8080" + data[i].pictureUrl + '" alt="" width="100%" height="100%">',
                     '<div class="banner-item-content">',
                     '<div class="banner-item-title">', $.getLang() ? data[i].titleEnglish : data[i].title, '</div>',
                     '<div class="banner-item-text">', $.getLang() ? data[i].contextEnglish : data[i].context, '</div>',
@@ -258,24 +261,23 @@
          */
         function setting(lang) {
 
+            console.log(data[1]);
+
+            //banner图片设置
             setBanners(data[0]);
-
-            var url = $('#serviceContext').attr('href');
-
-            var hrefUrl = url.indexOf('?') > -1 ? url : url + '?language=' + $.getLangStr();
-            $('#serviceContext').html(lang ? data[2].contextEnglish : data[2].context).attr('href', hrefUrl);
             //中英文切换
             if (lang) {
                 //设置英文关于我们简介
                 $('.about-item-content').html(data[1].contextEnglish);
                 $('#serviceTitle').html(data[2].titleEnglish);
+                $('#serviceContext').html(data[2].contextEnglish);
                 $('#aboutHistoryHref').text('TO LEARN MORE >');
                 $('#aboutCoopterative').text('OUR CLIENTS');
-
             } else {
                 //设置中文关于我们简介
                 $('.about-item-content').html(data[1].context);
                 $('#serviceTitle').html(data[2].title);
+                $('#serviceContext').html(data[2].context);
                 $('#aboutHistoryHref').text('去了解 >');
                 $('#aboutCoopterative').text('合作伙伴');
             }

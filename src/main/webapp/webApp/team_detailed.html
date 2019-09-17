@@ -167,7 +167,7 @@
 <script>
     (function (window, $) {
 
-        var data = {}, windowHeight7 = 0, windowHeight = 0, scrollHeight = 0;
+        var data = {}, windowHeight6 = 0, windowHeight = 0, scrollHeight = 0;
 
 
         window.switch_language = function (lang) {
@@ -195,13 +195,20 @@
 
             //底部导航栏
             var navStr = lang ? 'NOTHING' : '无';
+            //切换文本
             var preStr = lang ? data.beforeUserNameEnglish : data.beforeUserName;
             var nextStr = lang ? data.afterUserNameEnglish : data.afterUserName;
             var hrefUrl = 'team_detailed.html?language=' + $.getLangStr() + '&id=';
-            var herfPreUrl = data.beforeUserId ? hrefUrl + data.beforeUserId : '#';
-            var herfNextUrl = data.afterUserId ? hrefUrl + data.afterUserId : '#';
-            $('.nav-pre>a').attr('href', herfPreUrl).children('.team-pre').text(data.beforeUserName ? preStr : navStr);
-            $('.nav-next>a').attr('href', herfNextUrl).children('.team-next').text(data.afterUserName ? nextStr : navStr);
+            //判断是否还有下一个或上一个
+            var herfPreUrl = data.beforeUserId ? hrefUrl + data.beforeUserId : '';
+            var herfNextUrl = data.afterUserId ? hrefUrl + data.afterUserId : '';
+            var nextBtn = $('.nav-next>a'), preBtn = $('.nav-pre>a');
+            //绑定
+            preBtn.attr('href', herfPreUrl).children('.team-pre').text(data.beforeUserName ? preStr : navStr);
+            nextBtn.attr('href', herfNextUrl).children('.team-next').text(data.afterUserName ? nextStr : navStr);
+            //置灰
+            !herfNextUrl ? nextBtn.css('color', '#bababa'): '';
+            !herfPreUrl ? preBtn.css('color', '#bababa'): '';
             $('.back-page>a').attr('href', 'team.html?language=' + $.getLangStr()).text(lang ? '< TEAM' : '< 核心团队')
         }
 
@@ -242,7 +249,7 @@
                     //变量windowHeight是可视区的高度
                     windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
                     //七分之一的可视区高度
-                    windowHeight7 = Math.ceil(windowHeight / 7);
+                    windowHeight6 = Math.ceil(windowHeight / 6);
                 }
             })
         }
@@ -252,7 +259,7 @@
             //变量scrollTop是滚动条滚动时，距离顶部的距离
             var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
             //滚动条到底部的条件
-            if (scrollTop + windowHeight > scrollHeight - windowHeight7) {
+            if (scrollTop + windowHeight > scrollHeight - windowHeight6) {
                 $('.details-default').removeClass('detailed-fixed').addClass('detailed-href');
             } else {
                 $('.details-default').removeClass('detailed-href').addClass('detailed-fixed');

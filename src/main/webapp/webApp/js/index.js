@@ -262,7 +262,6 @@
 
     // 页面适配
     $(window).resize(function (ev) {
-        console.log(document.body.clientWidth);
         var clientWidth = document.body.clientWidth;
         if(clientWidth > 750){
             $.checkPlatform();
