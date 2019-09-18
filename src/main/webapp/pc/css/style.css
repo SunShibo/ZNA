@@ -1089,7 +1089,7 @@ body {
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     position: relative;
-    top: -140px;
+    bottom: 70px;
     cursor: pointer;
 }
 
