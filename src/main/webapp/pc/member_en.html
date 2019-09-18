@@ -1,188 +1,146 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>核心团队</title>
-		<link href="css/style.css?v=1.1" rel="stylesheet"/>
-		<link rel="stylesheet" href="css/swiper.min.css">
-		<script src="js/jquery-2.0.3.min.js"></script>
-		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1.1"></script>
-        <style>
-            .box-mask{
-                /*position: absolute;bottom: 0px;height: 30px;width: 100%;background: transparent;*/
-            }
-            .box-wp{
-                overflow: hidden;position: relative;height: 100%;
-            }
-			img{
-				vertical-align: middle;
-				transition: all 0.6s;
+<head>
+	<meta charset="utf-8">
+	<title>核心团队</title>
+	<meta name="viewport"
+		  content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+	<link href="css/style.css?v=1.0" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/swiper.min.css">
+	<script src="js/jquery-2.0.3.min.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/main.js?v=1.0"></script>
+	<style>
+		.box-mask{
+			/*position: absolute;bottom: 0px;height: 30px;width: 100%;background: transparent;*/
+		}
+
+		img{
+			vertical-align: middle;
+			transition: all 0.6s;
+		}
+
+		.footer{margin-top:-100px;background-color: #ffc0cb;}/* margin-top（负值的）高度等于footer的height值 */
+
+
+		@media screen and (max-width: 1200px){
+			.w-teambox{
+				width: calc((89vw / 2) - (2 * 9px) );
+				margin: 0 9px 30px;
 			}
-
-			.footer{margin-top:-100px;background-color: #ffc0cb;}/* margin-top（负值的）高度等于footer的height值 */
-        </style>
-	</head>
-	<body>
-	<div class="w-head" id="w-head-nav">
-			<div data-id="home_en" class="nav-span loginPoint"></div>
-			<div class="w-lang">
-				<span class="w-langc">中文</span>
-				<span class="w-c active">EN</span>
-			</div>
-			<div class="w-tabtle">
-				<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
-				<span data-id="project_en" class="nav-span">PROJECTS</span>
-				<span data-id="team_en" class="nav-span span-active">TEAM</span>
-				<span data-id="dynamic_en" class="nav-span">NEWS</span>
-				<span data-id="zp_en" class="nav-span">CONTACT US</span>
-
-				<img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
-			</div>
-		</div>
-	<div class="w-head searchDiv" id="w-head-search">
-		<div data-id="home_en" class="nav-span loginPoint"></div>
-		<div class="w-lang">
-			<span class="w-langc">中文</span>
-			<span class="w-c active">EN</span>
-		</div>
-		<div class="w-tabtle">
-			<div class="w-tableindexsearch">
-				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-				<img class="w-isimgsearch" src="img/uc-06.png">
-				<img class="w-isimgclose" src="img/sy-08.png">
-			</div>
-			<img class="w-tabtleimg" src="img/uc-06.png"/>
-		</div>
+		}
+	</style>
+</head>
+<body>
+<div class="w-head" id="w-head-nav">
+	<div data-id="home_en" class="nav-span loginPoint"></div>
+	<div class="w-lang">
+		<span class="w-langc">中文</span>
+		<span class="w-c active">EN</span>
 	</div>
-	<div class="ss-wp searchDiv">
-		<a class="ss" id="news_search">NEWS</a>
-		<a class="ss" id="project_search">PROJECT</a>
+	<div class="w-tabtle">
+		<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+		<span data-id="project_en" class="nav-span">PROJECTS</span>
+		<span data-id="team_en" class="nav-span span-active">TEAM</span>
+		<span data-id="dynamic_en" class="nav-span">NEWS</span>
+		<span data-id="zp_en" class="nav-span">CONTACT US</span>
+
+		<img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
 	</div>
-	<div style="height: 30px;" class="searchDiv"></div>
-		<div class="w-content">
-			<div class="w-teamdiv" id="memberDom">
-
-
-			</div>
+</div>
+<div class="w-head searchDiv" id="w-head-search">
+	<div data-id="home_en" class="nav-span loginPoint"></div>
+	<div class="w-lang">
+		<span class="w-langc">中文</span>
+		<span class="w-c active">EN</span>
+	</div>
+	<div class="w-tabtle">
+		<div class="w-tableindexsearch">
+			<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+			<img class="w-isimgsearch" src="img/uc-06.png">
+			<img class="w-isimgclose" src="img/sy-08.png">
 		</div>
-	<div class="w-bottom">
-		<div class="w-botleft">
-			<span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
-			<span id="beian">沪ICP备案号17050193</span>
-		</div>
-		<div class="w-botright">
-			<div>
+		<img class="w-tabtleimg" src="img/uc-06.png"/>
+	</div>
+</div>
+<div class="ss-wp searchDiv">
+	<a class="ss" id="news_search">NEWS</a>
+	<a class="ss" id="project_search">PROJECT</a>
+</div>
+<div style="height: 30px;" class="searchDiv"></div>
+<div class="w-content" style="display: flex; justify-content: center; align-content: center">
+	<div class="w-teamdiv" id="memberDom">
 
-				<img id="weibo" src="img/uc-03.png"/>
-				<img id="inlink" src="img/uc-04.png"/>
-				<div class="code-wp">
-					<img class="code-img" src="img/erweima.png">
-					<img id="code-img" src="img/uc-05.png"/>
-				</div>
-
-			</div>
-		</div>
 
 	</div>
-		<script>
-			$(function(){
-				$(".w-tabnav a").hover(function(){
-					$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
-				})
+</div>
+<div class="w-bottom">
+	<div class="w-botleft">
+		<span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
+		<span id="beian">沪ICP备案号17050193</span>
+	</div>
+	<div class="w-botright">
+		<div>
 
-			})
+			<img id="weibo" src="img/uc-03.png"/>
+			<img id="inlink" src="img/uc-04.png"/>
+			<div class="code-wp">
+				<img class="code-img" src="img/erweima.png">
+				<img id="code-img" src="img/uc-05.png"/>
+			</div>
 
-            // return;
+		</div>
+	</div>
 
-            $.getJSON("/team/getTeamBO?r="+Date.now()+"&pageSize=30",function (rs) {
+</div>
+<script>
+    $(function(){
+        $(".w-tabnav a").hover(function(){
+            $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        })
+
+    })
+
+    // return;
+
+    $.getJSON("/team/getTeamBO?r="+Date.now()+"&pageSize=30",function (rs) {
 // return;
-                renderFloor(rs.data.contactWayBO);
-				var data = rs.data.teamBOS;
-				var dom = "";
-				for(var i=0;i<data.length;i++){
-				    // debugger;
-				    if((i)%4==0||i==0){
-                        dom+=['<div>',
-                            '    <div class="w-teambox" data-id="',
-							data[i].id,
-							'">',
-                        '    <div class="box-wp">',
-                        '    <img src="',
-									data[i]['headPortraitPc'],
-							'"/>',
-                        '    </div>',
-                        '    <div class="w-teambfont">',
-                        '   <span class="w-teambft">',
-                            data[i]['nameEnglish'],
-							'</span>',
-                        ' <span class="w-teambfb">',
+        renderFloor(rs.data.contactWayBO);
+        var data = rs.data.teamBOS;
+        var dom = "";
+        for(var i=0;i<data.length;i++){
+            dom += [
+                '<div class="w-teambox" data-id="',
+                data[i].id,
+                '">',
+                '    <div class="box-wp">',
+                '    <img src="',
+                "http://39.96.173.228:8080" + data[i]['headPortraitPc'],
+                '"/>',
+                '    </div>',
+                '    <div class="w-teambfont">',
+                '   <span class="w-teambft">',
+                data[i]['name'],
+                '</span>',
+                ' <span class="w-teambfb">',
+                data[i]['aptitudeAbbreviation'],
+                '</span>',
+                ' </div>',
+                ' </div>'].join("")
+        }
 
-                            // data[i]['positionEnglish'],
-							// '| ',
-                            data[i]['aptitudeAbbreviation'],
-							'</span>',
-                        ' </div>',
-                        ' </div>'].join("")
-					}else if((i+1)%4==0||i==data.length){
-                        dom+=[
-                            '    <div class="w-teambox mr-0" data-id="',
-                            data[i].id,
-                            '">',
-                            '    <div class="box-wp">',
-                            '    <img src="',
-                            data[i]['headPortraitPc'],
-                            '"/>',
-                            '    </div>',
-                            '    <div class="w-teambfont">',
-                            '   <span class="w-teambft">',
-                            data[i]['nameEnglish'],
-                            '</span>',
-                            ' <span class="w-teambfb">',
-
-                            data[i]['positionEnglish'],
-                            '| ',
-                            data[i]['aptitudeAbbreviation'],
-                            '</span>',
-                            ' </div>',
-                            ' </div>',
-                            ' </div>'].join("")
-					}else{
-                        dom+=[
-                            '    <div class="w-teambox" data-id="',
-                            data[i].id,
-                            '">',
-                            '    <div class="box-wp">',
-                            '    <img src="',
-                            data[i]['headPortraitPc'],
-                            '"/>',
-                            '    </div>',
-                            '    <div class="w-teambfont">',
-                            '   <span class="w-teambft">',
-                            data[i]['nameEnglish'],
-                            '</span>',
-                            ' <span class="w-teambfb">',
-
-                            // data[i]['positionEnglish'],
-                            // '| ',
-                            data[i]['aptitudeAbbreviation'],
-                            '</span>',
-                            ' </div>',
-                            ' </div>'].join("")
-					}
-				}
-
-				$("#memberDom").html(dom + "</div>");
+        $("#memberDom").html(dom + "</div>");
 
 
 
-				$(document).on("click",".w-teambox",function () {
-					// console.log($(this).data("id"))
-					window.location.href = "/pc/memberDetail_en.html?id="+$(this).data("id");
-                })
+        $(document).on("click",".w-teambox",function () {
+            // console.log($(this).data("id"))
+            window.location.href = "/pc/memberDetail_en.html?id="+$(this).data("id");
+        })
 
-            })
+    })
 
-		</script>
-	</body>
+</script>
+</body>
 </html>
+

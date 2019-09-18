@@ -432,18 +432,26 @@ body {
     padding: 0 35px;
     margin-bottom: 30px;
 }
-
 .w-teamdiv {
-    padding: 0 60px;
-    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 .w-teambox {
-    float: left;
-    width: 24.25%;
-    margin-right: 1%;
-    margin-bottom: 40px;
+    width: calc((88vw / 4) - (2 * 9px) );
+    margin: 0 9px 50px;
     cursor: pointer;
+}
+
+.w-teambox .box-wp {
+    overflow: hidden;
+}
+
+.w-teambfont {
+    height: 75px;
 }
 
 .w-teambox img:hover {
@@ -451,7 +459,7 @@ body {
 }
 
 .w-teamdiv div {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .w-teambox img {
