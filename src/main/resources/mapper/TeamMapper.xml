@@ -27,6 +27,7 @@
         <result column="aptitude" property="aptitude"/>
         <result column="aptitude_english" property="aptitudeEnglish"/>
         <result column="aptitude_abbreviation" property="aptitudeAbbreviation"/>
+        <result column="aptitude_abbreviation_english" property="aptitudeAbbreviationEnglish"/>
         <result column="sort" property="sort"/>
         <collection property="projectPicture" ofType="com.zna.server.entity.bo.ProjectInvolvedBO">
             <result column="projectId" property="id"/>
@@ -98,6 +99,9 @@
            <if test="aptitudeAbbreviation!=null and aptitudeAbbreviation!=''">
                `aptitude_abbreviation`=#{aptitudeAbbreviation},
            </if>
+           <if test="aptitudeAbbreviationEnglish!=null and aptitudeAbbreviationEnglish!=''">
+               `aptitude_abbreviation_english`=#{aptitudeAbbreviationEnglish},
+           </if>
            <if test="sort!=null and sort!=''">
                `sort`=#{sort},
            </if>
@@ -147,6 +151,9 @@
             </if>
             <if test="aptitudeAbbreviation!=null and aptitudeAbbreviation!=''">
                 `aptitude_abbreviation`=#{aptitudeAbbreviation},
+            </if>
+            <if test="aptitudeAbbreviationEnglish!=null and aptitudeAbbreviationEnglish!=''">
+                `aptitude_abbreviation_english`=#{aptitudeAbbreviationEnglish},
             </if>
             <if test="sort!=null and sort!=''">
                 `sort`=#{sort},
