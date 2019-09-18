@@ -173,7 +173,7 @@ body {
 
 .w-tabnav {
     border-bottom: solid 1px #DDDDDD;
-    padding: 0 35px;
+    padding: 0 190px;
     overflow: hidden;
     margin-bottom: 15px;
 }
@@ -186,7 +186,7 @@ body {
     height: 35px;
     line-height: 35px;
     position: relative;
-    font-size: 14px;
+    font-size: 20px;
     float: right;
 }
 
@@ -1287,7 +1287,7 @@ body {
     text-align: justify;
 }
 
-@media (max-width: 1250px) and (min-width: 900px){
+@media (max-width: 1250px) and (min-width: 850px){
     .w-perdetailr {
         width: 54.5%!important;
     }

@@ -30,7 +30,7 @@ $(function () {
             //英文
             if(href.indexOf("language=")>-1){
                 href.replace("language=cn","language=en")
-            }else if(href.indexOf("?=")>-1){
+            }else if(href.indexOf(".html?")>-1){
                 href +="&language=en"
             }else{
                 href +="?language=en"
@@ -343,7 +343,7 @@ window.onload = function () {
         if( width < 850 ){
             openMobile();
         }else if(width<1150){
-            console.log(width)
+            // console.log(width)
             if(window.location.href.indexOf("pc/projectType_")==-1
                 &&window.location.href.indexOf("pc/project_")==-1
                 &&window.location.href.indexOf("pc/member_")==-1){
@@ -366,7 +366,7 @@ function openMobile() {
         //英文
         if(href.indexOf("language=")>-1){
             href.replace("language=cn","language=en")
-        }else if(href.indexOf("?=")>-1){
+        }else if(href.indexOf(".html?")>-1){
             href +="&language=en"
         }else{
             href +="?language=en"

@@ -106,6 +106,27 @@
 
 </div>
 <script>
+
+    window.onload = function () {
+        if(document.documentElement.clientWidth<1000){
+            $("#w-head-nav").css("padding-right","5px")
+        }else{
+            $("#w-head-nav").css("padding-right","60px")
+        }
+        window.onresize = function () {
+            var width  = document.documentElement.clientWidth;
+            if( width < 850 ){
+                openMobile();
+            }else if(width<1150){
+                if(width<1000){
+                    console.log(123)
+                    $("#w-head-nav").css("padding-right","5px")
+                }else{
+                    $("#w-head-nav").css("padding-right","60px")
+                }
+            }
+        }
+    }
     $(function () {
         $(".w-tabnav a").hover(function () {
             $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
@@ -125,7 +146,7 @@
                 '">',
                 '    <div class="box-wp">',
                 '    <img src="',
-                "http://39.96.173.228:8080" + data[i]['headPortraitPc'],
+               data[i]['headPortraitPc'],
                 '"/>',
                 '    </div>',
                 '    <div class="w-teambfont">',

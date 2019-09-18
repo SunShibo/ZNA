@@ -112,7 +112,7 @@
                 openMobile();
             }else if(width<1150){
                 if(width<1000){
-                    console.log(width)
+
                     $("#w-head-nav").css("padding-right","5px")
                 }else{
                     $("#w-head-nav").css("padding-right","60px")
@@ -141,15 +141,15 @@
                 '">',
                 '    <div class="box-wp">',
                 '    <img src="',
-                "http://39.96.173.228:8080" + data[i]['headPortraitPc'],
+                data[i]['headPortraitPc'],
                 '"/>',
                 '    </div>',
                 '    <div class="w-teambfont">',
                 '   <span class="w-teambft">',
-                data[i]['name'],
+                data[i]['nameEnglish'],
                 '</span>',
                 ' <span class="w-teambfb">',
-                data[i]['aptitudeAbbreviation'],
+                data[i]['aptitudeAbbreviationEnglish'],
                 '</span>',
                 ' </div>',
                 ' </div>'].join("")
