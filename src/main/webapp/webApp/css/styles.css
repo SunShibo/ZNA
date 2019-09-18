@@ -154,7 +154,7 @@ input[type=search]::-ms-clear {
     margin: 0.2rem;
 
     background-repeat: no-repeat;
-    /*background-size: 100% 100%;*/
+    background-size: 100% 100%;
 
     width: 7.18rem;
     height: 8rem;
@@ -204,6 +204,7 @@ input[type=search]::-ms-clear {
 
 .head_search .search_icon {
     display: inline-block;
+
 }
 
 .head_search .search_icon img {
@@ -221,6 +222,7 @@ input[type=search]::-ms-clear {
     width: 70%;
     font-size: .3rem;
     margin-left: .1rem;
+    vertical-align: middle;
 }
 
 .head_search input::placeholder {
@@ -282,6 +284,8 @@ li .nav-href {
     padding: .1rem;
     border-right: 1px #cccccc solid;
 }
+
+
 
 .sub-nav li a {
     display: block;
