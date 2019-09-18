@@ -173,7 +173,7 @@ body {
 
 .w-tabnav {
     border-bottom: solid 1px #DDDDDD;
-    padding: 0 190px;
+    padding: 0 35px;
     overflow: hidden;
     margin-bottom: 15px;
 }
@@ -186,7 +186,7 @@ body {
     height: 35px;
     line-height: 35px;
     position: relative;
-    font-size: 20px;
+    font-size: 14px;
     float: right;
 }
 
@@ -1136,22 +1136,30 @@ body {
 
 .w-auhisboxl .w-auhbl {
     float: left;
+    width: 55%;
 }
 
 .w-auhisboxl .w-auhbr {
     float: left;
     padding: 30px;
+    width: 35%;
+}
+
+.w-auhbl img{
+    width: 100%;
 }
 
 .w-auhbrspant {
     display: block;
-    font-size: 20px;
+    font-size: 24px;
+    font-style: italic;
     line-height: 30px;
+    padding-bottom: 10px;
 }
 
 .w-auhbrspanb {
     display: block;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
 }
 
@@ -1162,12 +1170,15 @@ body {
 
 .w-auhisboxr .w-auhbl {
     float: right;
+    width: 55%;
 }
 
 .w-auhisboxr .w-auhbr {
     float: right;
     padding: 30px;
     text-align: right;
+    width: 35%;
+
 }
 
 .w-auhsplit {
