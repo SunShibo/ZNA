@@ -29,14 +29,13 @@
         }
 
         .gallery-thumbs {
-            height: 160px;
+            margin-top: 24px;
+            height: 120px;
             box-sizing: border-box;
-            padding: 10px 0;
-            width: 90%;
         }
 
         .gallery-thumbs .swiper-slide {
-            width: 25%;
+            width: 20.6%;
             height: 100%;
             opacity: 0.4;
         }
@@ -47,6 +46,22 @@
 
         .gallery-thumbs .swiper-slide {
             opacity: 1 !important;
+        }
+
+        .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+            width: 60px!important;
+            height: 60px;
+            right: 30px;
+            opacity: .4;
+        }
+        .swiper-button-prev:hover,.swiper-button-next:hover{
+            opacity: .8!important;
+        }
+        .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+            width: 60px!important;
+            height: 60px;
+            left: 30px;
+            opacity: .3;
         }
     </style>
 </head>
@@ -104,8 +119,8 @@
                 <div class="w-dcdcon _scroll">
                     <div class="_panel-box">
                         <span class="w-dcdcontit" id="titleEnglish"></span>
-                        <span class="w-dcdconsm">Location: <b id="siteEnglish"></b><br/> Area: <b id="floorSpace"></b>
-									<br/>Building Area: <b id="coveredArea"></b><br/>Client: <b id="client"></b></span>
+                        <span class="w-dcdconsm">位置: <b id="siteEnglish"></b><br/> 面积: <b id="floorSpace"></b>
+									<br/>建筑面积: <b id="coveredArea"></b><br/>客户: <b id="client"></b></span>
                         <span class="w-dcdconcon" id="contextEnglish">
 
 								</span>
@@ -113,10 +128,10 @@
                     </div>
                 </div>
                 <div class="w-nextbtn">
-                    <span class="previous">PREVIOUS</span>
+                    <span class="previous">上一个</span>
                     <img class="previous" src="img/left.png"/>
                     <img class="next" src="img/right.png"/>
-                    <span class="next">NEXT</span>
+                    <span class="next">下一个</span>
                 </div>
             </div>
             <div class="w-detailcdr">
@@ -126,11 +141,11 @@
 
                     </div>
                     <!-- Add Arrows -->
-                    <div class="swiper-button-next swiper-button-white"></div>
-                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-next"></div>
+                    <div class="swiper-button-prev swiper-prev"></div>
                 </div>
-                <div style="height: 20px;"></div>
-                <div style="position: relative">
+                <!--<div style="height: 20px;"></div>-->
+                <div style="position: relative" id="swiper-gallery">
                     <div class="swiper-container gallery-thumbs">
                         <div class="swiper-wrapper" id="downImg">
 
@@ -207,7 +222,7 @@
             if (data.afterProjectId == 0) {
                 console.log("没有下一个")
             } else {
-                window.location.href = "/pc/projectDetail.html_en?id=" + data.afterProjectId + "&type=" + getUrl("type");
+                window.location.href = "/pc/projectDetail_en.html?id=" + data.afterProjectId + "&type=" + getUrl("type");
             }
         })
 

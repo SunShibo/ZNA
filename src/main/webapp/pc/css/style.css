@@ -78,7 +78,7 @@ b {
 body {
     font-family: "microsoft yahei";
     font-size: 16px;
-    color: #666666;
+    color: #111;
     padding: 0;
     margin: 0;
     min-width: 1200px;
@@ -186,8 +186,9 @@ body {
     height: 35px;
     line-height: 35px;
     position: relative;
-    font-size: 14px;
+    font-size: 18px;
     float: right;
+    color: #666;
 }
 
 .w-tabnavaed {
@@ -472,13 +473,13 @@ body {
 
 .w-teambft {
     color: #333333;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 40px;
 }
 
 .w-teambfb {
     color: #999999;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 28px;
 }
 
@@ -677,25 +678,66 @@ body {
     font-weight: bold;
 }
 
-.w-cpculfir li:first-child {
-    background: url(../img/cp-36.png) 80px center no-repeat;
-}
 
-.w-cpculfir li {
-    background: url(../img/cp-36.png) 40px center no-repeat;
-}
-
-.w-cpculfir li:last-child {
-    background: url(../img/cp-36.png) 60px center no-repeat;
-}
 
 .w-cpcdeatailist ul {
     list-style-type: none;
     border-bottom: solid 1px #E3E3E3;
-    margin: 0 35px;
+    margin: 0 86px;
     padding: 10px 0;
 }
 
+@media (max-width: 1825px) {
+    .w-cpcdeatailist ul {
+
+        margin: 0 113px;
+
+    }
+}
+
+@media (max-width: 1625px) {
+    .w-cpcdeatailist ul {
+
+        margin: 0 100px;
+
+    }
+}
+
+@media (max-width: 1300px) {
+    .w-cpcdeatailist ul {
+
+        margin: 0 86px;
+
+    }
+}
+
+@media (max-width: 1200px) {
+    .w-cpcdeatailist ul {
+
+        margin: 0 115px;
+
+    }
+
+    .w-cpcdeatailist li {
+
+        width: 30%!important;
+
+    }
+
+    .w-cpculfir li {
+        /*background: url(../img/cp-36.png) 67px center no-repeat;*/
+    }
+}
+
+.goDetail li{
+    color: #333;
+    font-size: 18px;
+}
+.w-cpculfir li{
+    color: #333;
+    font-size: 22px;
+    font-weight: normal;
+}
 .w-cpcdeatailist li {
     list-style-type: none;
     display: inline-block;
@@ -760,12 +802,13 @@ body {
 }
 
 .w-dcdcontit {
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
     position: relative;
     display: block;
-    padding: 15px;
-    padding-top: 25px;
+    padding: 15px 25px;
+    padding-top: 40px;
+    color: #1f1f1f;
 }
 
 .w-dcdcontit:after {
@@ -780,14 +823,17 @@ body {
 
 .w-dcdconsm {
     display: block;
-    padding: 15px;
-    font-size: 16px;
+    padding: 15px 25px;
+    font-size: 18px;
+    line-height: 30px;
+    color: #1F1F1F;
 }
 
 .w-dcdconcon {
     display: block;
-    padding: 15px;
+    padding:  15px 25px;
     font-size: 16px;
+    line-height: 28px;
 }
 
 /* 经典项目 end */
@@ -1588,18 +1634,56 @@ body {
 }
 
 .inp-mask {
-    color: transparent;
+    /*color: transparent;*/
     width: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
     margin: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-size: 18px;
 
+}
+.inp:hover .inp-masks {
+    background-color: #111;
+    opacity: .66;
+    color: #fff;
+    font-size: 18px;
+}
+
+.inp:hover .masks-p {
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    color: #fff;
+    font-size: 18px;
+}
+.inp-masks {
+    /*color: transparent;*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+}
+
+.masks-p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    color: transparent;
 }
 
 .inp:hover .inp-mask {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
     font-size: 18px;
 }
@@ -1619,6 +1703,9 @@ body {
     align-items: center;
     position: absolute;
     bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 18px;
 }
 
 .previous, .next {
