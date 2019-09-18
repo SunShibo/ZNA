@@ -3,7 +3,14 @@ var currentEnvironmental = 'pc';
 
 $(function () {
     if(document.documentElement.clientWidth<1150){
-        $(".w-lang").css("margin-right",1200-document.documentElement.clientWidth-20);
+        if(window.location.href.indexOf("pc/projectType_")==-1
+            &&window.location.href.indexOf("pc/project_")==-1
+            &&window.location.href.indexOf("pc/member_")==-1
+
+        ){
+            $(".w-lang").css("margin-right",1200-document.documentElement.clientWidth-20);
+        }
+
     }
 
     if(document.documentElement.clientWidth<751 || (/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
@@ -127,6 +134,9 @@ $(function () {
                 }
             }
         }
+    // else if(){
+    //
+    //     }
 
 
 
@@ -333,7 +343,13 @@ window.onload = function () {
         if( width < 850 ){
             openMobile();
         }else if(width<1150){
-            $(".w-lang").css("margin-right",1200-width-50);
+            console.log(width)
+            if(window.location.href.indexOf("pc/projectType_")==-1
+                &&window.location.href.indexOf("pc/project_")==-1
+                &&window.location.href.indexOf("pc/member_")==-1){
+                $(".w-lang").css("margin-right",1200-width-50);
+            }
+
         }
     }
 }

@@ -43,7 +43,7 @@
         <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
     </div>
 </div>
-<div class="w-head searchDiv" id="w-head-search">
+<div class="w-head searchDiv cn" id="w-head-search">
     <div data-id="home_cn" class="nav-span loginPoint cn"></div>
     <div class="w-lang">
         <span class="w-langc active">中文</span>
@@ -112,6 +112,26 @@
 
 </div>
 <script>
+
+    window.onload = function () {
+        if(document.documentElement.clientWidth<1000){
+            $("#w-head-nav").css("padding-right","5px")
+        }else{
+            $("#w-head-nav").css("padding-right","60px")
+        }
+        window.onresize = function () {
+            var width  = document.documentElement.clientWidth;
+            if( width < 850 ){
+                openMobile();
+            }else if(width<1150){
+                if(width<1000){
+                    $("#w-head-nav").css("padding-right","5px")
+                }else{
+                    $("#w-head-nav").css("padding-right","60px")
+                }
+            }
+        }
+    }
     $(function () {
         // $(".w-tabnav a").hover(function(){
         //     $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");

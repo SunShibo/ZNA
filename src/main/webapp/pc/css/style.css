@@ -168,6 +168,7 @@ body {
     height: 15px;
     margin: 42px 20px 20px 10px;
     cursor: pointer;
+    vertical-align: baseline;
 }
 
 .w-tabnav {
