@@ -13,6 +13,31 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no">
     <link rel="stylesheet" href="./css/styles.css">
+
+    <style>
+        .detailed-info {
+            color: #333333;
+            line-height: .36rem;
+            letter-spacing: .007rem;
+            font-size: .24rem;
+        }
+
+        .detailed-info p {
+            margin-bottom: .4rem;
+        }
+
+        .detailed-info h1, .detailed-info h2, .detailed-info h3, .detailed-info h4, .detailed-info h5, .detailed-info h6 {
+            font-size: .26rem;
+            color: #666666;
+        }
+
+        .major p, .education p {
+            color: #666666;
+            line-height: .36rem;
+            font-size: .26rem;
+            letter-spacing: 0.007rem;
+        }
+    </style>
 </head>
 <body>
 <div id="app-page">
@@ -92,17 +117,16 @@
                 <div class="detailed-name"></div>
                 <div class="detailed-position"></div>
                 <div class="detailed-info"></div>
-                <!--<div class="detailed-office">-->
-                <!--<div class="detailed-content-title">教育背景</div>-->
-                <!--<p>美国哈佛大学设计学院建筑暨城市设计硕士,-->
-                <!--中国清华大学建筑学院建筑学学士</p>-->
-                <!--</div>-->
-                <!--<div class="detailed-professional">-->
-                <!--<div class="detailed-content-title">专业背景</div>-->
-                <!--<p>美国规划师学会会员,-->
-                <!--LEED (USGBC美国绿色建筑委员会)认证专家,-->
-                <!--国家“千人计划"特聘专家</p>-->
-                <!--</div>-->
+                <div class="detailed-office">
+                    <div class="detailed-content-title"></div>
+                    <div class="education">
+
+                    </div>
+                </div>
+                <div class="detailed-professional">
+                    <div class="detailed-content-title"></div>
+                    <div class="major"></div>
+                </div>
             </div>
         </div>
         <div class="team-project">
@@ -181,16 +205,25 @@
 
         //按语言显示数据
         function setting(lang) {
+            console.log(data);
             if (lang) {
                 $('.detailed-name').text(data.nameEnglish);
                 $('.detailed-position').text(data.positionEnglish);
-                $('.detailed-info').text(data.introEnglish);
+                $('.detailed-info').html(data.introEnglish);
                 $('.team-project-title').text('Related to the case');
+                $('.education').html(data.educationalEnglish);
+                $('.major').html(data.aptitudeEnglish);
+                $('.detailed-office .detailed-content-title').text('EDUCATION');
+                $('.detailed-professional .detailed-content-title').text('PROFESSIONAL REGISTRATION & AFFILIATIONS');
             } else {
                 $('.detailed-name').text(data.name);
                 $('.detailed-position').text(data.position);
-                $('.detailed-info').text(data.intro);
+                $('.detailed-info').html(data.intro);
                 $('.team-project-title').text('参与的项目');
+                $('.education').html(data.educational);
+                $('.major').html(data.aptitude);
+                $('.detailed-office .detailed-content-title').text('教育资质');
+                $('.detailed-professional .detailed-content-title').text('专业背景');
             }
 
             //底部导航栏
@@ -207,8 +240,8 @@
             preBtn.attr('href', herfPreUrl).children('.team-pre').text(data.beforeUserName ? preStr : navStr);
             nextBtn.attr('href', herfNextUrl).children('.team-next').text(data.afterUserName ? nextStr : navStr);
             //置灰
-            !herfNextUrl ? nextBtn.css('color', '#bababa'): '';
-            !herfPreUrl ? preBtn.css('color', '#bababa'): '';
+            !herfNextUrl ? nextBtn.css('color', '#bababa') : '';
+            !herfPreUrl ? preBtn.css('color', '#bababa') : '';
             $('.back-page>a').attr('href', 'team.html?language=' + $.getLangStr()).text(lang ? '< TEAM' : '< 核心团队')
         }
 

@@ -98,7 +98,7 @@
 
         <div class="about-items">
             <!-- 这个div设置为宽度100%，并且溢出显示隐藏 -->
-            <div class="about-item-image">
+            <div class="about-item-image about_image_info">
                 <!-- 这个div设置为和img图片同样的宽高，并且用absolute定位设置为居中 -->
                 <div class="about-item-image-wrapper">
                     <img src="" id="aboutItemImage" alt="" width="100%">
@@ -114,8 +114,10 @@
         </div>
 
         <div class="about-items">
-            <div>
-                <img src="" id="serviceImage" alt="" width="100%">
+            <!-- 这个div设置为宽度100%，并且溢出显示隐藏 -->
+            <div class="about-item-image about_iamge_service">
+                <!-- 这个div设置为和img图片同样的宽高，并且用absolute定位设置为居中 -->
+                <div class="service-img__wrapper"></div>
             </div>
             <div class="about-service">
                 <div class="about-title" style="font-size: .35rem;font-weight: 600" id="serviceTitle"></div>
@@ -207,9 +209,9 @@
             //关于我们信息的图片
             $('#aboutItemImage').prop('src', "http://39.96.173.228:8080" + data[1].pictureUrl);
             //from历史图片
-            $('#aboutHref').prop('src', r.data.fromPictureBO.pictureUrl);
+            $('#aboutHref').prop('src', "http://39.96.173.228:8080" + r.data.fromPictureBO.pictureUrl);
             //服务图片
-            $('#serviceImage').prop('src', data[2].pictureUrl);
+            $('.service-img__wrapper:first').css('background-image', 'url(' + "http://39.96.173.228:8080" + r.data.serviceusBO.pictureUrl + ');');
             //底部信息
             $.footData(r.data.contactWayBO);
 
@@ -295,7 +297,7 @@
                 ];
                 //控制ul中的li图片个数
                 for (var j = 0, jLen = data[i].length; j < jLen; j++) {
-                    domArr.push('<li><img src="' + data[i][j].pictureUrl + '" alt="" width="100%" height="100%"></li>')
+                    domArr.push('<li><img src="' + "http://39.96.173.228:8080" + data[i][j].pictureUrl + '" alt="" width="100%" height="100%"></li>')
                 }
                 domArr.push('</ul></div>');
                 $('#coopterative').append(domArr.join(''));

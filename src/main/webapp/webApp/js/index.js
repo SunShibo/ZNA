@@ -42,9 +42,21 @@
 
     $(function () {
 
+        //跳转
+        var clientWidth = document.body.clientWidth;
+        if(clientWidth > 850){
+            $.checkPlatform();
+        }
+
         //获取语言类型
         lang = $.getLang();
-        lang ? langDom.text('中') : langDom.text('EN');
+        if(lang){
+            langDom.text('中');
+            $('.logo').removeClass('ch_logo_w').addClass('en_logo_w');
+        }else{
+            langDom.text('EN');
+            $('.logo').removeClass('en_logo_w').addClass('ch_logo_w');
+        }
 
         //LOGO
         setLogo(lang);
@@ -103,11 +115,19 @@
         //设置logo
         setLogo(lang);
 
+
+
         //保存语言类型
         localStorage.setItem('EN_LANG', lang ? 'EN_US' : 'EN_CH');
         //更新菜单
         settingMenu($.getLang());
-        lang ? langDom.text('中') : langDom.text('EN');
+        if(lang){
+            langDom.text('中');
+            $('.logo').removeClass('ch_logo_w').addClass('en_logo_w');
+        }else{
+            langDom.text('EN');
+            $('.logo').removeClass('en_logo_w').addClass('ch_logo_w');
+        }
         //触发并更新回调参数
         window.switch_language($.getLang());
     });
@@ -262,8 +282,9 @@
 
     // 页面适配
     $(window).resize(function (ev) {
+        $('.home-item-image>div').removeClass('home-item-image-wrapper').addClass('home-item-image-wrapper');
         var clientWidth = document.body.clientWidth;
-        if(clientWidth > 750){
+        if(clientWidth > 850 && !(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
             $.checkPlatform();
         }
     });

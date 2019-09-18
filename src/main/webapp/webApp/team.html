@@ -151,7 +151,7 @@
                             '<input type="hidden" value="',r.data.teamBOS[i].id,'">',
                             '<div class="team-item-content">',
                             '<div class="item-content-rows"><span class="name">', lang ? r.data.teamBOS[i].nameEnglish : r.data.teamBOS[i].name, '</span></div>',
-                            '<div class="item-content-rows"><span class="position">', lang ? r.data.teamBOS[i].positionEnglish : r.data.teamBOS[i].position, '</span> | <span class="aptitude">', r.data.teamBOS[i].aptitudeAbbreviation, '</span></div>',
+                            '<div class="item-content-rows"><span class="aptitude">', r.data.teamBOS[i].aptitudeAbbreviation, '</span></div>',
                             '</div>',
                             '</li>'].join(''))
                     }
@@ -167,10 +167,10 @@
             for (var i = 0, len = data.length; i < len; i++) {
                 if (lang) {
                     $('.name').eq(i).text(data[i].nameEnglish);
-                    $('.position').eq(i).text(data[i].positionEnglish);
+                    $('.position').eq(i).text(data[i].aptitudeAbbreviationEnglish);
                 } else {
                     $('.name').eq(i).text(data[i].name);
-                    $('.position').eq(i).text(data[i].position);
+                    $('.position').eq(i).text(data[i].aptitudeAbbreviation);
                 }
             }
             $('#next').text(lang? 'Show More Results +':'加载更多 +')

@@ -198,12 +198,15 @@
                     type: 'POST',
                     dataType: 'json',
                     success: function (r) {
+
+                        console.log(r);
+
                         data = r.data.indexBOS;
                         //将需要中英文切换的数据保存到数组内
                         homeBanner(r.data.bannerBOS);
                         //不需要中英文切换的图片类和文本类数据直接加载
                         //关于我们信息的图片
-                        $('.home-about').css('background-image', 'url(' + data[0].pictureUrl + ')');
+                        $('.home-about').css('background-image', 'url(' + "http://39.96.173.228:8080" + data[0].pictureUrl + ')');
                         $('.home-project').css('background-image', 'url(' + data[1].pictureUrl + ')');
                         $('.home-team').css('background-image', 'url(' + data[2].pictureUrl + ')');
                         $('.home-news').css('background-image', 'url(' + data[3].pictureUrl + ')');
@@ -245,7 +248,11 @@
             var bannerArr = [];
             //添加数据
             for (var i = 0, len = data.length; i < len; i++) {
-                bannerArr.push('<div class="swiper-slide"><img src="' + data[i].pictureUrl + '" alt="" width="100%" height="100%"></div>')
+                bannerArr.push('<div class="swiper-slide" data-zid="', data.skipId, '">' +
+                    '<div class="home-item-image">' +
+                    '<div class="home-item-image-wrapper" style="background-image:url(' + "http://39.96.173.228:8080" + data[i].pictureUrl + ');">' +
+                    '</div>' +
+                    '</div></div>')
             }
             $('#home-banner').append(bannerArr.join(''));
 
@@ -265,6 +272,13 @@
                 }
             });
         }
+
+
+        //banner跳转
+        $('#home-banner').on('click', '.swiper-slide', function (e) {
+            var id = $(this).data('zid');
+            location.href = 'project_detailed.html?id=' + id;
+        });
 
 
     })(window, jQuery);
