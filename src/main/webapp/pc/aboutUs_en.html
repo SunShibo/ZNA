@@ -9,6 +9,26 @@
 		<script src="js/swiper.min.js"></script>
 		<script src="js/main.js?v=1.1"></script>
 		<script src="js/yi-scroll.js"></script>
+		<style>
+
+			.w-indeximgt {
+				width: 100%;
+				 margin-bottom: 0px;
+			}
+
+			@media (max-width: 1400px) and (min-width: 750px) {
+
+
+
+
+				.w-indeximgbfont {
+
+					bottom: 35px;
+				}
+
+			}
+
+		</style>
 	</head>
 	<body>
 			<div class="w-head" id="w-head-nav">
@@ -93,9 +113,7 @@
 			<div class="swiperdiv" style="position: relative">
 				<div class="swiper-container" id="about-us-floor">
 					<div class="swiper-wrapper" id="about-us-img">
-						<!--<div class="swiper-slide">-->
-							<!--<img src="img/au-a11.png"/>-->
-						<!--</div>-->
+
 
 					</div>
 					<!-- Add Pagination -->
@@ -207,6 +225,13 @@
 		  function goHistory() {
 			  window.location.href = "history_en.html"
           }
+          setInterval(function () {
+              var height = $(".w-hindeximg").height();
+              console.log('onload 方法执行完毕111')
+              $("._scroll").css("height",height);
+              $("._scroll").yi_scroll();
+              $("._scroll_bar").css("opacity","1")
+          },3000)
 	  </script>
 	</body>
 </html>

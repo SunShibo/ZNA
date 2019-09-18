@@ -87,7 +87,7 @@ $.fn.yi_scroll = function(options)
 		})
 		elem.on("mouseleave",function(){			
 			if(!opts.isBar)
-			jqScrollBar.css({"opacity":0});
+			jqScrollBar.css({"opacity":1});
 			w.MouseInScroll = false;
 		});
 		elem.on("mouseup",function(){						/*该处代码用于处理滚动区域的内容因鼠标事件发生改变时，及时更新滚动条*/

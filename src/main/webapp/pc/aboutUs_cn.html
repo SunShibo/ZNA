@@ -1,218 +1,243 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>关于我们</title>
-		<link href="css/style.css?v=1.1" rel="stylesheet"/>
-		<link href="css/swiper.min.css" rel="stylesheet"/>
-		<script src="js/jquery-2.0.3.min.js"></script>
-		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1.1"></script>
-		<script src="js/yi-scroll.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>关于我们</title>
+    <link href="css/style.css?v=1.1" rel="stylesheet"/>
+    <link href="css/swiper.min.css" rel="stylesheet"/>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js?v=1.1"></script>
+    <script src="js/yi-scroll.js"></script>
+    <style>
+        .w-indeximgt {
+            width: 100%;
+            margin-bottom: 0px;
+        }
 
-	</head>
-	<body>
-		<div class="w-head cn" id="w-head-nav">
-			<div data-id="home_cn" class="nav-span loginPoint cn"></div>
-			<div class="w-lang">
-				<span class="w-langc active">中文</span>
-				<span class="w-c">EN</span>
-			</div>
-			<div class="w-tabtle">
-				<span data-id="aboutus_cn" class="nav-span span-active">关于我们</span>
-				<span data-id="project_cn" class="nav-span">经典项目</span>
-				<span data-id="team_cn" class="nav-span">核心团队</span>
-				<span data-id="dynamic_cn" class="nav-span">最新动态</span>
-				<span data-id="zp_cn" class="nav-span">联系我们</span>
-                <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
-			</div>
-		</div>
-		<div class="w-head searchDiv cn" id="w-head-search">
-			<div data-id="home_cn" class="nav-span loginPoint cn"></div>
-			<div class="w-lang">
-				<span class="w-langc active">中文</span>
-				<span class="w-c">EN</span>
-			</div>
-			<div class="w-tabtle">
-				<div class="w-tableindexsearch">
-					<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-					<img class="w-isimgsearch" src="img/uc-06.png">
-					<img class="w-isimgclose" src="img/sy-08.png">
-				</div>
-				<img class="w-tabtleimg" src="img/uc-06.png"/>
-			</div>
-		</div>
-		<div class="ss-wp searchDiv">
-			<a class="ss" id="news_search">新闻</a>
-			<a class="ss" id="project_search">项目</a>
-		</div>
-		<div style="height: 30px;" class="searchDiv"></div>
-		<div class="w-content">
-
-
-			<section>
-				<div class="swiper-container about-banner" >
-					<div class="swiper-wrapper" id="about-bg-lb">
-
-					</div>
-					<!-- 如果需要分页器 -->
-					<div class="swiper-pagination"></div>
-					<!-- 如果需要导航按钮 -->
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
-
-				</div>
-			</section>
-			<div style="height: 70px;"></div>
-			<div class="w-hindeximgdiv">
-				<img class="w-hindeximg" id="as-img"/>
-				<div class="_scroll">
-					<div class="_panel-box">
-				<div class="w-hindexspan">
-						<span id="as-content">
-
-						</span>
-
-				</div></div></div>
-			</div>
-			<div class="w-audivc">
-				<img class="w-indeximgt" id="from-pic" />
-				<button class="w-aubtn" onclick="goHistory()">了解更多 ></button>
-			</div>
-			<div class="w-audiv">
-				<img class="w-indeximgt" id="service-pic"/>
-
-				<div class="w-indeximgbfont">
-					<div class="w-indexibft" id="service-title1">
-						<p class="w-indexibfcp" id="service-title"></p>
-					</div>
-					<div class="w-zuxibfc" id="service-content">
-
-
-					</div>
-				</div>
-			</div>
-			<div class="w-audivt"><span>合作客户</span></div>
-			<div class="swiperdiv" style="position: relative">
-				<div class="swiper-container" id="about-us-floor">
-					<div class="swiper-wrapper" id="about-us-img">
-						<!--<div class="swiper-slide">-->
-							<!--<img src="img/au-a11.png"/>-->
-						<!--</div>-->
-
-					</div>
-					<!-- Add Pagination -->
-					<div class="swiper-pagination"></div>
-					<!-- Add Arrows -->
-
-				</div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-			</div>
-		</div>
-		<div class="w-bottom">
-			<div class="w-botleft">
-				<span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
-				<span id="beian">沪ICP备案号17050193</span>
-			</div>
-			<div class="w-botright">
-				<div>
-
-					<img id="weibo" src="img/uc-03.png"/>
-					<img id="inlink" src="img/uc-04.png"/>
-					<div class="code-wp">
-						<img class="code-img" src="img/erweima.png">
-						<img id="code-img" src="img/uc-05.png"/>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-
-	  <script>
-
-          $.getJSON("/aboutUs/getAboutUs?r"+Date.now(),function (rs) {
-
-
-              var data = rs.data;
-              var banner  = data.aboutBannerBOS;
-              var as = data.aboutUs;
-              var cp = data.cooperativeClientBOS;
-              var bannerStr = '';
-              var floorStr = '';
-              for(var i=0;i<banner.length;i++){
-                  bannerStr+= [
-                      '<div class="swiper-slide aboutBannerSwiper">',
-					  '<p class="aboutBannerSwiper-p">',
-                      banner[i]['title'],
-					  ,'</p>',
-					  '<p class="aboutBannerSwiper-content">',
-                      banner[i]['context'],
-					  '</p>',
-					  '<img class="home-lb-bg" src="',
-					  banner[i]['pictureUrlPc'],
-					  '" /></div>'
-				  ].join("")
-              }
-              $("#about-bg-lb").html(bannerStr);
-			  $("#as-content").html(as.context);
-              $("#as-img").attr("src",as.pictureUrlPc)
-              $("#from-pic").attr("src",data.fromPictureBO.pictureUrlPc)
-			  // debugger;
-              $("#service-pic").attr("src",data.serviceusBO.pictureUrlPc)
-              $("#service-title").html(data.serviceusBO.title)
-              $("#service-content").html(data.serviceusBO.context)
-
-				console.log(data.serviceusBO.title)
-              console.log(data.serviceusBO.pictureUrlPc)
-              // https://cmsqn.infinitus.com.cn/upload/resources/image/2019/08/16/3975374.jpg
-              new Swiper('.about-banner', {
-                  autoplay:{
-                      delay:5000,
-                  },
-                  pagination:{
-                      el: '.swiper-pagination',
-                      bulletClass : 'home-bg-bullet',
-                      bulletActiveClass: 'home-bg-bullet-active',
-                      clickable:true
-                  },
-                  navigation: {
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
-                  },
-                  loop: true, // 循环模式选项
-              });
+        @media (max-width: 1400px) and (min-width: 750px) {
 
 
 
-              for(var i=0;i<cp.length;i++){
-                  floorStr+= '<div class="swiper-slide"><img  src="'+cp[i]['pictureUrlPc']+'" /></div>';
-              }
-              $("#about-us-img").html(floorStr);
-              var swiper = new Swiper('#about-us-floor', {
-                  slidesPerView: 5,
-                  spaceBetween: 50,
-                  slidesPerGroup: 5,
-                  slidesPerColumn: 3,
-                  navigation: {
-                      nextEl: '.swiper-button-next',
-                      prevEl: '.swiper-button-prev',
-                  },
-              });
-              renderFloor(data.contactWayBO);
-              $(window).load(function () {
-                  var height = $(".w-hindeximg").height();
-                  console.log('onload 方法执行完毕')
-                  $("._scroll").css("height",height);
-                  $("._scroll").yi_scroll();
-              })
 
-          })
-			
-		  function goHistory() {
-			  window.location.href = "history_cn.html"
-          }
-	  </script>
-	</body>
+            .w-indeximgbfont {
+
+                bottom: 35px;
+            }
+
+        }
+    </style>
+</head>
+<body>
+<div class="w-head cn" id="w-head-nav">
+    <div data-id="home_cn" class="nav-span loginPoint cn"></div>
+    <div class="w-lang">
+        <span class="w-langc active">中文</span>
+        <span class="w-c">EN</span>
+    </div>
+    <div class="w-tabtle">
+        <span data-id="aboutus_cn" class="nav-span span-active">关于我们</span>
+        <span data-id="project_cn" class="nav-span">经典项目</span>
+        <span data-id="team_cn" class="nav-span">核心团队</span>
+        <span data-id="dynamic_cn" class="nav-span">最新动态</span>
+        <span data-id="zp_cn" class="nav-span">联系我们</span>
+        <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
+    </div>
+</div>
+<div class="w-head searchDiv cn" id="w-head-search">
+    <div data-id="home_cn" class="nav-span loginPoint cn"></div>
+    <div class="w-lang">
+        <span class="w-langc active">中文</span>
+        <span class="w-c">EN</span>
+    </div>
+    <div class="w-tabtle">
+        <div class="w-tableindexsearch">
+            <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+            <img class="w-isimgsearch" src="img/uc-06.png">
+            <img class="w-isimgclose" src="img/sy-08.png">
+        </div>
+        <img class="w-tabtleimg" src="img/uc-06.png"/>
+    </div>
+</div>
+<div class="ss-wp searchDiv">
+    <a class="ss" id="news_search">新闻</a>
+    <a class="ss" id="project_search">项目</a>
+</div>
+<div style="height: 30px;" class="searchDiv"></div>
+<div class="w-content">
+
+
+    <section>
+        <div class="swiper-container about-banner">
+            <div class="swiper-wrapper" id="about-bg-lb">
+
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+        </div>
+    </section>
+    <div style="height: 70px;"></div>
+    <div class="w-hindeximgdiv">
+        <img class="w-hindeximg" id="as-img"/>
+        <!--<div style="padding-bottom: 20px;overflow: hidden">-->
+
+
+            <div class="_scroll">
+                <div class="_panel-box">
+                    <div class="w-hindexspan">
+                            <span id="as-content">
+
+                            </span>
+
+                    </div>
+                </div>
+            </div>
+        <!--</div>-->
+    </div>
+    <div class="w-audivc">
+        <img class="w-indeximgt" id="from-pic"/>
+        <button class="w-aubtn" onclick="goHistory()">了解更多 ></button>
+    </div>
+    <div class="w-audiv">
+        <img class="w-indeximgt" id="service-pic"/>
+
+        <div class="w-indeximgbfont">
+            <div class="w-indexibft" id="service-title1">
+                <p class="w-indexibfcp" id="service-title"></p>
+            </div>
+            <div class="w-zuxibfc" id="service-content">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="w-audivt"><span>合作客户</span></div>
+    <div class="swiperdiv" style="position: relative">
+        <div class="swiper-container" id="about-us-floor">
+            <div class="swiper-wrapper" id="about-us-img">
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Arrows -->
+
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<div class="w-bottom">
+    <div class="w-botleft">
+        <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
+        <span id="beian">沪ICP备案号17050193</span>
+    </div>
+    <div class="w-botright">
+        <div>
+
+            <img id="weibo" src="img/uc-03.png"/>
+            <img id="inlink" src="img/uc-04.png"/>
+            <div class="code-wp">
+                <img class="code-img" src="img/erweima.png">
+                <img id="code-img" src="img/uc-05.png"/>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $.getJSON("/aboutUs/getAboutUs?r" + Date.now(), function (rs) {
+
+
+        var data = rs.data;
+        var banner = data.aboutBannerBOS;
+        var as = data.aboutUs;
+        var cp = data.cooperativeClientBOS;
+        var bannerStr = '';
+        var floorStr = '';
+        for (var i = 0; i < banner.length; i++) {
+            bannerStr += [
+                '<div class="swiper-slide aboutBannerSwiper">',
+                '<p class="aboutBannerSwiper-p">',
+                banner[i]['title'],
+                , '</p>',
+                '<p class="aboutBannerSwiper-content">',
+                banner[i]['context'],
+                '</p>',
+                '<img class="home-lb-bg" src="',
+                banner[i]['pictureUrlPc'],
+                '" /></div>'
+            ].join("")
+        }
+        $("#about-bg-lb").html(bannerStr);
+        $("#as-content").html(as.context);
+        $("#as-img").attr("src", as.pictureUrlPc)
+        $("#from-pic").attr("src", data.fromPictureBO.pictureUrlPc)
+        // debugger;
+        $("#service-pic").attr("src", data.serviceusBO.pictureUrlPc)
+        $("#service-title").html(data.serviceusBO.title)
+        $("#service-content").html(data.serviceusBO.context)
+
+        new Swiper('.about-banner', {
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                bulletClass: 'home-bg-bullet',
+                bulletActiveClass: 'home-bg-bullet-active',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true, // 循环模式选项
+        });
+
+
+        for (var i = 0; i < cp.length; i++) {
+            floorStr += '<div class="swiper-slide"><img  src="' + cp[i]['pictureUrlPc'] + '" /></div>';
+        }
+        $("#about-us-img").html(floorStr);
+        var swiper = new Swiper('#about-us-floor', {
+            slidesPerView: 5,
+            spaceBetween: 50,
+            slidesPerGroup: 5,
+            slidesPerColumn: 3,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        renderFloor(data.contactWayBO);
+        $(window).load(function () {
+            var height = $(".w-hindeximg").height();
+            console.log('onload 方法执行完毕')
+            $("._scroll").css("height", height);
+            $("._scroll").yi_scroll();
+        })
+
+    })
+
+    function goHistory() {
+        window.location.href = "history_cn.html"
+    }
+
+    setInterval(function () {
+        var height = $(".w-hindeximg").height();
+        console.log('onload 方法执行完毕111')
+        $("._scroll").css("height", height);
+        $("._scroll").yi_scroll();
+        $("._scroll_bar").css("opacity", "1")
+    }, 3000)
+
+
+</script>
+</body>
 </html>
