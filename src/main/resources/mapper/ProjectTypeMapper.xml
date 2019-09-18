@@ -33,7 +33,7 @@
     
     <select id="getTypeProject" resultMap="map">
         SELECT  ty.id,ty.project_type_name,pr.id AS projectId,pr.title FROM zna_project_type ty
-        LEFT JOIN zna_project pr ON ty.project_type_name_english = pr.project_type_name_english
+        LEFT JOIN zna_project pr ON ty.type = pr.type
     </select>
 
 </mapper>
