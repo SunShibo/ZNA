@@ -24,6 +24,12 @@
                 min-width: auto;
             }
         }
+
+        #projectItem {
+
+            justify-content: start;
+
+        }
     </style>
 </head>
 <body>
@@ -107,13 +113,25 @@
                 } catch (e) {
                 }
 
+                // pStr += ['<div class="item goDetail" data-type="', data[i]['type'], '" data-id="', data[i]['id'], '">',
+                //     '<div class="box horizaCenter verticalCenter">',
+                //     '<div class="inp">',
+                //     '<img src="',imgstr,'" width="100%" height="100%">',
+                //     '<div class="inp-mask">',
+                //     data[i].title,
+                //     '</div>',
+                //     '</div>',
+                //     '</div>',
+                //     '</div>'].join("")
+
+
                 pStr += ['<div class="item goDetail" data-type="', data[i]['type'], '" data-id="', data[i]['id'], '">',
                     '<div class="box horizaCenter verticalCenter">',
-                    '<div class="inp">',
+                    '<div class="inp inss">',
                     '<img src="',imgstr,'" width="100%" height="100%">',
-                    '<div class="inp-mask">',
+                    '<div class="inp-masks"><p class="masks-p">',
                     data[i].title,
-                    '</div>',
+                    '</p></div>',
                     '</div>',
                     '</div>',
                     '</div>'].join("")

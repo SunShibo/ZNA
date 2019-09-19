@@ -12,6 +12,27 @@
         ._scroll{
             position: relative;
         }
+
+        .educational{
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .educational,#educational{
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: 1px;
+            color: #666;
+            margin-right: 20px;
+        }
+        #educational p,#aptitude p{
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: 1px;
+            color: #333;
+            margin-right: 20px;
+            text-align: left;
+        }
+
     </style>
 </head>
 <body>
@@ -64,6 +85,14 @@
                             <span class="w-perspant" id="name"></span>
                             <span class="w-perspanc" id="position"></span>
                             <div class="w-perspanb" id="intro_english"></div>
+                            <div style="margin-top: 30px">
+                                <p class="educational">EDUCATION</p>
+                                <div id="educational"></div>
+                            </div>
+                            <div style="margin-top: 30px">
+                                <p class="educational">QUALIFICATION</p>
+                                <div id="aptitude"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -135,6 +164,8 @@
         $("#name").html(data.nameEnglish);
         $("#position").html(data.positionEnglish);
         $("#intro_english").html(data.introEnglish);
+        $("#educational").html(data.educationalEnglish);
+        $("#aptitude").html(data.aptitudeEnglish);
         $("#headPortraitPc").attr("src",data.headPortraitPc);
   // debugger;
         for(var i=0;i<data.projectPicture.length;i++){

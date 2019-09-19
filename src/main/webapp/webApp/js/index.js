@@ -8,7 +8,7 @@
         {name: '关于我们', nameEN: 'ABOUT US ', children: []},
         {
             name: '经典项目', nameEN: 'PROJECTS', children: [
-                {name: '酒店/度假村', nameEN: 'HOTEL/RESORT'},
+                {name: '酒店/度假', nameEN: 'HOTEL/RESORT'},
                 {name: '办公/综合体', nameEN: 'OFFICE/MIXED-USE'},
                 {name: '文化/会展', nameEN: 'CIVIC/EXHIBITION'},
                 {name: '居住/养老', nameEN: 'RESIDENTIAL/HEALTHCARE'},

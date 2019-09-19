@@ -29,10 +29,10 @@
 	</div>
 	<div class="w-tabtle">
 		<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
-		<span data-id="project_en" class="nav-span span-active">PROJECTS</span>
+		<span data-id="project_en" class="nav-span">PROJECTS</span>
 		<span data-id="team_en" class="nav-span">TEAM</span>
 		<span data-id="dynamic_en" class="nav-span">NEWS</span>
-		<span data-id="zp_en" class="nav-span">CONTACT US</span>
+		<span data-id="zp_en" class="nav-span span-active">CONTACT US</span>
 
 		<img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
 	</div>
@@ -195,12 +195,11 @@
                 '<div class="w-concontent">',
                 '<div class="w-showbtn" data-id="showid-',d.id,'"><span>',d.jobTitleEnglish,' </span><img id="img"',d.id,' src="img/uc-08.png"/></div>',
                 '<div class="w-showcon" id="showid-',d.id,'">',
-                // '<span class="w-showcont">Responsibilities:</span>',
-                // '<div>',d.positionStatement,'</div>',
-                // '<span class="w-showcont">Requirements:</span>',
+                '<span class="w-showcont">Responsibilities:</span>',
+                '<div>',d.positionStatementEnglish,'</div>',
+                '<span class="w-showcont">Requirements:</span>',
                 '<div>',d.qualificationEnglish,'</div></div> </div>'
             ].join("")
-
 
         }
         $("#gwDom").html(gwStr);
