@@ -809,8 +809,9 @@ li .nav-href {
 .team-project .team-project-title {
     font-size: .24rem;
     line-height: .24rem;
-    letter-spacing: .01rem;
+    letter-spacing: .012rem;
     color: #333333;
+    margin-bottom: .16rem;
 }
 
 .team-project ul {
