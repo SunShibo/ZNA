@@ -120,13 +120,13 @@
                 <div class="service-img__wrapper"></div>
             </div>
             <div class="about-service">
-                <div class="about-title" style="font-size: .35rem;" id="serviceTitle"></div>
+                <div class="about-title" style="font-size: .3rem;" id="serviceTitle"></div>
                 <div style="font-size: .25rem;" id="serviceContext"></div>
             </div>
         </div>
 
         <div>
-            <div class="about-title" style="font-size: .35rem;font-weight: 600;margin: .3rem;"
+            <div class="about-title" style="font-size: .3rem;margin: .3rem;font-family: PingFang-SC-Bold;"
                  id="aboutCoopterative"></div>
             <div>
                 <div class="swiper-coopterative">
@@ -211,7 +211,7 @@
             //from历史图片
             $('#aboutHref').prop('src', "http://39.96.173.228:8080" + r.data.fromPictureBO.pictureUrl);
             //服务图片
-            $('.service-img__wrapper:first').css('background-image', 'url(' + "http://39.96.173.228:8080" + r.data.serviceusBO.pictureUrl + ');');
+            $('.service-img__wrapper').css('background-image', 'url(' + "http://39.96.173.228:8080" + r.data.serviceusBO.pictureUrl + ')');
             //底部信息
             $.footData(r.data.contactWayBO);
 

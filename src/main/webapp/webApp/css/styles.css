@@ -149,7 +149,7 @@ input[type=search]::-ms-clear {
 
 #app-page .home-href {
     font-size: 0.22rem;
-    font-weight: bold;
+    font-family: PingFang-SC-Regular;
 }
 
 #app-page .titles {
@@ -157,6 +157,7 @@ input[type=search]::-ms-clear {
     border-bottom: 2px #FFFFFF solid;
     font-size: 0.4rem;
     color: #ffffff;
+    font-family: PingFang-SC-Bold;
 }
 
 #app-page .contents {
@@ -164,6 +165,7 @@ input[type=search]::-ms-clear {
     line-height: 0.36rem;
     color: #ffffff;
     margin-bottom: .26rem;
+    font-family: PingFang-SC-Regular;
 }
 
 #app-page .home-items {
@@ -377,7 +379,7 @@ li .nav-href {
 
 .head .head-btn {
     right: .1rem;
-    padding-right: .41rem;
+    padding-right: .28rem;
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -387,7 +389,6 @@ li .nav-href {
     color: #666666;
     font-size: .4rem;
     line-height: .35rem;
-    width: 0.3rem;
 }
 
 .head .head-item .head-item-btn {
@@ -642,7 +643,7 @@ li .nav-href {
 }
 
 .about-items .about-service {
-    padding: .4rem .2rem 0 .1rem;
+    padding: .2rem .2rem 0 .1rem;
 }
 
 .about-service .about-service-item {
@@ -691,6 +692,7 @@ li .nav-href {
     font-weight: normal;
     font-stretch: normal;
     color: #313131;
+    font-family: PingFang-SC-Regular;
 }
 
 .content .team-list {
@@ -734,6 +736,7 @@ li .nav-href {
 
     word-break: break-all;
     word-wrap: break-word;
+    font-family: PingFang-SC-Regular;
 }
 
 .content .detailed {
@@ -769,11 +772,13 @@ li .nav-href {
 
 .detailed-content .detailed-name {
     font-size: .5rem;
+    font-family: PingFang-SC-Bold;
 }
 
 .detailed-content .detailed-position {
     font-size: .3rem;
     margin-bottom: .3rem;
+    font-family: PingFang-SC-Regular;
 }
 
 .detailed-content .detailed-office, .detailed-content .detailed-professional {
@@ -785,6 +790,7 @@ li .nav-href {
     font-size: .26rem;
     line-height: 0.36rem;
     letter-spacing: 0.006rem;
+    font-family: PingFang-SC-Heavy;
 }
 
 
@@ -892,6 +898,7 @@ li .nav-href {
     color: #333333;
     border-bottom: 1px #333333 solid;
     display: inline-block;
+    font-family: PingFang-SC-Regular;
 }
 
 .office-items .item-info {
@@ -901,6 +908,7 @@ li .nav-href {
 
 .item-info div {
     margin: .1rem 0;
+    font-family: PingFang-SC-Regular;
 }
 
 .content .history-items {
@@ -1167,8 +1175,16 @@ ul li .info-text {
     margin-top: .2rem;
 }
 
+.info-text-obligation .obligation-content {
+
+}
+
 .info-text-qualification .qualification-title {
     margin-top: .4rem;
+}
+
+.info-text-qualification .qualification-content {
+
 }
 
 /*尾部*/
