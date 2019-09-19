@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>核心团队</title>
+    <title>team</title>
     <link href="css/style.css?v=1.2" rel="stylesheet"/>
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/yi-scroll.js"></script>
@@ -79,10 +79,16 @@
     </div>
 
     <div class="w-nextbtns">
-        <span class="previous" id="previous"></span>
-        <img class="previous" src="img/left.png"/>
-        <img class="next" src="img/right.png"/>
-        <span class="next" id="next"></span>
+        <div style="display: inline-block;width: 49.5%">
+
+            <img class="previous"  style="float:right;" src="img/left.png"/>
+            <span class="previous" id="previous" style="float:right;color: #999;padding-top: 14px;"></span>
+        </div>
+        <div style="display: inline-block;;width: 49.5%">
+            <img class="next" style="float:left;"  src="img/right.png"/>
+            <span class="next" style="float:left;color: #999;padding-top: 14px;"  id="next"></span>
+         </div>
+
     </div>
 </div>
 <div class="w-bottom">
@@ -155,12 +161,16 @@
         if(data.beforeUserId==0){
             $(".previous").css("cursor", 'not-allowed')
             $("#previous").html("no more")
+            $(".previous").css("display","none");
+            $("#previous").css("display","none");
         }else{
             $("#previous").html(data.beforeUserNameEnglish)
         }
         if(data.afterUserId==0){
-            $(".next").css("cursor", 'not-allowed')
-            $("#next").html("no more")
+            $(".next").css("cursor", 'not-allowed');
+            $("#next").html("no more");
+            $(".next").css("display","none");
+            $("#next").css("display","none");
         }else{
             $("#next").html(data.afterUserNameEnglish)
         }

@@ -12,6 +12,52 @@
         ._scroll{
             position: relative;
         }
+        .w-perspant{
+            font-size: 35px;
+            color: #333;
+            letter-spacing: 2px;
+        }
+        .w-perspanc{
+            font-size: 20px;
+            letter-spacing: 1px;
+            padding-top: 5px;
+        }
+
+        .w-perrtittle {
+            text-align: left;
+            font-size: 16px;
+            padding-left: 35px;
+            margin-left: 20px;
+
+        }
+
+
+        @media screen and (max-width: 1930px) {
+            .w-perrtittle {
+                padding-left: 62px;
+            }
+        }
+        @media screen and (max-width: 1830px) {
+            .w-perrtittle {
+                padding-left: 52px;
+            }
+        }
+        @media screen and (max-width: 1730px) {
+            .w-perrtittle {
+                padding-left: 32px;
+            }
+        }
+        @media screen and (max-width: 1630px) {
+            .w-perrtittle {
+                padding-left: 22px;
+            }
+        }
+        @media screen and (max-width: 1530px) {
+            .w-perrtittle {
+                padding-left: 12px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -78,11 +124,18 @@
         </div>
     </div>
 
+
     <div class="w-nextbtns">
-        <span class="previous" id="previous"></span>
-        <img class="previous" src="img/left.png"/>
-        <img class="next" src="img/right.png"/>
-        <span class="next" id="next"></span>
+        <div style="display: inline-block;width: 49.5%">
+
+            <img class="previous"  style="float:right;" src="img/left.png"/>
+            <span class="previous" id="previous" style="float:right;color: #999;padding-top: 14px;"></span>
+        </div>
+        <div style="display: inline-block;;width: 49.5%">
+            <img class="next" style="float:left;"  src="img/right.png"/>
+            <span class="next" style="float:left;color: #999;padding-top: 14px;"  id="next"></span>
+        </div>
+
     </div>
 </div>
 <div class="w-bottom">
@@ -117,6 +170,8 @@
             $("#fir").hide();
             $("#sec").show();
         })
+
+
 
     })
 
@@ -154,13 +209,17 @@
 
         if(data.beforeUserId==0){
             $(".previous").css("cursor", 'not-allowed')
-            $("#previous").html("没有了")
+            $("#previous").html("no more")
+            $(".previous").css("display","none");
+            $("#previous").css("display","none");
         }else{
             $("#previous").html(data.beforeUserName)
         }
         if(data.afterUserId==0){
-            $(".next").css("cursor", 'not-allowed')
-            $("#next").html("没有了")
+            $(".next").css("cursor", 'not-allowed');
+            $("#next").html("no more");
+            $(".next").css("display","none");
+            $("#next").css("display","none");
         }else{
             $("#next").html(data.afterUserName)
         }

@@ -8,6 +8,17 @@
 	<script src="js/jquery-2.0.3.min.js"></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/main.js?v=1.2"></script>
+	<style>
+		.w-tabcadd{
+			padding-right: 50px;
+		}
+		@media  screen and (max-width: 1300px){
+
+			.w-tabcadd{
+				width: 40%!important;
+			}
+		}
+	</style>
 </head>
 <body>
 <div class="w-head" id="w-head-nav">
@@ -55,7 +66,7 @@
 		<div class="w-contenta" style="display: none;position: relative" onmousemove="test(event)">
 			<div class="w-addimgdetail" id="div1">
 				<span class="w-aidspant" id="a_city"></span>
-				<span id="d_address"></span>
+				<span><b id="d_address"></b></span>
 
 				<span>Tel: <b id="d_tel"></b></span>
 				<span>Fax: <b id="d_fax"></b></span>
@@ -68,7 +79,7 @@
 				<div class="d_mask" data-id="3"></div>
 				<div class="d_mask" data-id="4"></div>
 				<div class="d_mask" data-id="5"></div>
-				<img src="img/cu-01.png" id="imgaddress" class="w-contentaimg"/>
+				<img src="img/office_address.gif" id="imgaddress" class="w-contentaimg"/>
 			</div>
 			<div class="w-contentdiv" id="address">
 			</div>
@@ -233,8 +244,8 @@
         var oDiv=document.getElementById('div1');
         var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
         var scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
-        oDiv.style.left=oEvent.clientX+scrollLeft-140+'px';
-        oDiv.style.top=oEvent.clientY+scrollTop-330+'px';
+        oDiv.style.left=oEvent.clientX+scrollLeft-190+'px';
+        oDiv.style.top=oEvent.clientY+scrollTop-450+'px';
 
     }
 
