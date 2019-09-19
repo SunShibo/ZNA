@@ -1172,19 +1172,28 @@ ul li .info-text {
 }
 
 .info-text-obligation .obligation-title {
-    margin-top: .2rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.26rem;
 }
 
 .info-text-obligation .obligation-content {
+    font-family: PingFang-SC-Regular;
+    font-size: 0.24rem;
+}
 
+.info-text-qualification {
+    margin-bottom: .28rem;
 }
 
 .info-text-qualification .qualification-title {
     margin-top: .4rem;
+    font-family: PingFang-SC-Regular;
+    font-size: 0.26rem;
 }
 
 .info-text-qualification .qualification-content {
-
+    font-family: PingFang-SC-Regular;
+    font-size: 0.24rem;
 }
 
 /*尾部*/
