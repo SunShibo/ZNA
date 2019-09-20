@@ -24,6 +24,8 @@ public class ProjectBO extends BaseModel {
     private String clientEnglish;//
     private String context; //内容
     private String contextEnglish; //内容（英文）
+    private String property;//属性
+    private String propertyEnglish;//属性
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -208,6 +210,22 @@ public class ProjectBO extends BaseModel {
         this.createUserId = createUserId;
     }
 
+    public String getProperty() {
+        return property;
+    }
+
+    public void setProperty(String property) {
+        this.property = property;
+    }
+
+    public String getPropertyEnglish() {
+        return propertyEnglish;
+    }
+
+    public void setPropertyEnglish(String propertyEnglish) {
+        this.propertyEnglish = propertyEnglish;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -240,13 +258,22 @@ public class ProjectBO extends BaseModel {
                 ", projectTypeNameEnglish='" + projectTypeNameEnglish + '\'' +
                 ", title='" + title + '\'' +
                 ", titleEnglish='" + titleEnglish + '\'' +
+                ", type='" + type + '\'' +
                 ", sort=" + sort +
                 ", pictureUrl='" + pictureUrl + '\'' +
                 ", pictureUrlPc='" + pictureUrlPc + '\'' +
                 ", site='" + site + '\'' +
                 ", siteEnglish='" + siteEnglish + '\'' +
+                ", floorSpace='" + floorSpace + '\'' +
+                ", floorSpaceEnglish='" + floorSpaceEnglish + '\'' +
+                ", coveredArea='" + coveredArea + '\'' +
+                ", coveredAreaEnglish='" + coveredAreaEnglish + '\'' +
+                ", client='" + client + '\'' +
+                ", clientEnglish='" + clientEnglish + '\'' +
                 ", context='" + context + '\'' +
                 ", contextEnglish='" + contextEnglish + '\'' +
+                ", property='" + property + '\'' +
+                ", propertyEnglish='" + propertyEnglish + '\'' +
                 ", createUserId=" + createUserId +
                 ", createTime=" + createTime +
                 ", updateUserId=" + updateUserId +

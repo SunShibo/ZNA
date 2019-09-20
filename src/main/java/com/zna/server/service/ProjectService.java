@@ -38,7 +38,7 @@ public class ProjectService {
      * 修改项目
      * @param
      */
-    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String pictureUrlPc,String site,String siteEnglish,String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context,String contextEnglish,Integer updateUserId){
+    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String pictureUrlPc,String site,String siteEnglish,String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context,String contextEnglish,String property,String propertyEnglish,Integer updateUserId){
         ProjectBO projectBO = new ProjectBO();
         projectBO.setId(id);
         projectBO.setProjectTypeName(projectTypeName);
@@ -58,6 +58,8 @@ public class ProjectService {
         projectBO.setClientEnglish(clientEnglish);
         projectBO.setContext(context);
         projectBO.setContextEnglish(contextEnglish);
+        projectBO.setProperty(property);
+        projectBO.setPropertyEnglish(propertyEnglish);
         projectBO.setUpdateUserId(updateUserId);
         projectDAO.updateProject(projectBO);
     }

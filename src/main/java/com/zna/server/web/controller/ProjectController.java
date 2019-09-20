@@ -135,7 +135,7 @@ public class ProjectController extends BaseCotroller {
      * @param response
      */
     @RequestMapping("/updateProject")
-    public void updateProject(Integer id,String projectTypeName, String projectTypeNameEnglish, String title, String titleEnglish, Integer sort, String pictureUrl,String pictureUrlPc, String site, String siteEnglish, String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context, String contextEnglish, HttpServletRequest request, HttpServletResponse response){
+    public void updateProject(Integer id,String projectTypeName, String projectTypeNameEnglish, String title, String titleEnglish, Integer sort, String pictureUrl,String pictureUrlPc, String site, String siteEnglish, String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context, String contextEnglish,String property,String propertyEnglish, HttpServletRequest request, HttpServletResponse response){
         try{
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -155,7 +155,7 @@ public class ProjectController extends BaseCotroller {
                 log.info("result{}",result);
                 return ;
             }
-            projectService.updateProject(id,projectTypeName,projectTypeNameEnglish,title,titleEnglish,sort,pictureUrl,pictureUrlPc,site,siteEnglish,floorSpace,floorSpaceEnglish,coveredArea,coveredAreaEnglish,client,clientEnglish,context,contextEnglish,loginAdmin.getId());
+            projectService.updateProject(id,projectTypeName,projectTypeNameEnglish,title,titleEnglish,sort,pictureUrl,pictureUrlPc,site,siteEnglish,floorSpace,floorSpaceEnglish,coveredArea,coveredAreaEnglish,client,clientEnglish,context,contextEnglish,property,propertyEnglish,loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
