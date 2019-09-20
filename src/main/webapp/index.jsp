@@ -11,6 +11,13 @@
     <title>Index</title>
 </head>
 <body>
+<%--<h1>文件上传111</h1>--%>
+<%--<form method="post" action="/image/uploadImg" enctype="multipart/form-data">--%>
+
+    <%--<input type="file" name="file" />--%>
+    <%--<br/><br/>--%>
+    <%--<input type="submit" value="上传" />--%>
+<%--</form>--%>
 
 </body>
 </html>

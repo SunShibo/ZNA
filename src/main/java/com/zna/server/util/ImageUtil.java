@@ -29,7 +29,17 @@ public class ImageUtil {
             }
         }
         BufferedImage image = new BufferedImage(widthW, heightW,BufferedImage.TYPE_INT_RGB );
-        image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
+        //image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
+        Graphics2D g2d = image.createGraphics();
+        image = g2d.getDeviceConfiguration().createCompatibleImage(widthW,heightW,Transparency.TRANSLUCENT);
+        g2d.dispose();
+
+        g2d = image.createGraphics();
+
+        Image from = img.getScaledInstance(widthW, heightW, img.SCALE_AREA_AVERAGING);
+        g2d.drawImage(from, 0, 0, null);
+        g2d.dispose();
+
         String result = "";
         String name = file.getOriginalFilename();
         name = name.replace(".", ",");
@@ -61,7 +71,18 @@ public class ImageUtil {
             }
         }
         BufferedImage image = new BufferedImage(widthW, heightW,BufferedImage.TYPE_INT_RGB );
-        image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
+        //image.getGraphics().drawImage(img, 0, 0, widthW, heightW, null); // 绘制缩小后的图
+        Graphics2D g2d = image.createGraphics();
+        image = g2d.getDeviceConfiguration().createCompatibleImage(widthW,heightW,Transparency.TRANSLUCENT);
+        g2d.dispose();
+
+        g2d = image.createGraphics();
+
+        Image from = img.getScaledInstance(widthW, heightW, img.SCALE_AREA_AVERAGING);
+        g2d.drawImage(from, 0, 0, null);
+        g2d.dispose();
+
+
         String result = "";
         String name = file.getOriginalFilename();
         name = name.replace(".", ",");
