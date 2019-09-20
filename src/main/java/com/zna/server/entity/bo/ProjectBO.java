@@ -14,6 +14,8 @@ public class ProjectBO extends BaseModel {
     private Integer sort; //序号
     private String pictureUrl; //图片url
     private String pictureUrlPc; //图片url
+    private String thumbnail; //缩略图
+    private String thumbnailPc; //缩略图
     private String site; //地点
     private String siteEnglish; //地点（英文）
     private String floorSpace;//场地面积
@@ -33,6 +35,22 @@ public class ProjectBO extends BaseModel {
 
     private Integer beforeProjectId;//前一个核心团队id
     private Integer afterProjectId;//后一个核心团队id
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public String getThumbnailPc() {
+        return thumbnailPc;
+    }
+
+    public void setThumbnailPc(String thumbnailPc) {
+        this.thumbnailPc = thumbnailPc;
+    }
 
     public String getFloorSpace() {
         return floorSpace;

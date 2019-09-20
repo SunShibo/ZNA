@@ -7,12 +7,12 @@
 
     <!--新增项目-->
     <insert id="addProject" parameterType="com.zna.server.entity.bo.ProjectBO">
-        INSERT INTO `zna_project` ( `project_type_name`, `project_type_name_english`, `title`, `title_english`, `type`,`sort`, `picture_url`,`picture_url_pc`, `site`, `site_english`, `floor_space`,`floor_space_english`,`covered_area`,`covered_area_english`,`client`,`client_english`,`context`, `context_english`,
+        INSERT INTO `zna_project` ( `project_type_name`, `project_type_name_english`, `title`, `title_english`, `type`,`sort`, `picture_url`,`picture_url_pc`,`thumbnail`,`thumbnail_pc`, `site`, `site_english`, `floor_space`,`floor_space_english`,`covered_area`,`covered_area_english`,`client`,`client_english`,`context`, `context_english`,
         `property` ,`property_english`,`create_user_id`, `create_time`)
         VALUES
         <!--<foreach collection="pictureUrlArr" item="pictureUrl" separator=",">-->
         (#{projectTypeName},#{projectTypeNameEnglish},#{title},#{titleEnglish},
-        #{type},#{sort},#{pictureUrl},#{pictureUrlPc},#{site},#{siteEnglish},#{floorSpace},#{floorSpaceEnglish},#{coveredArea},#{coveredAreaEnglish},#{client},#{clientEnglish},#{context},#{contextEnglish},
+        #{type},#{sort},#{pictureUrl},#{pictureUrlPc},#{thumbnail},#{thumbnailPc},#{site},#{siteEnglish},#{floorSpace},#{floorSpaceEnglish},#{coveredArea},#{coveredAreaEnglish},#{client},#{clientEnglish},#{context},#{contextEnglish},
         #{property},#{propertyEnglish},
         #{createUserId},NOW())
         <!--</foreach>-->
@@ -31,6 +31,8 @@
         <if test="sort!=null and sort!=''">`sort`=#{sort},</if>
         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
         <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
+        <if test="thumbnail!=null and thumbnail!=''">`thumbnail`=#{thumbnail},</if>
+        <if test="thumbnailPc!=null and thumbnailPc!=''">`thumbnail_pc`=#{thumbnailPc},</if>
         <if test="site!=null and site!=''">`site`=#{site},</if>
         <if test="siteEnglish!=null and siteEnglish!=''">`site_english`=#{siteEnglish},</if>
         <if test="floorSpace!=null and floorSpace!=''">`floor_space`=#{floorSpace},</if>

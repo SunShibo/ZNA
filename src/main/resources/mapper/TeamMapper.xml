@@ -35,8 +35,9 @@
             <result column="pictureUrlPc" property="projectPicturePc"/>
         </collection>
     </resultMap>
+    <!--查询人员参与的项目 项目缩略图-->
     <select id="getTeamBOS" resultMap="teamMap">
-        SELECT te.*,pr.id AS projectId,pr.picture_url AS pictureUrl,pr.picture_url_pc AS pictureUrlPc
+        SELECT te.*,pr.id AS projectId,pr.thumbnail AS pictureUrl,pr.thumbnail_pc AS pictureUrlPc
         FROM (
         (SELECT * from zna_team order by sort ASC
         <if test="pageOffset!=null and pageSize!=null">
