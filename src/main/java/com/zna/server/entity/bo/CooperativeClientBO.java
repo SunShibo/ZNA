@@ -8,6 +8,7 @@ public class CooperativeClientBO extends BaseModel {
     private Integer id; //合作客户
     private String pictureUrl; //图片地址
     private String pictureUrlPc; //图片地址
+    private Integer sort;
     private Integer createUserId; //创建人
     private Date createTime; //创建时间
     private Integer updateUserId; //修改人
@@ -35,6 +36,14 @@ public class CooperativeClientBO extends BaseModel {
 
     public void setPictureUrlPc(String pictureUrlPc) {
         this.pictureUrlPc = pictureUrlPc;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
     }
 
     public Integer getCreateUserId() {

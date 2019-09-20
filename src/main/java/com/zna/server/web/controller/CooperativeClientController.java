@@ -34,7 +34,7 @@ public class CooperativeClientController extends BaseCotroller{
      * @param response
      */
     @RequestMapping("/addCooperativeClient")
-    public void addCooperativeClient(String pictureUrl,String pictureUrlPc,HttpServletRequest request, HttpServletResponse response){
+    public void addCooperativeClient(String pictureUrl,String pictureUrlPc,Integer sort,HttpServletRequest request, HttpServletResponse response){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -54,7 +54,7 @@ public class CooperativeClientController extends BaseCotroller{
                 log.info("result{}",result);
                 return ;
             }
-            cooperativeClientService.addCooperativeClient(pictureUrl,pictureUrlPc,loginAdmin.getId());
+            cooperativeClientService.addCooperativeClient(pictureUrl,pictureUrlPc,sort,loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("添加成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);
@@ -118,7 +118,7 @@ public class CooperativeClientController extends BaseCotroller{
      * @param pictureUrl
      */
     @RequestMapping("/updateCooperativeClient")
-    public void updateCooperativeClient(HttpServletRequest request, HttpServletResponse response,Integer id,String pictureUrl,String pictureUrlPc){
+    public void updateCooperativeClient(HttpServletRequest request, HttpServletResponse response,Integer id,String pictureUrl,String pictureUrlPc,Integer sort){
         try {
             log.info(request.getRequestURI());
             log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
@@ -132,13 +132,13 @@ public class CooperativeClientController extends BaseCotroller{
                 return;
             }
             //验证参数
-            if ((StringUtils.isEmpty(pictureUrl)&&StringUtils.isEmpty(pictureUrlPc))||id==null){
+            if (id==null){
                 String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
                 super.safeJsonPrint(response, result);
                 log.info("result{}",result);
                 return ;
             }
-            cooperativeClientService.updateCooperativeClient(id,pictureUrl,pictureUrlPc,loginAdmin.getId());
+            cooperativeClientService.updateCooperativeClient(id,pictureUrl,pictureUrlPc,sort,loginAdmin.getId());
             String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success("修改成功！"));
             super.safeJsonPrint(response, result);
             log.info("result{}",result);

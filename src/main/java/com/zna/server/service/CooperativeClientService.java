@@ -22,10 +22,11 @@ public class CooperativeClientService {
      * @param pictureUrl
      * @param createUserId
      */
-    public void addCooperativeClient(String pictureUrl,String pictureUrlPc,Integer createUserId){
+    public void addCooperativeClient(String pictureUrl,String pictureUrlPc,Integer sort,Integer createUserId){
         CooperativeClientBO cooperativeClientBO = new CooperativeClientBO();
         cooperativeClientBO.setPictureUrl(pictureUrl);
         cooperativeClientBO.setPictureUrlPc(pictureUrlPc);
+        cooperativeClientBO.setSort(sort);
         cooperativeClientBO.setCreateUserId(createUserId);
         cooperativeClientDAO.addCooperativeClient(cooperativeClientBO);
    }
@@ -44,11 +45,12 @@ public class CooperativeClientService {
      * @param pictureUrl
      * @param updateUserId
      */
-    public void updateCooperativeClient(Integer id,String pictureUrl,String pictureUrlPc,Integer updateUserId){
+    public void updateCooperativeClient(Integer id,String pictureUrl,String pictureUrlPc,Integer sort,Integer updateUserId){
         CooperativeClientBO cooperativeClientBO = new CooperativeClientBO();
         cooperativeClientBO.setId(id);
         cooperativeClientBO.setPictureUrl(pictureUrl);
         cooperativeClientBO.setPictureUrlPc(pictureUrlPc);
+        cooperativeClientBO.setSort(sort);
         cooperativeClientBO.setUpdateUserId(updateUserId);
         cooperativeClientDAO.updateCooperativeClient(cooperativeClientBO);
     }
