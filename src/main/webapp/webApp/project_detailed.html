@@ -151,7 +151,7 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
 <script>
@@ -246,7 +246,7 @@
             }
         });
 
-        $('#info').on('click', function (e) {
+        $('#info').on('touchend', function (e) {
             $('.detailed-content').slideToggle(500, function (e) {
                 infoState = !infoState;
                 if (infoState) {

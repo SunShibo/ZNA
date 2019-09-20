@@ -112,9 +112,9 @@
             </div>
         </div>
         <div class="detailed-content">
-            <div class="detailed-name"></div>
-            <div class="detailed-position"></div>
-            <div class="detailed-info"></div>
+            <div class="detailed-name font_family_bold"></div>
+            <div class="detailed-position font_family_regular"></div>
+            <div class="detailed-info font_family_regular"></div>
             <div class="detailed-office">
                 <div class="detailed-content-title"></div>
                 <div class="education"></div>
@@ -180,7 +180,7 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
 <script>
@@ -248,7 +248,7 @@
                 data: {id: $.getUrl('id')},
                 success: function (r) {
                     data = r.data.teamBO;
-                    $('.detailedImage').prop('src', r.data.teamBO.headPortrait);
+                    $('.detailedImage').prop('src', $.baseUrl() + r.data.teamBO.headPortrait);
                     setting(lang);
 
                     var projectArr = [];
@@ -257,7 +257,7 @@
                         if (!!r.data.teamBO.projectPicture[i]) {
                             var id = r.data.teamBO.projectPicture[i].id;
                             var imageUrl = JSON.parse(r.data.teamBO.projectPicture[i].projectPicture)[0];
-                            projectArr.push('<li><a href="project_detailed.html?id=' + id + '"><img src="' + imageUrl + '" alt="" width="100%" height="100%"></a></li>')
+                            projectArr.push('<li><a href="project_detailed.html?id=' + id + '"><img src="' + $.baseUrl() + imageUrl + '" alt="" width="100%" height="100%"></a></li>')
                         }
                     }
 

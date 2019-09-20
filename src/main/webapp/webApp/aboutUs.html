@@ -165,7 +165,7 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="swiper/js/swiper.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
@@ -229,9 +229,9 @@
 
                 aboutBanner.push([' <div class="swiper-slide">',
                     '<div class="about-banner">',
-                    '<img src="' + "http://39.96.173.228:8080" + data[i].pictureUrl + '" alt="" width="100%" height="100%">',
+                    '<img src="' + $.baseUrl() + data[i].pictureUrl + '" alt="" width="100%" height="100%">',
                     '<div class="banner-item-content">',
-                    '<div class="banner-item-title">', $.getLang() ? data[i].titleEnglish : data[i].title, '</div>',
+                    '<div class="banner-item-title font_family_heavy">', $.getLang() ? data[i].titleEnglish : data[i].title, '</div>',
                     '<div class="banner-item-text">', $.getLang() ? data[i].contextEnglish : data[i].context, '</div>',
                     '</div>',
                     '</div>',

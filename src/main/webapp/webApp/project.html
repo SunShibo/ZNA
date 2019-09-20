@@ -116,7 +116,7 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
 <script>
@@ -150,7 +150,7 @@
                         domArr.push('<div class="items">',
                             '<img src="' + dataImageUrl + '" alt="" width="100%" height="100%">',
                             '<input type="hidden" value="', data[i].id, '"/>',
-                            '<div class="item-title project-title">', lang ? data[i].titleEnglish : data[i].title, '</div>',
+                            '<div class="item-title project-title font_family_medium">', lang ? data[i].titleEnglish : data[i].title, '</div>',
                             '</div>')
                     }
                     $('.info').append(domArr.join(''));
@@ -167,21 +167,21 @@
             $('#next').text(lang? 'Show More Results +':'加载更多 +')
         }
 
-        $(document).on('click', '.items', function (e) {
+        $(document).on('touchend', '.items', function (e) {
             var lang = $.getLang() ? 'en' : 'cn';
             location.href = 'project_detailed.html?language=' + lang + '&id=' + $(this).children('input').val();
         });
 
 
         //加载更多
-        $('#next').on('click', function () {
+        $('#next').on('touchend', function () {
             var lang = $.getLang();//获取语言
+            current++;
             if (Math.ceil(count / limit) < current) {
                 lang ? $(this).text('NO MORE') : $(this).text('暂无更多');
-                $(this).off('click');
+                $(this).off('touchend');
                 return;
             }
-            current++;
             init(lang);//记载数据
         });
     })(window, jQuery);

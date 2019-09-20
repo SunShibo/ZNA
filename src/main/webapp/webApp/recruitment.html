@@ -87,12 +87,12 @@
             <div class="recruitment-image">
                 <img src="" id="recruitmentImage" alt="" width="100%" height="100%">
                 <div class="image-content">
-                    <div class="image-content-title"></div>
+                    <div class="image-content-title font_family_bold"></div>
                     <div class="image-content-text"></div>
                 </div>
             </div>
             <div class="recruitment-introduction">
-                <div class="main-content">
+                <div class="main-content font_family_bold">
                 </div>
                 <div class="main-career">
                     <div class="career-title"></div>
@@ -131,7 +131,7 @@
         </div>
     </div>
 </div>
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
 <script>
@@ -214,7 +214,7 @@
             })
         }
 
-        $(document).on('click', '.career-info li', function () {
+        $(document).on('touchend', '.career-info li', function () {
             var flag = $(this).data('flag') === 'true';
             $(this).data('flag', !flag + '');
             if (!flag) {

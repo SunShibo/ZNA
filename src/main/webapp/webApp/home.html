@@ -96,49 +96,48 @@
 
         <!--关于我们-->
         <div class="home-about home-item">
-            <div class="about-text">
-                <!--id="homeAboutTitle"-->
-                <div class="about-title" id="title0"></div>
+            <div class="about-text href_items" data-url="aboutUs">
+                <div class="about-title font_family_bold" id="title0"></div>
                 <div class="about-content-test">
                     <p id="context0"></p>
                 </div>
-                <a href="aboutUs.html" class="home-href about-a" style="color: #666666;"></a>
+                <a class="home-href about-a" style="color: #666666;"></a>
             </div>
         </div>
 
         <!--经典项目-->
         <div class="home-items home-project">
-            <div class="items-content">
-                <div class="titles" id="title1"></div>
+            <div class="items-content href_items" data-url="project_classification">
+                <div class="titles font_family_bold" id="title1"></div>
                 <div class="contents" id="context1"></div>
-                <a href="project_classification.html" class="home-href" style="color: #fefefe;">more &gt;</a>
+                <a class="home-href" style="color: #fefefe;">more &gt;</a>
             </div>
         </div>
 
         <!--核心团队-->
         <div class="home-items home-team">
-            <div class="items-content">
-                <div class="titles" id="title2"></div>
+            <div class="items-content href_items" data-url="team">
+                <div class="titles font_family_bold" id="title2"></div>
                 <div class="contents" id="context2"></div>
-                <a href="team.html" class="home-href" style="color: #fefefe;"></a>
+                <a class="home-href" style="color: #fefefe;"></a>
             </div>
         </div>
 
         <!--最新动态-->
         <div class="home-items home-news">
-            <div class="items-content">
-                <div class="titles" id="title3"></div>
+            <div class="items-content href_items" data-url="news">
+                <div class="titles font_family_bold" id="title3"></div>
                 <div class="contents" id="context3"></div>
-                <a href="news.html" class="home-href" style="color: #fefefe;"></a>
+                <a class="home-href" style="color: #fefefe;"></a>
             </div>
         </div>
 
         <!--联系我们-->
         <div class="home-items home-understand">
-            <div class="items-content">
-                <div class="titles" id="title4"></div>
+            <div class="items-content href_items" data-url="office">
+                <div class="titles font_family_bold" id="title4"></div>
                 <div class="contents" id="context4"></div>
-                <a href="office.html" class="home-href" style="color: #fefefe;"></a>
+                <a class="home-href" style="color: #fefefe;"></a>
             </div>
         </div>
     </div>
@@ -169,7 +168,7 @@
     </div>
 </div>
 
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.1.min.js"></script>
 <script src="swiper/js/swiper.min.js"></script>
 <script src="js/rem.js"></script>
 <script src="js/index.js"></script>
@@ -184,15 +183,6 @@
             if (data.length) {
                 setting(lang)
             } else {
-                var dom = $('.items-content');
-                var langStr = lang ? 'en' : 'cn';
-                for (var i = 0, len = dom.length; i < len; i++) {
-                    var thisDom = dom.eq(i).children('a'), hrefUrl = thisDom.attr('href');
-                    if (hrefUrl.indexOf('?') === -1) {
-                        thisDom.attr('href', hrefUrl + '?language=' + langStr);
-                    }
-                }
-
                 $.ajax({
                     url: '/index/getIndex',
                     type: 'POST',
@@ -206,11 +196,11 @@
                         homeBanner(r.data.bannerBOS);
                         //不需要中英文切换的图片类和文本类数据直接加载
                         //关于我们信息的图片
-                        $('.home-about').css('background-image', 'url(' + "http://39.96.173.228:8080" + data[0].pictureUrl + ')');
-                        $('.home-project').css('background-image', 'url(' +"http://39.96.173.228:8080" +  data[1].pictureUrl + ')');
-                        $('.home-team').css('background-image', 'url(' + "http://39.96.173.228:8080" + data[2].pictureUrl + ')');
-                        $('.home-news').css('background-image', 'url(' +"http://39.96.173.228:8080" +  data[3].pictureUrl + ')');
-                        $('.home-understand').css('background-image', 'url(' +"http://39.96.173.228:8080" +  data[4].pictureUrl + ')');
+                        $('.home-about').css('background-image', 'url(' + $.baseUrl() + data[0].pictureUrl + ')');
+                        $('.home-project').css('background-image', 'url(' + $.baseUrl() + data[1].pictureUrl + ')');
+                        $('.home-team').css('background-image', 'url(' + $.baseUrl() + data[2].pictureUrl + ')');
+                        $('.home-news').css('background-image', 'url(' + $.baseUrl() + data[3].pictureUrl + ')');
+                        $('.home-understand').css('background-image', 'url(' + $.baseUrl() + data[4].pictureUrl + ')');
 
                         $.footData(r.data.contactWayBO);
 
@@ -231,7 +221,7 @@
                     //根据中英文，判断获取的数据字段
                     var keyName = lang ? item + 'English' : item;
                     if (i === 0 && item === 'context') {
-                        var str = data[i][keyName].toString().substr(0, lang ? 210 : 95) + '......';
+                        var str = data[i][keyName].toString().substr(0, lang ? 200 : 95) + '......';
                         if (!!data[i][keyName]) $('#' + item + i).html(str);
                     } else {
                         if (!!data[i][keyName]) $('#' + item + i).html(data[i][keyName]);
@@ -248,7 +238,7 @@
             var bannerArr = [];
             //添加数据
             for (var i = 0, len = data.length; i < len; i++) {
-                bannerArr.push('<div class="swiper-slide" data-zid="', data.skipId, '">' +
+                bannerArr.push('<div class="swiper-slide" data-zid="', data[i].skipId, '">' +
                     '<div class="home-item-image">' +
                     '<div class="home-item-image-wrapper" style="background-image:url(' + "http://39.96.173.228:8080" + data[i].pictureUrl + ');">' +
                     '</div>' +
@@ -273,9 +263,14 @@
             });
         }
 
+        $(document).on('touchend', '.href_items', function (ev) {
+            var url = $(this).data('url');
+            location.href = url + ".html?language=" + $.getLangStr();
+        });
+
 
         //banner跳转
-        $('#home-banner').on('click', '.swiper-slide', function (e) {
+        $('#home-banner').on('touchend', '.swiper-slide', function (e) {
             var id = $(this).data('zid');
             location.href = 'project_detailed.html?id=' + id;
         });

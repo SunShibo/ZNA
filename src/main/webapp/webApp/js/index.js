@@ -1,6 +1,5 @@
 (function (window, $) {
 
-
     var lang = false, langDom = $('#language'), navDom = $('#nav, #closeMenu'),
         m = false, s = false, closeDom = $('#closeMenu'), openDom = $('.menu, .search, .language');
 
@@ -44,16 +43,16 @@
 
         //跳转
         var clientWidth = document.body.clientWidth;
-        if(clientWidth > 850){
+        if (clientWidth > 850) {
             $.checkPlatform();
         }
 
         //获取语言类型
         lang = $.getLang();
-        if(lang){
+        if (lang) {
             langDom.text('中');
             $('.logo').removeClass('ch_logo_w').addClass('en_logo_w');
-        }else{
+        } else {
             langDom.text('EN');
             $('.logo').removeClass('en_logo_w').addClass('ch_logo_w');
         }
@@ -61,16 +60,15 @@
         //LOGO
         setLogo(lang);
 
-        //延迟500ms加载数据
-        setTimeout(function () {
-            if (location.href.indexOf('?') === -1) {
-                location.href = location.href + "?language=" + $.getLangStr();
-            }
-            //设置菜单
-            settingMenu(lang);
-            //执行回调
-            window.switch_language(lang);
-        }, 500)
+
+
+        if (location.href.indexOf('?') === -1) {
+            location.href = location.href + "?language=" + $.getLangStr();
+        }
+        //设置菜单
+        settingMenu(lang);
+        //执行回调
+        window.switch_language(lang);
     });
 
     //按语言设置菜单
@@ -108,28 +106,26 @@
 
 
     //设置语音
-    langDom.on('click', function (e) {
+    langDom.on('touchend', function (e) {
         //更改当前页面的语言变量
         lang = !lang;
-
         //设置logo
         setLogo(lang);
-
 
 
         //保存语言类型
         localStorage.setItem('EN_LANG', lang ? 'EN_US' : 'EN_CH');
         //更新菜单
-        settingMenu($.getLang());
-        if(lang){
+        settingMenu(lang);
+        if (lang) {
             langDom.text('中');
             $('.logo').removeClass('ch_logo_w').addClass('en_logo_w');
-        }else{
+        } else {
             langDom.text('EN');
             $('.logo').removeClass('en_logo_w').addClass('ch_logo_w');
         }
         //触发并更新回调参数
-        window.switch_language($.getLang());
+        window.switch_language(lang);
     });
 
     //根据语言设置logo
@@ -140,12 +136,12 @@
     }
 
     //菜单显示
-    $('#clickMenu').on('click', function () {
+    $('#clickMenu').on('touchend', function () {
         menuState(m);
     });
 
     //菜单蒙层和关闭按钮
-    navDom.on('click', function (e) {
+    navDom.on('touchend', function (e) {
         var ev = ev || window.event;
         var target = ev.target || ev.srcElement;
         //防止点击菜单也关闭，只有点击最外层的div#nav的时候才关闭
@@ -159,7 +155,7 @@
     });
 
     //搜索
-    $('#clickSearch').on('click', function (e) {
+    $('#clickSearch').on('touchend', function (e) {
         searchState(s);
     });
 
@@ -220,7 +216,7 @@
     }
 
     //一级菜单的事件委托
-    $('.nav-ul li').on('click', function (e) {
+    $('.nav-ul li').on('touchend', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement, that = $(this);
         switch (target.id) {
             case 'about':
@@ -242,7 +238,7 @@
     });
 
     //搜索页面导航
-    $('.list').on('click', function (ev) {
+    $('.list').on('touchend', function (ev) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         var search = $('#keyword').val();
         switch (target.id) {
@@ -256,7 +252,7 @@
     });
 
     //底部跳转链接
-    $('.icon-list').on('click', function (ev) {
+    $('.icon-list').on('touchend', function (ev) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         switch (target.id) {
             case 'toMicroblog':
@@ -272,7 +268,7 @@
         }
     });
 
-    $('#icon_wechat').on('click', function (e) {
+    $('#icon_wechat').on('touchend', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         if (target.id === 'icon_wechat') {
             $('#icon_wechat').hide();
@@ -284,23 +280,26 @@
     $(window).resize(function (ev) {
         $('.home-item-image>div').removeClass('home-item-image-wrapper').addClass('home-item-image-wrapper');
         var clientWidth = document.body.clientWidth;
-        if(clientWidth > 850 && !(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))){
+        if (clientWidth > 850 && !(/android/i.test(navigator.userAgent) || /(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent))) {
             $.checkPlatform();
         }
     });
 
     //扩展jquery方法
     $.extend({
+        baseUrl: function () {
+            return 'http://39.96.173.228:8080';
+        },
+        //设置尾部数据
         footData: function (data) {
             for (var item in data) {
                 $('#' + item).text(data[item]);
             }
         },
+        //向外抛出lang属性
         getLang: function () {
-            //页面初始时候的加载项
             lang = localStorage.getItem('EN_LANG') === 'EN_US';
-            //如何localStorage中没有数据则获取地址栏中的语言类型
-            if (lang === 'undefined' || lang === null || lang === '') {
+            if (!lang) {
                 lang = $.getUrl('language') === 'en';
             }
             return lang;
@@ -320,35 +319,24 @@
             }
         },
         // 添加 或者 修改 url中参数的值
-        UpdateUrlParam: function (name, val) {
-            var thisURL = document.location.href;
-
-            // 如果 url中包含这个参数 则修改
-            if (thisURL.indexOf(name + '=') > 0) {
-                var v = getUrlParam(name);
-                if (v != null) {
-                    // 是否包含参数
-                    thisURL = thisURL.replace(name + '=' + v, name + '=' + val);
-
-                }
-                else {
-                    thisURL = thisURL.replace(name + '=', name + '=' + val);
-                }
-
-            } // 不包含这个参数 则添加
-            else {
-                if (thisURL.indexOf("?") > 0) {
-                    thisURL = thisURL + "&" + name + "=" + val;
-                }
-                else {
-                    thisURL = thisURL + "?" + name + "=" + val;
+        changeURLArg: function (url, arg, arg_val) {
+            var pattern = arg + '=([^&]*)';
+            var replaceText = arg + '=' + arg_val;
+            if (url.match(pattern)) {
+                var tmp = '/(' + arg + '=)([^&]*)/gi';
+                tmp = url.replace(eval(tmp), replaceText);
+                return tmp;
+            } else {
+                if (url.match('[\?]')) {
+                    return url + '&' + replaceText;
+                } else {
+                    return url + '?' + replaceText;
                 }
             }
-            location.href = thisURL;
-
+            return url + '\n' + arg + '\n' + arg_val;
         },
         getLangStr: function () {
-            return $.getLang() ? 'en' : 'cn';
+            return lang ? 'en' : 'cn';
         },
 
         //判断是否手机端
@@ -377,13 +365,13 @@
                         strUrl = 'dynamic' + strUrl;
                         break;
                     case 'office':
-                        strUrl = 'zp' + strUrl;
+                        strUrl = 'office' + strUrl;
                         break;
                     case 'project':
-                        strUrl = 'project' + strUrl;
+                        strUrl = 'projectType' + strUrl;
                         break;
                     case 'project_classification':
-                        strUrl = 'projectType' + strUrl;
+                        strUrl = 'project' + strUrl;
                         break;
                     case 'project_detailed':
                         strUrl = 'projectDetail' + strUrl;
