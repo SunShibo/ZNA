@@ -13,7 +13,7 @@
 
 
     <style>
-        @media screen and (max-width: 1200px ){
+        @media screen and (max-width: 1200px ) {
             .item {
                 width: 45%;
             }
@@ -30,67 +30,88 @@
             justify-content: start;
 
         }
+
+        html, body {
+            height: 100%;
+        }
+
+        #container {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        .main {
+            padding-bottom: 91px;
+        }
     </style>
 </head>
 <body>
-<div class="w-head cn">
-    <div data-id="home_cn" class="nav-span loginPoint cn"></div>
-    <div class="w-lang">
-        <span class="w-langc active">中文</span>
-        <span class="w-c">EN</span>
-    </div>
-    <div class="w-tabtle">
-        <div class="w-tableindexsearch">
-            <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-            <img class="w-isimgsearch" src="img/uc-06.png">
-            <img class="w-isimgclose" src="img/sy-08.png">
+<div id="container">
+    <div class="main">
+        <div class="head-wp">
+            <div class="w-head cn">
+                <div data-id="home_cn" class="nav-span loginPoint cn"></div>
+                <div class="w-lang">
+                    <span class="w-langc active">中文</span>
+                    <span class="w-c">EN</span>
+                </div>
+                <div class="w-tabtle">
+                    <div class="w-tableindexsearch">
+                        <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+                        <img class="w-isimgsearch" src="img/uc-06.png">
+                        <img class="w-isimgclose" src="img/sy-08.png">
+                    </div>
+                    <img class="w-tabtleimg" src="img/uc-06.png"/>
+                </div>
+            </div>
+            <div class="ss-wp">
+                <a class="ss " id="news_search">新闻</a>
+                <a class="ss active" id="project_search">项目</a>
+            </div>
         </div>
-        <img class="w-tabtleimg" src="img/uc-06.png"/>
-    </div>
-</div>
-<div class="ss-wp">
-    <a class="ss " id="news_search">新闻</a>
-    <a class="ss active" id="project_search">项目</a>
-</div>
-<div class="w-content">
-    <div style="height: 50px;"></div>
-    <div class="w-tabcontent">
-        <div id="projectItem">
+        <div class="w-content body-wp">
+            <div style="height: 50px;"></div>
+            <div class="w-tabcontent">
+                <div id="projectItem">
 
 
+                </div>
+                <div class="w-cpcdeatailist hide" id="moreWp">
+                    <ul class="w-cpculfir">
+                        <li>项目</li>
+                        <li>面积</li>
+                        <li>客户</li>
+                    </ul>
+                    <div id="showMore">
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="w-cpcdeatailist hide" id="moreWp">
-            <ul class="w-cpculfir">
-                <li>项目</li>
-                <li>面积</li>
-                <li>客户</li>
-            </ul>
-            <div id="showMore">
+        <div style="height: 50px;"></div>
+    </div>
+</div>
+<div style="margin-top: -91px;">
+    <div class="w-bottom">
+        <div class="w-botleft">
+            <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
+            <span id="beian">沪ICP备案号17050193</span>
+        </div>
+        <div class="w-botright">
+            <div>
+
+                <img id="weibo" src="img/uc-03.png"/>
+                <img id="inlink" src="img/uc-04.png"/>
+                <div class="code-wp">
+                    <img class="code-img" src="img/erweima.png">
+                    <img id="code-img" src="img/uc-05.png"/>
+                </div>
 
             </div>
         </div>
 
     </div>
-</div>
-<div style="height: 50px;"></div>
-<div class="w-bottom">
-    <div class="w-botleft">
-        <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
-        <span id="beian">沪ICP备案号17050193</span>
-    </div>
-    <div class="w-botright">
-        <div>
-
-            <img id="weibo" src="img/uc-03.png"/>
-            <img id="inlink" src="img/uc-04.png"/>
-            <div class="code-wp">
-                <img class="code-img" src="img/erweima.png">
-                <img id="code-img" src="img/uc-05.png"/>
-            </div>
-
-        </div>
-    </div>
-
 </div>
 <script>
     $(function () {
@@ -113,22 +134,10 @@
                 } catch (e) {
                 }
 
-                // pStr += ['<div class="item goDetail" data-type="', data[i]['type'], '" data-id="', data[i]['id'], '">',
-                //     '<div class="box horizaCenter verticalCenter">',
-                //     '<div class="inp">',
-                //     '<img src="',imgstr,'" width="100%" height="100%">',
-                //     '<div class="inp-mask">',
-                //     data[i].title,
-                //     '</div>',
-                //     '</div>',
-                //     '</div>',
-                //     '</div>'].join("")
-
-
                 pStr += ['<div class="item goDetail" data-type="', data[i]['type'], '" data-id="', data[i]['id'], '">',
                     '<div class="box horizaCenter verticalCenter">',
                     '<div class="inp inss">',
-                    '<img src="',imgstr,'" width="100%" height="100%">',
+                    '<img src="', imgstr, '" width="100%" height="100%">',
                     '<div class="inp-masks"><p class="masks-p">',
                     data[i].title,
                     '</p></div>',

@@ -61,19 +61,19 @@
 </div>
 <div class="w-content body-wp">
 	<div class="w-tabnav">
-		<a id="navfir">OFFICE</a>
-		<a id="navsec" class="w-tabnavaed">CAREER</a>
+		<a id="navfir" class="w-tabnavaed">OFFICE</a>
+		<a id="navsec">CAREER</a>
 
 	</div>
 	<div class="w-tabcontent">
-		<div class="w-contenta" style="display: none;position: relative" onmousemove="test(event)">
+		<div class="w-contenta" style="position: relative" onmousemove="test(event)">
 			<div class="w-addimgdetail" id="div1">
 				<span class="w-aidspant" id="a_city"></span>
 				<span><b id="d_address"></b></span>
 
-				<span>Tel: <b id="d_tel"></b></span>
-				<span>Fax: <b id="d_fax"></b></span>
-				<span>E:   <b id="d_e"></b></span>
+				<span id="d_tel_">Tel: <b id="d_tel"></b></span>
+				<span id="d_fax_">Fax: <b id="d_fax"></b></span>
+				<span id="d_e_">E:   <b id="d_e"></b></span>
 			</div>
 			<div style="position: relative">
 				<div class="d_mask" data-id="0"></div>
@@ -87,7 +87,7 @@
 			<div class="w-contentdiv" id="address">
 			</div>
 		</div>
-		<div class="w-contentb">
+		<div class="w-contentb" style="display: none;">
 			<div class="w-contentbimg" id="pictureUrl">
 				<div style="height: 500px;"></div>
 				<div class="w-contentbimgdiv">
@@ -151,10 +151,10 @@
         $("#imgaddress").mouseout(function(){
             // $(".w-addimgdetail").hide();
         })
-        $("#navfir").on("click",function () {
-            window.location.href = "office_en.html"
-        })
 
+		$("#navsec").on("click",function () {
+			window.location.href = "zp_en.html"
+		})
     })
     $.getJSON("/personnelRecruitment/getPersonnelRecruitment?r="+Date.now(),function (rs) {
         renderFloor(rs.data.contactWayBO);
@@ -261,6 +261,13 @@
         document.getElementById("d_tel").textContent = offices[id]['mobile'];
         document.getElementById("d_fax").textContent = offices[id]['faxNO'];
         document.getElementById("d_e").textContent = offices[id]['email'];
+        if(offices[id]['faxNO']==''){
+            document.getElementById("d_fax_").style.display = 'none';
+		}else if(offices[id]['email_']==''){
+            document.getElementById("d_e").style.display = 'none';
+		}else if(offices[id]['mobile_']==''){
+            document.getElementById("d_tel").style.display = 'none';
+        }
     },function () {
         document.getElementById('div1').style.display = 'none';
     })

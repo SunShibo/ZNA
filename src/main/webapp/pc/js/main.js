@@ -54,6 +54,8 @@ $(function () {
         href = href.replace("/projectType_cn.html","/project.html")
         href = href.replace("/zp_en.html","/recruitment.html")
         href = href.replace("/zp_cn.html","/recruitment.html")
+        href = href.replace("/office_en.html","/office.html")
+        href = href.replace("/office_cn.html","/office.html")
         href = href.replace("/memberDetail_en.html","/team_detailed.html")
         href = href.replace("/memberDetail_cn.html","/team_detailed.html")
 
@@ -213,6 +215,12 @@ $(function () {
         else if(id=="zp_en"){
             location.href = "zp_en.html"
         }
+        else if(id=="office_cn"){
+            location.href = "office_cn.html"
+        }
+        else if(id=="office_en"){
+            location.href = "office_en.html"
+        }
     });
     
     
@@ -301,7 +309,7 @@ function getUrl(variable)
             strUrl = 'dynamic' + strUrl;
             break;
         case 'office':
-            strUrl = 'zp' + strUrl;
+            strUrl = 'office' + strUrl;
             break;
         case 'project':
             strUrl = 'project' + strUrl;
@@ -390,6 +398,8 @@ function openMobile() {
     href = href.replace("/projectType_cn.html","/project.html")
     href = href.replace("/zp_en.html","/recruitment.html")
     href = href.replace("/zp_cn.html","/recruitment.html")
+    href = href.replace("/office_en.html","/office.html")
+    href = href.replace("/office_cn.html","/office.html")
     href = href.replace("/memberDetail_en.html","/team_detailed.html")
     href = href.replace("/memberDetail_cn.html","/team_detailed.html")
 

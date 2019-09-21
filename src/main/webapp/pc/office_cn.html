@@ -61,12 +61,12 @@
 	</div>
 		<div class="w-content body-wp">
 			<div class="w-tabnav">
-				<a id="navfir">办公室</a>
-				<a id="navsec" class="w-tabnavaed">人才招聘</a>
+				<a id="navfir" class="w-tabnavaed">办公室</a>
+				<a id="navsec">职位</a>
 
 			</div>
 			<div class="w-tabcontent">
-				<div class="w-contenta" style="display: none;position: relative" onmousemove="test(event)">
+				<div class="w-contenta" style="position: relative" onmousemove="test(event)">
 					<!--<div class="w-contenta" style="position: relative" onmousemove="test(event)">-->
 					<div class="w-addimgdetail" id="div1">
 						<span class="w-aidspant" id="a_city">北京市</span>
@@ -88,7 +88,7 @@
 					<div class="w-contentdiv" id="address">
 					</div>
 				</div>
-				<div class="w-contentb">
+				<div class="w-contentb" style="display: none;">
 					<div class="w-contentbimg" id="pictureUrl">
 						<div style="height: 500px;"></div>
 						<div class="w-contentbimgdiv">
@@ -151,8 +151,8 @@
         $("#imgaddress").mouseout(function(){
             // $(".w-addimgdetail").hide();
         })
-        $("#navfir").on("click",function () {
-            window.location.href = "office_cn.html"
+        $("#navsec").on("click",function () {
+            window.location.href = "zp_cn.html"
         })
 
     })

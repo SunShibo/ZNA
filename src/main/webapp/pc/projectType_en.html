@@ -21,6 +21,21 @@
                 min-width: auto;
             }
         }
+
+        html, body {
+            height: 100%;
+        }
+
+        #container {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        .main {
+            padding-bottom: 91px;
+        }
+
+
     </style>
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/swiper.min.js"></script>
@@ -28,90 +43,101 @@
 
 </head>
 <body>
-<div class="w-head" id="w-head-nav">
-    <div data-id="home_en" class="nav-span loginPoint"></div>
-    <div class="w-lang">
-        <span class="w-langc">中文</span>
-        <span class="w-c active">EN</span>
-    </div>
-    <div class="w-tabtle">
-        <span data-id="aboutus_en" class="nav-span">ABOUT US</span>
-        <span data-id="project_en" class="nav-span span-active">PROJECTS</span>
-        <span data-id="team_en" class="nav-span">TEAM</span>
-        <span data-id="dynamic_en" class="nav-span">NEWS</span>
-        <span data-id="zp_en" class="nav-span">CONTACT US</span>
+<div id="container">
+    <div class="main">
+        <div class="head-wp">
 
-        <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
-    </div>
-</div>
-<div class="w-head searchDiv" id="w-head-search">
-    <div data-id="home_en" class="nav-span loginPoint"></div>
-    <div class="w-lang">
-        <span class="w-langc">中文</span>
-        <span class="w-c active">EN</span>
-    </div>
-    <div class="w-tabtle">
-        <div class="w-tableindexsearch">
-            <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-            <img class="w-isimgsearch" src="img/uc-06.png">
-            <img class="w-isimgclose" src="img/sy-08.png">
+
+            <div class="w-head" id="w-head-nav">
+                <div data-id="home_en" class="nav-span loginPoint"></div>
+                <div class="w-lang">
+                    <span class="w-langc">中文</span>
+                    <span class="w-c active">EN</span>
+                </div>
+                <div class="w-tabtle">
+                    <span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+                    <span data-id="project_en" class="nav-span span-active">PROJECTS</span>
+                    <span data-id="team_en" class="nav-span">TEAM</span>
+                    <span data-id="dynamic_en" class="nav-span">NEWS</span>
+                    <span data-id="office_en" class="nav-span">CONTACT US</span>
+                    <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
+                </div>
+            </div>
+
+            <div class="w-head searchDiv" id="w-head-search">
+                <div data-id="home_en" class="nav-span loginPoint"></div>
+                <div class="w-lang">
+                    <span class="w-langc">中文</span>
+                    <span class="w-c active">EN</span>
+                </div>
+                <div class="w-tabtle">
+                    <div class="w-tableindexsearch">
+                        <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+                        <img class="w-isimgsearch" src="img/uc-06.png">
+                        <img class="w-isimgclose" src="img/sy-08.png">
+                    </div>
+                    <img class="w-tabtleimg" src="img/uc-06.png"/>
+                </div>
+            </div>
+            <div class="ss-wp searchDiv">
+                <a class="ss" id="news_search">NEWS</a>
+                <a class="ss" id="project_search">PROJECT</a>
+            </div>
+            <div style="height: 30px;" class="searchDiv"></div>
         </div>
-        <img class="w-tabtleimg" src="img/uc-06.png"/>
-    </div>
-</div>
-<div class="ss-wp searchDiv">
-    <a class="ss" id="news_search">NEWS</a>
-    <a class="ss" id="project_search">PROJECT</a>
-</div>
-<div style="height: 30px;" class="searchDiv"></div>
-<div class="w-content">
-    <div class="w-tabnav">
-        <a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">INTERIOR DESIGN</a>
-        <a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">LANDSCAPE DESIGN</a>
-        <a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">MASTER PLANNING</a>
-        <a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">EDUCATION/SCIENCE</a>
-        <a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">RESIDENTIAL/HEALTHCARE</a>
-        <a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">CIVIC/EXHIBITION</a>
-        <a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">OFFICE/MIXED-USE</a>
-        <a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">HOTEL/RESORT</a>
-    </div>
-    <div class="w-tabcontent">
-        <div id="projectItem">
+        <div class="w-content body-wp">
+            <div class="w-tabnav">
+                <a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">HOTEL/RESORT</a>
+                <a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">OFFICE/MIXED-USE</a>
+                <a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">CIVIC/EXHIBITION</a>
+                <a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">RESIDENTIAL/HEALTHCARE</a>
+                <a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">EDUCATION/SCIENCE</a>
+                <a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">MASTER PLANNING</a>
+                <a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">LANDSCAPE DESIGN</a>
+                <a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">INTERIOR DESIGN</a>
+
+            </div>
+            <div class="w-tabcontent">
+                <div id="projectItem">
 
 
+                </div>
+                <div class="w-cpcdeatailist hide" id="moreWp">
+                    <ul class="w-cpculfir">
+                        <li>PROJECTS&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                        <li>SIZE&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                        <li>CLIENT&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                    </ul>
+                    <div id="showMore">
+
+                    </div>
+                </div>
+                <div class="w-cpcmore" id="loadMore">Show More Results +</div>
+            </div>
         </div>
-        <div class="w-cpcdeatailist hide" id="moreWp">
-            <ul class="w-cpculfir">
-                <li>PROJECTS&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                <li>SIZE&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                <li>CLIENT&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-            </ul>
-            <div id="showMore">
+    </div>
+</div>
+<div style="margin-top: -91px;">
+    <div class="w-bottom">
+        <div class="w-botleft">
+            <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
+            <span id="beian">沪ICP备案号17050193</span>
+        </div>
+        <div class="w-botright">
+            <div>
+
+                <img id="weibo" src="img/uc-03.png"/>
+                <img id="inlink" src="img/uc-04.png"/>
+                <div class="code-wp">
+                    <img class="code-img" src="img/erweima.png">
+                    <img id="code-img" src="img/uc-05.png"/>
+                </div>
 
             </div>
         </div>
-        <div class="w-cpcmore" id="loadMore">Show More Results +</div>
     </div>
 </div>
-<div class="w-bottom">
-    <div class="w-botleft">
-        <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
-        <span id="beian">沪ICP备案号17050193</span>
-    </div>
-    <div class="w-botright">
-        <div>
 
-            <img id="weibo" src="img/uc-03.png"/>
-            <img id="inlink" src="img/uc-04.png"/>
-            <div class="code-wp">
-                <img class="code-img" src="img/erweima.png">
-                <img id="code-img" src="img/uc-05.png"/>
-            </div>
-
-        </div>
-    </div>
-
-</div>
 <script>
     $(function () {
         // $(".w-tabnav a").hover(function(){
@@ -137,7 +163,7 @@
             pStr += ['<div class="item goDetail" data-type="', data[i]['type'], '" data-id="', data[i]['id'], '">',
                 '<div class="box horizaCenter verticalCenter">',
                 '<div class="inp inss">',
-                '<img src="',imgstr,'" width="100%" height="100%">',
+                '<img src="', imgstr, '" width="100%" height="100%">',
                 '<div class="inp-masks"><p class="masks-p">',
                 data[i].titleEnglish,
                 '</p></div>',

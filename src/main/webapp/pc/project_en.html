@@ -1,138 +1,170 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>项目一级页面</title>
-		<meta name="viewport"
-			  content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
-		<link href="css/style.css?v=1.3" rel="stylesheet"/>
-		<link rel="stylesheet" href="css/swiper.min.css">
+<head>
+    <meta charset="utf-8">
+    <title>项目一级页面</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <link href="css/style.css?v=1.3" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/swiper.min.css">
 
-		<style>
-			@media screen and (max-width: 1200px ){
-				.item {
-					width: 47%;
-				}
-			}
+    <style>
+        @media screen and (max-width: 1200px ) {
+            .item {
+                width: 47%;
+            }
+        }
 
-			@media screen and (max-width: 1300px) {
-				body {
-					min-width: auto;
-				}
-			}
-		</style>
-		<script src="js/jquery-2.0.3.min.js"></script>
-		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1.3"></script>
-	</head>
-	<body>
-	<div class="w-head" id="w-head-nav">
-		<div data-id="home_en" class="nav-span loginPoint"></div>
-			<div class="w-lang">
-				<span class="w-langc">中文</span>
-				<span class="w-c active">EN</span>
-			</div>
-		<div class="w-tabtle">
-			<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
-			<span data-id="project_en" class="nav-span span-active">PROJECTS</span>
-			<span data-id="team_en" class="nav-span">TEAM</span>
-			<span data-id="dynamic_en" class="nav-span">NEWS</span>
-			<span data-id="zp_en" class="nav-span">CONTACT US</span>
+        @media screen and (max-width: 1300px) {
+            body {
+                min-width: auto;
+            }
+        }
 
-			<img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
-		</div>
-		</div>
-	<div class="w-head searchDiv" id="w-head-search">
-		<div data-id="home_en" class="nav-span loginPoint"></div>
-		<div class="w-lang">
-			<span class="w-langc">中文</span>
-			<span class="w-c active">EN</span>
-		</div>
-		<div class="w-tabtle">
-			<div class="w-tableindexsearch">
-				<input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
-				<img class="w-isimgsearch" src="img/uc-06.png">
-				<img class="w-isimgclose" src="img/sy-08.png">
-			</div>
-			<img class="w-tabtleimg" src="img/uc-06.png"/>
-		</div>
-	</div>
-	<div class="ss-wp searchDiv">
-		<a class="ss" id="news_search">NEWS</a>
-		<a class="ss" id="project_search">PROJECT</a>
-	</div>
-	<div style="height: 30px;"></div>
-		<div class="w-content">
-			<div class="" style="overflow: hidden;width:95vw;margin: auto" id="projectItem">
+        html, body {
+            height: 100%;
+        }
 
-			</div>
-		</div>
-	<div class="w-bottom-a">
-		<div class="w-botleft">
-			<span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
-			<span id="beian">沪ICP备案号17050193</span>
-		</div>
-		<div class="w-botright">
-			<div>
+        #container {
+            min-height: 100%;
+            overflow: hidden;
+        }
 
-				<img id="weibo" src="img/uc-03.png"/>
-				<img id="inlink" src="img/uc-04.png"/>
-				<div class="code-wp">
-					<img class="code-img" src="img/erweima.png">
-					<img id="code-img" src="img/uc-05.png"/>
-				</div>
+        .main {
+            padding-bottom: 91px;
+        }
 
-			</div>
-		</div>
+        .w-bottom-a {
+            margin-top: 0px;
+        }
+    </style>
+    <script src="js/jquery-2.0.3.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js?v=1.3"></script>
+</head>
+<body>
 
-	</div>
-		<script>
-			$(function(){
-				$(".w-tabnav a").hover(function(){
-					$(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
-				})
-			})
+<div id="container">
+    <div class="main">
+        <div class="head-wp">
+            <div class="w-head" id="w-head-nav">
+                <div data-id="home_en" class="nav-span loginPoint"></div>
+                <div class="w-lang">
+                    <span class="w-langc">中文</span>
+                    <span class="w-c active">EN</span>
+                </div>
+                <div class="w-tabtle">
+                    <span data-id="aboutus_en" class="nav-span">ABOUT US</span>
+                    <span data-id="project_en" class="nav-span span-active">PROJECTS</span>
+                    <span data-id="team_en" class="nav-span">TEAM</span>
+                    <span data-id="dynamic_en" class="nav-span">NEWS</span>
+                    <span data-id="office_en" class="nav-span">CONTACT US</span>
+
+                    <img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
+                </div>
+            </div>
+            <div class="w-head searchDiv" id="w-head-search">
+                <div data-id="home_en" class="nav-span loginPoint"></div>
+                <div class="w-lang">
+                    <span class="w-langc">中文</span>
+                    <span class="w-c active">EN</span>
+                </div>
+                <div class="w-tabtle">
+                    <div class="w-tableindexsearch">
+                        <input class="w-indexsearch" id="searchInput" placeholder="SEARCH">
+                        <img class="w-isimgsearch" src="img/uc-06.png">
+                        <img class="w-isimgclose" src="img/sy-08.png">
+                    </div>
+                    <img class="w-tabtleimg" src="img/uc-06.png"/>
+                </div>
+            </div>
+            <div class="ss-wp searchDiv">
+                <a class="ss" id="news_search">NEWS</a>
+                <a class="ss" id="project_search">PROJECT</a>
+            </div>
+            <div style="height: 30px;"></div>
+        </div>
+        <div class="w-content body-wp">
+            <div class="" style="overflow: hidden;width:95vw;margin: auto" id="projectItem">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-top: -91px;">
+    <div class="w-bottom-a">
+        <div class="w-botleft">
+            <span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
+            <span id="beian">沪ICP备案号17050193</span>
+        </div>
+        <div class="w-botright">
+            <div>
+
+                <img id="weibo" src="img/uc-03.png"/>
+                <img id="inlink" src="img/uc-04.png"/>
+                <div class="code-wp">
+                    <img class="code-img" src="img/erweima.png">
+                    <img id="code-img" src="img/uc-05.png"/>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
 
 
-			$.getJSON("/projectType/selectProjectType?r="+Date.now(),function (rs) {
-				var data = rs.data.projectTypeBOS;
+    $(function () {
+        $(".w-tabnav a").hover(function () {
+            $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
+        })
+        // setInterval(function () {
+        // $(".inp-mask-p").css("height","30px");
+        // console.log(12)
+        // },3000)
+    })
 
-                renderFloor(rs.data.contactWayBO);
+
+    $.getJSON("/projectType/selectProjectType?r=" + Date.now(), function (rs) {
+        var data = rs.data.projectTypeBOS;
+
+        renderFloor(rs.data.contactWayBO);
 
 
+        var data = rs.data.projectTypeBOS;
+        var pStr = '';
+        for (var i = 0; i < data.length; i++) {
+            if (i == 8) break;
+            var imgstr = '';
+            try {
+                imgstr = data[i]['pictureUrlPc'];
+            } catch (e) {
+            }
 
-                var data = rs.data.projectTypeBOS;
-                var pStr = '';
-                for(var i=0;i<data.length;i++){
-                    if(i==8)break;
-                    var imgstr = '';
-                    try{
-                        imgstr = data[i]['pictureUrlPc'];
-                    }catch(e){}
+            pStr += ['<div class="item" data-id="', data[i]['type'], '">',
+                '<div class="box horizaCenter verticalCenter">',
+                '<div class="inp">',
+                '<img style="display:block;" src="', imgstr, '" width="100%" height="100%">',
+                '<div class="inp-mask-p">',
+                data[i].projectTypeNameEnglish,
+                '</div>',
+                '</div>',
+                '</div>',
+                '</div>'].join("")
+        }
 
-                    pStr+=	['<div class="item" data-id="',data[i]['type'],'">',
-                        '<div class="box horizaCenter verticalCenter">',
-                        '<div class="inp">',
-                        '<img src="', imgstr, '" width="100%" height="100%">',
-                        '<div class="inp-mask-p">',
-                        data[i].projectTypeNameEnglish,
-                        '</div>',
-                        '</div>',
-                        '</div>',
-                        '</div>'].join("")
-                }
+        $("#projectItem").html(pStr);
 
-                $("#projectItem").html(pStr);
+    })
 
-            })
-
-			$(document).on("click",'.item',function () {
-			    var id = $(this).data("id");
-			    if(id){
-			        window.location.href = 'projectType_en.html?id='+id
-				}
-				// console.log($(this).data("id"))
-            })
-		</script>
-	</body>
+    $(document).on("click", '.item', function () {
+        var id = $(this).data("id");
+        if (id) {
+            window.location.href = 'projectType_en.html?id=' + id
+        }
+        // console.log($(this).data("id"))
+    })
+</script>
+</body>
 </html>
