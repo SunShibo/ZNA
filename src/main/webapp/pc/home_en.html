@@ -193,7 +193,7 @@
 			var indexBOS = data.indexBOS;
 			var bannerStr = '';
 			for(var i=0;i<banner.length;i++){
-                bannerStr+= '<div class="swiper-slide"><img class="home-lb-bg" src="'+banner[i]['pictureUrlPc']+'" /></div>';
+                bannerStr+= '<div class="swiper-slide"><img class="home-lb-bg"  data-id="'+banner[i]['skipId']+'" src="'+banner[i]['pictureUrlPc']+'" /></div>';
 			}
 			$("#home-bg-lb").html(bannerStr);
             var swiper = new Swiper('.swiper-container', {
@@ -238,6 +238,11 @@
             $("#contactImg").attr("src",indexBOS[4]['pictureUrlPc']);
 
 			renderFloor(data.contactWayBO);
+
+            $(".home-lb-bg").on("click",function () {
+
+                window.location.href = "/pc/projectDetail_en.html?id="+$(this).data("id");
+            })
         }
     })
 

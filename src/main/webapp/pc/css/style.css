@@ -1173,10 +1173,12 @@ body {
     line-height: 24px;
     color: #666666;
     margin: 0 60px;
-    margin-top: 15px;
+    /*margin-top: 15px;*/
     word-wrap: break-word;
 }
-
+.nicescroll-rails-hr{
+    opacity: 0!important;
+}
 .w-.w-audivtzuxibfc a {
     font-weight: bold;
 }
@@ -1447,12 +1449,16 @@ body {
     width: 45%;
     /*text-align: justify;*/
     /*overflow-y: auto;*/
+    /*letter-spacing: 1px;*/
+    color: #2e2e2e;
+    line-height: 28px;
 }
 
 .w-hindexspan span {
-    padding: 35px 20px 10px 35px;
+    padding: 35px 20px 35px 35px;
     display: block;
     word-wrap: break-word;
+    /*width: 100%;*/
 }
 
 .w-circle {
@@ -1463,12 +1469,22 @@ body {
     top: 360px;
     left: 500px;
 }
-
+.topmask{
+    position: absolute;height: 35px;background: #f4f4f4;opacity: 1;z-index: 9;
+}
 .swiperdiv {
     /*margin: 20px 35px 50px 30px;*/
     height: 500px;
 
     background: url("../img/aboutusfloor.png") center center no-repeat;
+}
+
+.nicescroll-rails-vr{
+    width: 4px!important;
+}
+.nicescroll-cursors{
+    position: absolute!important;
+    left: -1px!important;
 }
 
 .swiperdiv .swiper-container {
@@ -1547,6 +1563,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     /*transform: rotateY(180deg);*/
+    background-size: 74%;
 }
 
 .gallery-top .swiper-next {
@@ -1567,6 +1584,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     transform: rotateY(180deg);
+    background-size: 74%;
 }
 
 /*项目详情下方导航按钮样式*/
@@ -1589,6 +1607,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     transform: rotateY(180deg);
+    background-size: 74%;
 }
 
 #swiper-gallery .button_prev {
@@ -1609,6 +1628,7 @@ body {
     background-image: url('../img/icon/left.png');
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: 74%;
 }
 
 #projectItem {

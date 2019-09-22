@@ -9,6 +9,7 @@
     <script src="js/swiper.min.js"></script>
     <script src="js/main.js?v=1.3"></script>
     <script src="js/yi-scroll.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
     <style>
         .w-indeximgt {
             width: 100%;
@@ -30,9 +31,12 @@
         .swiperdiv .swiper-slide {
             background: transparent!important;
         }
+
     </style>
 </head>
 <body>
+<div class="topmask" id="topMask"></div>
+<div class="topmask" id="domMask"></div>
 <div class="head-wp">
 <div class="w-head cn" id="w-head-nav">
     <div data-id="home_cn" class="nav-span loginPoint cn"></div>
@@ -92,18 +96,17 @@
         <!--<div style="padding-bottom: 20px;overflow: hidden">-->
 
 
-            <div class="_scroll">
-                <div class="_panel-box">
-                    <div class="w-hindexspan">
+                    <div class="w-hindexspan" id="w-hindexspan" style="overflow-y: scroll;overflow-x: hidden;position: relative">
+
                             <span id="as-content">
 
                             </span>
 
                     </div>
-                </div>
-            </div>
+
         <!--</div>-->
     </div>
+
     <div class="w-audivc">
         <img class="w-indeximgt" id="from-pic"/>
         <button class="w-aubtn" onclick="goHistory()">了解更多 ></button>
@@ -158,7 +161,6 @@
 <script>
 
     $.getJSON("/aboutUs/getAboutUs?r" + Date.now(), function (rs) {
-
 
         var data = rs.data;
         var banner = data.aboutBannerBOS;
@@ -224,24 +226,66 @@
         renderFloor(data.contactWayBO);
         $(window).load(function () {
             var height = $(".w-hindeximg").height();
-            console.log('onload 方法执行完毕')
-            $("._scroll").css("height", height);
-            $("._scroll").yi_scroll();
+
+            $(".w-hindexspan").css("height", height);
+            // console.log('onload 方法执行完毕')
+            // $("._scroll").css("height", height);
+            // $("._scroll").yi_scroll();
+
+            $(".w-hindexspan").niceScroll({
+                // autohidemode:false,
+                background:"#c0bcbc",
+                cursorcolor: "#666666",
+                cursorwidth: "4px",
+                autohidemode:false
+            });
+
         })
+
+
+        var wh = $("#w-hindexspan").css("width");
+        var ac = $("#as-content").css("width");
+
+        console.log(document.getElementById("as-content").offsetWidth)
+        document.getElementById("as-content").offsetWidth = document.getElementById("as-content").offsetWidth-100;
+        console.log(document.getElementById("as-content").offsetWidth)
+        // console.log(wh);
+        // console.log(ac);
+
+
+
 
     })
 
     function goHistory() {
         window.location.href = "history_cn.html"
     }
-
     setInterval(function () {
         var height = $(".w-hindeximg").height();
-        console.log('onload 方法执行完毕111')
-        $("._scroll").css("height", height);
-        $("._scroll").yi_scroll();
-        $("._scroll_bar").css("opacity", "1")
+        $(".w-hindexspan").css("height", height);
+        $(".w-hindexspan").niceScroll({
+            autohidemode:false,
+            background:"#c0bcbc",
+            cursorcolor: "#666666",
+            cursorwidth: "4px",
+            cursorborderradius: "0px",
+        });
     }, 3000)
+    setInterval(function () {
+        var $tm = $("#topMask");
+        var $wh = $("#w-hindexspan");
+        var $dm = $("#domMask");
+
+        $tm.css("top",$wh.offset().top);
+        $tm.css("width",$wh.width());
+        $tm.css("opacity","1");
+        $tm.css("left",$wh.offset().left);
+
+        $dm.css("top",$wh.offset().top+$wh.height()-33);
+        $dm.css("width",$wh.width());
+        $dm.css("opacity","1");
+        $dm.css("left",$wh.offset().left);
+    }, 200)
 
 
 </script>
