@@ -127,11 +127,11 @@
                             <span class="w-perspant" id="name"></span>
                             <span class="w-perspanc" id="position"></span>
                             <div class="w-perspanb" id="intro_english"></div>
-                            <div style="margin-top: 30px">
+                            <div style="margin-top: 30px" id="educationaleducational">
                                 <p class="educational">教育背景</p>
                                 <div id="educational"></div>
                             </div>
-                            <div style="margin-top: 30px">
+                            <div style="margin-top: 30px" id="aptitudeaptitude">
                                 <p class="educational">专业资质</p>
                                 <div id="aptitude"></div>
                             </div>
@@ -210,6 +210,12 @@
         $("#position").html(data.position);
         $("#intro_english").html(data.intro);
         $("#educational").html(data.educational);
+        if(!data.aptitude){
+            $("#aptitudeaptitude").css("display","none")
+        }
+        if(!data.educational){
+            $("#educationaleducational").css("display","none")
+        }
         $("#aptitude").html(data.aptitude);
         $("#headPortraitPc").attr("src",data.headPortraitPc);
   // debugger;
