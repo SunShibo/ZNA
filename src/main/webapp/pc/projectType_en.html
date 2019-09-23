@@ -5,7 +5,7 @@
     <title>项目分类加载更多</title>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
-    <link href="css/style.css?v=1.4" rel="stylesheet"/>
+    <link href="css/style.css?v=1.5" rel="stylesheet"/>
     <link rel="stylesheet" href="css/swiper.min.css">
 
 
@@ -39,7 +39,7 @@
     </style>
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/swiper.min.js"></script>
-    <script src="js/main.js?v=1.4"></script>
+    <script src="js/main.js?v=1.5"></script>
 
 </head>
 <body>
@@ -104,9 +104,9 @@
                 </div>
                 <div class="w-cpcdeatailist hide" id="moreWp">
                     <ul class="w-cpculfir">
-                        <li>PROJECTS&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                        <li>SIZE&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                        <li>CLIENT&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                        <li class="pro1">PROJECTS&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                        <li class="pro2">SIZE&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                        <li class="pro3">CLIENT&nbsp;&nbsp;<img src="img/cp-36.png"></li>
                     </ul>
                     <div id="showMore">
 
@@ -198,11 +198,11 @@
             var pStr = '';
             for (var i = 0; i < data.length; i++) {
 
-                pStr += ['<ul class="goDetail" data-id="', data[i]['id'], '" data-type="', data[i]['type'], '"> <li>',
+                pStr += ['<ul class="goDetail" data-id="', data[i]['id'], '" data-type="', data[i]['type'], '"> <li  class="pro1">',
                     data[i]['titleEnglish'],
-                    '</li> <li>',
+                    '</li> <li class="pro2 p16 p666">',
                     data[i]['coveredAreaEnglish'],
-                    '</li> <li>',
+                    '</li> <li class="pro3 p16 p666">',
                     data[i]['clientEnglish'],
                     '</li></ul>'].join("")
             }

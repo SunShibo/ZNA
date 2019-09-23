@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>zna</title>
-		<link href="css/style.css?v=1.4" rel="stylesheet"/>
+		<link href="css/style.css?v=1.5" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1.4"></script>
+		<script src="js/main.js?v=1.5"></script>
         <style>
             #home-bg-lb{
                 max-height: 1080px;
@@ -137,7 +137,7 @@
 						</div>
 						<div class="bg-mask"></div>
 					</div>
-					<div class="w-indeximgbox">
+					<div class="w-indeximgbox" id="contactImgcontactImg">
 						<img id="contactImg" />
 						<div class="w-indeximgspan">
 							<div class="w-indexist" id="contactTitle1">
@@ -147,7 +147,7 @@
                         </span>
 							<span class="w-indexisb" onclick="goOffice();">more ></span>
 						</div>
-						<div class="bg-mask"></div>
+						<!--<div class="bg-mask"></div>-->
 					</div>
 				</div>
 				<img src="img/sy-07.png" class="w-bgbottom"/>
@@ -243,6 +243,10 @@
 
                 window.location.href = "/pc/projectDetail_en.html?id="+$(this).data("id");
             })
+
+            setInterval(function () {
+                $("#contactImgcontactImg").css("height",$("#contactImg").height()-2)
+            },3000)
         }
     })
 

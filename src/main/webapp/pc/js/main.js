@@ -8,7 +8,8 @@ $(function () {
             &&window.location.href.indexOf("pc/member_")==-1
 
         ){
-            $(".w-lang").css("margin-right",1200-document.documentElement.clientWidth-20);
+            debugger;
+            $(".w-lang").css("margin-right",-20);
         }
 
     }
@@ -355,7 +356,7 @@ window.onload = function () {
             if(window.location.href.indexOf("pc/projectType_")==-1
                 &&window.location.href.indexOf("pc/project_")==-1
                 &&window.location.href.indexOf("pc/member_")==-1){
-                $(".w-lang").css("margin-right",1200-width-50);
+                $(".w-lang").css("margin-right",-20);
             }
 
         }

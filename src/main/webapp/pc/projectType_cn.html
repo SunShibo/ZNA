@@ -5,11 +5,11 @@
     <title>项目分类加载更多</title>
     <meta name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
-    <link href="css/style.css?v=1.4" rel="stylesheet"/>
+    <link href="css/style.css?v=1.5" rel="stylesheet"/>
     <link rel="stylesheet" href="css/swiper.min.css">
     <script src="js/jquery-2.0.3.min.js"></script>
     <script src="js/swiper.min.js"></script>
-    <script src="js/main.js?v=1.4"></script>
+    <script src="js/main.js?v=1.5"></script>
 
 
     <style>
@@ -80,14 +80,21 @@
         </div>
         <div class="w-content body-wp">
     <div class="w-tabnav">
-        <a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">室内设计</a>
-        <a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">景观设计</a>
-        <a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">城市规划</a>
-        <a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">文化/教育</a>
-        <a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">养生/居住</a>
-        <a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">市民/展览</a>
-        <a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">办公/综合体</a>
         <a class="project-nav" id="HOTELRESORT" data-id="HOTEL/RESORT">酒店/度假</a>
+        <a class="project-nav" id="OFFICEMIXED-USE" data-id="OFFICE/MIXED-USE">办公/综合体</a>
+        <a class="project-nav" id="CIVICEXHIBITION" data-id="CIVIC/EXHIBITION">文化/会展</a>
+        <a class="project-nav" id="RESIDENTIALHEALTHCARE" data-id="RESIDENTIAL/HEALTHCARE">居住/养老</a>
+        <a class="project-nav" id="EDUCATIONSCIENCE" data-id="EDUCATION/SCIENCE">教育/科研</a>
+        <a class="project-nav" id="MASTERPLANNING" data-id="MASTER/PLANNING">城市规划</a>
+        <a class="project-nav" id="LANDSCAPEDESIGN" data-id="LANDSCAPE/DESIGN">景观设计</a>
+        <a class="project-nav" id="INTERIORDESIGN" data-id="INTERIOR/DESIGN">室内设计</a>
+
+
+
+
+
+
+
     </div>
     <div class="w-tabcontent">
         <div id="projectItem">
@@ -96,15 +103,15 @@
         </div>
         <div class="w-cpcdeatailist hide" id="moreWp">
             <ul class="w-cpculfir">
-                <li>项目&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                <li>面积&nbsp;&nbsp;<img src="img/cp-36.png"></li>
-                <li>客户&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                <li class="pro1">项目名称&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                <li class="pro2">项目规模&nbsp;&nbsp;<img src="img/cp-36.png"></li>
+                <li class="pro3">业主&nbsp;&nbsp;<img src="img/cp-36.png"></li>
             </ul>
             <div id="showMore">
 
             </div>
         </div>
-        <div class="w-cpcmore" id="loadMore">显示更多 +</div>
+        <div class="w-cpcmore" id="loadMore">加载更多 +</div>
     </div>
 </div>
         </div>
@@ -134,7 +141,7 @@
 
     window.onload = function () {
         if(document.documentElement.clientWidth<1000){
-            $("#w-head-nav").css("padding-right","5px")
+            $("#w-head-nav").css("padding-right","25px")
         }else{
             $("#w-head-nav").css("padding-right","60px")
         }
@@ -144,7 +151,7 @@
                 openMobile();
             }else if(width<1150){
                 if(width<1000){
-                    $("#w-head-nav").css("padding-right","5px")
+                    $("#w-head-nav").css("padding-right","25px")
                 }else{
                     $("#w-head-nav").css("padding-right","60px")
                 }
@@ -216,11 +223,11 @@
             var pStr = '';
             for (var i = 0; i < data.length; i++) {
 
-                pStr += ['<ul class="goDetail" data-id="', data[i]['id'], '" data-type="', data[i]['type'], '"> <li>',
+                pStr += ['<ul class="goDetail" data-id="', data[i]['id'], '" data-type="', data[i]['type'], '"> <li  class="pro1">',
                     data[i]['title'],
-                    '</li> <li>',
+                    '</li> <li  class="pro2 p16 p666">',
                     data[i]['coveredArea'],
-                    '</li> <li>',
+                    '</li> <li  class="pro3 p16 p666">',
                     data[i]['client'],
                     '</li></ul>'].join("")
             }

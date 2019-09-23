@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title>news</title>
-		<link href="css/style.css?v=1.4" rel="stylesheet"/>
+		<link href="css/style.css?v=1.5" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
-		<script src="js/main.js?v=1.4"></script>
+		<script src="js/main.js?v=1.5"></script>
 	</head>
 	<body>
 	<div class="head-wp">
@@ -54,7 +54,7 @@
 			</div>
 
 		</div>
-		<div class="w-cpcmore" id="loadMore" style="padding-bottom: 100px;">查看更多 +</div>
+		<div class="w-cpcmore" id="loadMore" style="padding-bottom: 100px;">加载更多 +</div>
 		<div class="w-bottom">
 			<div class="w-botleft">
 				<span>TEL：<b id="tel"></b><a>FAX：<b id="fax"></b></a><a>EMAIL：<b id="mail"></b></a></span>
@@ -83,7 +83,7 @@
 			var pageNo = 1;
 			var domStr = '';
 			var $dom = $("#domData");
-			$.getJSON("/recentNews/selectRecentNews?r="+Date.now()+"&pageSize=4&pageNo="+pageNo,function (rs) {
+			$.getJSON("/recentNews/selectRecentNews?r="+Date.now()+"&pageSize=8&pageNo="+pageNo,function (rs) {
                 renderFloor(rs.data.contactWayBO);
 			    var d = rs.data.recentNewsBOS;
 			    for(var i=0;i<d.length;i++)
@@ -114,7 +114,7 @@
             })
 
 			function appendData() {
-                $.getJSON("/recentNews/selectRecentNews?r="+Date.now()+"&pageSize=4&pageNo="+pageNo,function (rs) {
+                $.getJSON("/recentNews/selectRecentNews?r="+Date.now()+"&pageSize=8&pageNo="+pageNo,function (rs) {
                     var d = rs.data.recentNewsBOS;
                     var domStr1 = '';
                     if(d.length==0){
