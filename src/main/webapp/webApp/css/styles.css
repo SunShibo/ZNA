@@ -279,7 +279,7 @@ input[type=search]::-ms-clear {
 }
 
 #app-page #nav {
-    position: absolute;
+    position: fixed;
     background: rgba(0, 0, 0, 0.5);
     top: 1rem;
     left: 0;
@@ -1268,7 +1268,7 @@ ul li .info-text {
 }
 
 #foot .foot-center {
-    width: 70%;
+    /*width: 70%;*/
     margin: .3rem auto;
     text-align: center;
 }
@@ -1285,6 +1285,7 @@ ul li .info-text {
 #foot .contact {
     color: #cccccc;
     font-size: .25rem;
+    margin: 0 .1rem;
 }
 
 #foot .icon-list {

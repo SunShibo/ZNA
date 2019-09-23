@@ -67,6 +67,8 @@
         }
         //设置菜单
         settingMenu(lang);
+        //滑动事件的优化
+        stopTouchendPropagationAfterScroll();
         //执行回调
         window.switch_language(lang);
     });
@@ -102,6 +104,28 @@
                 }
             }
         }
+    }
+
+    function stopTouchendPropagationAfterScroll(){
+
+        var locked = false;
+
+        window.addEventListener('touchmove', function(ev){
+
+            locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+
+        }, true);
+
+        function stopTouchendPropagation(ev){
+
+            ev.stopPropagation();
+
+            window.removeEventListener('touchend', stopTouchendPropagation, true);
+
+            locked = false;
+
+        }
+
     }
 
 
@@ -288,7 +312,7 @@
     //扩展jquery方法
     $.extend({
         baseUrl: function () {
-            return 'http://39.96.173.228:8080';
+            return '';
         },
         //设置尾部数据
         footData: function (data) {

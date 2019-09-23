@@ -173,7 +173,8 @@
 
 
         //加载更多
-        $('#next').on('touchend', function () {
+        $('#next').on('touchend', function (ev) {
+            ev.stopPropagation();
             var lang = $.getLang();//获取语言
             current++;
             if (Math.ceil(count / limit) < current) {
