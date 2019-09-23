@@ -48,7 +48,7 @@
         }
 
         //获取语言类型
-        lang = $.getLang();
+        lang = $.getUrl('language') === 'en';
         if (lang) {
             langDom.text('中');
             $('.logo').removeClass('ch_logo_w').addClass('en_logo_w');
@@ -59,7 +59,6 @@
 
         //LOGO
         setLogo(lang);
-
 
 
         if (location.href.indexOf('?') === -1) {
@@ -106,23 +105,31 @@
         }
     }
 
-    function stopTouchendPropagationAfterScroll(){
+    /**
+     * 滑动优化
+     * 有轮播的页面不进入此事件优化
+     */
+    function stopTouchendPropagationAfterScroll() {
 
         var locked = false;
 
-        window.addEventListener('touchmove', function(ev){
+        if (!(window.location.pathname.indexOf('home')) || !(window.location.pathname.indexOf('aboutUs'))) {
 
-            locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+            window.addEventListener('touchmove', function (ev) {
 
-        }, true);
+                locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
 
-        function stopTouchendPropagation(ev){
+            }, true);
 
-            ev.stopPropagation();
+            function stopTouchendPropagation(ev) {
 
-            window.removeEventListener('touchend', stopTouchendPropagation, true);
+                ev.stopPropagation();
 
-            locked = false;
+                window.removeEventListener('touchend', stopTouchendPropagation, true);
+
+                locked = false;
+
+            }
 
         }
 
@@ -292,6 +299,7 @@
         }
     });
 
+    //底部跳转icon
     $('#icon_wechat').on('touchend', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         if (target.id === 'icon_wechat') {
@@ -312,7 +320,7 @@
     //扩展jquery方法
     $.extend({
         baseUrl: function () {
-            return '';
+            return 'http://39.96.173.228:8080';
         },
         //设置尾部数据
         footData: function (data) {
@@ -322,10 +330,6 @@
         },
         //向外抛出lang属性
         getLang: function () {
-            lang = localStorage.getItem('EN_LANG') === 'EN_US';
-            if (!lang) {
-                lang = $.getUrl('language') === 'en';
-            }
             return lang;
         },
         getUrl: function (name) {
