@@ -1012,6 +1012,7 @@ li .nav-href {
 }
 
 .content .news-items {
+    cursor: pointer;
     width: 7.18rem;
     margin: 0 .16rem .16rem;
 }
@@ -1021,7 +1022,6 @@ li .nav-href {
 }
 
 .news-items .news-info {
-    cursor: pointer;
     padding: .26rem .24rem;
 }
 

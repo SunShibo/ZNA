@@ -190,8 +190,8 @@
 
 
         //事件委托
-        $(document).on('touchend', '.news-item-title', function (e) {
-            $(this).children('.news-item-content').slideToggle(500);
+        $(document).on('touchend', '.news-items', function (e) {
+            $(this).children('.news-info').children('.news-item-content').slideToggle(500);
         });
     })(window, jQuery);
 </script>
