@@ -195,9 +195,11 @@ body {
 }
 
 .w-tabnavaed {
-    color: #5E258E;
+    color: #5E258E!important;
 }
-
+.w-tabnavaed1 {
+    color: #5E258E!important;
+}
 .w-c.active {
     color: #5E258E;
     font-size: 17px;
@@ -209,6 +211,17 @@ body {
 }
 
 .w-tabnavaed:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #5E258E;
+    z-index: 1;
+}
+
+.w-tabnavaed1:after {
     position: absolute;
     content: '';
     width: 100%;
@@ -910,7 +923,7 @@ body {
     max-height: 60%;
     min-height: 340px;
     background: #FFFFFF;
-    opacity: 0.9;
+    opacity: 1;
     padding-bottom: 10px;
     overflow: hidden;
 }
@@ -1034,7 +1047,7 @@ body {
         max-height: 60%;
         /*min-height: 300px;*/
         background: #FFFFFF;
-        opacity: 0.9;
+        opacity: 1;
         padding-bottom: 10px;
         overflow: hidden;
     }
