@@ -19,7 +19,7 @@ import java.util.*;
 @RequestMapping("/image")
 public class ImageController extends BaseCotroller {
 
-    private static final Logger log = LoggerFactory.getLogger(AboutUsController.class);
+    private static final Logger log = LoggerFactory.getLogger(ImageController.class);
 
 
     @ResponseBody
