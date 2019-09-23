@@ -135,10 +135,11 @@
 
                     data = r.data.projectTypeBOS;
                     var domArr = [];
+                    console.log(data);
                     for (var i = 0, len = data.length; i < len; i++) {
                         domArr.push('<div class="items items-bottom">',
                             '<img src="', data[i].pictureUrl, '" alt="" width="100%" height="100%">',
-                            '<input type="hidden" value="' + data[i].projectTypeNameEnglish + '">',
+                            '<input type="hidden" value="' + data[i].type + '">',
                             '<div class="item-title class-title font_family_medium">', lang ? data[i].projectTypeNameEnglish : data[i].projectTypeName, '</div>',
                             '</div>')
                     }
@@ -163,7 +164,7 @@
         $(document).on('touchend', '.items', function (ev) {
             var ev = ev || window.event, target = ev.target || ev.srcElement;
             if (this.className === 'items items-bottom') {
-                location.href = 'project.html?id=' + $(this).children('input').val();
+                location.href = 'project.html?language=' + $.getLangStr() + 'id=' + $(this).children('input').val();
             }
         });
     })(window, jQuery);
