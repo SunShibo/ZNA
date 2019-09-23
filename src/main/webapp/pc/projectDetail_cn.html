@@ -186,6 +186,8 @@
     $(function () {
         $(".w-tabnav a").hover(function () {
             $(this).addClass("w-tabnavaed1").siblings().removeClass("w-tabnavaed1");
+        },function () {
+            $(this).removeClass("w-tabnavaed1");
         })
 
         $("._scroll").yi_scroll();
