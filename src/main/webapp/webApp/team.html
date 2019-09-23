@@ -190,7 +190,7 @@
         });
 
         //跳转详情
-        $(document).on('touchend', '.team-items', function (e) {
+        $(document).on('touchend click', '.team-items', function (e) {
             location.href = 'team_detailed.html?id=' + $(this).children('input').val();
         })
     })(window, jQuery);

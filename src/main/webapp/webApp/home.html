@@ -263,14 +263,14 @@
             });
         }
 
-        $(document).on('touchend', '.href_items', function (ev) {
+        $(document).on('touchend click', '.href_items', function (ev) {
             var url = $(this).data('url');
             location.href = url + ".html?language=" + $.getLangStr();
         });
 
 
         //banner跳转
-        $('#home-banner').on('touchend', '.swiper-slide', function (e) {
+        $('#home-banner').on('touchend click', '.swiper-slide', function (e) {
             var id = $(this).data('zid');
             location.href = 'project_detailed.html?id=' + id;
         });

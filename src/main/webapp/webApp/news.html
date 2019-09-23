@@ -163,7 +163,7 @@
         }
 
         //加载更多
-        $('#next').on('touchend', function (e) {
+        $('#next').on('touchend click', function (e) {
             var lang = $.getLang();
             if (Math.ceil(count / limit) < current) {
                 lang ? $(this).text('NO MORE') : $(this).text('暂无更多');
@@ -190,7 +190,7 @@
 
 
         //事件委托
-        $(document).on('touchend', '.news-items', function (e) {
+        $(document).on('touchend click', '.news-items', function (e) {
             $(this).children('.news-info').children('.news-item-content').slideToggle(500);
         });
     })(window, jQuery);

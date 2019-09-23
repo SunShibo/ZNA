@@ -166,14 +166,14 @@
             $('#next').text(lang? 'Show More Results +':'加载更多 +')
         }
 
-        $(document).on('touchend', '.items', function (e) {
+        $(document).on('touchend click', '.items', function (e) {
             var lang = $.getLang() ? 'en' : 'cn';
             location.href = 'project_detailed.html?language=' + lang + '&id=' + $(this).children('input').val();
         });
 
 
         //加载更多
-        $('#next').on('touchend', function (ev) {
+        $('#next').on('touchend click', function (ev) {
             ev.stopPropagation();
             var lang = $.getLang();//获取语言
             current++;

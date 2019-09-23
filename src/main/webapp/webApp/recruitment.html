@@ -214,7 +214,7 @@
             })
         }
 
-        $(document).on('touchend', '.career-info li', function () {
+        $(document).on('touchend click', '.career-info li', function () {
             var flag = $(this).data('flag') === 'true';
             $(this).data('flag', !flag + '');
             if (!flag) {

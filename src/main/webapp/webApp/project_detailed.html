@@ -246,7 +246,7 @@
             }
         });
 
-        $('#info').on('touchend', function (e) {
+        $('#info').on('touchend click', function (e) {
             $('.detailed-content').slideToggle(500, function (e) {
                 infoState = !infoState;
                 if (infoState) {
