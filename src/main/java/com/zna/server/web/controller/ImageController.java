@@ -63,6 +63,48 @@ public class ImageController extends BaseCotroller {
             }
         }
 
+
+    @ResponseBody
+    @RequestMapping("/uploadImgPng")
+    public void uploadPicturePng(MultipartFile file, HttpServletRequest request, HttpServletResponse response){
+        try {
+            log.info(request.getRequestURI());
+            log.info("param:{}", JsonUtils.getJsonString4JavaPOJO(request.getParameterMap()));
+            //获取管理员对象
+            AdminBO loginAdmin = super.getLoginAdmin(request);
+            log.info("user{}",loginAdmin);
+            if (loginAdmin==null){
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000002"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}",result);
+                return ;
+            }
+            //参数验证
+            if (file==null){
+                String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("0000001"));
+                super.safeJsonPrint(response, result);
+                log.info("result{}",result);
+                return ;
+            }
+
+            String picturePC = ImageUtil.getPCpicturePng(file,1);
+            String picturePhone = ImageUtil.getPhonepicturePng(file,2);
+            Map<String,Object> map = new HashMap<>();
+            map.put("picturePC",picturePC);
+            map.put("picturePhone",picturePhone);
+
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.success(map));
+            super.safeJsonPrint(response, result);
+            return;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            String result = JsonUtils.getJsonString4JavaPOJO(ResultDTOBuilder.failure("系统异常，图片上传失败"));
+            super.safeJsonPrint(response, result);
+            return;
+        }
+    }
+
     }
 
 
