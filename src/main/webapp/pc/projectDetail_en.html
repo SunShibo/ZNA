@@ -13,9 +13,12 @@
     <style>
         .swiper-container {
             width: 100%;
-            height: 500px;
+            /*height: 500px;*/
             margin-left: auto;
             margin-right: auto;
+        }
+        #swiper-gallery .button_prev, #swiper-gallery .button_next {
+            top: 9.5%;
         }
 
         .swiper-slide {
@@ -23,22 +26,23 @@
             background-position: center;
         }
 
-        .gallery-top {
-            height: 580px;
-            width: 100%;
-        }
+        /*.gallery-top {*/
+            /*height: 580px;*/
+            /*width: 100%;*/
+        /*}*/
+        /*@media screen and(max-width: 1820px){*/
+            /*.gallery-top {*/
+                /*height: 780px;*/
+                /*width: 100%;*/
+            /*}*/
+        /*}*/
 
         .gallery-thumbs {
             margin-top: 24px;
-            height: 120px;
+
             box-sizing: border-box;
         }
 
-        .gallery-thumbs .swiper-slide {
-            width: 20.6%;
-            height: 100%;
-            opacity: 0.4;
-        }
 
         .gallery-thumbs .swiper-slide-thumb-active {
             opacity: 1;
@@ -49,7 +53,7 @@
         }
 
         .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-            width: 60px!important;
+            width: 40px!important;
             height: 60px;
             right: 30px;
             opacity: .4;
@@ -58,7 +62,7 @@
             opacity: .8!important;
         }
         .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-            width: 60px!important;
+            width: 40px!important;
             height: 60px;
             left: 30px;
             opacity: .3;
@@ -152,10 +156,10 @@
                         <div class="swiper-wrapper" id="downImg">
 
                         </div>
-
+                        <div class="slt swiper-button-next button_next"></div>
+                        <div class="slt swiper-button-prev button_prev"></div>
                     </div>
-                    <div class="swiper-button-next button_next"></div>
-                    <div class="swiper-button-prev button_prev"></div>
+
                 </div>
 
             </div>
@@ -186,16 +190,14 @@
         $(".w-tabnav a").hover(function () {
             $(this).addClass("w-tabnavaed").siblings().removeClass("w-tabnavaed");
         })
-        var width = document.documentElement.clientWidth;
-        if (width <= 1680) {
-            $(".w-dcdcon").css("height", "640px");
-            $(".w-dcdimgdivimg").css("height", "115px");
-            $(".w-dcdimgdivimg").css("margin-right", "0");
-        } else {
-            $(".w-dcdcon").css("height", "640px");
-        }
+
         $("._scroll").yi_scroll();
-        // $("._scroll-mh").yi_scroll({isMaxHeight:true,isBar:true});
+        setInterval(function () {
+            var width = $(".w-detailondiv").height();
+            $(".w-dcdcon").css("height", width-100);
+        },1000)
+
+
     })
 </script>
 <script>
@@ -244,9 +246,13 @@
 
 
         var pic = JSON.parse(data.pictureUrlPc);
+
         var picStr = "";
+        if(pic.length<5){
+            $(".slt").css("display","none");
+        }
         for (var i = 0; i < pic.length; i++) {
-            picStr += '<div class="swiper-slide"><img src="' + pic[i] + '" alt="" width="100%" height="100%"></div>';
+            picStr += '<div class="swiper-slide"><img style="display: block" src="' + pic[i] + '" alt="" width="100%" height="100%"></div>';
         }
 
         $("#upImg").html(picStr);
@@ -255,27 +261,19 @@
 
         var galleryThumbs = new Swiper('.gallery-thumbs', {
             spaceBetween: 10,
-            slidesPerView: 'auto',
+            slidesPerView: 6,
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
-            slidesOffsetBefore: 70,
-            slidesOffsetAfter: 70,
-            loop: true,
+            slidesPerGroup : 6,
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
             },
-            on: {
-                init: function () {
-                    console.log(this);
-                }
-            }
+
         });
         var galleryTop = new Swiper('.gallery-top', {
             spaceBetween: 10,
-
             slidesOffsetBefore: 5,
-            loop: true,
             navigation: {
                 nextEl: '.swiper-next',
                 prevEl: '.swiper-prev'
@@ -284,6 +282,13 @@
                 swiper: galleryThumbs
             }
         });
+
+
+            window.onresize = function () {
+                var width = $(".w-detailondiv").height();
+                console.log(width)
+                $(".w-dcdcon").css("height", width-100);
+            }
 
     })
 
