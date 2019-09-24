@@ -211,7 +211,10 @@
 
 
     //设置语音
-    langDom.on('tap click', function (e) {
+    langDom.on('tap', function (e) {
+        var ev = e || window.event;
+        var target = ev.target || ev.srcElement;
+        ev.preventDefault();
         //更改当前页面的语言变量
         lang = !lang;
         //设置logo
@@ -246,9 +249,10 @@
     });
 
     //菜单蒙层和关闭按钮
-    navDom.on('touchend click', function (e) {
-        var ev = ev || window.event;
+    navDom.on('tap click', function (e) {
+        var ev = e || window.event;
         var target = ev.target || ev.srcElement;
+        ev.preventDefault();
         //防止点击菜单也关闭，只有点击最外层的div#nav的时候才关闭
         if (m && (target.id === 'nav' || target.id === 'closeMenu' || target.nodeName.toLowerCase() === 'img')) {
             menuState(true);
@@ -322,7 +326,7 @@
 
     //一级菜单的事件委托
     $('.nav-ul li').on('tap click', function (e) {
-        var ev = ev || window.event, target = ev.target || ev.srcElement, that = $(this);
+        var ev = e || window.event, target = ev.target || ev.srcElement, that = $(this);
         switch (target.id) {
             case 'about':
                 subMenuState(true, that);
@@ -343,8 +347,8 @@
     });
 
     //搜索页面导航
-    $('.list').on('tap click', function (ev) {
-        var ev = ev || window.event, target = ev.target || ev.srcElement;
+    $('.list').on('tap click', function (e) {
+        var ev = e || window.event, target = ev.target || ev.srcElement;
         var search = $('#keyword').val();
         switch (target.id) {
             case 'toProject':
@@ -357,8 +361,8 @@
     });
 
     //底部跳转链接
-    $('.icon-list').on('tap click', function (ev) {
-        var ev = ev || window.event, target = ev.target || ev.srcElement;
+    $('.icon-list').on('tap click', function (e) {
+        var ev = e || window.event, target = ev.target || ev.srcElement;
         switch (target.id) {
             case 'toMicroblog':
                 location.href = 'https://weibo.com/znabeijing?topnav=1&wvr=6&topsug=1&is_all=1';
@@ -375,7 +379,7 @@
 
     //底部跳转icon
     $('#icon_wechat').on('tap click', function (e) {
-        var ev = ev || window.event, target = ev.target || ev.srcElement;
+        var ev = e || window.event, target = ev.target || ev.srcElement;
         if (target.id === 'icon_wechat') {
             $('#icon_wechat').hide();
             $(document.body).css({"overflow-y": "auto"});
