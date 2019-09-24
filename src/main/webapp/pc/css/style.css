@@ -1321,7 +1321,9 @@ body {
     float: right;
     width: 70%;
 }
-
+.project-nav{
+    font-size: 14px!important;
+}
 .w-newsfontbox {
     margin: 20px 35px;
     margin-bottom: 0px;
