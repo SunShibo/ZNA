@@ -166,8 +166,7 @@
         //LOGO
         setLogo(lang);
 
-
-        if (location.href.indexOf('?') === -1) {
+        if (location.pathname.indexOf('language') > -1 && location.pathname.indexOf('?') < 0) {
             location.href = location.href + "?language=" + $.getLangStr();
         }
         //设置菜单
@@ -252,7 +251,7 @@
     navDom.on('tap click', function (e) {
         var ev = e || window.event;
         var target = ev.target || ev.srcElement;
-        ev.preventDefault();
+
         //防止点击菜单也关闭，只有点击最外层的div#nav的时候才关闭
         if (m && (target.id === 'nav' || target.id === 'closeMenu' || target.nodeName.toLowerCase() === 'img')) {
             menuState(true);
