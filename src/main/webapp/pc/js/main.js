@@ -8,7 +8,7 @@ $(function () {
             &&window.location.href.indexOf("pc/member_")==-1
 
         ){
-            debugger;
+
             $(".w-lang").css("margin-right",-20);
         }
 
@@ -265,7 +265,7 @@ $(function () {
     })
 
     $(".code-wp").hover(function () {
-        // debugger;
+
         $(".code-img").css("display","block")
     },function () {
         $(".code-img").css("display","none")
