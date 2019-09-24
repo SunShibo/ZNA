@@ -143,11 +143,11 @@
                     Array.prototype.push.apply(data, r.data.projectBOS);
 
                     var domArr = [];
-
                     for (var i = 0, len = data.length; i < len; i++) {
-                        var dataImageUrl = data[i].thumbnail;
-                        domArr.push('<div class="items">',
-                            '<img src="' + dataImageUrl + '" alt="" width="100%" height="100%">',
+                        console.log(data[i])
+                        var dataImageUrl = JSON.parse(data[i].pictureUrl)[0];
+                        domArr.push('<div class="items" style="background-image:url('+ $.baseUrl() + dataImageUrl+') ;">',
+                            // '<img src="' + dataImageUrl + '" alt="" width="100%" height="100%">',
                             '<input type="hidden" value="', data[i].id, '"/>',
                             '<div class="item-title project-title font_family_medium">', lang ? data[i].titleEnglish : data[i].title, '</div>',
                             '</div>')
@@ -166,14 +166,14 @@
             $('#next').text(lang? 'Show More Results +':'加载更多 +')
         }
 
-        $(document).on('touchend click', '.items', function (e) {
+        $(document).on('tap click', '.items', function (e) {
             var lang = $.getLang() ? 'en' : 'cn';
             location.href = 'project_detailed.html?language=' + lang + '&id=' + $(this).children('input').val();
         });
 
 
         //加载更多
-        $('#next').on('touchend click', function (ev) {
+        $('#next').on('tap click', function (ev) {
             ev.stopPropagation();
             var lang = $.getLang();//获取语言
             current++;

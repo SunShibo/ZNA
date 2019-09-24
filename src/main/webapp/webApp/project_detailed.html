@@ -90,10 +90,7 @@
             <div class="detailed-title">
             </div>
             <div class="detailed-info">
-                <div class="location"></div>
-                <div class="site-area"></div>
-                <div class="building-area"></div>
-                <div class="client"></div>
+                <div class="property"></div>
             </div>
             <div class="detailed-content"></div>
             <div class="switch">
@@ -169,11 +166,8 @@
 
         function setting(lang) {
             $('.detailed-title').text(lang ? data[0].titleEnglish : data[0].title);
-            $('.location').text(lang ? 'Location: ' + data[0].siteEnglish : '地点: ' + data[0].site);
-            $('.site-area').text(lang ? 'Site Area: ' + data[0].floorSpaceEnglish : '场地面积: ' + data[0].floorSpace);
-            $('.building-area').text(lang ? 'Building Area: ' + data[0].coveredAreaEnglish : '建筑面积: ' + data[0].coveredArea);
-            $('.client').text(lang ? 'Client: ' + data[0].clientEnglish : '业主: ' + data[0].client);
-            $('.detailed-content').text(lang ? data[0].contextEnglish : data[0].context);
+            $('.property').html(lang ? data[0].propertyEnglish :  data[0].property);
+            $('.detailed-content').html(lang ? data[0].contextEnglish : data[0].context);
 
             //查看详情按钮
             if (infoState) {
@@ -246,7 +240,7 @@
             }
         });
 
-        $('#info').on('touchend click', function (e) {
+        $('#info').on('tap click', function (e) {
             $('.detailed-content').slideToggle(500, function (e) {
                 infoState = !infoState;
                 if (infoState) {

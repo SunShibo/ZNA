@@ -190,7 +190,7 @@
 
 
         //事件委托
-        $(document).on('touchend click', '.news-items', function (e) {
+        $(document).on('tap click', '.news-items', function (e) {
             $(this).children('.news-info').children('.news-item-content').slideToggle(500);
         });
     })(window, jQuery);

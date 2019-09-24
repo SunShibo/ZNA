@@ -150,8 +150,8 @@
                             '</div>',
                             '<input type="hidden" value="', r.data.teamBOS[i].id, '">',
                             '<div class="team-item-content">',
-                            '<div class="item-content-rows"><span class="name font_family_regular">', lang ? r.data.teamBOS[i].nameEnglish : r.data.teamBOS[i].name, '</span></div>',
-                            '<div class="item-content-rows"><span class="aptitude font_family_regular">', r.data.teamBOS[i].aptitudeAbbreviation, '</span></div>',
+                            '<div class="item-content-rows"><span class="name">', lang ? r.data.teamBOS[i].nameEnglish : r.data.teamBOS[i].name, '</span></div>',
+                            '<div class="item-content-rows"><span class="aptitude">', r.data.teamBOS[i].aptitudeAbbreviation, '</span></div>',
                             '</div>',
                             '</li>'].join(''))
                     }
@@ -178,7 +178,7 @@
 
 
         //加载更多
-        $('#next').on('touchend', function () {
+        $('#next').on('tap click', function () {
             var lang = $.getLang();//获取语言
             current++;
             if (Math.ceil(count / limit) < current) {
@@ -190,7 +190,7 @@
         });
 
         //跳转详情
-        $(document).on('touchend click', '.team-items', function (e) {
+        $(document).on('tap click', '.team-items', function (e) {
             location.href = 'team_detailed.html?id=' + $(this).children('input').val();
         })
     })(window, jQuery);

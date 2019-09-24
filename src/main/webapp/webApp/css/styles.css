@@ -187,9 +187,9 @@ input[type=search]::-ms-clear {
 #app-page .titles {
     display: inline-block;
     border-bottom: 2px #FFFFFF solid;
-    font-size: 0.4rem;
+    font-size: 0.28rem;
     color: #ffffff;
-    padding-bottom: .08rem;
+    padding-bottom: .07rem;
     margin-bottom: .16rem;
 }
 
@@ -389,8 +389,10 @@ li .nav-href {
 }
 
 .head .logo {
-    height: .4rem;
+    height: .36rem;
     top: .3rem;
+    bottom: .3rem;
+    margin: auto;
     left: .4rem;
     text-align: center;
 }
@@ -400,7 +402,7 @@ li .nav-href {
 }
 
 .ch_logo_w {
-    width: 2.91rem;
+    width: 2.7rem;
 }
 
 .head .logo > a {
@@ -419,7 +421,7 @@ li .nav-href {
 
 .head .head-item .language {
     color: #666666;
-    font-size: .4rem;
+    font-size: .36rem;
     width: .5rem;
 }
 
@@ -428,13 +430,13 @@ li .nav-href {
 }
 
 #clickMenu {
-    width: .5rem;
-    height: .46rem;;
+    width: .36rem;
+    height: .36rem;;
 }
 
 #clickSearch {
-    width: .37rem;
-    height: .37rem;
+    width: .36rem;
+    height: .36rem;
 }
 
 .head .head-item .menu img, .head .head-item .search img {
@@ -473,6 +475,14 @@ li .nav-href {
     padding-top: 1rem;
 }
 
+#app-page .career-info li{
+    cursor: pointer;
+}
+
+#app-page .href_items{
+    cursor: pointer;
+}
+
 .banner .home-item-image {
     width: 7.5rem;
     margin: 0 auto;
@@ -490,11 +500,17 @@ li .nav-href {
 }
 
 .swiper-pagination-bullet {
-    border: 3px #ffffff solid;
-    height: .08rem;
-    width: .08rem;
+    border: 1px #ffffff solid;
+    height: .09rem;
+    width: .09rem;
     background: transparent;
     z-index: 999;
+    opacity: 1;
+    bottom: .1rem;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets{
+    bottom: .1rem;
 }
 
 .swiper-pagination-bullet-active {
@@ -522,7 +538,7 @@ li .nav-href {
 
 .swiper-coopterative .logo-center li {
     width: .75rem;
-    height: .45rem;
+    height: .55rem;
     display: inline-block;
     margin: .3rem .28rem;
 }
@@ -707,7 +723,7 @@ li .nav-href {
     font-size: .28rem;
     color: #000000;
     display: inline-block;
-    padding-bottom: .08rem;
+    padding-bottom: 3px;
     margin-bottom: .16rem;
     border-bottom: 1px #000000 solid;
 
@@ -732,6 +748,7 @@ li .nav-href {
     width: 3.5rem;
     margin: 0 .124rem .4rem;
     position: relative;
+    cursor: pointer;
 }
 
 .team-items .item-image {
@@ -762,6 +779,14 @@ li .nav-href {
     /*word-wrap: break-word;*/
 }
 
+.item-content-rows .aptitude{
+    font-size: 0.18rem;
+    font-weight: bold;
+    line-height: 0.118rem;
+    letter-spacing: 0.009rem;
+    color: #666666;
+}
+
 .content .detailed {
     margin: 0 .15rem .3rem;
 }
@@ -774,6 +799,7 @@ li .nav-href {
 .page_next a {
     text-decoration: underline;
     color: #535353;
+    cursor: pointer;
 }
 
 .detailed .detailed-image {
@@ -979,6 +1005,13 @@ li .nav-href {
     width: 7.5rem;
     height: 5rem;
     margin-bottom: .02rem;
+    cursor: pointer;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 .content .items-bottom {
@@ -1190,6 +1223,10 @@ ul li .info-text {
     line-height: 0.48rem;
 }
 
+.info-text .info-text-obligation {
+    margin-bottom: .2rem;
+}
+
 .info-text-obligation .obligation-title {
     font-size: 0.26rem;
 }
@@ -1203,7 +1240,6 @@ ul li .info-text {
 }
 
 .info-text-qualification .qualification-title {
-    margin-top: .4rem;
     font-size: 0.26rem;
 }
 
@@ -1264,7 +1300,7 @@ ul li .info-text {
 
 #foot .foot-center {
     /*width: 70%;*/
-    margin: .3rem auto;
+    margin: .3rem;
     text-align: center;
 }
 

@@ -166,7 +166,7 @@
         }
 
         //加载更多
-        $('#next').on('touchend click', function (e) {
+        $('#next').on('tap click', function (e) {
             var lang = $.getLang();
             if (Math.ceil(count / limit) < current) {
                 lang ? $(this).text('NO MORE') : $(this).text('暂无更多');

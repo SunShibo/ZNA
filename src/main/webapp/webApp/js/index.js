@@ -172,8 +172,6 @@
         }
         //设置菜单
         settingMenu(lang);
-        //滑动事件的优化
-        stopTouchendPropagationAfterScroll();
         //执行回调
         window.switch_language(lang);
     });
@@ -211,39 +209,9 @@
         }
     }
 
-    /**
-     * 滑动优化
-     * 有轮播的页面不进入此事件优化
-     */
-    function stopTouchendPropagationAfterScroll() {
-
-        var locked = false;
-
-        if (!(window.location.pathname.indexOf('home')) || !(window.location.pathname.indexOf('aboutUs'))) {
-
-            window.addEventListener('touchmove', function (ev) {
-
-                locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
-
-            }, true);
-
-            function stopTouchendPropagation(ev) {
-
-                ev.stopPropagation();
-
-                window.removeEventListener('touchend', stopTouchendPropagation, true);
-
-                locked = false;
-
-            }
-
-        }
-
-    }
-
 
     //设置语音
-    langDom.on('touchend click', function (e) {
+    langDom.on('tap click', function (e) {
         //更改当前页面的语言变量
         lang = !lang;
         //设置logo
@@ -273,7 +241,7 @@
     }
 
     //菜单显示
-    $('#clickMenu').on('touchend click', function () {
+    $('#clickMenu').on('tap click', function () {
         menuState(m);
     });
 
@@ -292,7 +260,7 @@
     });
 
     //搜索
-    $('#clickSearch').on('touchend click', function (e) {
+    $('#clickSearch').on('tap click', function (e) {
         searchState(s);
     });
 
@@ -353,7 +321,7 @@
     }
 
     //一级菜单的事件委托
-    $('.nav-ul li').on('touchend click', function (e) {
+    $('.nav-ul li').on('tap click', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement, that = $(this);
         switch (target.id) {
             case 'about':
@@ -375,7 +343,7 @@
     });
 
     //搜索页面导航
-    $('.list').on('touchend click', function (ev) {
+    $('.list').on('tap click', function (ev) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         var search = $('#keyword').val();
         switch (target.id) {
@@ -389,7 +357,7 @@
     });
 
     //底部跳转链接
-    $('.icon-list').on('touchend click', function (ev) {
+    $('.icon-list').on('tap click', function (ev) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         switch (target.id) {
             case 'toMicroblog':
@@ -406,7 +374,7 @@
     });
 
     //底部跳转icon
-    $('#icon_wechat').on('touchend click', function (e) {
+    $('#icon_wechat').on('tap click', function (e) {
         var ev = ev || window.event, target = ev.target || ev.srcElement;
         if (target.id === 'icon_wechat') {
             $('#icon_wechat').hide();

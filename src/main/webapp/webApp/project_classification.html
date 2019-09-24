@@ -161,7 +161,7 @@
             }
         }
 
-        $(document).on('touchend click', '.items', function (ev) {
+        $(document).on('tap click', '.items', function (ev) {
             var ev = ev || window.event, target = ev.target || ev.srcElement;
             if (this.className === 'items items-bottom') {
                 location.href = 'project.html?language=' + $.getLangStr() + 'id=' + $(this).children('input').val();
