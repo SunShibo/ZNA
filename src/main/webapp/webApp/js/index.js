@@ -210,7 +210,7 @@
 
 
     //设置语音
-    langDom.on('tap', function (e) {
+    langDom.on('tap click', function (e) {
         var ev = e || window.event;
         var target = ev.target || ev.srcElement;
         ev.preventDefault();
