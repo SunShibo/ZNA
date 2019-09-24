@@ -33,7 +33,7 @@
 			<span data-id="project_cn" class="nav-span">经典项目</span>
 			<span data-id="team_cn" class="nav-span">核心团队</span>
 			<span data-id="dynamic_cn" class="nav-span">最新动态</span>
-			<span data-id="office_en" class="nav-span span-active">联系我们</span>
+			<span data-id="office_cn" class="nav-span span-active">联系我们</span>
 
 			<img id="topImg" class="w-tabtleimg" src="img/uc-06.png"/>
 		</div>
@@ -62,19 +62,19 @@
 		<div class="w-content body-wp">
 			<div class="w-tabnav">
 				<a id="navfir" class="w-tabnavaed">办公室</a>
-				<a id="navsec">职位</a>
+				<a id="navsec">人才招聘</a>
 
 			</div>
 			<div class="w-tabcontent">
 				<div class="w-contenta" style="position: relative" onmousemove="test(event)">
-					<!--<div class="w-contenta" style="position: relative" onmousemove="test(event)">-->
+
 					<div class="w-addimgdetail" id="div1">
 						<span class="w-aidspant" id="a_city">北京市</span>
 						<span >地址:<b id="d_address"></b></span>
 
-						<span>电话: <b id="d_tel"></b></span>
-						<span>传真: <b id="d_fax"></b></span>
-						<span>邮件:   <b id="d_e"></b></span>
+						<span id="d_teld_tel">电话: <b id="d_tel"></b></span>
+						<span id="d_faxd_fax">传真: <b id="d_fax"></b></span>
+						<span id="d_ed_e">邮件: <b id="d_e"></b></span>
 					</div>
 					<div style="position: relative">
 						<div class="d_mask" data-id="0"></div>
@@ -130,6 +130,13 @@
 	</body>
 </html>
 <script>
+    $(function () {
+        $(".w-tabnav a").hover(function () {
+            $(this).addClass("w-tabnavaed1").siblings().removeClass("w-tabnavaed1");
+        },function () {
+            $(this).removeClass("w-tabnavaed1");
+        })
+    })
 	var offices = [];
     $(function(){
         $("#navfir").click(function(){
@@ -144,13 +151,7 @@
             $("#navsec").addClass("w-tabnavaed");
             $("#navfir").removeClass("w-tabnavaed");
         })
-        $("#imgaddress").mouseover(function(e){
-            // $(".w-addimgdetail").show();
-            // console.log(e.clientX,e.clientY)
-        })
-        $("#imgaddress").mouseout(function(){
-            // $(".w-addimgdetail").hide();
-        })
+
         $("#navsec").on("click",function () {
             window.location.href = "zp_cn.html"
         })
@@ -181,14 +182,25 @@
                 if(!ff){
                     fstr = '';
 				}
+                var  mob = a.mobile;
+                var mobilestr = '<span>Tel：'+a.mobile+'</span>';
+                if(!mob){
+                    mobilestr = '';
+                }
                 // debugger;
+                var  email = a.email;
+                var emailstr = '<span>E：'+a.email+'</span>';
+                if(!email){
+                    emailstr = '';
+                }
+
             	dStr+=[
                     '<div class="w-tabcadd">',
                     '<a>',a.name,'</a>',
                     ' <span>',a.address,'</span>',
-                    '<span>Tel：',a.mobile,'</span>',
+                    mobilestr,
                     fstr,
-                    '<span>E：',a.email,'</span>',
+                    emailstr,
                     '</div>'
 				].join("")
 			}
@@ -266,6 +278,21 @@ return;
         document.getElementById("d_tel").textContent = offices[id]['mobile'];
         document.getElementById("d_fax").textContent = offices[id]['faxNO'];
         document.getElementById("d_e").textContent = offices[id]['email'];
+        if(offices[id]['email']==""){
+            $("#d_ed_e").css("display","none");
+		}else{
+            $("#d_ed_e").css("display","block");
+		}
+        if(offices[id]['mobile']==""){
+            $("#d_teld_tel").css("display","none");
+        }else{
+            $("#d_teld_tel").css("display","block");
+		}
+        if(offices[id]['faxNO']==""){
+            $("#d_faxd_fax").css("display","none");
+        }else{
+            $("#d_faxd_fax").css("display","block");
+		}
     },function () {
         document.getElementById('div1').style.display = 'none';
     })

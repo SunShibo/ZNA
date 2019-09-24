@@ -143,13 +143,11 @@
                     Array.prototype.push.apply(data, r.data.projectBOS);
 
                     var domArr = [];
-                    for (var i = 0, len = data.length; i < len; i++) {
-                        console.log(data[i])
-                        var dataImageUrl = JSON.parse(data[i].pictureUrl)[0];
+                    for (var i = 0, len = r.data.projectBOS.length; i < len; i++) {
+                        var dataImageUrl = JSON.parse(r.data.projectBOS[i].pictureUrl)[0];
                         domArr.push('<div class="items" style="background-image:url('+ $.baseUrl() + dataImageUrl+') ;">',
-                            // '<img src="' + dataImageUrl + '" alt="" width="100%" height="100%">',
-                            '<input type="hidden" value="', data[i].id, '"/>',
-                            '<div class="item-title project-title font_family_medium">', lang ? data[i].titleEnglish : data[i].title, '</div>',
+                            '<input type="hidden" value="', r.data.projectBOS[i].id, '"/>',
+                            '<div class="item-title project-title font_family_medium">', lang ? r.data.projectBOS[i].titleEnglish : r.data.projectBOS[i].title, '</div>',
                             '</div>')
                     }
                     $('.info').append(domArr.join(''));
