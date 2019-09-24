@@ -308,6 +308,7 @@ li .nav-href {
     padding: .1rem .5rem;
     line-height: .65rem;
     color: #666666;
+    cursor: pointer;
 }
 
 .sub {
@@ -327,6 +328,7 @@ li .nav-href {
     text-align: center;
     line-height: .65rem;
     padding: .1rem;
+    cursor: pointer;
 }
 
 .sub-nav li[class~="singular"] {
@@ -342,6 +344,7 @@ li .nav-href {
     display: block;
     color: #666666;
     font-size: .28rem;
+    cursor: pointer;
 }
 
 .search_list {
@@ -725,7 +728,7 @@ li .nav-href {
     display: inline-block;
     padding-bottom: 3px;
     margin-bottom: .16rem;
-    border-bottom: 1px #000000 solid;
+    border-bottom: 2px #313131 solid;
 
 }
 
