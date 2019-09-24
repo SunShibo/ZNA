@@ -24,13 +24,13 @@
            <if test="addressEnglish!=null and addressEnglish!=''">
                `address_english`=#{addressEnglish},
            </if>
-           <if test="mobile!=null and mobile!=''">
+           <if test="mobile!=null ">
                `mobile`=#{mobile},
            </if>
-           <if test="faxNO!=null and faxNO!=''">
+           <if test="faxNO!=null">
                `fax_NO`=#{faxNO},
            </if>
-           <if test="email!=null and email!=''">
+           <if test="email!=null ">
                `email`=#{email},
            </if>
            <if test="coordinate!=null and coordinate!=''">
@@ -56,13 +56,13 @@
             <if test="addressEnglish!=null and addressEnglish!=''">
                 `address_english`=#{addressEnglish},
             </if>
-            <if test="mobile!=null and mobile!=''">
+            <if test="mobile!=null ">
                 `mobile`=#{mobile},
             </if>
-            <if test="faxNO!=null and faxNO!=''">
+            <if test="faxNO!=null ">
                 `fax_NO`=#{faxNO},
             </if>
-            <if test="email!=null and email!=''">
+            <if test="email!=null ">
                 `email`=#{email},
             </if>
             <if test="coordinate!=null and coordinate!=''">
