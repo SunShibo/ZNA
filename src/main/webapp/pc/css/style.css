@@ -1325,6 +1325,7 @@ body {
 .w-newsfontbox {
     margin: 20px 35px;
     margin-bottom: 0px;
+    max-width: 800px;
 }
 
 .w-newsboxr span {
@@ -1712,12 +1713,12 @@ body {
 .item .box {
     font-size: 1.5rem;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .inp {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     position: relative;
 }
 
