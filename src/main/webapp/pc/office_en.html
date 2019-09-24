@@ -26,7 +26,7 @@
 	<div data-id="home_en" class="nav-span loginPoint"></div>
 	<div class="w-lang">
 		<span class="w-langc">中文</span>
-		<span class="w-c">EN</span>
+		<span class="w-c active">EN</span>
 	</div>
 	<div class="w-tabtle">
 		<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
@@ -70,10 +70,9 @@
 			<div class="w-addimgdetail" id="div1">
 				<span class="w-aidspant" id="a_city"></span>
 				<span><b id="d_address"></b></span>
-
-				<span id="d_tel_">Tel: <b id="d_tel"></b></span>
-				<span id="d_fax_">Fax: <b id="d_fax"></b></span>
-				<span id="d_e_">E:   <b id="d_e"></b></span>
+				<span id="d_teld_tel">Tel: <b id="d_tel"></b></span>
+				<span id="d_faxd_fax">Fax: <b id="d_fax"></b></span>
+				<span id="d_ed_e">E: <b id="d_e"></b></span>
 			</div>
 			<div style="position: relative">
 				<div class="d_mask" data-id="0"></div>
@@ -129,6 +128,13 @@
 </body>
 </html>
 <script>
+    $(function () {
+        $(".w-tabnav a").hover(function () {
+            $(this).addClass("w-tabnavaed1").siblings().removeClass("w-tabnavaed1");
+        },function () {
+            $(this).removeClass("w-tabnavaed1");
+        })
+    })
     var offices = [];
     $(function(){
         $("#navfir").click(function(){
@@ -143,13 +149,7 @@
             $("#navsec").addClass("w-tabnavaed");
             $("#navfir").removeClass("w-tabnavaed");
         })
-        $("#imgaddress").mouseover(function(e){
-            // $(".w-addimgdetail").show();
-            // console.log(e.clientX,e.clientY)
-        })
-        $("#imgaddress").mouseout(function(){
-            // $(".w-addimgdetail").hide();
-        })
+
 
 		$("#navsec").on("click",function () {
 			window.location.href = "zp_en.html"
@@ -167,7 +167,7 @@
         // background-size:
     })
     $.getJSON("/officeContact/getOfficeContact?r="+Date.now(),function (rs) {
-        console.log("办公室信息",rs.data);
+
         var d = offices = rs.data.officeContactBO;
         var dStr = '';
         var $mask = $(".d_mask");
@@ -181,13 +181,25 @@
             if(!ff){
                 fstr = '';
             }
+            var  mob = a.mobile;
+            var mobilestr = '<span>Tel：'+a.mobile+'</span>';
+            if(!mob){
+                mobilestr = '';
+            }
+            // debugger;
+            var  email = a.email;
+            var emailstr = '<span>E：'+a.email+'</span>';
+            if(!email){
+                emailstr = '';
+            }
+
             dStr+=[
                 '<div class="w-tabcadd">',
                 '<a>',a.nameEnglish,'</a>',
                 ' <span>',a.addressEnglish,'</span>',
-                '<span>Tel：',a.mobile,'</span>',
+                mobilestr,
                 fstr,
-                '<span>E：',a.email,'</span>',
+                emailstr,
                 '</div>'
             ].join("")
         }
@@ -264,12 +276,20 @@
         document.getElementById("d_tel").textContent = offices[id]['mobile'];
         document.getElementById("d_fax").textContent = offices[id]['faxNO'];
         document.getElementById("d_e").textContent = offices[id]['email'];
-        if(offices[id]['faxNO']==''){
-            document.getElementById("d_fax_").style.display = 'none';
-		}else if(offices[id]['email_']==''){
-            document.getElementById("d_e").style.display = 'none';
-		}else if(offices[id]['mobile_']==''){
-            document.getElementById("d_tel").style.display = 'none';
+        if(offices[id]['email']==""){
+            $("#d_ed_e").css("display","none");
+        }else{
+            $("#d_ed_e").css("display","block");
+        }
+        if(offices[id]['mobile']==""){
+            $("#d_teld_tel").css("display","none");
+        }else{
+            $("#d_teld_tel").css("display","block");
+        }
+        if(offices[id]['faxNO']==""){
+            $("#d_faxd_fax").css("display","none");
+        }else{
+            $("#d_faxd_fax").css("display","block");
         }
     },function () {
         document.getElementById('div1').style.display = 'none';

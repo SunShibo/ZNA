@@ -26,7 +26,7 @@
 	<div data-id="home_en" class="nav-span loginPoint"></div>
 	<div class="w-lang">
 		<span class="w-langc">中文</span>
-		<span class="w-c">EN</span>
+		<span class="w-c active">EN</span>
 	</div>
 	<div class="w-tabtle">
 		<span data-id="aboutus_en" class="nav-span">ABOUT US</span>
@@ -130,6 +130,13 @@
 </body>
 </html>
 <script>
+    $(function () {
+        $(".w-tabnav a").hover(function () {
+            $(this).addClass("w-tabnavaed1").siblings().removeClass("w-tabnavaed1");
+        },function () {
+            $(this).removeClass("w-tabnavaed1");
+        })
+    })
     var offices = [];
     $(function(){
         $("#navfir").click(function(){
