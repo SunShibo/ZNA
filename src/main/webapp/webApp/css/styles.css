@@ -186,7 +186,7 @@ input[type=search]::-ms-clear {
 
 #app-page .titles {
     display: inline-block;
-    border-bottom: 2px #FFFFFF solid;
+    border-bottom: 1px #FFFFFF solid;
     font-size: 0.28rem;
     color: #ffffff;
     padding-bottom: .07rem;
@@ -729,7 +729,7 @@ li .nav-href {
     display: inline-block;
     padding-bottom: 3px;
     margin-bottom: .16rem;
-    border-bottom: 2px #313131 solid;
+    border-bottom: 1px #313131 solid;
 
 }
 
