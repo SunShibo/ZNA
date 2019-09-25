@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
-	<link href="css/style.css?v=1.9" rel="stylesheet"/>
+	<link href="css/style.css?v=2.0" rel="stylesheet"/>
 	<link rel="stylesheet" href="css/swiper.min.css">
 	<script src="js/jquery-2.0.3.min.js"></script>
 	<script src="js/swiper.min.js"></script>
@@ -271,11 +271,11 @@
     $(".d_mask").hover(function () {
         var id= Number(this.dataset.id);
         document.getElementById('div1').style.display = 'block';
-        document.getElementById("a_city").textContent = offices[id]['nameEnglish'];
-        document.getElementById("d_address").textContent = offices[id]['addressEnglish'];
-        document.getElementById("d_tel").textContent = offices[id]['mobile'];
-        document.getElementById("d_fax").textContent = offices[id]['faxNO'];
-        document.getElementById("d_e").textContent = offices[id]['email'];
+        document.getElementById("a_city").innerHTML = offices[id]['nameEnglish'];
+        document.getElementById("d_address").innerHTML = offices[id]['addressEnglish'];
+        document.getElementById("d_tel").innerHTML = offices[id]['mobile'];
+        document.getElementById("d_fax").innerHTML = offices[id]['faxNO'];
+        document.getElementById("d_e").innerHTML = offices[id]['email'];
         if(offices[id]['email']==""){
             $("#d_ed_e").css("display","none");
         }else{
