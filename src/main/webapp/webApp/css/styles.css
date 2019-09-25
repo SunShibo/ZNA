@@ -1083,6 +1083,12 @@ li .nav-href {
 .content .project-detailed-image {
     width: 7.5rem;
     height: 4.82rem;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 .content .project-detailed-info {
@@ -1135,6 +1141,12 @@ li .nav-href {
     width: 6.7rem;
     height: 4.08rem;
     margin-bottom: .2rem;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 .content .recruitment {
