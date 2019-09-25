@@ -160,6 +160,7 @@
                 dataType: 'json',
                 success: function (r) {
                     data = r.data.officeContactBO;
+                    console.log(data)
                     setting(lang);
                     $.footData(r.data.contactWayBO);
                 }

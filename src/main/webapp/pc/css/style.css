@@ -1672,6 +1672,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 70px;
+    justify-content: flex-start;
 }
 
 .item {
