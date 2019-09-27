@@ -175,16 +175,19 @@
             }
 
             //底部导航栏
-            var pre = data[0].beforeProjectId ? ('project_detailed.html?id=' + data[0].beforeProjectId) + "&type=" + data[0].type : '';
-            var next = data[0].afterProjectId ? ('project_detailed.html?id=' + data[0].afterProjectId) + "&type=" + data[0].type : '';
+            //前后切换按钮 地址拼接
+            var pre = data[0].beforeProjectId ? ('project_detailed.html?language=' + $.getLangStr() + '&id=' + data[0].beforeProjectId) + "&type=" + data[0].type : '';
+            var next = data[0].afterProjectId ? ('project_detailed.html?language=' + $.getLangStr() + '&id=' + data[0].afterProjectId) + "&type=" + data[0].type : '';
             var back = lang ? data[0].projectTypeNameEnglish : data[0].projectTypeName;
             var nextBtn = $('.nav-next>a'), preBtn = $('.nav-pre>a');
+            //前后按钮中英文切换
             preBtn.attr('href', pre).children('.nav-btn-pre').text(lang ? 'PREVIOUS' : '上一个');
             nextBtn.attr('href', next).children('.nav-btn-next').text(lang ? 'NEXT' : '下一个');
             //置灰
             !next ? nextBtn.css('color', '#bababa') : '';
             !pre ? preBtn.css('color', '#bababa') : '';
-            $('.back-page>a').attr('href', 'project.html?language=' + $.getLangStr() + '&id=' + data[0].projectTypeNameEnglish).text("< " + back);
+            //后退按钮跳转地址绑定
+            $('.back-page>a').attr('href', 'project.html?language=' + $.getLangStr() + '&id=' + data[0].type).text("< " + back);
 
             //变量scrollHeight是滚动条的总高度
             scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;

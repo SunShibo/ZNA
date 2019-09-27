@@ -191,7 +191,7 @@
 
         //跳转详情
         $(document).on('tap click', '.team-items', function (e) {
-            location.href = 'team_detailed.html?id=' + $(this).children('input').val();
+            location.href = 'team_detailed.html?language=' + $.getLangStr() + '&id=' + $(this).children('input').val();
         })
     })(window, jQuery);
 </script>

@@ -170,6 +170,7 @@
             $('#next').text(lang ? 'Show More Results +' : '加载更多 +')
         }
 
+        //项目详情跳转
         $(document).on('tap click', '.items', function (e) {
             location.href = 'project_detailed.html?language=' + $.getLangStr() + '&id=' + $(this).children('.id').val() + '&type=' + $(this).children('.type').val();
         });

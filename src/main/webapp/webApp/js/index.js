@@ -184,25 +184,58 @@
 
         //遍历菜单
         for (var i = 0, len = menu.length; i < len; i++) {
-            var dom = $('.nav-ul').children('li').eq(i);
-            var aSrc = dom.children('a').attr('href');
-            //设置一级菜单
+
+            var dom = $('.nav-ul').children('li').eq(i)
+            var aSrc = dom.children('a').attr('href')
+            var searchIndex = aSrc.indexOf('?')
+
+            //设置一级菜单文本
             if (lang) {
-                dom.children('a').text(menu[i].nameEN).attr('href', aSrc + '?language=' + $.getLangStr());
+                dom.children('a').text(menu[i].nameEN);
             } else {
-                dom.children('a').text(menu[i].name).attr('href', aSrc + '?language=' + $.getLangStr());
+                dom.children('a').text(menu[i].name);
             }
+
+            //判断是否设置语言类型
+            if (searchIndex > -1) {
+                //修改language
+                dom.children('a').attr('href', aSrc.substring(0, searchIndex) + 'language=' + $.getLangStr())
+            } else if(searchIndex === -1 && aSrc.indexOf('javascript') === -1) {
+                //新增language 去除包括二级菜单的一级菜单
+                dom.children('a').attr('href', aSrc + '?language=' + $.getLangStr())
+            }
+
             //设置二级菜单
             if (menu[i].children.length) {
                 for (var j = 0, jLen = menu[i].children.length; j < jLen; j++) {
-                    var subDom = dom.find('.sub-nav').children('li').eq(j).children('a');
-                    var subSrc = subDom.attr('href');
-                    subSrc = subSrc.indexOf('?') === -1 ? subSrc + '?' : subSrc + '&';
+                    var subDom = dom.find('.sub-nav').children('li').eq(j).children('a')
+                    var subSrc = subDom.attr('href')
+
+                    //检查地址是否有问号
+                    var subSearchIndex = subSrc.indexOf('?')
+                    //检查地址是否有language
+                    var chackSubSearchLanguage = subSrc.indexOf('language')
+
                     if (lang) {
-                        subDom.text(menu[i].children[j].nameEN).attr('href', subSrc + 'language=' + $.getLangStr());
+                        subDom.text(menu[i].children[j].nameEN)
                     } else {
-                        subDom.text(menu[i].children[j].name).attr('href', subSrc + 'language=' + $.getLangStr());
+                        subDom.text(menu[i].children[j].name)
                     }
+
+                    //判断是否设置语言类型
+                    //首先 先判断如果地址有language
+                    if (chackSubSearchLanguage > -1) {
+                        //修改language
+                        subDom.attr('href', subSrc.substring(0, chackSubSearchLanguage + 9) + $.getLangStr())
+                    } else {
+                        //新增language
+                        //判断是否有?
+                        subSrc = subSearchIndex > -1 ? subSrc + '&' : subSrc + '?';
+                        //更新地址
+                        subDom.attr('href', subSrc + 'language=' + $.getLangStr())
+                    }
+
+
                 }
             }
         }
