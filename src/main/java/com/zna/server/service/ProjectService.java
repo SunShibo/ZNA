@@ -38,13 +38,14 @@ public class ProjectService {
      * 修改项目
      * @param
      */
-    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,Integer sort,String pictureUrl,String pictureUrlPc,String thumbnail,String thumbnailPc,String site,String siteEnglish,String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context,String contextEnglish,String property,String propertyEnglish,Integer updateUserId){
+    public void updateProject(Integer id,String projectTypeName,String projectTypeNameEnglish,String title,String titleEnglish,String type,Integer sort,String pictureUrl,String pictureUrlPc,String thumbnail,String thumbnailPc,String site,String siteEnglish,String floorSpace,String floorSpaceEnglish,String coveredArea,String coveredAreaEnglish,String client,String clientEnglish,String context,String contextEnglish,String property,String propertyEnglish,Integer updateUserId){
         ProjectBO projectBO = new ProjectBO();
         projectBO.setId(id);
         projectBO.setProjectTypeName(projectTypeName);
         projectBO.setProjectTypeNameEnglish(projectTypeNameEnglish);
         projectBO.setTitle(title);
         projectBO.setTitleEnglish(titleEnglish);
+        projectBO.setType(type);
         projectBO.setSort(sort);
         projectBO.setPictureUrl(pictureUrl);
         projectBO.setPictureUrlPc(pictureUrlPc);

@@ -28,6 +28,7 @@
        <if test="projectTypeNameEnglish!=null and projectTypeNameEnglish!=''"> `project_type_name_english`=#{projectTypeNameEnglish},</if>
         <if test="title!=null and title!=''">`title`=#{title},</if>
       <if test="titleEnglish!=null and titleEnglish!=''">`title_english`=#{titleEnglish},</if>
+        <if test="type!=null and type!=''">`type`=#{type},</if>
         <if test="sort!=null and sort!=''">`sort`=#{sort},</if>
         <if test="pictureUrl!=null and pictureUrl!=''">`picture_url`=#{pictureUrl},</if>
         <if test="pictureUrlPc!=null and pictureUrlPc!=''">`picture_url_pc`=#{pictureUrlPc},</if>
