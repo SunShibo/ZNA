@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>zna</title>
-		<link href="css/style.css?v=1.9" rel="stylesheet"/>
+		<link href="css/style.css?v=2.1" rel="stylesheet"/>
 		<link rel="stylesheet" href="css/swiper.min.css">
 		<script src="js/jquery-2.0.3.min.js"></script>
 		<script src="js/swiper.min.js"></script>
@@ -32,6 +32,9 @@
 			}
 			#contactImgcontactImg{
 				/*height: calc(100% - 27px);*/
+			}
+			.w-indeximgspan{
+				cursor:pointer;
 			}
         </style>
 	</head>
@@ -103,24 +106,24 @@
 				<div class="w-indexidbl">
 					<div class="w-indeximgbox">
 						<img id="projectImg" />
-						<div class="w-indeximgspan">
+						<div class="w-indeximgspan" onclick="goProject();">
 							<div class="w-indexist">
 								<p class="w-indexibfcpw" id="projectTitle"></p>
 							</div>
 							<span class="w-indexisc" id="projectContent"></span>
-							<span class="w-indexisb" onclick="goProject();">去了解 ></span>
+							<span class="w-indexisb">去了解 ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
 					<div class="w-indeximgbox">
 						<img id="newsImg" />
-						<div class="w-indeximgspan">
+						<div class="w-indeximgspan"  onclick="goNews();">
 							<div class="w-indexist" id="n1ewsTitle">
 								<p class="w-indexibfcpw" id="newsTitle"></p>
 							</div>
 							<span class="w-indexisc" id="newsContent">
                         </span>
-							<span class="w-indexisb"  onclick="goNews();">去了解 ></span>
+							<span class="w-indexisb">去了解 ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
@@ -128,25 +131,25 @@
 				<div class="w-indexidbr">
 					<div class="w-indeximgbox">
 						<img id="teamImg" />
-						<div class="w-indeximgspan">
+						<div class="w-indeximgspan"onclick="goTeam();">
 							<div class="w-indexist" id="teamTitle1">
 								<p class="w-indexibfcpw" id="teamTitle"></p>
 							</div>
 							<span class="w-indexisc" id="teamContent">
                         </span>
-							<span class="w-indexisb"  onclick="goTeam();">去了解 ></span>
+							<span class="w-indexisb"  >去了解 ></span>
 						</div>
 						<div class="bg-mask"></div>
 					</div>
 					<div class="w-indeximgbox" id="contactImgcontactImg">
 						<img id="contactImg" />
-						<div class="w-indeximgspan">
+						<div class="w-indeximgspan" onclick="goOffice();">
 							<div class="w-indexist" id="contactTitle1">
 								<p class="w-indexibfcpw" id="contactTitle"></p>
 							</div>
 							<span class="w-indexisc"  id="contactContent">
                         </span>
-							<span class="w-indexisb" onclick="goOffice();">去了解 ></span>
+							<span class="w-indexisb" >去了解 ></span>
 						</div>
 						<!--<div class="bg-mask"></div>-->
 					</div>
@@ -265,7 +268,7 @@
         window.location.href = "project_cn.html";
     }
     function goOffice() {
-        window.location.href = "zp_cn.html";
+        window.location.href = "office_cn.html";
     }
     function goNews() {
         window.location.href = "dynamic_cn.html";

@@ -437,6 +437,7 @@ body {
 }
 
 .w-addimgdetail {
+    word-break: break-all;
     padding-top: 40px;
     padding-left: 31px;
     padding-right: 31px;
@@ -923,9 +924,10 @@ body {
     max-height: 60%;
     min-height: 340px;
     background: #FFFFFF;
-    opacity: 1;
+    opacity: 0.9;
     padding-bottom: 10px;
     overflow: hidden;
+    max-width: 887px;
 }
 
 .w-indexibft {
@@ -1047,7 +1049,7 @@ body {
         max-height: 60%;
         /*min-height: 300px;*/
         background: #FFFFFF;
-        opacity: 1;
+        opacity: 0.9;
         padding-bottom: 10px;
         overflow: hidden;
     }
@@ -1078,7 +1080,7 @@ body {
         max-height: 60%;
         min-height: 300px;
         background: #FFFFFF;
-        opacity: 1;
+        opacity: 0.9;
         padding-bottom: 10px;
         overflow: hidden;
     }

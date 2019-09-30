@@ -140,7 +140,7 @@
                 data: {
                     pageNo: current,
                     pageSize: limit,
-                    projectTypeNameEnglish: $.getUrl('id'),
+                    type: $.getUrl('id'),
                     title: $.getUrl('search')
                 },
                 success: function (r) {
@@ -150,7 +150,7 @@
                     var domArr = [];
                     for (var i = 0, len = r.data.projectBOS.length; i < len; i++) {
                         var dataImageUrl = JSON.parse(r.data.projectBOS[i].pictureUrl)[0];
-                        domArr.push('<div class="items" style="background-image:url(' + $.baseUrl() + dataImageUrl + ') ;">',
+                        domArr.push('<div class="items" style="background-image:url(' + $.baseUrl() + dataImageUrl + ');">',
                             '<input type="hidden" class="id" value="', r.data.projectBOS[i].id, '"/>',
                             '<input type="hidden" class="type" value="', r.data.projectBOS[i].type, '"/>',
                             '<div class="item-title project-title font_family_medium">', lang ? r.data.projectBOS[i].titleEnglish : r.data.projectBOS[i].title, '</div>',
@@ -170,6 +170,7 @@
             $('#next').text(lang ? 'Show More Results +' : '加载更多 +')
         }
 
+        //项目详情跳转
         $(document).on('tap click', '.items', function (e) {
             location.href = 'project_detailed.html?language=' + $.getLangStr() + '&id=' + $(this).children('.id').val() + '&type=' + $(this).children('.type').val();
         });

@@ -240,7 +240,7 @@
             for (var i = 0, len = data.length; i < len; i++) {
                 bannerArr.push('<div class="swiper-slide" data-zid="', data[i].skipId, '">' +
                     '<div class="home-item-image">' +
-                    '<div class="home-item-image-wrapper" style="background-image:url(' + $.baseUrl() +  data[i].pictureUrl + ');">' +
+                    '<div class="home-item-image-wrapper" style="background-image:url(' + $.baseUrl() + data[i].pictureUrl + ');">' +
                     '</div>' +
                     '</div></div>')
             }
@@ -272,7 +272,7 @@
         //banner跳转
         $('#home-banner').on('tap click', '.swiper-slide', function (e) {
             var id = $(this).data('zid');
-            location.href = 'project_detailed.html?id=' + id;
+            location.href = 'project_detailed.html?language=' + $.getLangStr() + '&id=' + id;
         });
 
 
